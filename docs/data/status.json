@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-21T23:40:51+00:00",
+ "updated": "2026-09-21T23:52:16+00:00",
  "lines": [
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
   "! ESPN week 2: 403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
