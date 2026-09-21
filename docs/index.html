@@ -53,6 +53,16 @@ select.week { background: var(--panel); border: 1px solid var(--rule); border-ra
 .tabs::-webkit-scrollbar { display: none; }
 .tabs button { white-space: nowrap; flex: none; background: none; border: 0; border-bottom: 3px solid transparent; padding: 8px 12px 9px; font: 600 17px/1 var(--cond); color: var(--ink-2); cursor: pointer; }
 .tabs button[aria-selected="true"] { color: var(--ink); border-color: var(--ink); }
+.weekbar { max-width: 1360px; margin: 0 auto; padding: 8px 16px 10px; display: flex; gap: 4px; align-items: center;
+  overflow-x: auto; scrollbar-width: none; }
+.weekbar::-webkit-scrollbar { display: none; }
+.weekbar .wb-label { color: var(--ink-2); font: 600 14px/1 var(--cond); margin-right: 6px; flex: none; }
+.weekbar button { flex: none; min-width: 34px; height: 30px; padding: 0 8px; border: 1px solid var(--rule); border-radius: 6px;
+  background: var(--panel); color: var(--ink); font: 600 16px/1 var(--cond); cursor: pointer; }
+.weekbar button:hover:not(:disabled) { border-color: var(--ink-2); }
+.weekbar button[aria-current="true"] { background: var(--ink); color: var(--board); border-color: var(--ink); }
+.weekbar button:disabled { opacity: .35; cursor: default; }
+select.week { display: none; }
 main { padding-top: 18px; padding-bottom: 40px; }
 .foot { color: var(--ink-2); font-size: 12px; padding-bottom: 32px; }
 
@@ -124,7 +134,10 @@ tr.mine td { background: color-mix(in srgb, var(--push) 10%, transparent); }
 .btn:disabled { opacity: .5; cursor: default; }
 .more { margin: 14px auto 0; display: block; }
 
-dialog { background: var(--panel); color: var(--ink); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; width: min(470px, 92vw); }
+dialog { background: var(--panel); color: var(--ink); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; width: min(760px, 94vw); max-height: 88vh; overflow: auto; }
+dialog .picks { flex-wrap: wrap; }
+dialog table { min-width: 0; }
+dialog .season td { vertical-align: middle; }
 dialog::backdrop { background: rgba(10, 16, 24, .6); }
 dialog h2 { font: 700 26px/1.1 var(--cond); margin: 0 0 2px; }
 dialog .sub { color: var(--ink-2); margin: 0 0 14px; }
@@ -192,6 +205,7 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
     <button role="tab" data-tab="top" aria-selected="false">Top entries</button>
     <button role="tab" data-tab="data" aria-selected="false">Data</button>
   </nav>
+  <nav class="weekbar" id="weekbar" aria-label="Week"></nav>
 </header>
 <main id="main">
   <section id="games" class="view"></section>
@@ -307,7 +321,7 @@ async function loadScores(w) {
   const ovDoc = m.overrides ? await getJSON(base + "overrides.json").catch(() => null) : null;
   // "official" = covers confirmed from Westgate's standings; manual "results" win over everything
   const ov = { ...(ovDoc?.official || {}), ...(ovDoc?.results || {}) }, manual = ovDoc?.results || {};
-  if (isCollege()) return { ...(await loadCollegeScores(w, m, base, ov)), manual };
+  if (isCollege()) return { ...(await loadCollegeScores(w, m, base, ovDoc?.official || {}, manual)), manual };
   const saved = m.results ? await getJSON(base + "results.json").catch(() => null) : null;
   const allFinal = saved?.games?.length && saved.games.every(g => g.state === "post" && !/POSTPONED|CANCEL|SUSPENDED/i.test(g.status || ""));
   let games, source;
@@ -360,7 +374,9 @@ function pairCollege(card, events) {
   return rows;
 }
 const ESPN_CFB = (d, g) => `https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=${d}&groups=${g}&limit=400`;
-async function loadCollegeScores(w, m, base, ov) {
+// Grading order: a result set by hand > the actual score > the official-standings result
+// (that last one only fills in games ESPN couldn't find or hasn't finished).
+async function loadCollegeScores(w, m, base, official, manual) {
   const card = (Store.get(P.card(w)) || await getJSON(base + "card.json").catch(() => null))?.games || [];
   const saved = m.results ? await getJSON(base + "results.json").catch(() => null) : null;
   let rows = [], source;
@@ -377,11 +393,15 @@ async function loadCollegeScores(w, m, base, ov) {
       const today = new Date().toISOString().slice(0, 10);
       const done = rows.every(r => r.state === "post") && (rows.length === card.length || card.every(g => !g.date || g.date < today));
       source = done ? "final" : "espn";
-    } catch { rows = saved?.games || []; source = rows.length ? "snapshot" : Object.keys(ov).length ? "final" : "none"; }
+    } catch { rows = saved?.games || []; source = rows.length ? "snapshot" : Object.keys(official).length ? "final" : "none"; }
   }
-  const map = {}; for (const r of rows) map[r.home] = r;
+  const map = {}, byTeam = {};
+  for (const r of rows) { map[r.home] = r; byTeam[r.home] = r; byTeam[r.away] = r; }
+  const scored = t => byTeam[t]?.state === "post" && byTeam[t].home_score != null && byTeam[t].away_score != null;
+  const ov = { ...manual };
+  for (const [t, res] of Object.entries(official)) if (!(t in manual) && !scored(t)) ov[t] = res;
   return { week: w, games: map, overrides: ov, updated: new Date().toISOString(), source,
-           unpaired: card.length - rows.length };
+           unpaired: card.length - rows.length, fromOfficial: Object.keys(ov).filter(t => !(t in manual)).length / 2 };
 }
 const Store = {
   mode: "static", season: 2026, manifest: { weeks: {} },
@@ -676,7 +696,7 @@ function openEntry(id) {
   const wk = r.week, d = $("#entry");
   const line = gr => {
     const s = gr.postponed ? "Postponed; ½ point if not played by Tuesday" : gr.res === "C" ? "Not played in time, ½ point" :
-      gr.override ? `${{ W: "Win", L: "Loss", P: "Push", C: "½ point" }[gr.res]} by override` : !gr.res ? kickoffLabel(gr.sg, gr.game) || "Not started" :
+      gr.override ? `${{ W: "Covered", L: "Did not cover", P: "Push", C: "½ point" }[gr.res]}${(Store.get(P.scores(S.week))?.manual || {})[gr.ab] ? " (set by hand)" : " (per official standings)"}` : !gr.res ? kickoffLabel(gr.sg, gr.game) || "Not started" :
       `${gr.final ? { W: "Covered", L: "Did not cover", P: "Push" }[gr.res] : { W: "Covering", L: "Not covering", P: "On the number" }[gr.res]}, ${gr.mine}–${gr.theirs}${gr.final ? " final" : " " + esc(gr.sg.detail || "")}`;
     return `<li>${chip(gr)}<span>${nickOf(gr.ab) || lbl(gr.ab)} ${fmtLine(gr.side?.line ?? 0)} vs ${gr.opp ? lbl(gr.opp.abbr) : ""}</span><span class="d">${s}</span></li>`;
   };
@@ -684,8 +704,38 @@ function openEntry(id) {
     <p class="sub">Place ${r.place}${r.tie ? "T" : ""} with ${fmtPts(r.total)} points, record ${r.rec.w}-${r.rec.l}-${r.rec.t}-${r.rec.c}.
     ${r.basePlace != null && !lastSt.official ? `Official after week ${lastSt.baseWeek}: ${r.basePlace} (${r.baseRec}).` : ""}</p>
     ${wk ? `<ul>${wk.grades.map(line).join("")}</ul><p class="sub" style="margin-top:12px">Week ${S.week}: ${wk.w}-${wk.l}-${wk.p}-${wk.c} final${wk.lw + wk.ll + wk.lp ? `, ${wk.lw}-${wk.ll}-${wk.lp} in progress` : ""}${wk.pending ? `, ${wk.pending} not started` : ""}.</p>`
-      : `<p class="sub">No picks for week ${S.week}.</p>`}`;
+      : `<p class="sub">No picks for week ${S.week}.</p>`}
+    <div class="season" data-for="${esc(id)}"><p class="sub" style="margin-top:16px">Loading earlier weeks…</p></div>`;
   d.showModal();
+  fillSeason(id);
+}
+// Wait (up to 15s) until every earlier week's game sheet, picks and scores are loaded.
+function ensureSeason(upTo) {
+  return new Promise(res => {
+    const t0 = Date.now();
+    (function tick() { if (seasonReady(["card", "picks", "scores"], upTo) || Date.now() - t0 > 15000) res(); else setTimeout(tick, 250); })();
+  });
+}
+async function fillSeason(id) {
+  const W = S.week;
+  await ensureSeason(W);
+  const box = document.querySelector("#entry .season");
+  if (!box || box.dataset.for !== id || S.week !== W) return;             // popup closed or changed
+  const weeks = weeksList().filter(w => w < W && index().weeks[w]?.card && index().weeks[w]?.picks).reverse();
+  if (!weeks.length) { box.innerHTML = ""; return; }
+  let tw = 0, tl = 0, tt = 0, tpts = 0;
+  const rows = weeks.map(w => {
+    const p = (Store.get(P.picks(w))?.entries || []).find(e => e.id === id)?.picks;
+    if (!p) return `<tr><td class="place">W${w}</td><td><span class="note">No picks</span></td><td class="rec">—</td><td class="num">0</td></tr>`;
+    const g = weekGrades(w), sc = scoreEntry(p, g.card, g.scores, g.ov);
+    tw += sc.w + sc.lw; tl += sc.l + sc.ll; tt += sc.p + sc.lp; tpts += sc.proj;
+    return `<tr><td class="place">W${w}</td><td><div class="picks">${sc.grades.map(x => chip(x, true)).join("")}</div></td>
+      <td class="rec">${sc.w + sc.lw}-${sc.l + sc.ll}-${sc.p + sc.lp}${sc.c ? "-" + sc.c : ""}</td><td class="num">${fmtPts(sc.proj)}</td></tr>`;
+  }).join("");
+  box.innerHTML = `<h2 class="sec" style="margin-top:22px">Earlier weeks</h2>
+    <div class="table-wrap"><table><thead><tr><th>Week</th><th>Picks</th><th>W-L-T</th><th class="num">Pts</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>
+    <p class="sub" style="margin-top:8px">Weeks 1–${weeks[0]}: ${tw}-${tl}-${tt}, ${fmtPts(tpts)} points (graded from the posted lines and final scores).</p>`;
 }
 
 /* ================= render: pick totals ================= */
@@ -971,6 +1021,7 @@ function onIndex() {
   const withCard = ws.filter(w => index().weeks[w]?.card);
   if (S.week == null || !ws.includes(S.week)) S.week = withCard.at(-1) ?? ws.at(-1) ?? null;
   $("#week").innerHTML = ws.length ? ws.map(w => `<option value="${w}" ${w === S.week ? "selected" : ""}>Week ${w}</option>`).join("") : `<option>No data</option>`;
+  renderWeekbar(ws);
   if (S.week != null) {
     const { set } = neededPaths(S.week);
     Store.unwatchExcept(set);
@@ -993,7 +1044,21 @@ async function switchLeague(lg) {
   Store.watch(P.index, onIndex);
   setTimeout(scheduleRefresh, 1500);
 }
+// Numbered week buttons. Weeks with no data yet (future weeks) are shown but disabled.
+function renderWeekbar(ws) {
+  const bar = document.getElementById("weekbar"); if (!bar) return;
+  const season = typeof isCollege === "function" && isCollege() ? 14 : 18;
+  const total = Math.max(season, ...ws, 1), have = new Set(ws);
+  bar.innerHTML = `<span class="wb-label">Week</span>` + Array.from({ length: total }, (_, i) => i + 1).map(w =>
+    `<button data-goweek="${w}" ${have.has(w) ? "" : "disabled"} ${w === S.week ? 'aria-current="true"' : ""}>${w}</button>`).join("");
+  const cur = bar.querySelector('[aria-current="true"]');
+  if (cur) bar.scrollLeft = Math.max(0, cur.offsetLeft - bar.clientWidth / 2);
+}
 function bind() {
+  document.getElementById("weekbar").addEventListener("click", e => {
+    const b = e.target.closest("[data-goweek]"); if (!b || b.disabled) return;
+    const sel = $("#week"); sel.value = b.dataset.goweek; sel.dispatchEvent(new Event("change"));
+  });
   document.querySelector(".league").addEventListener("click", e => { const b = e.target.closest("[data-league]"); if (b) switchLeague(b.dataset.league); });
   $("#week").addEventListener("change", e => { S.week = +e.target.value; S.shown = 150; onIndex(); setTimeout(scheduleRefresh, 1500); });
   document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) { S.tab = b.dataset.tab; render(); } });
