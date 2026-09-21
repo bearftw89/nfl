@@ -1,0 +1,28 @@
+{
+ "season": 2026,
+ "league": "ncaaf",
+ "picks_per_entry": 7,
+ "weeks": {
+  "1": {
+   "card": true,
+   "picks": true,
+   "standings": true,
+   "results": false,
+   "overrides": true
+  },
+  "2": {
+   "card": true,
+   "picks": true,
+   "standings": true,
+   "results": false,
+   "overrides": true
+  },
+  "3": {
+   "card": true,
+   "picks": true,
+   "standings": true,
+   "results": false,
+   "overrides": true
+  }
+ }
+}

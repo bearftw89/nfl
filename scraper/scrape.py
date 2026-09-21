@@ -190,6 +190,13 @@ def main():
             if not args.week or w == args.week:
                 scrape_results(w)
     build_manifest()
+    if not args.week:                     # college contest (its own pages and folder)
+        try:
+            from . import college_scrape
+            ok &= college_scrape.run()
+        except Exception as e:
+            log(f"! college update failed: {e}")
+            ok = False
     sys.exit(0 if ok else 1)
 
 

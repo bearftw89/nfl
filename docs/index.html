@@ -41,6 +41,9 @@ button, select, input, textarea { font: inherit; color: inherit; }
 .top-inner, .tabs, main, .foot { max-width: 1360px; margin: 0 auto; padding: 0 16px; }
 .top-inner { display: flex; align-items: center; gap: 14px; padding-top: 14px; flex-wrap: wrap; }
 .brand { margin: 0; font: 700 26px/1 var(--cond); }
+.league { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.league button { background: var(--panel); border: 0; padding: 6px 12px; font: 600 16px/1 var(--cond); cursor: pointer; color: var(--ink-2); }
+.league button[aria-pressed="true"] { background: var(--ink); color: var(--board); }
 select.week { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 10px; font: 600 18px/1 var(--cond); cursor: pointer; }
 .status { margin-left: auto; color: var(--ink-2); font-size: 13px; display: flex; align-items: center; gap: 8px; }
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--idle); flex: none; }
@@ -175,6 +178,9 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
 <header class="top">
   <div class="top-inner">
     <h1 class="brand">Contest Board</h1>
+    <div class="league" role="group" aria-label="Contest">
+      <button data-league="nfl">NFL</button><button data-league="ncaaf">NCAAF</button>
+    </div>
     <label><span class="sr">Week</span><select class="week" id="week"></select></label>
     <div class="status" id="status" aria-live="polite"></div>
   </div>
@@ -214,6 +220,14 @@ const NICK = { BUF:"Bills", MIA:"Dolphins", NE:"Patriots", NYJ:"Jets", BAL:"Rave
   MIN:"Vikings", ATL:"Falcons", CAR:"Panthers", NO:"Saints", TB:"Buccaneers", ARI:"Cardinals", LAR:"Rams", SF:"49ers", SEA:"Seahawks" };
 const ABBR_FIX = { WAS: "WSH", LA: "LAR", JAC: "JAX" };
 const fixAbbr = a => ABBR_FIX[a] || a;
+// College teams are keyed by their game-sheet name ("NORTH CAROLINA"); LABELS holds Westgate's short
+// form from the selections sheet ("N CAROLINA"). NFL teams are keyed by ESPN code.
+const LABELS = {};
+const isCollege = () => S.league === "ncaaf";
+const lbl = ab => isCollege() ? (LABELS[ab] || ab) : ab;
+const titleCase = s => s.toLowerCase().replace(/(^|[\s-])([a-z])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Lsu|Ucla|Usc|Tcu|Smu|Byu|Utep|Utsa|Uab|Unlv|Ucf|Ul|Nc)\b/g, m => m.toUpperCase());
+const squash = x => x.replace(/[^A-Z0-9]/g, "");
+const nickOf = ab => isCollege() ? (LABELS[ab] && squash(LABELS[ab]) !== squash(ab) ? titleCase(ab) : "") : (NICK[ab] || "");
 const toAbbr = n => TEAMS[String(n).trim().toUpperCase().replace(/\*$/, "")] || null;
 
 /* ================= parsers (same rules as the GitHub version) ================= */
@@ -289,8 +303,11 @@ function espnGames(data) {
   return out;
 }
 async function loadScores(w) {
-  const m = Store.manifest.weeks[w] || {}, base = `${DATA}${Store.season}/week-${w}/`;
-  const ov = m.overrides ? (await getJSON(base + "overrides.json").catch(() => null))?.results || {} : {};
+  const m = Store.manifest.weeks[w] || {}, base = `${Store.base()}week-${w}/`;
+  const ovDoc = m.overrides ? await getJSON(base + "overrides.json").catch(() => null) : null;
+  // "official" = covers confirmed from Westgate's standings; manual "results" win over everything
+  const ov = { ...(ovDoc?.official || {}), ...(ovDoc?.results || {}) }, manual = ovDoc?.results || {};
+  if (isCollege()) return { ...(await loadCollegeScores(w, m, base, ov)), manual };
   const saved = m.results ? await getJSON(base + "results.json").catch(() => null) : null;
   const allFinal = saved?.games?.length && saved.games.every(g => g.state === "post" && !/POSTPONED|CANCEL|SUSPENDED/i.test(g.status || ""));
   let games, source;
@@ -301,15 +318,57 @@ async function loadScores(w) {
   }
   const map = {};
   for (const g of games) { const h = fixAbbr(g.home), a = fixAbbr(g.away); map[h] = { ...g, home: h, away: a }; }
+  return { week: w, games: map, overrides: ov, manual, updated: new Date().toISOString(), source };
+}
+// College: the updater pairs each game-sheet row with an ESPN game id (results.json keeps which
+// sheet team is ESPN's home side), so live scores are looked up by id, never by guessing names.
+const ESPN_CFB = (d, g) => `https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=${d}&groups=${g}&limit=400`;
+async function loadCollegeScores(w, m, base, ov) {
+  const card = (Store.get(P.card(w)) || await getJSON(base + "card.json").catch(() => null))?.games || [];
+  const saved = m.results ? await getJSON(base + "results.json").catch(() => null) : null;
+  const pairs = {}; for (const g of saved?.games || []) pairs[g.espn_id] = g;
+  const ids = card.map(g => g.espn_id).filter(Boolean);
+  const allFinal = (saved?.games || []).length && saved.games.every(g => g.state === "post");
+  let live = {}, source = allFinal ? "final" : "snapshot";
+  if (!allFinal && ids.length) {
+    const dates = [...new Set(card.filter(g => g.espn_id && g.date).map(g => g.date.replace(/-/g, "")))];
+    try {
+      for (const d of dates) for (const grp of [80, 81]) {
+        const data = await getJSON(ESPN_CFB(d, grp), 8000);
+        for (const ev of data.events || []) live[ev.id] = ev;
+        if (grp === 80 && ids.every(id => live[id] || !card.some(g => g.espn_id === id && g.date?.replace(/-/g, "") === d))) break;
+      }
+      source = "espn";
+    } catch { source = saved ? "snapshot" : "none"; }
+  }
+  const map = {};
+  for (const g of card) {
+    const sv = pairs[g.espn_id]; if (!sv) continue;
+    let row = { ...sv };
+    const ev = live[g.espn_id];
+    if (ev) {
+      const comp = ev.competitions[0], st = (comp.status || ev.status).type;
+      row = { ...row, kickoff: ev.date, state: st.state, detail: st.shortDetail, status: st.name };
+      for (const c of comp.competitors) row[c.homeAway + "_score"] = c.score === "" || c.score == null ? null : Number(c.score);
+    }
+    map[row.home] = row;
+  }
+  if (!ids.length && !saved) source = Object.keys(ov).length ? "final" : "none";
   return { week: w, games: map, overrides: ov, updated: new Date().toISOString(), source };
 }
 const Store = {
   mode: "static", season: 2026, manifest: { weeks: {} },
+  base() { return `${DATA}${this.season}/${isCollege() ? "ncaaf/" : ""}`; },
+  async reset() {
+    this.cache.clear(); this.subs.clear(); this.pending.clear();
+    for (const k of Object.keys(LABELS)) delete LABELS[k];
+    this.manifest = await getJSON(`${this.base()}manifest.json`).catch(() => ({ weeks: {} }));
+  },
   cache: new Map(), subs: new Map(), pending: new Set(),
   async init() {
     const seasons = await getJSON(DATA + "seasons.json").catch(() => null);
     this.season = seasons?.current || 2026;
-    this.manifest = await getJSON(`${DATA}${this.season}/manifest.json`).catch(() => ({ weeks: {} }));
+    this.manifest = await getJSON(`${this.base()}manifest.json`).catch(() => ({ weeks: {} }));
   },
   indexDoc() {
     const weeks = {};
@@ -322,17 +381,22 @@ const Store = {
     const [col, id] = path.split("/"), w = +id.slice(1);
     if (col === "scores") return loadScores(w);
     const file = { cards: "card", picks: "picks", standings: "standings" }[col];
-    return getJSON(`${DATA}${this.season}/week-${w}/${file}.json`).catch(() => null);
+    const doc = await getJSON(`${this.base()}week-${w}/${file}.json`).catch(() => null);
+    if (doc && col === "cards") for (const g of doc.games || []) for (const s of [g.fav, g.dog]) if (s.label) LABELS[s.abbr] = s.label;
+    if (doc && col === "picks" && doc.labels) for (const [n, l] of Object.entries(doc.labels)) LABELS[n] ||= l;
+    return doc;
   },
   watch(path, cb) {
     if (this.subs.has(path)) return;
     this.subs.set(path, cb);
-    this.load(path).then(v => { this.cache.set(path, v); cb(path); });
+    const lg = S.league;
+    this.load(path).then(v => { if (S.league !== lg) return; this.cache.set(path, v); cb(path); });
   },
   fetchOnce(path, cb) {
     if (this.cache.has(path) || this.pending.has(path)) return;
     this.pending.add(path);
-    this.load(path).then(v => { this.cache.set(path, v); this.pending.delete(path); cb(path); });
+    const lg = S.league;
+    this.load(path).then(v => { this.pending.delete(path); if (S.league !== lg) return; this.cache.set(path, v); cb(path); });
   },
   unwatchExcept(keep) { for (const p of [...this.subs.keys()]) if (!keep.has(p)) this.subs.delete(p); },
   get(path) { return this.cache.get(path) ?? null; },
@@ -342,7 +406,8 @@ const Store = {
       if (!p.startsWith("scores/")) continue;
       const cur = this.cache.get(p);
       if (cur?.source === "final") continue;
-      this.cache.set(p, await this.load(p)); cb(p);
+      const lg = S.league, v = await this.load(p);
+      if (S.league === lg) { this.cache.set(p, v); cb(p); }
     }
   },
 };
@@ -367,7 +432,7 @@ const local = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-const S = { topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "card", q: "", onlyStarred: false, shown: 150,
+const S = { league: new URLSearchParams(location.hash.slice(1)).get("lg") === "ncaaf" ? "ncaaf" : local.get("cb-league", "nfl") === "ncaaf" ? "ncaaf" : "nfl", topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "card", q: "", onlyStarred: false, shown: 150,
   sortKey: "total", sortDir: -1, starred: new Set(local.get("cb-starred", [])), editing: null, queue: [] };
 
 function index() { return Store.get(P.index) || { weeks: {} }; }
@@ -471,7 +536,7 @@ function chip(gr, withLine) {
   const t = gr.postponed ? "postponed, pending rule 22" : !gr.res ? "not started" : gr.final
     ? { W: "covered", L: "did not cover", P: "push", C: "not played in time, ½ point" }[gr.res]
     : { W: "covering", L: "not covering", P: "on the number" }[gr.res];
-  return `<span class="chip ${cls}" title="${gr.ab} ${fmtLine(gr.side?.line ?? 0)}: ${t}">${gr.ab}${withLine && gr.side ? ` (${fmtLine(gr.side.line)})` : ""}</span>`;
+  return `<span class="chip ${cls}" title="${lbl(gr.ab)} ${fmtLine(gr.side?.line ?? 0)}: ${t}">${lbl(gr.ab)}${withLine && gr.side ? ` (${fmtLine(gr.side.line)})` : ""}</span>`;
 }
 function renderGames() {
   const el = $("#games"), w = S.week;
@@ -508,26 +573,28 @@ function gameCard({ g, sg, cf, cd }, n, scores, card, ov) {
   const st = s => grade(s.abbr, card, scores, ov);
   const home = sides[1], away = sides[0];
   const ovTxt = ov[g.fav.abbr] || ov[g.dog.abbr];
-  const meta = ovTxt ? "Graded by override" : !sg ? esc(kickoffLabel(null, g)) :
+  const manualOv = Store.get(P.scores(S.week))?.manual || {};
+  const meta = (manualOv[g.fav.abbr] || manualOv[g.dog.abbr]) ? "Graded by override"
+    : ovTxt && (!sg || sg.state !== "in") ? (sg?.state === "post" && sg.detail ? esc(sg.detail) : "Final") : !sg ? esc(kickoffLabel(null, g)) :
     DEAD.test(sg.status || "") ? "Postponed" : sg.state === "in" ? `<span class="live">${esc(sg.detail || "In progress")}</span>` :
     sg.state === "post" ? esc(sg.detail || "Final") : esc(kickoffLabel(sg, g));
   const row = s => {
     const gr = st(s);
     const sc = sg && sg.state !== "pre" && sg.home_score != null ? (sg.home === s.abbr ? sg.home_score : sg.away_score) : "";
-    return `<div class="side ${gr.res ? "st-" + gr.res : ""}"><span class="team">${s.abbr}<small>${NICK[s.abbr] || ""}${s.home ? " (home)" : ""}</small></span>
+    return `<div class="side ${gr.res ? "st-" + gr.res : ""}"><span class="team">${lbl(s.abbr)}<small>${nickOf(s.abbr)}${s.home ? " (home)" : ""}</small></span>
       <span class="line">${fmtLine(s.line)}</span><span class="score">${sc}</span></div>`;
   };
   const seg = s => {
     const gr = st(s), share = tot ? cnt(s) / tot : .5, sp = Math.round(share * 100);
-    const label = !tot ? s.abbr : share >= .24 ? `${s.abbr} ${sp}%` : share >= .12 ? `${sp}%` : "";
-    return `<div class="${gr.res ? "st-" + gr.res : ""}" style="flex:${tot ? Math.max(share, .03) : .5}" title="${s.abbr}: ${cnt(s)} entries${n ? ` (${Math.round(cnt(s) / n * 100)}% of field)` : ""}">${label}</div>`;
+    const label = !tot ? lbl(s.abbr) : share >= .24 ? `${lbl(s.abbr)} ${sp}%` : share >= .12 ? `${sp}%` : "";
+    return `<div class="${gr.res ? "st-" + gr.res : ""}" style="flex:${tot ? Math.max(share, .03) : .5}" title="${lbl(s.abbr)}: ${cnt(s)} entries${n ? ` (${Math.round(cnt(s) / n * 100)}% of field)` : ""}">${label}</div>`;
   };
   const pl = x => `${x} ${x === 1 ? "pick" : "picks"}`;
   return `<article class="game">
     <div class="game-meta"><span>#${g.fav.num} / #${g.dog.num}</span><span>${meta}</span>
 </div>
     ${row(away)}${row(home)}
-    <div class="split" role="img" aria-label="${sides.map(s => `${s.abbr} ${cnt(s)} picks`).join(", ")}">${seg(away)}${seg(home)}</div>
+    <div class="split" role="img" aria-label="${sides.map(s => `${lbl(s.abbr)} ${cnt(s)} picks`).join(", ")}">${seg(away)}${seg(home)}</div>
     <div class="counts"><span>${pl(cnt(away))}</span><span>${n ? Math.round(tot / n * 100) : 0}% of entries played this game</span><span>${pl(cnt(home))}</span></div>
 </article>`;
 }
@@ -584,7 +651,7 @@ function openEntry(id) {
     const s = gr.postponed ? "Postponed; ½ point if not played by Tuesday" : gr.res === "C" ? "Not played in time, ½ point" :
       gr.override ? `${{ W: "Win", L: "Loss", P: "Push", C: "½ point" }[gr.res]} by override` : !gr.res ? kickoffLabel(gr.sg, gr.game) || "Not started" :
       `${gr.final ? { W: "Covered", L: "Did not cover", P: "Push" }[gr.res] : { W: "Covering", L: "Not covering", P: "On the number" }[gr.res]}, ${gr.mine}–${gr.theirs}${gr.final ? " final" : " " + esc(gr.sg.detail || "")}`;
-    return `<li>${chip(gr)}<span>${NICK[gr.ab] || gr.ab} ${fmtLine(gr.side?.line ?? 0)} vs ${gr.opp?.abbr ?? ""}</span><span class="d">${s}</span></li>`;
+    return `<li>${chip(gr)}<span>${nickOf(gr.ab) || lbl(gr.ab)} ${fmtLine(gr.side?.line ?? 0)} vs ${gr.opp ? lbl(gr.opp.abbr) : ""}</span><span class="d">${s}</span></li>`;
   };
   d.innerHTML = `<button class="btn close" data-close>Close</button><h2>${esc(r.id)}</h2>
     <p class="sub">Place ${r.place}${r.tie ? "T" : ""} with ${fmtPts(r.total)} points, record ${r.rec.w}-${r.rec.l}-${r.rec.t}-${r.rec.c}.
@@ -629,7 +696,7 @@ function renderTeams() {
   };
   el.innerHTML = `
     <div class="strip">
-      <div><b>${n}</b><span>entries, ${n * 5} picks</span></div>
+      <div><b>${n}</b><span>entries, ${n * (Store.manifest.picks_per_entry || 5)} picks</span></div>
       <div><b>${tally("W")}</b><span>picks already won</span></div>
       <div><b>${tally("L")}</b><span>picks already lost</span></div>
       <div><b>${live}</b><span>picks still in play</span></div>
@@ -637,8 +704,8 @@ function renderTeams() {
     <p class="note">Every team on the week ${w} card, most picked first. Select a row to see which entries took it.</p>
     <div class="table-wrap"><table><thead><tr><th>Team</th><th>Line</th><th>Opponent</th><th class="num">Entries</th>
       <th class="num">% of field</th><th>Score</th><th>Status</th><th class="num">Field pts</th></tr></thead><tbody>
-      ${rows.map(r => `<tr><td class="name"><button data-team="${r.abbr}">${r.abbr} ${NICK[r.abbr] || ""}${r.home ? "" : " (away)"}</button></td>
-        <td class="rec">${fmtLine(r.line)}</td><td class="rec">${r.opp}</td>
+      ${rows.map(r => `<tr><td class="name"><button data-team="${esc(r.abbr)}">${lbl(r.abbr)} ${nickOf(r.abbr)}${r.home ? "" : " (away)"}</button></td>
+        <td class="rec">${fmtLine(r.line)}</td><td class="rec">${lbl(r.opp)}</td>
         <td class="num">${r.who.length}</td><td class="num">${Math.round(r.who.length / n * 100)}%</td>
         ${cell(r)}<td class="num">${r.pts == null ? "\u2014" : fmtPts(r.pts)}</td></tr>`).join("")}
     </tbody></table></div>`;
@@ -651,7 +718,7 @@ function openTeam(abbr) {
   const st = !gr.res ? "not started" : gr.final ? RESULT_TEXT[gr.res].toLowerCase() : { W: "covering", L: "not covering", P: "on the number" }[gr.res];
   const d = $("#entry");
   d.innerHTML = `<button class="btn close" data-close>Close</button>
-    <h2>${abbr} ${fmtLine(gr.side?.line ?? 0)} vs ${gr.opp?.abbr ?? ""}</h2>
+    <h2>${lbl(abbr)} ${fmtLine(gr.side?.line ?? 0)} vs ${gr.opp ? lbl(gr.opp.abbr) : ""}</h2>
     <p class="sub">${who.length} entries (${Math.round(who.length / picks.length * 100)}% of the field), currently ${st}.</p>
     <div style="max-height:50vh;overflow:auto"><p style="margin:0;line-height:1.9">${who.map(id =>
       `<button class="chip" data-entry="${esc(id)}" style="min-width:0;margin:0 4px 4px 0;cursor:pointer">${esc(id)}</button>`).join("")}</p></div>`;
@@ -681,7 +748,10 @@ function renderAts() {
   const weeks = weeksList().filter(w => index().weeks[w]?.card);
   if (!weeks.length) { el.innerHTML = `<div class="empty"><b>No game sheets uploaded yet.</b></div>`; return; }
   const T = {};
-  for (const ab of Object.keys(NICK)) T[ab] = { ab, w: 0, l: 0, p: 0, marg: 0, n: 0, hw: 0, hl: 0, aw: 0, al: 0, fw: 0, fl: 0, dw: 0, dl: 0, picks: 0, pw: 0, pl: 0, weeks: {} };
+  const teamList = isCollege()
+    ? [...new Set(weeks.flatMap(w => (Store.get(P.card(w))?.games || []).flatMap(g => [g.fav.abbr, g.dog.abbr])))]
+    : Object.keys(NICK);
+  for (const ab of teamList) T[ab] = { ab, w: 0, l: 0, p: 0, marg: 0, n: 0, hw: 0, hl: 0, aw: 0, al: 0, fw: 0, fl: 0, dw: 0, dl: 0, picks: 0, pw: 0, pl: 0, weeks: {} };
   const L = { favW: 0, favL: 0, homeW: 0, homeL: 0 };
   for (const w of weeks) {
     const g = weekGrades(w);
@@ -718,7 +788,7 @@ function renderAts() {
     if (!x) return `<td class="wk">—</td>`;
     const r = x.gr, cls = r.res ? `st-${r.res}${r.final ? "" : " live"}` : "";
     const sc = r.mine != null ? `${r.mine}-${r.theirs}` : r.postponed ? "PPD" : "";
-    return `<td class="wk"><span class="cnt ${cls}" style="min-width:44px">${fmtLine(x.line)}</span><small>${x.home ? "vs" : "@"} ${x.opp}${sc ? " " + sc : ""}</small></td>`;
+    return `<td class="wk"><span class="cnt ${cls}" style="min-width:44px">${fmtLine(x.line)}</span><small>${x.home ? "vs" : "@"} ${lbl(x.opp)}${sc ? " " + sc : ""}</small></td>`;
   };
   el.innerHTML = `
     <div class="strip">
@@ -731,7 +801,7 @@ function renderAts() {
       ${th("team", "Team")}<th>ATS</th>${th("pct", "Cover %", "num")}${th("marg", "Avg vs line", "num")}
       <th>Home</th><th>Away</th><th>As fav</th><th>As dog</th>
       ${weeks.map(w => `<th>W${w}</th>`).join("")}${th("picks", "Field picks", "num")}<th>Field W-L</th></tr></thead><tbody>
-      ${rows.map(t => `<tr><td class="name"><b>${t.ab}</b> <small class="note">${NICK[t.ab]}</small></td>
+      ${rows.map(t => `<tr><td class="name"><b>${lbl(t.ab)}</b> <small class="note">${nickOf(t.ab)}</small></td>
         <td class="rec">${t.w}-${t.l}${t.p ? "-" + t.p : ""}</td>
         <td class="num">${pct(t) < 0 ? "—" : Math.round(pct(t) * 100) + "%"}</td>
         <td class="num">${t.n ? (t.marg / t.n > 0 ? "+" : "") + (t.marg / t.n).toFixed(1) : "—"}</td>
@@ -803,8 +873,8 @@ function renderTop() {
     <div class="table-wrap"><table style="min-width:640px"><thead><tr><th>Team</th><th>Line</th><th>Opp</th>
       <th style="width:34%">Leaders who picked it</th><th class="num">% of leaders</th><th class="num">% of field</th><th>Result</th></tr></thead><tbody>
     ${rows.map(([a, k]) => { const gr = grade(a, g.card, g.scores, g.ov); return `<tr>
-      <td class="name"><button data-topteam="${a}">${a} ${NICK[a] || ""}</button></td>
-      <td class="rec">${fmtLine(gr.side?.line ?? 0)}</td><td class="rec">${gr.side?.home ? "vs" : "@"} ${gr.opp?.abbr || ""}</td>
+      <td class="name"><button data-topteam="${esc(a)}">${lbl(a)} ${nickOf(a)}</button></td>
+      <td class="rec">${fmtLine(gr.side?.line ?? 0)}</td><td class="rec">${gr.side?.home ? "vs" : "@"} ${gr.opp ? lbl(gr.opp.abbr) : ""}</td>
       <td><div style="display:flex;align-items:center;gap:8px"><b style="font:700 18px var(--cond);min-width:22px">${k}</b>
         <div style="flex:1;height:10px;border-radius:5px;background:var(--panel-2)"><div style="height:100%;width:${k / maxC * 100}%;border-radius:5px;background:var(--ink-2)"></div></div></div></td>
       <td class="num">${Math.round(k / n * 100)}%</td><td class="num">${Math.round((fieldCnt[a] || 0) / picks.length * 100)}%</td>
@@ -821,8 +891,8 @@ function renderTop() {
 function openTopTeam(a) {
   const ids = (S.topWho?.[a] || []).slice().sort();
   const d = $("#entry");
-  d.innerHTML = `<button class="btn close" data-close>Close</button><h2>${a} ${NICK[a] || ""}</h2>
-    <p class="sub">${ids.length} of the leaders picked ${a} in week ${S.week}.</p>
+  d.innerHTML = `<button class="btn close" data-close>Close</button><h2>${lbl(a)} ${nickOf(a)}</h2>
+    <p class="sub">${ids.length} of the leaders picked ${lbl(a)} in week ${S.week}.</p>
     <p style="margin:0;line-height:1.9">${ids.map(id => `<button class="chip" data-entry="${esc(id)}" style="min-width:0;margin:0 4px 4px 0;cursor:pointer">${esc(id)}</button>`).join("")}</p>`;
   d.showModal();
 }
@@ -832,7 +902,8 @@ function renderData() {
   const el = $("#data"), m = Store.manifest.weeks || {}, ws = Object.keys(m).map(Number).sort((a, b) => a - b);
   const yes = (v, t) => v ? `<span class="up">${t || "Yes"}</span>` : `<span class="note">—</span>`;
   el.innerHTML = `
-    <div class="how" style="margin-top:0"><h2>Where the data comes from</h2>
+    <div class="how" style="margin-top:0"><h2>${isCollege() ? "SuperContest College" : "SuperContest (NFL)"}: where the data comes from</h2>
+      ${isCollege() ? `<p>College picks are 7 per entry against the contest line, weeks 1–14. Westgate's short team names on the selections sheet are matched to the game sheet, and each week's picks are checked against Westgate's own team-count table. Once official standings are posted, the covers they imply are saved and used for any game the live score feed couldn't match.</p>` : ""}
       <p>The updater (a scheduled GitHub Action) checks the Westgate SuperContest pages every 15 minutes and saves each week's game sheet, selections and standings. Scores come live from ESPN while you have this page open: every 30 seconds during games, every 5 minutes otherwise.</p>
       <p>Forfeits or grading corrections: add <code>docs/data/${Store.season}/week-N/overrides.json</code> with, for example, <code>{"results": {"NYJ": "W", "GB": "L"}}</code> (W, L, P or C). Overrides beat the score feed.</p></div>
     <div class="have"><h2>Weeks on file, ${Store.season}</h2>
@@ -875,7 +946,22 @@ function onIndex() {
   if (!ws.length && S.tab !== "data") S.tab = "data";
   render();
 }
+function markLeague() {
+  document.querySelectorAll("[data-league]").forEach(b => b.setAttribute("aria-pressed", b.dataset.league === S.league));
+  document.title = `Contest Board: ${S.league === "ncaaf" ? "NCAAF" : "NFL"}`;
+}
+async function switchLeague(lg) {
+  if (lg === S.league) return;
+  S.league = lg; local.set("cb-league", lg); markLeague();
+  history.replaceState(null, "", lg === "ncaaf" ? "#lg=ncaaf" : location.pathname + location.search);
+  S.week = null; S.shown = 150; S.q = "";
+  ["games", "standings", "teams", "ats", "top"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
+  await Store.reset();
+  Store.watch(P.index, onIndex);
+  setTimeout(scheduleRefresh, 1500);
+}
 function bind() {
+  document.querySelector(".league").addEventListener("click", e => { const b = e.target.closest("[data-league]"); if (b) switchLeague(b.dataset.league); });
   $("#week").addEventListener("change", e => { S.week = +e.target.value; S.shown = 150; onIndex(); setTimeout(scheduleRefresh, 1500); });
   document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) { S.tab = b.dataset.tab; render(); } });
   const main = $("#main");
@@ -917,6 +1003,7 @@ function bind() {
 
 bind();
 renderStatus();
+markLeague();
 Store.init().then(() => { Store.watch(P.index, onIndex); setTimeout(scheduleRefresh, 3000); });
 })();
 </script>

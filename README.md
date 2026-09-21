@@ -13,10 +13,19 @@ Weeks 1 and 2 are already loaded (Week 1 verified: all 596 entries match Westgat
 
 - **Picks by game**: each game with the contest line, live score, and a bar of how the field split, colored by cover status. Plus the five most-picked teams.
 - **Standings**: live place, movement since the last official standings, each entry's picks colored by result, W-L-T-C record, search, and a star to track entries.
-- **Pick totals**: every team on the card, how many entries took it, and how it did. Click a team for the entry list.
+- **Consensus**: every team on the card, how many entries took it, and how it did. Click a team for the entry list.
 - **Teams ATS**: all 32 teams' season record against the contest line, with home/away and favorite/underdog splits, week-by-week results, and how the field did picking them.
 - **Top entries**: pick "standings 1 to N"; shows what those leaders (ranked by standings *entering* the week) picked, most-picked first, and each leader's picks. Ties at the cutoff are included by default.
 - **Data**: which weeks are on file.
+
+## NCAAF (SuperContest College)
+
+Switch with the **NFL | NCAAF** buttons at the top (or link straight to it with `#lg=ncaaf`). Every tab works for both.
+
+- The updater also reads Westgate's College game sheet, selections and standings pages each run and saves them under `docs/data/2026/ncaaf/week-N/` (Weeks 1–14, 7 picks per entry).
+- **Team names:** picks use Westgate's short names ("N CAROLINA", "MISS ST"). They're matched to the game sheet's names, and each week's picks are checked against Westgate's own team-count table before anything is saved. A new spelling that can't be matched stops that week (red X in Actions) instead of guessing; add it to `ALIASES` in `scraper/college.py`.
+- **Scores:** the updater pairs each game-sheet row with its ESPN game. The page then pulls live college scores by that ID. Any game that couldn't be paired is listed in the Action log.
+- **Safety net:** once Westgate posts a week's official standings, the updater works out which side covered every game from them and saves it (`overrides.json`, key `official`). Those results are used for any game ESPN couldn't be matched to. Weeks 1–3 were loaded this way, and every entry's record matched Westgate's official standings exactly.
 
 ## Contest rules implemented (2026 SuperContest rules)
 
