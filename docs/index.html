@@ -63,6 +63,22 @@ select.week { background: var(--panel); border: 1px solid var(--rule); border-ra
 .weekbar button[aria-current="true"] { background: var(--ink); color: var(--board); border-color: var(--ink); }
 .weekbar button:disabled { opacity: .35; cursor: default; }
 select.week { display: none; }
+.board { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 12px; }
+.bgame { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 14px 12px; }
+.bmeta { display: flex; justify-content: space-between; color: var(--ink-2); font-size: 12px; margin-bottom: 6px; }
+.bmeta .live { color: var(--cover); font-weight: 600; }
+.brow { display: grid; grid-template-columns: 44px 1fr 50px 74px 40px; align-items: center; gap: 10px; padding: 5px 0; }
+.brow + .brow { border-top: 1px solid var(--rule); }
+.tbadge { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 28px; border-radius: 6px;
+  color: #fff; font: 700 14px/1 var(--cond); letter-spacing: .02em; }
+.bname { font: 600 19px/1.1 var(--cond); }
+.bname small { display: block; font: 400 12px var(--text); color: var(--ink-2); margin-top: 2px; }
+.bline { font: 500 16px var(--cond); color: var(--ink-2); text-align: right; }
+.bats { font: 500 14px var(--cond); color: var(--ink-2); text-align: right; white-space: nowrap; }
+.bscore { font: 700 24px/1 var(--cond); text-align: right; }
+.brow.lose .bname, .brow.lose .bscore { color: var(--ink-2); }
+.bwin { margin-top: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--ink-2); }
+@media (max-width: 560px) { .board { grid-template-columns: 1fr; } .brow { grid-template-columns: 40px 1fr 44px 66px 34px; gap: 8px; } }
 main { padding-top: 18px; padding-bottom: 40px; }
 .foot { color: var(--ink-2); font-size: 12px; padding-bottom: 32px; }
 
@@ -198,6 +214,7 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
     <div class="status" id="status" aria-live="polite"></div>
   </div>
   <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="board" aria-selected="false">Scoreboard</button>
     <button role="tab" data-tab="games" aria-selected="true">Picks by game</button>
     <button role="tab" data-tab="standings" aria-selected="false">Standings</button>
     <button role="tab" data-tab="teams" aria-selected="false">Consensus</button>
@@ -208,6 +225,7 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
   <nav class="weekbar" id="weekbar" aria-label="Week"></nav>
 </header>
 <main id="main">
+  <section id="board" class="view" hidden></section>
   <section id="games" class="view"></section>
   <section id="standings" class="view" hidden></section>
   <section id="teams" class="view" hidden></section>
@@ -1006,10 +1024,13 @@ let raf = 0;
 function render() {
   cancelAnimationFrame(raf);
   raf = requestAnimationFrame(() => {
-    for (const t of ["games", "standings", "teams", "ats", "top", "data"]) $("#" + t).hidden = S.tab !== t;
+    const college = typeof isCollege === "function" && isCollege();
+    document.querySelector('[data-tab="board"]').hidden = college;           // NFL only for now
+    if (college && S.tab === "board") S.tab = "games";
+    for (const t of ["board", "games", "standings", "teams", "ats", "top", "data"]) $("#" + t).hidden = S.tab !== t;
     document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === S.tab));
     const focus = document.activeElement?.id === "q" ? $("#q").selectionStart : null;
-    if (S.tab === "games") renderGames(); else if (S.tab === "standings") renderStandings();
+    if (S.tab === "board") renderBoard(); else if (S.tab === "games") renderGames(); else if (S.tab === "standings") renderStandings();
     else if (S.tab === "teams") renderTeams(); else if (S.tab === "ats") renderAts();
     else if (S.tab === "top") renderTop(); else renderData();
     if (focus !== null && $("#q")) { $("#q").focus(); $("#q").setSelectionRange(focus, focus); }
@@ -1054,6 +1075,62 @@ function renderWeekbar(ws) {
   const cur = bar.querySelector('[aria-current="true"]');
   if (cur) bar.scrollLeft = Math.max(0, cur.offsetLeft - bar.clientWidth / 2);
 }
+/* ================= render: scoreboard ================= */
+// Team-color badges with the abbreviation (colors only; no team artwork).
+const TEAM_COLORS = { ARI:"#97233F", ATL:"#A71930", BAL:"#241773", BUF:"#00338D", CAR:"#0085CA", CHI:"#0B162A", CIN:"#FB4F14",
+  CLE:"#311D00", DAL:"#041E42", DEN:"#FB4F14", DET:"#0076B6", GB:"#203731", HOU:"#03202F", IND:"#002C5F", JAX:"#006778",
+  KC:"#E31837", LV:"#000000", LAC:"#0080C6", LAR:"#003594", MIA:"#008E97", MIN:"#4F2683", NE:"#002244", NO:"#101820",
+  NYG:"#0B2265", NYJ:"#125740", PHI:"#004C54", PIT:"#101820", SF:"#AA0000", SEA:"#002244", TB:"#D50A0A", TEN:"#0C2340", WSH:"#5A1414" };
+const tLabel = ab => typeof lbl === "function" ? lbl(ab) : ab;
+const tNick = ab => typeof nickOf === "function" ? nickOf(ab) : (NICK[ab] || "");
+const teamBadge = ab => `<span class="tbadge" style="background:${TEAM_COLORS[ab] || "var(--idle)"}" aria-hidden="true">${esc(tLabel(ab))}</span>`;
+// Each team's ATS record from every final game through week W.
+function atsThrough(W) {
+  const rec = {};
+  for (const w of weeksList().filter(w => w <= W && index().weeks[w]?.card)) {
+    const g = weekGrades(w); if (!g) continue;
+    for (const gm of g.card) for (const side of [gm.fav, gm.dog]) {
+      const r = rec[side.abbr] ||= { w: 0, l: 0, p: 0 };
+      const gr = grade(side.abbr, g.card, g.scores, g.ov);
+      if (gr.final && gr.res) gr.res === "W" ? r.w++ : gr.res === "L" ? r.l++ : r.p++;
+    }
+  }
+  return rec;
+}
+function renderBoard() {
+  const el = $("#board"), W = S.week;
+  if (!seasonReady(["card", "scores"], W)) { el.innerHTML = `<p class="note">Loading the scoreboard…</p>`; return; }
+  const g = weekGrades(W);
+  if (!g) { el.innerHTML = `<div class="empty"><b>No game sheet for week ${W} yet.</b></div>`; return; }
+  const rec = atsThrough(W);
+  const cnt = {}; (Store.get(P.picks(W))?.entries || []).forEach(e => e.picks.forEach(a => cnt[a] = (cnt[a] || 0) + 1));
+  const games = g.card.map(gm => ({ gm, sg: g.scores[gm.fav.abbr] }))
+    .sort((a, b) => (a.sg?.kickoff || "").localeCompare(b.sg?.kickoff || "") || a.gm.id - b.gm.id);
+  const recTxt = ab => { const r = rec[ab] || { w: 0, l: 0, p: 0 }; return `ATS ${r.w}-${r.l}${r.p ? "-" + r.p : ""}`; };
+  el.innerHTML = `<p class="note">Week ${W}, in kickoff order. Lines are the Westgate contest lines; ATS records count final games through week ${W}.</p>
+    <div class="board">${games.map(({ gm, sg }) => {
+      const neutral = !gm.fav.home && !gm.dog.home;
+      const home = gm.fav.home ? gm.fav : gm.dog, away = home === gm.fav ? gm.dog : gm.fav;
+      const fg = grade(gm.fav.abbr, g.card, g.scores, g.ov);
+      const started = sg && sg.state !== "pre" && sg.home_score != null;
+      const score = s => started ? (sg.home === s.abbr ? sg.home_score : sg.away_score) : "";
+      const lead = started && sg.state === "post" ? (score(home) > score(away) ? home.abbr : score(away) > score(home) ? away.abbr : null) : null;
+      const row = (s, where) => `<div class="brow ${lead && lead !== s.abbr ? "lose" : ""}">
+          ${teamBadge(s.abbr)}
+          <div class="bname">${esc(tLabel(s.abbr))} ${tNick(s.abbr) ? `<small>${esc(tNick(s.abbr))}${where ? " · " + where : ""}</small>` : `<small>${where}</small>`}</div>
+          <div class="bline">${fmtLine(s.line)}</div><div class="bats">${recTxt(s.abbr)}</div><div class="bscore">${score(s)}</div></div>`;
+      const meta = !sg ? esc(kickoffLabel(null, gm)) : sg.state === "in" ? `<span class="live">${esc(sg.detail || "In progress")}</span>`
+        : sg.state === "post" ? esc(sg.detail || "Final") : esc(kickoffLabel(sg, gm));
+      const winner = fg.res === "W" ? gm.fav : fg.res === "L" ? gm.dog : null;
+      const ats = !fg.res ? `<span>ATS winner: not started</span>`
+        : fg.res === "P" || fg.res === "C" ? `<span class="chip st-P${fg.final ? "" : " live"}">${fg.res === "C" ? "Not played: ½ pt each" : fg.final ? "ATS push" : "On the number"}</span>`
+        : `<span class="chip st-W${fg.final ? "" : " live"}">${fg.final ? "ATS winner" : "Covering"}: ${esc(tLabel(winner.abbr))} ${fmtLine(winner.line)}</span>`;
+      return `<article class="bgame"><div class="bmeta"><span>${neutral ? "Neutral site" : "#" + away.num + " at #" + home.num}</span>${meta}</div>
+        ${row(away, neutral ? "Neutral" : "Away")}${row(home, neutral ? "Neutral" : "Home")}
+        <div class="bwin">${ats}<span>Picks: ${cnt[away.abbr] || 0} ${esc(tLabel(away.abbr))} / ${cnt[home.abbr] || 0} ${esc(tLabel(home.abbr))}</span></div></article>`;
+    }).join("")}</div>`;
+}
+
 function bind() {
   document.getElementById("weekbar").addEventListener("click", e => {
     const b = e.target.closest("[data-goweek]"); if (!b || b.disabled) return;
