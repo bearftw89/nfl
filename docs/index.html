@@ -780,7 +780,7 @@ function renderAts() {
   const key = { team: t => t.ab, pct: pct, marg: t => t.n ? t.marg / t.n : -99, picks: t => t.picks }[S.atsSort || "pct"];
   const rows = Object.values(T).sort((a, b) => {
     const A = key(a), B = key(b);
-    return (typeof A === "string" ? A.localeCompare(B) : B - A) * (S.atsDir || 1) || pct(b) - pct(a) || a.ab.localeCompare(b.ab);
+    return (typeof A === "string" ? A.localeCompare(B) : B - A) * (S.atsDir || 1) || pct(b) - pct(a) || b.w - a.w || a.l - b.l || a.ab.localeCompare(b.ab);
   });
   const rec = (w, l) => w + l ? `${w}-${l}` : "—";
   const th = (k, t, cls = "") => `<th class="${cls}" data-atssort="${k}" style="cursor:pointer" ${S.atsSort === k || (!S.atsSort && k === "pct") ? `aria-sort="descending"` : ""}>${t}</th>`;
