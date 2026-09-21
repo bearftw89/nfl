@@ -1,0 +1,264 @@
+{
+ "week": 2,
+ "source": "2026 SUPERCONTEST GAME SHEET WEEK 2.pdf",
+ "count": 16,
+ "fetched": "2026-09-21T05:00:00+00:00",
+ "games": [
+  {
+   "id": 1,
+   "time_pt": "5:15 PM",
+   "fav": {
+    "num": 1,
+    "abbr": "BUF",
+    "home": true,
+    "line": -4.5
+   },
+   "dog": {
+    "num": 2,
+    "abbr": "DET",
+    "home": false,
+    "line": 4.5
+   }
+  },
+  {
+   "id": 2,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 3,
+    "abbr": "GB",
+    "home": false,
+    "line": -3.5
+   },
+   "dog": {
+    "num": 4,
+    "abbr": "NYJ",
+    "home": true,
+    "line": 3.5
+   }
+  },
+  {
+   "id": 3,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 5,
+    "abbr": "CHI",
+    "home": true,
+    "line": -5.5
+   },
+   "dog": {
+    "num": 6,
+    "abbr": "MIN",
+    "home": false,
+    "line": 5.5
+   }
+  },
+  {
+   "id": 4,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 7,
+    "abbr": "NE",
+    "home": true,
+    "line": -5.5
+   },
+   "dog": {
+    "num": 8,
+    "abbr": "PIT",
+    "home": false,
+    "line": 5.5
+   }
+  },
+  {
+   "id": 5,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 9,
+    "abbr": "CAR",
+    "home": false,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 10,
+    "abbr": "ATL",
+    "home": true,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 6,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 11,
+    "abbr": "TB",
+    "home": true,
+    "line": -8.5
+   },
+   "dog": {
+    "num": 12,
+    "abbr": "CLE",
+    "home": false,
+    "line": 8.5
+   }
+  },
+  {
+   "id": 7,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 13,
+    "abbr": "HOU",
+    "home": true,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 14,
+    "abbr": "CIN",
+    "home": false,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 8,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 15,
+    "abbr": "BAL",
+    "home": true,
+    "line": -8.5
+   },
+   "dog": {
+    "num": 16,
+    "abbr": "NO",
+    "home": false,
+    "line": 8.5
+   }
+  },
+  {
+   "id": 9,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 17,
+    "abbr": "PHI",
+    "home": false,
+    "line": -7.0
+   },
+   "dog": {
+    "num": 18,
+    "abbr": "TEN",
+    "home": true,
+    "line": 7.0
+   }
+  },
+  {
+   "id": 10,
+   "time_pt": "1:05 PM",
+   "fav": {
+    "num": 19,
+    "abbr": "LAC",
+    "home": true,
+    "line": -6.5
+   },
+   "dog": {
+    "num": 20,
+    "abbr": "LV",
+    "home": false,
+    "line": 6.5
+   }
+  },
+  {
+   "id": 11,
+   "time_pt": "1:05 PM",
+   "fav": {
+    "num": 21,
+    "abbr": "DEN",
+    "home": true,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 22,
+    "abbr": "JAX",
+    "home": false,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 12,
+   "time_pt": "1:25 PM",
+   "fav": {
+    "num": 23,
+    "abbr": "DAL",
+    "home": true,
+    "line": -4.5
+   },
+   "dog": {
+    "num": 24,
+    "abbr": "WSH",
+    "home": false,
+    "line": 4.5
+   }
+  },
+  {
+   "id": 13,
+   "time_pt": "1:25 PM",
+   "fav": {
+    "num": 25,
+    "abbr": "SEA",
+    "home": false,
+    "line": -3.5
+   },
+   "dog": {
+    "num": 26,
+    "abbr": "ARI",
+    "home": true,
+    "line": 3.5
+   }
+  },
+  {
+   "id": 14,
+   "time_pt": "1:25 PM",
+   "fav": {
+    "num": 27,
+    "abbr": "SF",
+    "home": true,
+    "line": -13.5
+   },
+   "dog": {
+    "num": 28,
+    "abbr": "MIA",
+    "home": false,
+    "line": 13.5
+   }
+  },
+  {
+   "id": 15,
+   "time_pt": "5:20 PM",
+   "fav": {
+    "num": 29,
+    "abbr": "KC",
+    "home": true,
+    "line": -6.5
+   },
+   "dog": {
+    "num": 30,
+    "abbr": "IND",
+    "home": false,
+    "line": 6.5
+   }
+  },
+  {
+   "id": 16,
+   "time_pt": "5:15 PM",
+   "fav": {
+    "num": 31,
+    "abbr": "LAR",
+    "home": true,
+    "line": -7.0
+   },
+   "dog": {
+    "num": 32,
+    "abbr": "NYG",
+    "home": false,
+    "line": 7.0
+   }
+  }
+ ]
+}

@@ -1,0 +1,165 @@
+{
+ "week": 1,
+ "games": [
+  {
+   "home": "SEA",
+   "away": "NE",
+   "home_score": 13,
+   "away_score": 10,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-10T00:20:00Z"
+  },
+  {
+   "home": "LAR",
+   "away": "SF",
+   "home_score": 7,
+   "away_score": 27,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-11T00:35:00Z"
+  },
+  {
+   "home": "JAX",
+   "away": "CLE",
+   "home_score": 34,
+   "away_score": 10,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T17:00:00Z"
+  },
+  {
+   "home": "CIN",
+   "away": "TB",
+   "home_score": 33,
+   "away_score": 27,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T17:00:00Z"
+  },
+  {
+   "home": "IND",
+   "away": "BAL",
+   "home_score": 23,
+   "away_score": 41,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T17:00:00Z"
+  },
+  {
+   "home": "PIT",
+   "away": "ATL",
+   "home_score": 20,
+   "away_score": 13,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T17:00:00Z"
+  },
+  {
+   "home": "HOU",
+   "away": "BUF",
+   "home_score": 31,
+   "away_score": 36,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T17:00:00Z"
+  },
+  {
+   "home": "CAR",
+   "away": "CHI",
+   "home_score": 37,
+   "away_score": 59,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T17:00:00Z"
+  },
+  {
+   "home": "TEN",
+   "away": "NYJ",
+   "home_score": 10,
+   "away_score": 23,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T17:00:00Z"
+  },
+  {
+   "home": "DET",
+   "away": "NO",
+   "home_score": 31,
+   "away_score": 30,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T17:00:00Z"
+  },
+  {
+   "home": "LAC",
+   "away": "ARI",
+   "home_score": 14,
+   "away_score": 26,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T20:25:00Z"
+  },
+  {
+   "home": "LV",
+   "away": "MIA",
+   "home_score": 27,
+   "away_score": 13,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T20:25:00Z"
+  },
+  {
+   "home": "PHI",
+   "away": "WSH",
+   "home_score": 24,
+   "away_score": 22,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T20:25:00Z"
+  },
+  {
+   "home": "MIN",
+   "away": "GB",
+   "home_score": 39,
+   "away_score": 22,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-13T20:25:00Z"
+  },
+  {
+   "home": "NYG",
+   "away": "DAL",
+   "home_score": 28,
+   "away_score": 20,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-14T00:20:00Z"
+  },
+  {
+   "home": "KC",
+   "away": "DEN",
+   "home_score": 31,
+   "away_score": 10,
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
+   "kickoff": "2026-09-15T00:15:00Z"
+  }
+ ]
+}

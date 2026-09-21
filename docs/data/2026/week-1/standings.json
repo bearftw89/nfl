@@ -1,0 +1,5372 @@
+{
+ "week": 1,
+ "source": "2026 SuperContest Standings Week 1.pdf",
+ "count": 596,
+ "fetched": "2026-09-21T05:00:00+00:00",
+ "rows": [
+  {
+   "c": 0,
+   "id": "MOTIVATION-1",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "7 CROOOKED ZEBRAS-2",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "HITMAN-3",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "LETS GO-2",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "LETS GO-3",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "RIGGED NFL-1",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "WAGS45-2",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "POTATO KMISH-1",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "ALMA-2",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "RJ551155-3",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "KDLV-1",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "JJ & JF-1",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "TONY GAMBLES-2",
+   "l": 0,
+   "place": "1T",
+   "pts": 5,
+   "t": 0,
+   "w": 5
+  },
+  {
+   "c": 0,
+   "id": "JEFFREY L-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "PERSIAN PRINCESS-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "MR. KNOW IT ALL-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "CONCRETEMIKE-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "TIRED BLOOD-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "SUNSHINE SMOKERS-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "YYCPTY-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "CRAPPIES N MUSKIES-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "CRAPPIES N MUSKIES-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "GUAYITO-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "DETOUR MAMAS PIZA-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "FEZZIK-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "MADDDSS-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "NOLANDALLA-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "NOLANDALLA-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "BIFF SLAYER-5",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "GAMEDAYPUERTORICO-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "GAMEDAYPUERTORICO-3",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "RJ551155-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "SQX-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "BRETTFAVRE444-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "HARD RIG-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "PLAY IT DOWN 1-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "HIPPOBOY320-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "24GOBLUE-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "YYUR YYUB ICUR YY4ME-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "JUNIORALWAYSWINS-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "NOVYGA-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "ZWEI BRUDER-4",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "GREEK ITALIAN-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "MONEY-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "SEANS DOLPHINS-3",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "SEANS DOLPHINS-5",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "BIG GUY G-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "WHONEEDS5-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "RED WAVE-5",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "THROB-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "MEYER LANDSCAPING-6",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "MEYER LANDSCAPING-7",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "LUCABABY-3",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "EXCELLENTO-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "COBIA SPORTS-3",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "HAWAIIAN HAMMAH-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "ROLL THE IRON DICE-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "JUST WIN BABY-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "JUST WIN BABY-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "TOROK9R-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "AMICI2-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "ALMA-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "BIG LIB-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "LETS GO-4",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "TA2-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "2 MAN ADVANTAGE-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "DALLAS NATE-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "WANNABEE-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "WANNABEE-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "WITCHING HOUR-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "WALPERSPACH-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "GARF7-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "APFM3-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "APFM3-3",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "POPS2008-3",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-4",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-5",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-9",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "OFF THE HOOK-1",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "3WAYCHOP-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "2 DYE 4-2",
+   "l": 1,
+   "place": "14T",
+   "pts": 4,
+   "t": 0,
+   "w": 4
+  },
+  {
+   "c": 0,
+   "id": "LUCKY ZEBRA-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PALMSPLAZA-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "2 DYE 4-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "KENOCOP-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PHATCAT-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PITTBULL-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "DR. C TX-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "RAMBLENSHOOT-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PREJACKBETTORS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "POPS2008-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "POPS2008-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "CHICKENS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "THREAD CLOD FOOL-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ACCORSI-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ACCORSI-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HITMAN-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HITMAN-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "LIVING BY THE ODDS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WESLEYS DAD-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "BRONCOBOYS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "JJBGROUP-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "EAST WEST STORY-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PAPPY VAN HENKEL-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PAPPY VAN HENKEL-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "BEEFARONI-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "DSI-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WAYNESWORLD-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "DEAD PRESIDENTS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ELMO5-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "NASHVILLE ZULTAN-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "AND THEN-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SMOGSTRANGLER-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SAM AMEESH-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ALL OR NOTHING-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "GRUMMY-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "TA2-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "'@TODDQSPORTS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WAGER MCGEE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SWAMP KING-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ENCHANTED FORK-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "BOO ROO-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HAWAIIAN HAMMAH-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WOCOMO-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "FAB 5-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "FAB 5-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "GRINFA$GRINDER-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "LETS GO-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "GATOR 1980-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MEYER LANDSCAPING-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "THE DONATION CLUB-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WEDIDWELL-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HUFFLEPUFF-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HUFFLEPUFF-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HUFFLEPUFF-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "THINK LIKE SAM-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "JOY-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "STEAMSPORTS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "TOROK9R-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "DARTBOARD CAPPER-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "GIDEONS FLEECE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "JUST WIN BABY-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "FOURNEWS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "FARMBOYS7917-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-7",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-8",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "OTHMER99-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "JORDAN LEFT US-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "$JAR-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-4",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "LOVE MY BAXTER-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "LOVE MY BAXTER-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PEBBLES DAD-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MAE CAROLINA-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MAYBE TOMORROW-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MAYBE TOMORROW-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MAYBE TOMORROW-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MAYBE TOMORROW-4",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MAYBE TOMORROW-5",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "EASTYAKIMADALE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "CINCYWEST-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "JN22-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MARKEY MARK-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "NEOPOLITAN-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ELVEE TRIBUTE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "VOLS1255-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "LITTLE BUGGY T-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MEYER LANDSCAPING-4",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MEYER LANDSCAPING-5",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MAMMA MIA-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "AGAINST THE WIND-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "3RD WARD COUGARS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "I BET UGLY DOGS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "BON JON-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SHREWS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ZWEI BRUDER-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ZWEI BRUDER-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "LAMBDA LAMBDA LAMBDA-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SHERRY PEATTY-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SHERRY PEATTY-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WAGS45-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PULL TAB POSSE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WAGS45-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WAGS45-4",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "BROCKTONS FINEST-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SEANS DOLPHINS-4",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "TAIL PARTY-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ZMVPB-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SEANS DOLPHINS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ALL NEVADA TRENDS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "1 YARD SHORT-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "STEELCURTAIN-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "RACINE BOOMERS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "BIG PAPI COVERS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "GREEK ITALIAN-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HARDFOUR 22 DT-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "NORTH OF THE WALL-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "4THNGOAL-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "OHREBEL9-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "INDIANAJET-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "DEGENERATE PARADISE-5",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "1 EYED KING-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "DISMAL-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "1 EYED KING-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "AMARILLO BY MORNING-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MONARCA-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "JERRYDABEST-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "JERRYDABEST-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PLAY IT DOWN 1-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "FARELLA1-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "NXI SPORTS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HAZELTON FREELAND-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HAZELTON FREELAND-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MCRT-4",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MCRT-5",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MCRT-6",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PATRIOTS6-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "BLUEMARLIN77-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SOMOS BANDIDOS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MCRT-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "CORNBELTERS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "91ACES-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "91ACES-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MEADOW GOLD-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PLUMP-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ZINNO-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "DARK PASSENGER-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "NEVADA COWBOY-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MTN PICKS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "RAINMAN-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "RAINMAN-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "KC EXTREME-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "RJ551155-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "RJ551155-4",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "RJ551155-5",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MATTLEGEND27-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "JIMBOOK-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "NED YORK-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "BIFF SLAYER-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "RUN N GUN-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SPORTSRAGE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ROUGHRIDER39-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "NOLANDALLA-3",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "NOLANDALLA-4",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MANTISTOBBOGAN-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "YKNOTS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "YKNOTS-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PERRO JALISCIENCE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "RIPKINGS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "GAMEDAYPUERTORICO-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "DR FEINBERG-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WHALE HELLO-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "01 CORONA JAMMERS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "C.J.T.-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SONNY BOY-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "TANKO DESTRUCTO-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WOLFDOG-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "MICHAELANDREW-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "BUFFOLOO-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "TEAM SNOOZE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "CORBIN BERNSEN-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "WHODEY702-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "LOS MENCHOS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "ERSPORTS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "FRANK B-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "JEFF WONG-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "THEBOYSFROMILLINOIS-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "CODE 6 CHARLES-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "PRITCH-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "FOR SANAE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "FOR SANAE-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SIHAMBASONKE-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "SAVASTANO2-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "HOUSTON69-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "2 P.I.C.-1",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "2 P.I.C.-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "TEAMNEWTON-2",
+   "l": 2,
+   "place": "82T",
+   "pts": 3,
+   "t": 0,
+   "w": 3
+  },
+  {
+   "c": 0,
+   "id": "REAL MEN OF GENIUS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CB ELITE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TEAMNEWTON-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MIKE P-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "JOHNNYVEGAS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "RIPSAW-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "AZSTEALTH-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MAVERICK-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "GRIFFEY18-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BIGGS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "PRITCH-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "PRITCH-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "THEREALWANNABEE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MN. OLE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "FADE MATERIAL-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "HUMBLE HANDICAPPER-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-4",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-5",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-6",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-7",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-8",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-9",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TRIPLV-10",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TUESDAY GROUP REJECT-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DROVEALONGWAY4THIS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MAD RUSSIAN-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SMOKY HILL ELITE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ALMA-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BANGKOK COWBOY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MAMBA MENTALITY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "VEGASPORTSLINE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CHICHON-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "FOOTSTEPS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "GREER-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DETOUR MAMAS PIZA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CHICKSDIGTHELONGBALL-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DREWSIEWON-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SCS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "EASYGARY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BAXTER-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "WOLFGANG-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ESTIMATED PROFIT-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "KNIGHTS OF NARNIA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SCHEMATIC ADVANTAGE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BIFFS ALMANAC-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MONTANA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SOONER LEGENDS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "FOXYODDS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "3POINTDOG-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BIFF SLAYER-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BIFF SLAYER-4",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "T+B4EVA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "'@VIEWFROMVEGAS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "WHITE BUFFALO-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ELBALDOANDTHEPATMAN-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "IBETICAN-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "IBETICAN-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "QUINTET-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ZONIS20-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "INSANE MONEY-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "HEINEKEN21-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "KC EXTREME-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "PERFECTH-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MUTT & JEFF-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DANDY'S 9ERS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "KNUCKLEDRAGGERS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "KNUCKLEDRAGGERS-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MTN PICKS-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "90 PIECE PUZZLE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BLMK-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "RUSH YYZ 2112-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "IDA MO SOTA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SLOMO-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "'@THEPAGEKC-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "'@THEPAGEKC-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SELECT WEST-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SELECT WEST-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "AJDAGS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BERNARD-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MCRT-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MCRT-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "POINTSONTHEPACKAGE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "7 TURNS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BLUEMARLIN77-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BABA YAGA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BEAT THE BOOKS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ON MY WAY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ON MY WAY-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "WILLY BALTERS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "AMARILLO BY MORNING-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "$80K FRIDAY ALAN-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "IT AINT BREEZY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "5NICEPIX-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DEGENERATE PARADISE-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "LOVE OF EL SHADDAI-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DUMB LUCK-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DEGENERATE PARADISE-6",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MAYZER-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SCOOBA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DEGENERATE PARADISE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "RED WAVE-4",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SOUTH BAY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "HEATWAVE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MODRA BROTHERS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "2WONG1WANG-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MEESOMI-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "JAISHIYAS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MUCKED NUTS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "GREEK ITALIAN-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DANNYANDGARYSVMESC-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CPT MEHRENS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "JAKESTROJANS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MR. DELICIOUS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "EL DUQUE DOMINGO-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DADDYSBACK-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SEANS DOLPHINS-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "KELLY SYNDICATE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "IAIO-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BGA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BOXFIELD BOYS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TONY GAMBLES-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ZWEI BRUDER-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "PLAYMAKERS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "LABATT BLUE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "EZ PICKS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "LILLIE2022-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SCHPEW-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "FNS UNITED-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "RED WAVE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "RED WAVE-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "NICKROE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MANTLECRUSHER-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "LUCABABY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "LUCABABY-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MEYER LANDSCAPING-3",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "STATMAN27-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "VOLS1255-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MEGALODON-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "GOLDEN SOUL-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SMOOSH-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CRUNCHY GRANOLA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "PUTTHEMONEYINTHEBAG-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DFLEMING221-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DFLEMING221-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CYMAX HERO-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ANGEL OF VENGEANCE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ANGEL OF VENGEANCE-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "JB400MAR-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "WAKECOOPER-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DSI-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DIBEARS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "2345 WILLIAMS. BOYS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "LINDY'S EXPRESS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "FOURNEWS-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "RICH N SASSY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "AMCIC1-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MOONBROOK2026-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "206 SEAHAWKS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "2NDAND20-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SWDBETS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "THE DONATION CLUB-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "STAG CAPITAL-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "GAMBLINGRATS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "WINNING ANGLE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DIAPER MONEY PICKS 6-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "NOOZOOMI-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "JELLY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "TA2-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "RUSSATA-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "STEELCITYSTEVE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "VOLARE CIECO-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "VOLARE CIECO-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ITS ON-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CURLY Q LINK-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "LAZLO HOLLYFELD-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BUDFROGS531-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MONSTARS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SHINEBOX-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "PORKCHOP EXPRESS1970-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "JACKROBJOHN-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BASTIDA34-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ROBBY BOSS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DEAD PRESIDENTS-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "COBIA SPORTS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "COBIA SPORTS-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "BEEFARONI-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SEATTLE PADDLE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "FLAGMASTERS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "RONC AND ROLL-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CAM BENNETT-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "7 CROOOKED ZEBRAS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SA247LLC-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "SPECTRE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "WAREHOUSE LIVE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DNRAPP-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CHICKENS-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "MYBOYBARRY-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ACCORSI-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ACCORSI-5",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "LOTS OF SLOTS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "FRUITY PICKS-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "STERNZCUSE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DQ MIKE FROM BUFFALO-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DR. C TX-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "DR. C TX-2",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-10",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-7",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "KENOCOP-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "CHAMPAGNE-1",
+   "l": 3,
+   "place": "279T",
+   "pts": 2,
+   "t": 0,
+   "w": 2
+  },
+  {
+   "c": 0,
+   "id": "ACKATTACK-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "THEBIGHORSE-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-8",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "3WAYCHOP-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-6",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "ROUNDING-3",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "DAWGS-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "THE MAD GENIUS-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "GENTLEMENS WORD-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "APFM3-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "BISHOPSPICKS-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "BISHOPSPICKS-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "76 RAIDERS-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "ACCORSI-4",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "QUEENS GAMBIT-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "CAPENJ-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "83 DGL-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "DADDY O.-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "STICKMAN333-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "ENCHANTED FORK-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "LITTLE J-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "UGLY POOCHES-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "MEYER LANDSCAPING-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "BIG LIB-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "TAFT RAIDAZ-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "DADDY AND DONUTZ-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "2NDAND20-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-10",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "WARZ1-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "ARCHIE263-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "CINCYWEST-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "CHOPPER-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "THOMAS HEWITT-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "OLD SCHOOL 78-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "RED WAVE-3",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "NO MA'AM-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "FISH FOOD-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "DUCEB-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "BLAIR ROSE-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "ONO-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "SAY 10-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "HEATWAVE-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "HEATWAVE-3",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "DEGENERATE PARADISE-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "BENNY STROUP-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "DUMB LUCK-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "DEGENERATE PARADISE-4",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "1 EYED KING-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "CALIDREAMING-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "THE CLE SIX PACK-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "THE PROGNOSTICATOR-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "PHAT LIPP-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "SANS SOUCI-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "DANDY'S 9ERS-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "JARUCHO-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "GREG-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "BMILLER1632-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "RAREHANDLEBARMYSTERY-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "BEND THE KNEE-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "KNICKSINFIVE-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "LIBERTY 5-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "OREGON STOMP-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "OREGON STOMP-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "DK-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "888INFINITY-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "MONTANA-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "NCAAPICKSCHAMP-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "LESTER ST BOIS-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "SALVY69-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "STEELCOW11-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "A GOLF PRO-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "FEZZIK-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "JOEKNICK-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "JEFF WONG-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "FADE MATERIAL-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "TIRED BLOOD-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "MIDNIGHTRUN-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "MIKE P-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "MIKE P-2",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "BUD BUNDY-1",
+   "l": 4,
+   "place": "493T",
+   "pts": 1,
+   "t": 0,
+   "w": 1
+  },
+  {
+   "c": 0,
+   "id": "STYLIN-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "FOOTBALLCONTESTSHOW-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "CONCUSSION CITY-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "ROXBOROUGH-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "WHOSONFIRST-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "HAMMER157-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "BIFF SLAYER-2",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "INSANE MONEY-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "GOGLESS-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "CALIDREAMING-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "KBLACK11209-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "KING KONG-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "BUZZ1036-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "MAKE IT4BOILERMAKERS-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-5",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-6",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "MARVELOUS MARK-9",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "BRANDO AND DINKS-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "MOSSEKNUCKLE EARS-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "MARLOR MASTERS-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "LONDON-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  },
+  {
+   "c": 0,
+   "id": "UNDERS4PETE-1",
+   "l": 5,
+   "place": "575T",
+   "pts": 0,
+   "t": 0,
+   "w": 0
+  }
+ ]
+}
