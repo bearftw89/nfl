@@ -168,7 +168,9 @@ def espn_events(dates):
     for d in dates:
         for group in (80, 81):                      # FBS, then FCS (North Dakota State etc.)
             try:
-                data = S.get(ESPN.format(date=d.replace("-", ""), group=group)).json()
+                data = S.espn_get(ESPN.format(date=d.replace("-", ""), group=group)).json()
+            except S.Blocked:
+                return list(events.values())
             except Exception as e:
                 S.log(f"! ESPN college {d} group {group}: {e}")
                 continue

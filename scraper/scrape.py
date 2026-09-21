@@ -42,21 +42,50 @@ WEEK_RE = re.compile(r"(?:WEEK|WK)\s*#?\s*(\d{1,2})", re.I)
 MIN = {"card": 8, "picks": 50, "standings": 50}
 
 
+LOG = []          # shown on the site's Data tab (status.json)
+
+
 def log(*a):
-    print(*a, flush=True)
+    msg = " ".join(str(x) for x in a)
+    print(msg, flush=True)
+    LOG.append(msg)
+
+
+class Blocked(Exception):
+    """The site refused us (4xx). Retrying won't help, so callers stop asking."""
+
+
+ESPN_BLOCKED = False     # set after ESPN refuses once; skip further ESPN calls this run
 
 
 def get(url, **kw):
     for attempt in range(3):
         try:
             r = requests.get(url, headers=HEADERS, timeout=30, **kw)
+            if 400 <= r.status_code < 500:
+                raise Blocked(f"{r.status_code} from {url.split('?')[0]}")
             r.raise_for_status()
             return r
+        except Blocked:
+            raise
         except requests.RequestException as e:
             if attempt == 2:
                 raise
             log(f"  retry {url}: {e}")
             time.sleep(3 * (attempt + 1))
+
+
+def espn_get(url):
+    """ESPN refuses GitHub's servers (403). Ask once per run, then leave scores to the browser."""
+    global ESPN_BLOCKED
+    if ESPN_BLOCKED:
+        raise Blocked("ESPN skipped (refused earlier this run)")
+    try:
+        return get(url)
+    except Blocked as e:
+        ESPN_BLOCKED = True
+        log(f"  ESPN refused this server ({e}); live scores come from the browser instead")
+        raise
 
 
 def list_pdfs(kind):
@@ -148,7 +177,7 @@ def scrape_results(week):
                                     for g in old["games"]):
             return
     try:
-        data = get(ESPN.format(week=week, season=SEASON)).json()
+        data = espn_get(ESPN.format(week=week, season=SEASON)).json()
     except Exception as e:
         log(f"! ESPN week {week}: {e}")
         return
@@ -165,6 +194,13 @@ def scrape_results(week):
         games.append(g)
     if write_json(dest, {"week": week, "games": games}):
         log(f"  wrote results week {week} ({sum(g['state']=='post' for g in games)}/{len(games)} final)")
+
+
+def write_status():
+    """Last run's notable lines, for the site's Data tab (no digging through Actions logs)."""
+    keep = [l.strip() for l in LOG if l.startswith("!") or l.strip().startswith(("college", "ESPN")) or "wrote" in l or "  ESPN" in l]
+    write_json(ROOT / "docs" / "data" / "status.json",
+               {"updated": datetime.now(timezone.utc).isoformat(timespec="seconds"), "lines": keep[-80:]})
 
 
 def build_manifest():
@@ -190,6 +226,7 @@ def main():
             if not args.week or w == args.week:
                 scrape_results(w)
     build_manifest()
+    write_status()
     if not args.week:                     # college contest (its own pages and folder)
         try:
             from . import college_scrape
@@ -197,6 +234,7 @@ def main():
         except Exception as e:
             log(f"! college update failed: {e}")
             ok = False
+    write_status()
     sys.exit(0 if ok else 1)
 
 

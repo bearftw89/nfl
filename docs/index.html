@@ -320,41 +320,68 @@ async function loadScores(w) {
   for (const g of games) { const h = fixAbbr(g.home), a = fixAbbr(g.away); map[h] = { ...g, home: h, away: a }; }
   return { week: w, games: map, overrides: ov, manual, updated: new Date().toISOString(), source };
 }
-// College: the updater pairs each game-sheet row with an ESPN game id (results.json keeps which
-// sheet team is ESPN's home side), so live scores are looked up by id, never by guessing names.
+// College scores: the browser looks each game-sheet row up on ESPN's college scoreboard by team
+// names (ESPN refuses GitHub's servers, so this can't be done ahead of time by the updater).
+const ESPN_NAMES = {"MIAMI-FL":["MIAMI","MIAMI FL","MIAMI FLORIDA"],"MIAMI-OH":["MIAMI OH","MIAMI OHIO"],"CENTRAL FLORIDA":["UCF"],"NC STATE":["NC STATE","NORTH CAROLINA STATE"],"FLORIDA INT'L":["FLORIDA INTERNATIONAL","FIU"],"SOUTHERN MISS":["SOUTHERN MISS","SOUTHERN MISSISSIPPI"],"MIDDLE TENNESSEE":["MIDDLE TENNESSEE","MTSU"],"MASSACHUSETTS":["MASSACHUSETTS","UMASS"],"SAM HOUSTON STATE":["SAM HOUSTON","SAM HOUSTON STATE"],"UL MONROE":["UL MONROE","LOUISIANA MONROE"],"LOUISIANA":["LOUISIANA","LOUISIANA LAFAYETTE"],"APPALACHIAN STATE":["APPALACHIAN STATE","APP STATE"],"PITTSBURGH":["PITTSBURGH","PITT"],"CALIFORNIA":["CALIFORNIA","CAL"],"SOUTH FLORIDA":["SOUTH FLORIDA","USF"],"UCONN":["UCONN","CONNECTICUT"],"OLE MISS":["OLE MISS","MISSISSIPPI"],"BYU":["BYU","BRIGHAM YOUNG"],"HAWAII":["HAWAII"],"SAN JOSE STATE":["SAN JOSE STATE"],"TEXAS A&M":["TEXAS A&M","TEXAS A AND M"],"USC":["USC","SOUTHERN CALIFORNIA"],"SMU":["SMU"],"TCU":["TCU"],"LSU":["LSU"],"UTEP":["UTEP"],"UTSA":["UTSA"],"UAB":["UAB"],"UNLV":["UNLV"],"KENNESAW STATE":["KENNESAW STATE","KENNESAW"]};
+const normName = x => (x || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toUpperCase()
+  .replace(/['\u2019.()]/g, "").replace(/[\s-]+/g, " ").trim();
+function espnKeys(t) {
+  const k = new Set([t.location, t.shortDisplayName, t.abbreviation, t.name].map(normName).filter(Boolean));
+  const d = normName(t.displayName), n = normName(t.name);
+  if (n && d.endsWith(" " + n)) k.add(d.slice(0, -n.length - 1));      // "Miami (OH) RedHawks" -> "MIAMI OH"
+  return k;
+}
+const wantedNames = name => new Set([name, ...(ESPN_NAMES[name] || [])].map(normName));
+const overlaps = (a, b) => { for (const x of a) if (b.has(x)) return true; return false; };
+function pairCollege(card, events) {
+  const evs = events.map(e => ({ e, cs: e.competitions[0].competitors.map(c => ({ c, keys: espnKeys(c.team) })) }));
+  const rows = [];
+  for (const g of card) {
+    const A = wantedNames(g.fav.abbr), B = wantedNames(g.dog.abbr);
+    let hit = evs.filter(x => x.cs.some(c => overlaps(c.keys, A)) && x.cs.some(c => overlaps(c.keys, B)));
+    if (hit.length !== 1) {
+      const one = evs.filter(x => x.cs.some(c => overlaps(c.keys, A) || overlaps(c.keys, B)));
+      hit = one.length === 1 ? one : [];
+    }
+    if (!hit.length) continue;
+    const { e, cs } = hit[0], comp = e.competitions[0], st = (comp.status || e.status).type;
+    const row = { espn_id: e.id, kickoff: e.date, state: st.state, detail: st.shortDetail, status: st.name };
+    for (const { c, keys } of cs) {
+      const mine = overlaps(keys, A) ? g.fav.abbr : overlaps(keys, B) ? g.dog.abbr : null;
+      row[c.homeAway] = mine;
+      row[c.homeAway + "_score"] = c.score === "" || c.score == null ? null : Number(c.score);
+    }
+    if (!row.home || !row.away) {                   // one side named differently: it's the other team
+      const other = x => x === g.fav.abbr ? g.dog.abbr : g.fav.abbr;
+      if (row.home && !row.away) row.away = other(row.home); else if (row.away && !row.home) row.home = other(row.away);
+    }
+    if (row.home && row.away && row.home !== row.away) rows.push(row);
+  }
+  return rows;
+}
 const ESPN_CFB = (d, g) => `https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=${d}&groups=${g}&limit=400`;
 async function loadCollegeScores(w, m, base, ov) {
   const card = (Store.get(P.card(w)) || await getJSON(base + "card.json").catch(() => null))?.games || [];
   const saved = m.results ? await getJSON(base + "results.json").catch(() => null) : null;
-  const pairs = {}; for (const g of saved?.games || []) pairs[g.espn_id] = g;
-  const ids = card.map(g => g.espn_id).filter(Boolean);
-  const allFinal = (saved?.games || []).length && saved.games.every(g => g.state === "post");
-  let live = {}, source = allFinal ? "final" : "snapshot";
-  if (!allFinal && ids.length) {
-    const dates = [...new Set(card.filter(g => g.espn_id && g.date).map(g => g.date.replace(/-/g, "")))];
+  let rows = [], source;
+  if (saved?.games?.length === card.length && saved.games.every(g => g.state === "post")) { rows = saved.games; source = "final"; }
+  else {
     try {
-      for (const d of dates) for (const grp of [80, 81]) {
-        const data = await getJSON(ESPN_CFB(d, grp), 8000);
-        for (const ev of data.events || []) live[ev.id] = ev;
-        if (grp === 80 && ids.every(id => live[id] || !card.some(g => g.espn_id === id && g.date?.replace(/-/g, "") === d))) break;
+      const dates = [...new Set(card.map(g => g.date).filter(Boolean))].map(d => d.replace(/-/g, ""));
+      const events = {};
+      for (const d of dates) for (const grp of [80, 81]) {        // FBS, then FCS (North Dakota State, etc.)
+        const data = await getJSON(ESPN_CFB(d, grp), 8000).catch(err => { if (grp === 80) throw err; return {}; });
+        for (const ev of data.events || []) events[ev.id] = ev;
       }
-      source = "espn";
-    } catch { source = saved ? "snapshot" : "none"; }
+      rows = pairCollege(card, Object.values(events));
+      const today = new Date().toISOString().slice(0, 10);
+      const done = rows.every(r => r.state === "post") && (rows.length === card.length || card.every(g => !g.date || g.date < today));
+      source = done ? "final" : "espn";
+    } catch { rows = saved?.games || []; source = rows.length ? "snapshot" : Object.keys(ov).length ? "final" : "none"; }
   }
-  const map = {};
-  for (const g of card) {
-    const sv = pairs[g.espn_id]; if (!sv) continue;
-    let row = { ...sv };
-    const ev = live[g.espn_id];
-    if (ev) {
-      const comp = ev.competitions[0], st = (comp.status || ev.status).type;
-      row = { ...row, kickoff: ev.date, state: st.state, detail: st.shortDetail, status: st.name };
-      for (const c of comp.competitors) row[c.homeAway + "_score"] = c.score === "" || c.score == null ? null : Number(c.score);
-    }
-    map[row.home] = row;
-  }
-  if (!ids.length && !saved) source = Object.keys(ov).length ? "final" : "none";
-  return { week: w, games: map, overrides: ov, updated: new Date().toISOString(), source };
+  const map = {}; for (const r of rows) map[r.home] = r;
+  return { week: w, games: map, overrides: ov, updated: new Date().toISOString(), source,
+           unpaired: card.length - rows.length };
 }
 const Store = {
   mode: "static", season: 2026, manifest: { weeks: {} },
@@ -898,8 +925,14 @@ function openTopTeam(a) {
 }
 
 /* ================= render: upload data ================= */
+let STATUS = null;
+getJSON(DATA + "status.json").then(x => { STATUS = x; if (S.tab === "data") render(); }).catch(() => {});
 function renderData() {
   const el = $("#data"), m = Store.manifest.weeks || {}, ws = Object.keys(m).map(Number).sort((a, b) => a - b);
+  const sc = Store.get(P.scores(S.week));
+  const pairing = isCollege() && sc ? `<p class="note">Week ${S.week}: ${Object.keys(sc.games || {}).length} of ${(Store.get(P.card(S.week))?.games || []).length} games found on ESPN${sc.unpaired ? ` (${sc.unpaired} not found; results for those come from the official standings once posted)` : ""}.</p>` : "";
+  const status = STATUS ? `<div class="have"><h2>Last updater run</h2><p class="note">${new Date(STATUS.updated).toLocaleString()}</p>
+    <div class="table-wrap" style="padding:10px 14px;font:12px/1.6 ui-monospace,Menlo,monospace;white-space:pre-wrap">${STATUS.lines.length ? STATUS.lines.map(esc).join("\n") : "Nothing new: no new files and no problems."}</div></div>` : "";
   const yes = (v, t) => v ? `<span class="up">${t || "Yes"}</span>` : `<span class="note">—</span>`;
   el.innerHTML = `
     <div class="how" style="margin-top:0"><h2>${isCollege() ? "SuperContest College" : "SuperContest (NFL)"}: where the data comes from</h2>
@@ -909,7 +942,7 @@ function renderData() {
     <div class="have"><h2>Weeks on file, ${Store.season}</h2>
       ${ws.length ? `<div class="table-wrap"><table style="min-width:0"><thead><tr><th>Week</th><th>Game sheet</th><th>Selections</th><th>Official standings</th><th>Saved scores</th><th>Overrides</th></tr></thead><tbody>
         ${ws.map(w => `<tr><td>${w}</td><td>${yes(m[w].card)}</td><td>${yes(m[w].picks)}</td><td>${yes(m[w].standings)}</td><td>${yes(m[w].results)}</td><td>${yes(m[w].overrides)}</td></tr>`).join("")}
-      </tbody></table></div>` : `<p class="note">Nothing yet. Run the updater once (Actions tab, "Update contest data", Run workflow).</p>`}</div>`;
+      </tbody></table></div>` : `<p class="note">Nothing yet. Run the updater once (Actions tab, "Update contest data", Run workflow).</p>`}${pairing}</div>${status}`;
 }
 /* ================= shell ================= */
 function renderStatus() {
