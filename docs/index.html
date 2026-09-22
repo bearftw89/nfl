@@ -163,6 +163,15 @@ dialog .season td { vertical-align: middle; }
 .teamgrid .tg .ab { font: 700 13px/1 var(--cond); }
 .teamgrid .tg .wk { font-size: 11px; color: var(--ink-2); margin-left: auto; }
 .teamgrid .tg.st-W { outline: 1px solid var(--cover); } .teamgrid .tg.st-L { outline: 1px solid var(--miss); } .teamgrid .tg.st-T { outline: 1px solid var(--push); }
+.svinputs { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
+.svinputs label { display: flex; flex-direction: column; gap: 4px; font: 600 13px var(--cond); color: var(--ink-2); }
+.svinputs input { width: 220px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 10px; font: 500 15px var(--text); color: var(--ink); }
+.survcurve { display: flex; align-items: flex-end; gap: 6px; height: 220px; padding: 26px 4px 0; }
+.survcurve .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
+.survcurve .bar { width: 100%; max-width: 40px; background: var(--cover); border-radius: 4px 4px 0 0; position: relative; min-height: 2px; }
+.survcurve .bar .n { position: absolute; top: -20px; left: 0; right: 0; text-align: center; font: 700 13px/1 var(--cond); }
+.survcurve .wk { margin-top: 6px; font-size: 11px; color: var(--ink-2); }
+.survcurve .elim { font-size: 10px; color: var(--miss); margin-top: 2px; }
 dialog::backdrop { background: rgba(10, 16, 24, .6); }
 dialog h2 { font: 700 26px/1.1 var(--cond); margin: 0 0 2px; }
 dialog .sub { color: var(--ink-2); margin: 0 0 14px; }
@@ -234,6 +243,8 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
     <button role="tab" data-tab="top" aria-selected="false">Top entries</button>
     <button role="tab" data-tab="svweek" aria-selected="false">This week</button>
     <button role="tab" data-tab="sventries" aria-selected="false">Entries</button>
+    <button role="tab" data-tab="svcompare" aria-selected="false">Compare</button>
+    <button role="tab" data-tab="svtrends" aria-selected="false">Trends</button>
     <button role="tab" data-tab="data" aria-selected="false">Data</button>
   </nav>
   <nav class="weekbar" id="weekbar" aria-label="Week"></nav>
@@ -247,6 +258,8 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
   <section id="top" class="view" hidden></section>
   <section id="svweek" class="view" hidden></section>
   <section id="sventries" class="view" hidden></section>
+  <section id="svcompare" class="view" hidden></section>
+  <section id="svtrends" class="view" hidden></section>
   <section id="data" class="view" hidden></section>
 </main>
 <dialog id="entry"></dialog>
@@ -518,7 +531,7 @@ const local = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-const S = { league: (lg => LEAGUES.includes(lg) ? lg : null)(new URLSearchParams(location.hash.slice(1)).get("lg")) || (LEAGUES.includes(local.get("cb-league", "nfl")) ? local.get("cb-league", "nfl") : "nfl"), svAlive: false, topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "card", q: "", onlyStarred: false, shown: 150,
+const S = { svA: null, svB: null, league: (lg => LEAGUES.includes(lg) ? lg : null)(new URLSearchParams(location.hash.slice(1)).get("lg")) || (LEAGUES.includes(local.get("cb-league", "nfl")) ? local.get("cb-league", "nfl") : "nfl"), svAlive: false, topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "card", q: "", onlyStarred: false, shown: 150,
   sortKey: "total", sortDir: -1, starred: new Set(local.get("cb-starred", [])), editing: null, queue: [] };
 
 function index() { return Store.get(P.index) || { weeks: {} }; }
@@ -1052,8 +1065,8 @@ let raf = 0;
 function render() {
   cancelAnimationFrame(raf);
   raf = requestAnimationFrame(() => {
-    const ALL = ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "data"];
-    const shown = isSurvivor() ? ["svweek", "sventries", "data"]
+    const ALL = ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "data"];
+    const shown = isSurvivor() ? ["svweek", "sventries", "svcompare", "svtrends", "data"]
       : isCollege() ? ["games", "standings", "teams", "ats", "top", "data"]            // scoreboard: NFL only for now
       : ["board", "games", "standings", "teams", "ats", "top", "data"];
     document.querySelectorAll(".tabs button").forEach(b => b.hidden = !shown.includes(b.dataset.tab));
@@ -1062,6 +1075,7 @@ function render() {
     document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === S.tab));
     const focus = document.activeElement?.id === "q" ? $("#q").selectionStart : null;
     if (S.tab === "svweek") renderSvWeek(); else if (S.tab === "sventries") renderSvEntries();
+    else if (S.tab === "svcompare") renderSvCompare(); else if (S.tab === "svtrends") renderSvTrends();
     else if (S.tab === "board") renderBoard(); else if (S.tab === "games") renderGames(); else if (S.tab === "standings") renderStandings();
     else if (S.tab === "teams") renderTeams(); else if (S.tab === "ats") renderAts();
     else if (S.tab === "top") renderTop(); else renderData();
@@ -1103,7 +1117,7 @@ async function switchLeague(lg) {
   S.league = lg; local.set("cb-league", lg); markLeague();
   history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
   S.week = null; S.shown = 150; S.q = "";
-  ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
+  ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
   await Store.reset();
   Store.watch(P.index, onIndex);
   setTimeout(scheduleRefresh, 1500);
@@ -1209,6 +1223,52 @@ function renderSvEntries() {
     </tbody></table></div>`;
 }
 
+function renderSvCompare() {
+  const el = $("#svcompare"), W = S.week;
+  if (!seasonReady(["picks", "scores", "card"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const { st } = survState(W), all = Object.keys(st).sort();
+  if (!all.length) { el.innerHTML = `<div class="empty"><b>No Survivor entries yet.</b></div>`; return; }
+  if (!S.svA || !all.includes(S.svA)) S.svA = all[0];
+  if (!S.svB || !all.includes(S.svB) || S.svB === S.svA) S.svB = all.find(x => x !== S.svA) || all[0];
+  const a = st[S.svA], b = st[S.svB];
+  const weeks = weeksList().filter(w => w <= W && index().weeks[w]?.picks);
+  const statusLine = s => s.alive ? `<span class="up">Alive</span>` : `<span class="down">Out week ${s.out}</span> <span class="note">— ${esc(s.reason || "")}</span>`;
+  const cellFor = (s, w) => { const u = s.used.find(x => x.w === w); return u ? survChip(u) : `<span class="note">${w > (s.out ?? 99) ? "—" : "No pick"}</span>`; };
+  const rows = weeks.map(w => `<tr><td class="place">W${w}</td><td>${cellFor(a, w)}</td><td>${cellFor(b, w)}</td></tr>`).join("");
+  el.innerHTML = `
+    <datalist id="sventrylist">${all.map(id => `<option value="${esc(id)}">`).join("")}</datalist>
+    <div class="svinputs">
+      <label>Entry A <input list="sventrylist" id="svAinput" value="${esc(S.svA)}"></label>
+      <label>Entry B <input list="sventrylist" id="svBinput" value="${esc(S.svB)}"></label>
+    </div>
+    <div class="strip">
+      <div><b>${esc(S.svA)}</b><span>${statusLine(a)}</span></div>
+      <div><b>${esc(S.svB)}</b><span>${statusLine(b)}</span></div>
+    </div>
+    <div class="table-wrap"><table style="min-width:520px"><thead><tr><th>Week</th><th>${esc(S.svA)}</th><th>${esc(S.svB)}</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
+}
+function renderSvTrends() {
+  const el = $("#svtrends"), W = S.week;
+  if (!seasonReady(["picks", "scores", "card"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const { st, weeks } = survState(W), all = Object.values(st);
+  if (!all.length) { el.innerHTML = `<div class="empty"><b>No Survivor entries yet.</b></div>`; return; }
+  const start = all.length;
+  const rows = weeks.map(w => ({ w, alive: all.filter(s => s.out === null || s.out > w).length,
+    out: all.filter(s => s.out === w).length }));
+  const last = rows.at(-1)?.alive ?? start;
+  el.innerHTML = `
+    <div class="strip">
+      <div><b>${start}</b><span>entries started week 1</span></div>
+      <div><b>${last}</b><span>alive through week ${W}</span></div>
+      <div><b>${start ? Math.round(last / start * 100) : 0}%</b><span>of the field remaining</span></div>
+    </div>
+    <h2 class="sec" style="margin-top:0">Survival curve</h2>
+    <p class="note">Entries still alive after each week. Red numbers are eliminations that week.</p>
+    <div class="survcurve">${rows.map(r => `<div class="col"><div class="bar" style="height:${Math.max(r.alive / start * 100, 2)}%">
+        <span class="n">${r.alive}</span></div><div class="wk">W${r.w}</div>${r.out ? `<div class="elim">-${r.out}</div>` : `<div class="elim">&nbsp;</div>`}</div>`).join("")}
+    </div>`;
+}
 function openSurvivorEntry(id) {
   const W = S.week, { st } = survState(W), s = st[id];
   if (!s) return;
@@ -1312,6 +1372,15 @@ function bind() {
     else if (t.id === "more") { S.shown = Infinity; render(); }
   });
   main.addEventListener("input", e => {
+    if (e.target.id === "svAinput" || e.target.id === "svBinput") {
+      const val = e.target.value.trim().toUpperCase();
+      const { st } = survState(S.week);
+      if (!(val in st)) return;                      // wait for a valid, exact entry id
+      if (e.target.id === "svAinput") S.svA = val; else S.svB = val;
+      clearTimeout(S.svT);
+      S.svT = setTimeout(() => { const id = e.target.id; render(); requestAnimationFrame(() => document.getElementById(id)?.focus()); }, 300);
+      return;
+    }
     if (e.target.id === "topN") {
       const v = parseInt(e.target.value, 10);
       if (v > 0) { S.topN = v; local.set("cb-topn", v); clearTimeout(S.tnT); S.tnT = setTimeout(() => { render(); requestAnimationFrame(() => { const i = $("#topN"); if (i) { i.focus(); const l = i.value.length; try { i.setSelectionRange(l, l); } catch {} } }); }, 350); }
