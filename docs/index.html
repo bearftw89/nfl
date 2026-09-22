@@ -1240,9 +1240,9 @@ function renderSvCompare() {
   if (!seasonReady(["picks", "scores", "card"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
   const { st } = survState(W), all = Object.keys(st).sort();
   if (!all.length) { el.innerHTML = `<div class="empty"><b>No Survivor entries yet.</b></div>`; return; }
-  if (!S.svSel) S.svSel = all.slice(0, 2);                          // first time in: seed with two entries
-  S.svSel = S.svSel.filter(id => all.includes(id));
   const aliveIds = all.filter(id => st[id].alive), outCount = all.length - aliveIds.length;
+  if (!S.svSel) S.svSel = [];                          // nothing selected until the user picks
+  S.svSel = S.svSel.filter(id => all.includes(id));
   const pool = S.cmpShowOut ? all : aliveIds;
   const q = S.svPickQ.trim().toUpperCase();
   const listed = pool.filter(id => !q || id.includes(q));
@@ -1259,7 +1259,7 @@ function renderSvCompare() {
         <input type="checkbox" id="cmpShowOut" ${S.cmpShowOut ? "checked" : ""}> Show eliminated (${outCount})</label>` : ""}
     </div>`;
   const table = !S.svSel.length ? `<div class="empty"><b>Pick contestants from the list to compare their picks.</b></div>` : `
-    <div class="table-wrap"><table style="min-width:${180 + weeks.length * 70}px"><thead><tr><th>Entry</th>
+    <div class="table-wrap"><table style="min-width:${180 + weeks.length * 70}px;width:auto;max-width:100%"><thead><tr><th>Entry</th>
       ${weeks.map(w => `<th class="num">W${w}</th>`).join("")}
     </tr></thead><tbody>
       ${S.svSel.map(id => `<tr><th class="cmphead" scope="row">${esc(id)}<button class="x" data-cmpremove="${esc(id)}" title="Remove ${esc(id)}" aria-label="Remove ${esc(id)}">✕</button><small>${statusLine(st[id])}</small></th>
