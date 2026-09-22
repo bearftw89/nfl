@@ -1,6 +1,7 @@
 {
- "updated": "2026-09-22T16:30:46+00:00",
+ "updated": "2026-09-22T16:53:30+00:00",
  "lines": [
+  "wrote docs/data/2026/week-2/standings.json (596 rows)",
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead"
  ]
 }
