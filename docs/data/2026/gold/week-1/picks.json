@@ -1,0 +1,667 @@
+{
+ "week": 1,
+ "source": "2026_Gold_Selections_Week_1.pdf",
+ "count": 66,
+ "entries": [
+  {
+   "id": "ACKATTACK-1",
+   "picks": [
+    "TB",
+    "IND",
+    "PIT",
+    "HOU",
+    "CAR"
+   ]
+  },
+  {
+   "id": "ALMA-1",
+   "picks": [
+    "SF",
+    "PIT",
+    "NYJ",
+    "NO",
+    "MIN"
+   ]
+  },
+  {
+   "id": "AMARILLO BY MORNING-1",
+   "picks": [
+    "TB",
+    "PIT",
+    "BUF",
+    "PHI",
+    "DEN"
+   ]
+  },
+  {
+   "id": "AND THEN-1",
+   "picks": [
+    "SEA",
+    "SF",
+    "BUF",
+    "CHI",
+    "DAL"
+   ]
+  },
+  {
+   "id": "ANGEL OF VENGEANCE-1",
+   "picks": [
+    "IND",
+    "HOU",
+    "CAR",
+    "NO",
+    "MIN"
+   ]
+  },
+  {
+   "id": "BALLPROTECTION-1",
+   "picks": [
+    "IND",
+    "PIT",
+    "NYJ",
+    "MIA",
+    "PHI"
+   ]
+  },
+  {
+   "id": "BIFF SLAYER-1",
+   "picks": [
+    "LAR",
+    "BAL",
+    "PHI",
+    "DAL",
+    "DEN"
+   ]
+  },
+  {
+   "id": "BIG LIB-1",
+   "picks": [
+    "NE",
+    "SF",
+    "CIN",
+    "DET",
+    "KC"
+   ]
+  },
+  {
+   "id": "BRETTFAVRE444-1",
+   "picks": [
+    "NE",
+    "CIN",
+    "PIT",
+    "NYJ",
+    "PHI"
+   ]
+  },
+  {
+   "id": "BUFFOLOO-1",
+   "picks": [
+    "TB",
+    "PIT",
+    "NO",
+    "LAC",
+    "MIN"
+   ]
+  },
+  {
+   "id": "CI-1",
+   "picks": [
+    "PIT",
+    "CHI",
+    "WSH",
+    "MIN",
+    "DAL"
+   ]
+  },
+  {
+   "id": "DARK PASSENGER-1",
+   "picks": [
+    "PIT",
+    "DET",
+    "ARI",
+    "MIN",
+    "DAL"
+   ]
+  },
+  {
+   "id": "DARTBOARD CAPPER-1",
+   "picks": [
+    "TB",
+    "IND",
+    "PIT",
+    "WSH",
+    "MIN"
+   ]
+  },
+  {
+   "id": "DAWGS-1",
+   "picks": [
+    "SEA",
+    "ATL",
+    "MIA",
+    "WSH",
+    "DAL"
+   ]
+  },
+  {
+   "id": "DEAD PRESIDENTS-1",
+   "picks": [
+    "PIT",
+    "CHI",
+    "PHI",
+    "MIN",
+    "DAL"
+   ]
+  },
+  {
+   "id": "DURBIFY-1",
+   "picks": [
+    "SF",
+    "IND",
+    "MIA",
+    "PHI",
+    "MIN"
+   ]
+  },
+  {
+   "id": "ELMO5-1",
+   "picks": [
+    "JAX",
+    "TB",
+    "IND",
+    "CHI",
+    "MIA"
+   ]
+  },
+  {
+   "id": "FFFBTG-1",
+   "picks": [
+    "PIT",
+    "DET",
+    "MIA",
+    "MIN",
+    "DAL"
+   ]
+  },
+  {
+   "id": "FIELDPOSITION-1",
+   "picks": [
+    "CLE",
+    "IND",
+    "NYJ",
+    "NO",
+    "NYG"
+   ]
+  },
+  {
+   "id": "FRANK B-1",
+   "picks": [
+    "IND",
+    "PIT",
+    "MIA",
+    "MIN",
+    "NYG"
+   ]
+  },
+  {
+   "id": "IGTHISISWALKERAT-1",
+   "picks": [
+    "PIT",
+    "CAR",
+    "NYJ",
+    "ARI",
+    "MIN"
+   ]
+  },
+  {
+   "id": "INTEGRITY ALERT-1",
+   "picks": [
+    "NE",
+    "BUF",
+    "MIA",
+    "PHI",
+    "MIN"
+   ]
+  },
+  {
+   "id": "IT AINT BREEZY-1",
+   "picks": [
+    "TB",
+    "IND",
+    "ARI",
+    "PHI",
+    "MIN"
+   ]
+  },
+  {
+   "id": "J MONEY-1",
+   "picks": [
+    "TB",
+    "IND",
+    "PIT",
+    "HOU",
+    "ARI"
+   ]
+  },
+  {
+   "id": "JD3-1",
+   "picks": [
+    "TB",
+    "IND",
+    "PIT",
+    "PHI",
+    "MIN"
+   ]
+  },
+  {
+   "id": "JERRYDABEST-1",
+   "picks": [
+    "CIN",
+    "PIT",
+    "PHI",
+    "MIN",
+    "DEN"
+   ]
+  },
+  {
+   "id": "JJ & JF-1",
+   "picks": [
+    "NYJ",
+    "NO",
+    "ARI",
+    "MIN",
+    "NYG"
+   ]
+  },
+  {
+   "id": "JOHN-1",
+   "picks": [
+    "NE",
+    "LAR",
+    "CLE",
+    "MIN",
+    "DEN"
+   ]
+  },
+  {
+   "id": "JUST WIN BABY-1",
+   "picks": [
+    "NE",
+    "SF",
+    "CLE",
+    "NYG",
+    "KC"
+   ]
+  },
+  {
+   "id": "KDLV-1",
+   "picks": [
+    "CIN",
+    "BAL",
+    "BUF",
+    "LAC",
+    "MIN"
+   ]
+  },
+  {
+   "id": "LABATT BLUE-1",
+   "picks": [
+    "IND",
+    "PIT",
+    "NYJ",
+    "ARI",
+    "PHI"
+   ]
+  },
+  {
+   "id": "LITTLE BUGGY T-1",
+   "picks": [
+    "BAL",
+    "BUF",
+    "CHI",
+    "DET",
+    "DAL"
+   ]
+  },
+  {
+   "id": "LOANCHEF-1",
+   "picks": [
+    "PIT",
+    "HOU",
+    "CHI",
+    "MIA",
+    "MIN"
+   ]
+  },
+  {
+   "id": "LOVE MY BAXTER-1",
+   "picks": [
+    "NE",
+    "NYJ",
+    "PHI",
+    "MIN",
+    "DAL"
+   ]
+  },
+  {
+   "id": "MAYBE TOMORROW-1",
+   "picks": [
+    "JAX",
+    "ARI",
+    "MIA",
+    "NYG",
+    "DEN"
+   ]
+  },
+  {
+   "id": "MCPICKS261307-1",
+   "picks": [
+    "TB",
+    "PIT",
+    "HOU",
+    "CAR",
+    "NYG"
+   ]
+  },
+  {
+   "id": "MR. KNOW IT ALL-1",
+   "picks": [
+    "JAX",
+    "PIT",
+    "CAR",
+    "NYJ",
+    "MIN"
+   ]
+  },
+  {
+   "id": "MRBOBBYF-1",
+   "picks": [
+    "CLE",
+    "IND",
+    "CAR",
+    "MIN",
+    "KC"
+   ]
+  },
+  {
+   "id": "MUCKED NUTS-1",
+   "picks": [
+    "IND",
+    "PIT",
+    "NYJ",
+    "MIA",
+    "PHI"
+   ]
+  },
+  {
+   "id": "NOBODY CARES-1",
+   "picks": [
+    "CLE",
+    "PIT",
+    "TEN",
+    "WSH",
+    "MIN"
+   ]
+  },
+  {
+   "id": "PERSIAN PRINCESS-1",
+   "picks": [
+    "BAL",
+    "PIT",
+    "NYJ",
+    "MIN",
+    "DAL"
+   ]
+  },
+  {
+   "id": "PHO KING B.S.-1",
+   "picks": [
+    "CLE",
+    "PIT",
+    "BUF",
+    "ARI",
+    "DAL"
+   ]
+  },
+  {
+   "id": "POTATO KMISH-1",
+   "picks": [
+    "NE",
+    "SF",
+    "WSH",
+    "MIN",
+    "NYG"
+   ]
+  },
+  {
+   "id": "PRITCH-1",
+   "picks": [
+    "JAX",
+    "IND",
+    "PIT",
+    "MIA",
+    "MIN"
+   ]
+  },
+  {
+   "id": "PRITCH-2",
+   "picks": [
+    "IND",
+    "PIT",
+    "HOU",
+    "MIA",
+    "NYG"
+   ]
+  },
+  {
+   "id": "QUEENSRIDGE WISE GUY-1",
+   "picks": [
+    "SEA",
+    "TB",
+    "CHI",
+    "GB",
+    "NYG"
+   ]
+  },
+  {
+   "id": "RJ551155-1",
+   "picks": [
+    "CHI",
+    "NYJ",
+    "NO",
+    "ARI",
+    "DEN"
+   ]
+  },
+  {
+   "id": "RJ551155-2",
+   "picks": [
+    "NE",
+    "TB",
+    "IND",
+    "NYJ",
+    "DEN"
+   ]
+  },
+  {
+   "id": "RUSSATA-1",
+   "picks": [
+    "SEA",
+    "SF",
+    "BUF",
+    "TEN",
+    "DEN"
+   ]
+  },
+  {
+   "id": "SCRANTON SKIP-1",
+   "picks": [
+    "SF",
+    "TB",
+    "IND",
+    "TEN",
+    "DEN"
+   ]
+  },
+  {
+   "id": "SEATTLESTEAMFITTER-1",
+   "picks": [
+    "SEA",
+    "PIT",
+    "HOU",
+    "CHI",
+    "DAL"
+   ]
+  },
+  {
+   "id": "SONNY BOY-1",
+   "picks": [
+    "SF",
+    "HOU",
+    "CHI",
+    "TEN",
+    "NO"
+   ]
+  },
+  {
+   "id": "SPREAD EAGLE-1",
+   "picks": [
+    "CIN",
+    "PIT",
+    "HOU",
+    "PHI",
+    "DEN"
+   ]
+  },
+  {
+   "id": "STAG CAPITAL-1",
+   "picks": [
+    "IND",
+    "PIT",
+    "MIA",
+    "PHI",
+    "MIN"
+   ]
+  },
+  {
+   "id": "STERNZCUSE-1",
+   "picks": [
+    "CLE",
+    "TB",
+    "HOU",
+    "NO",
+    "NYG"
+   ]
+  },
+  {
+   "id": "SUNNY DEGENS-1",
+   "picks": [
+    "NE",
+    "NYJ",
+    "MIN",
+    "DAL",
+    "DEN"
+   ]
+  },
+  {
+   "id": "THE PROGNOSTICATOR-1",
+   "picks": [
+    "CLE",
+    "TB",
+    "IND",
+    "CAR",
+    "DEN"
+   ]
+  },
+  {
+   "id": "THREAD CLOD FOOL-1",
+   "picks": [
+    "IND",
+    "HOU",
+    "NYJ",
+    "ARI",
+    "DAL"
+   ]
+  },
+  {
+   "id": "TIRED BLOOD-1",
+   "picks": [
+    "NYJ",
+    "DET",
+    "ARI",
+    "GB",
+    "KC"
+   ]
+  },
+  {
+   "id": "TREESANG-1",
+   "picks": [
+    "SEA",
+    "LAR",
+    "JAX",
+    "TB",
+    "CAR"
+   ]
+  },
+  {
+   "id": "TRIPLV-1",
+   "picks": [
+    "ATL",
+    "HOU",
+    "NYJ",
+    "ARI",
+    "MIA"
+   ]
+  },
+  {
+   "id": "TRIPLV-2",
+   "picks": [
+    "ATL",
+    "HOU",
+    "NYJ",
+    "ARI",
+    "MIA"
+   ]
+  },
+  {
+   "id": "TRIPLV-3",
+   "picks": [
+    "ATL",
+    "HOU",
+    "NYJ",
+    "ARI",
+    "MIA"
+   ]
+  },
+  {
+   "id": "TUESDAY GROUP REJECT-1",
+   "picks": [
+    "IND",
+    "PIT",
+    "NYJ",
+    "MIA",
+    "DEN"
+   ]
+  },
+  {
+   "id": "VEGAS RINGERS-1",
+   "picks": [
+    "CIN",
+    "PIT",
+    "MIA",
+    "PHI",
+    "KC"
+   ]
+  },
+  {
+   "id": "WAREHOUSE LIVE-1",
+   "picks": [
+    "PIT",
+    "NYJ",
+    "LV",
+    "PHI",
+    "MIN"
+   ]
+  }
+ ]
+}

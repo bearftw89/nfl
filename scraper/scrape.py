@@ -198,7 +198,7 @@ def scrape_results(week):
 
 def write_status():
     """Last run's notable lines, for the site's Data tab (no digging through Actions logs)."""
-    keep = [l.strip() for l in LOG if l.startswith("!") or l.strip().startswith(("college", "ESPN")) or "wrote" in l or "  ESPN" in l]
+    keep = [l.strip() for l in LOG if l.startswith("!") or l.strip().startswith(("college", "ESPN", "gold", "survivor")) or "wrote" in l or "  ESPN" in l]
     write_json(ROOT / "docs" / "data" / "status.json",
                {"updated": datetime.now(timezone.utc).isoformat(timespec="seconds"), "lines": keep[-80:]})
 
@@ -233,6 +233,12 @@ def main():
             ok &= college_scrape.run()
         except Exception as e:
             log(f"! college update failed: {e}")
+            ok = False
+        try:                              # SuperContest Gold and Survivor
+            from . import extra_scrape
+            ok &= extra_scrape.run()
+        except Exception as e:
+            log(f"! gold/survivor update failed: {e}")
             ok = False
     write_status()
     sys.exit(0 if ok else 1)

@@ -1,0 +1,363 @@
+{
+ "week": 2,
+ "source": "2026_SURVIVOR_SELECTIONS_WEEK_2.pdf",
+ "count": 89,
+ "entries": [
+  {
+   "id": "507MAFIA-1",
+   "pick": "SF"
+  },
+  {
+   "id": "DURBIFY-2",
+   "pick": "TB"
+  },
+  {
+   "id": "RJ551155-2",
+   "pick": "TB"
+  },
+  {
+   "id": "TWEENTHEHEDGES-2",
+   "pick": "SF"
+  },
+  {
+   "id": "507MAFIA-2",
+   "pick": "TB"
+  },
+  {
+   "id": "EXECUTIVE GAME-1",
+   "pick": "TB"
+  },
+  {
+   "id": "RPB4FUN-1",
+   "pick": "SF"
+  },
+  {
+   "id": "UNCLE PHIL-1",
+   "pick": "SF"
+  },
+  {
+   "id": "714 LEMON-2",
+   "pick": "SF"
+  },
+  {
+   "id": "EXECUTIVE GAME-2",
+   "pick": "SF"
+  },
+  {
+   "id": "RPB4FUN-2",
+   "pick": "SF"
+  },
+  {
+   "id": "UNCLE PHIL-3",
+   "pick": "TB"
+  },
+  {
+   "id": "ACCORSI-5",
+   "pick": "LAR"
+  },
+  {
+   "id": "FOXEMIII-1",
+   "pick": "SF"
+  },
+  {
+   "id": "SANS SOUCI-1",
+   "pick": "TB"
+  },
+  {
+   "id": "VEGAS VIKES-1",
+   "pick": "PHI"
+  },
+  {
+   "id": "ACCORSI-6",
+   "pick": "BAL"
+  },
+  {
+   "id": "FOXEMIII-2",
+   "pick": "SF"
+  },
+  {
+   "id": "SCOTTYH121-2",
+   "pick": "BAL"
+  },
+  {
+   "id": "WATCHTHEWINSPILEUP-1",
+   "pick": "TB"
+  },
+  {
+   "id": "ACCORSI-7",
+   "pick": "BAL"
+  },
+  {
+   "id": "FRANK B-1",
+   "pick": "TB"
+  },
+  {
+   "id": "SCRANTON SKIP-1",
+   "pick": "SF"
+  },
+  {
+   "id": "ACCORSI-8",
+   "pick": "BAL"
+  },
+  {
+   "id": "FRANK B-2",
+   "pick": "SF"
+  },
+  {
+   "id": "SEAHAWKSANDERS-1",
+   "pick": "TB"
+  },
+  {
+   "id": "AGAINST THE WIND-1",
+   "pick": "BAL"
+  },
+  {
+   "id": "GLORIAGAYNORSONG-2",
+   "pick": "SF"
+  },
+  {
+   "id": "SEAHAWKSANDERS-2",
+   "pick": "SF"
+  },
+  {
+   "id": "AGAINST THE WIND-2",
+   "pick": "SF"
+  },
+  {
+   "id": "INDIANAJET-1",
+   "pick": "TB"
+  },
+  {
+   "id": "SLOMO-1",
+   "pick": "SF"
+  },
+  {
+   "id": "BASH'S 2ND RPDEO-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "ITALY2169-1",
+   "pick": "SF"
+  },
+  {
+   "id": "SPOOKY EXPRESS-1",
+   "pick": "SF"
+  },
+  {
+   "id": "BASH'S 2ND RPDEO-2",
+   "pick": "LAC"
+  },
+  {
+   "id": "J MONEY-1",
+   "pick": "SF"
+  },
+  {
+   "id": "TALLEYBURGER-2",
+   "pick": "KC"
+  },
+  {
+   "id": "BASH'S 2ND RPDEO-3",
+   "pick": "PHI"
+  },
+  {
+   "id": "JUST WIN BABY-1",
+   "pick": "SF"
+  },
+  {
+   "id": "TALLEYBURGER-3",
+   "pick": "TB"
+  },
+  {
+   "id": "BENNYHUDSON-1",
+   "pick": "SF"
+  },
+  {
+   "id": "KDLV-2",
+   "pick": "SF"
+  },
+  {
+   "id": "TALLEYBURGER-4",
+   "pick": "TB"
+  },
+  {
+   "id": "BESMART-1",
+   "pick": "TB"
+  },
+  {
+   "id": "KNICKSINFIVE-1",
+   "pick": "SF"
+  },
+  {
+   "id": "TALLEYBURGER-5",
+   "pick": "SF"
+  },
+  {
+   "id": "BEVERLY HILLS CHOP-5",
+   "pick": "SF"
+  },
+  {
+   "id": "LABATT BLUE-1",
+   "pick": "TB"
+  },
+  {
+   "id": "THE ENEMY WITHIN-1",
+   "pick": "TB"
+  },
+  {
+   "id": "BEVERLY HILLS CHOP-6",
+   "pick": "BAL"
+  },
+  {
+   "id": "LOVE MY BAXTER-1",
+   "pick": "SF"
+  },
+  {
+   "id": "THE MONEY IS MINE-1",
+   "pick": "SF"
+  },
+  {
+   "id": "BEVERLY HILLS CHOP-7",
+   "pick": "TB"
+  },
+  {
+   "id": "MAMAS P TX-1",
+   "pick": "SF"
+  },
+  {
+   "id": "TIRED BLOOD-1",
+   "pick": "SF"
+  },
+  {
+   "id": "BEVERLY HILLS CHOP-8",
+   "pick": "PHI"
+  },
+  {
+   "id": "MAMAS P TX-2",
+   "pick": "TB"
+  },
+  {
+   "id": "TOROK9R-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "BEVERLY HILLS CHOP-9",
+   "pick": "SF"
+  },
+  {
+   "id": "MAMAS P TX-3",
+   "pick": "SF"
+  },
+  {
+   "id": "TRIPLV-1",
+   "pick": "SF"
+  },
+  {
+   "id": "BEVERLY HILLS CHOP-10",
+   "pick": "SF"
+  },
+  {
+   "id": "MAYBE TOMORROW-1",
+   "pick": "SF"
+  },
+  {
+   "id": "TRIPLV-2",
+   "pick": "SF"
+  },
+  {
+   "id": "BRAD LEE-1",
+   "pick": "BAL"
+  },
+  {
+   "id": "MAYBE TOMORROW-2",
+   "pick": "SF"
+  },
+  {
+   "id": "TRIPLV-3",
+   "pick": "SF"
+  },
+  {
+   "id": "CONCRETEMIKE-1",
+   "pick": "SF"
+  },
+  {
+   "id": "MCKONKEY KONG-1",
+   "pick": "SF"
+  },
+  {
+   "id": "TRIPLV-6",
+   "pick": "SF"
+  },
+  {
+   "id": "DA MIKE-1",
+   "pick": "SF"
+  },
+  {
+   "id": "NOT LIKE US-1",
+   "pick": "SF"
+  },
+  {
+   "id": "TRIPLV-7",
+   "pick": "SF"
+  },
+  {
+   "id": "DARK PASSENGER-1",
+   "pick": "SF"
+  },
+  {
+   "id": "PAPAJOHNTN-1",
+   "pick": "SF"
+  },
+  {
+   "id": "TRIPLV-8",
+   "pick": "SF"
+  },
+  {
+   "id": "DEAD PRESIDENTS-1",
+   "pick": "TB"
+  },
+  {
+   "id": "PRITCH-6",
+   "pick": "SF"
+  },
+  {
+   "id": "TRIPLV-9",
+   "pick": "SF"
+  },
+  {
+   "id": "DEGOSMICKS&MUTTS-1",
+   "pick": "TB"
+  },
+  {
+   "id": "PRITCH-7",
+   "pick": "SF"
+  },
+  {
+   "id": "TRIPLV-10",
+   "pick": "SF"
+  },
+  {
+   "id": "DISCERNINGKB-2",
+   "pick": "SF"
+  },
+  {
+   "id": "PRITCH-8",
+   "pick": "SF"
+  },
+  {
+   "id": "TURKISH-1",
+   "pick": "TB"
+  },
+  {
+   "id": "DURBIFY-1",
+   "pick": "TB"
+  },
+  {
+   "id": "RDLOWN-1",
+   "pick": "TB"
+  },
+  {
+   "id": "TWEENTHEHEDGES-1",
+   "pick": "TB"
+  }
+ ]
+}

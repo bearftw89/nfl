@@ -1,0 +1,21 @@
+{
+ "season": 2026,
+ "league": "gold",
+ "picks_per_entry": 5,
+ "weeks": {
+  "1": {
+   "card": true,
+   "picks": true,
+   "standings": true,
+   "results": false,
+   "overrides": false
+  },
+  "2": {
+   "card": true,
+   "picks": true,
+   "standings": false,
+   "results": false,
+   "overrides": false
+  }
+ }
+}
