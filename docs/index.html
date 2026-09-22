@@ -240,10 +240,13 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
   <div class="top-inner">
     <h1 class="brand">Contest Board</h1>
     <div class="league" role="group" aria-label="Contest">
-      <button data-league="nfl-group">NFL</button><button data-league="ncaaf">NCAAF</button><button data-league="survivor">Survivor</button>
+      <button data-league="nfl-group">NFL</button><button data-league="ncaaf">NCAAF</button><button data-league="survivor-group">Survivor</button>
     </div>
     <div class="league sub" id="nflsub" role="group" aria-label="NFL contest">
       <button data-league="nfl">SuperContest</button><button data-league="gold">Gold</button>
+    </div>
+    <div class="league sub" id="survsub" role="group" aria-label="Survivor contest">
+      <button data-league="survivor">Westgate</button><button data-league="circa-survivor">Circa</button>
     </div>
     <label><span class="sr">Week</span><select class="week" id="week"></select></label>
     <div class="status" id="status" aria-live="polite"></div>
@@ -299,9 +302,9 @@ const fixAbbr = a => ABBR_FIX[a] || a;
 // form from the selections sheet ("N CAROLINA"). NFL teams are keyed by ESPN code.
 const LABELS = {};
 const isCollege = () => S.league === "ncaaf";
-const isSurvivor = () => S.league === "survivor";
-const LEAGUES = ["nfl", "gold", "ncaaf", "survivor"];
-const LEAGUE_NAME = { nfl: "SuperContest (NFL)", gold: "SuperContest Gold (NFL)", ncaaf: "SuperContest College", survivor: "SuperContest Survivor" };
+const isSurvivor = () => S.league === "survivor" || S.league === "circa-survivor";
+const LEAGUES = ["nfl", "gold", "ncaaf", "survivor", "circa-survivor"];
+const LEAGUE_NAME = { nfl: "SuperContest (NFL)", gold: "SuperContest Gold (NFL)", ncaaf: "SuperContest College", survivor: "Westgate SuperContest Survivor", "circa-survivor": "Circa Survivor" };
 const lbl = ab => isCollege() ? (LABELS[ab] || ab) : ab;
 const titleCase = s => s.toLowerCase().replace(/(^|[\s-])([a-z])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Lsu|Ucla|Usc|Tcu|Smu|Byu|Utep|Utsa|Uab|Unlv|Ucf|Ul|Nc)\b/g, m => m.toUpperCase());
 const squash = x => x.replace(/[^A-Z0-9]/g, "");
@@ -471,7 +474,7 @@ async function loadCollegeScores(w, m, base, official, manual) {
 }
 const Store = {
   mode: "static", season: 2026, manifest: { weeks: {} },
-  base() { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/" }[S.league] || ""}`; },
+  base() { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/", "circa-survivor": "circa-survivor/" }[S.league] || ""}`; },
   async reset() {
     this.cache.clear(); this.subs.clear(); this.pending.clear();
     for (const k of Object.keys(LABELS)) delete LABELS[k];
@@ -886,9 +889,9 @@ function weekGrades(w) {
 
 /* ================= render: teams ATS ================= */
 function renderAts() {
-  const el = $("#ats");
-  if (!seasonReady(["card", "picks", "scores"])) { el.innerHTML = `<p class="note">Loading the season…</p>`; return; }
-  const weeks = weeksList().filter(w => index().weeks[w]?.card);
+  const el = $("#ats"), W = S.week;
+  if (!seasonReady(["card", "picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading the season…</p>`; return; }
+  const weeks = weeksList().filter(w => w <= W && index().weeks[w]?.card);
   if (!weeks.length) { el.innerHTML = `<div class="empty"><b>No game sheets uploaded yet.</b></div>`; return; }
   const T = {};
   const teamList = isCollege()
@@ -1057,7 +1060,7 @@ function renderData() {
   const yes = (v, t) => v ? `<span class="up">${t || "Yes"}</span>` : `<span class="note">—</span>`;
   el.innerHTML = `
     <div class="how" style="margin-top:0"><h2>${LEAGUE_NAME[S.league]}: where the data comes from</h2>
-      ${isSurvivor() ? `<p>Survivor: one team per week to win straight up (no spread). A loss or a tie eliminates the entry, each team can be used once, and an entry without a pick is eliminated. Scores are the same NFL games as the main contest.</p>` : ""}
+      ${isSurvivor() ? `<p>${S.league === "circa-survivor" ? "Circa Survivor" : "Westgate SuperContest Survivor"}: one team per week to win straight up (no spread). A loss or a tie eliminates the entry, each team can be used once, and an entry without a pick is eliminated. Scores come live from ESPN.${S.league === "circa-survivor" ? " Circa's field is large, so the Entries tab shows 200 at a time — search or Show all to see more." : ""}</p>` : ""}
       ${S.league === "gold" ? `<p>Gold uses the same weekly game sheet and lines as the main SuperContest, with its own entries, picks and standings.</p>` : ""}
       ${isCollege() ? `<p>College picks are 7 per entry against the contest line, weeks 1–14. Westgate's short team names on the selections sheet are matched to the game sheet, and each week's picks are checked against Westgate's own team-count table. Once official standings are posted, the covers they imply are saved and used for any game the live score feed couldn't match.</p>` : ""}
       <p>The updater (a scheduled GitHub Action) checks the Westgate SuperContest pages every 15 minutes and saves each week's game sheet, selections and standings. Scores come live from ESPN while you have this page open: every 30 seconds during games, every 5 minutes otherwise.</p>
@@ -1113,21 +1116,29 @@ function onIndex() {
 }
 function markLeague() {
   const nflFamily = S.league === "nfl" || S.league === "gold";
+  const survFamily = isSurvivor();
   document.querySelectorAll("[data-league]").forEach(b => b.setAttribute("aria-pressed",
-    b.dataset.league === "nfl-group" ? nflFamily : b.dataset.league === S.league));
+    b.dataset.league === "nfl-group" ? nflFamily : b.dataset.league === "survivor-group" ? survFamily : b.dataset.league === S.league));
   document.getElementById("nflsub").hidden = !nflFamily;
+  document.getElementById("survsub").hidden = !survFamily;
   document.getElementById("foot").textContent = isSurvivor()
-    ? "Picks and teams used: Westgate SuperContest Survivor PDFs. Scores: ESPN. Straight-up winners only; a loss, a tie or a missed pick eliminates. Unofficial."
+    ? `Picks and teams used: ${S.league === "circa-survivor" ? "Circa Survivor" : "Westgate SuperContest Survivor"} PDFs. Scores: ESPN. Straight-up winners only; a loss, a tie or a missed pick eliminates. Unofficial.`
     : "Lines, picks and official standings: Westgate SuperContest PDFs. Scores: ESPN. Graded against the static Westgate line: cover 1, push ½, loss 0; rule 22 postponements ½. Live standings are unofficial until Westgate posts them.";
-  document.title = `Contest Board: ${{ nfl: "NFL", gold: "NFL Gold", ncaaf: "NCAAF", survivor: "Survivor" }[S.league]}`;
+  document.title = `Contest Board: ${{ nfl: "NFL", gold: "NFL Gold", ncaaf: "NCAAF", survivor: "Survivor", "circa-survivor": "Circa Survivor" }[S.league]}`;
 }
 async function switchLeague(lg) {
+  S.svShowAll = false;
   if (lg === "nfl-group") {                       // the NFL button returns to whichever NFL contest was last open
     if (S.league === "nfl" || S.league === "gold") return;
     lg = local.get("cb-nflsub", "nfl") === "gold" ? "gold" : "nfl";
   }
+  if (lg === "survivor-group") {                  // same idea for the Survivor family
+    if (isSurvivor()) return;
+    lg = local.get("cb-survsub", "survivor") === "circa-survivor" ? "circa-survivor" : "survivor";
+  }
   if (lg === S.league) return;
   if (lg === "nfl" || lg === "gold") local.set("cb-nflsub", lg);
+  if (lg === "survivor" || lg === "circa-survivor") local.set("cb-survsub", lg);
   S.league = lg; local.set("cb-league", lg); markLeague();
   history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
   S.week = null; S.shown = 150; S.q = "";
@@ -1220,13 +1231,16 @@ function renderSvEntries() {
   if (!seasonReady(["picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
   const { st } = survState(W);
   const q = S.q.trim().toUpperCase();
-  const list = Object.values(st)
+  const full = Object.values(st)
     .filter(s => (!S.svAlive || s.alive) && (!q || s.id.includes(q)))
     .sort((a, b) => (b.alive - a.alive) || ((b.out || 99) - (a.out || 99)) || a.id.localeCompare(b.id));
   const aliveN = Object.values(st).filter(s => s.alive).length;
+  const cap = S.svShowAll ? full.length : 200;
+  const list = full.slice(0, cap);
   el.innerHTML = `
     <div class="tools"><input type="search" id="q" placeholder="Find an entry" value="${esc(S.q)}" aria-label="Find an entry">
       <label><input type="checkbox" id="svAlive" ${S.svAlive ? "checked" : ""}> Alive only (${aliveN})</label></div>
+    ${full.length > list.length ? `<p class="note">Showing ${list.length} of ${full.length}. <button class="pill" id="svShowAll">Show all</button> or search to narrow.</p>` : `<p class="note">${full.length} ${full.length === 1 ? "entry" : "entries"}.</p>`}
     <div class="table-wrap"><table style="min-width:760px"><thead><tr><th>Entry</th><th>Status</th><th>Week ${W} pick</th><th>Teams used</th><th class="num">Teams left</th></tr></thead><tbody>
       ${list.map(s => {
         const cur = s.used.find(u => u.w === W);
@@ -1412,6 +1426,7 @@ function bind() {
     const t = e.target, c = s => t.closest(s);
     if (c("[data-gsort]")) { S.gameSort = c("[data-gsort]").dataset.gsort; render(); }
     else if (c("[data-svweekdetail]")) openSurvivorWeekDetail(+c("[data-svweekdetail]").dataset.svweekdetail);
+    else if (c("#svShowAll")) { S.svShowAll = true; render(); }
     else if (c("[data-cmpremove]")) { const id = c("[data-cmpremove]").dataset.cmpremove; S.svSel = (S.svSel || []).filter(x => x !== id); render(); }
     else if (c("[data-star]")) { const id = c("[data-star]").dataset.star; S.starred.has(id) ? S.starred.delete(id) : S.starred.add(id); local.set("cb-starred", [...S.starred]); render(); }
     else if (c("[data-entry]")) openEntry(c("[data-entry]").dataset.entry);

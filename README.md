@@ -40,6 +40,14 @@ The **Survivor** button opens its own section (`docs/data/2026/survivor/`):
 
 Rules applied: pick one team to win straight up (no spread); a loss, a tie or a missed pick eliminates; each team once. Scores are the same NFL games as the main contest. Weeks 1–2 were checked against Westgate's "teams previously used" sheet: the same 89 survivors after Week 1, each with the same team used.
 
+## Circa Survivor
+
+The Survivor tab has a **Westgate | Circa** sub-switch. Circa Survivor is a separate, much larger pool (~25,000 entries) hosted at circasports.com. Rules are the same shape as Westgate: one team per week to win straight up, each team once, and a loss OR A TIE eliminates (Circa rule: a tie is graded a loss). Data lives under `docs/data/2026/circa-survivor/`.
+
+- The updater discovers Circa's weekly PDFs from circasports.com/circa-survivor (selections + team-availability). If discovery fails, drop the PDFs in `raw/circa/` and they're used as a fallback.
+- Because the field is huge, the Entries tab shows 200 at a time with a Show-all button; search narrows instantly. This week, Trends, Compare and the team-grid popup all work the same as Westgate.
+- Verified: Weeks 1-2 picks reconcile exactly with Circa's own team-count tables (24,999 and 16,935 entries), and every entry's Week 1 pick matches Circa's Week 2 availability grid (100%).
+
 ## Contest rules implemented (2026 SuperContest rules)
 
 - **Graded against the spread, never the straight score.** Pick result = team score + contest line vs. opponent score, using the static Westgate line from the weekly card.

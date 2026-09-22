@@ -239,6 +239,12 @@ def main():
         except Exception as e:
             log(f"! gold/survivor update failed: {e}")
             ok = False
+        try:                              # Circa Sports (Survivor now, Millio later)
+            from . import circa_scrape
+            ok &= circa_scrape.run()
+        except Exception as e:
+            log(f"! circa update failed: {e}")
+            ok = False
     write_status()
     sys.exit(0 if ok else 1)
 
