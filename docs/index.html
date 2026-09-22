@@ -163,9 +163,21 @@ dialog .season td { vertical-align: middle; }
 .teamgrid .tg .ab { font: 700 13px/1 var(--cond); }
 .teamgrid .tg .wk { font-size: 11px; color: var(--ink-2); margin-left: auto; }
 .teamgrid .tg.st-W { outline: 1px solid var(--cover); } .teamgrid .tg.st-L { outline: 1px solid var(--miss); } .teamgrid .tg.st-T { outline: 1px solid var(--push); }
-.svinputs { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
-.svinputs label { display: flex; flex-direction: column; gap: 4px; font: 600 13px var(--cond); color: var(--ink-2); }
-.svinputs input { width: 220px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 10px; font: 500 15px var(--text); color: var(--ink); }
+.cmpwrap { display: grid; grid-template-columns: 260px 1fr; gap: 16px; align-items: start; }
+.cmppicker { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 10px; }
+.cmppicker input[type="search"] { width: 100%; background: var(--board); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 9px; margin-bottom: 8px; }
+.cmplist { max-height: 420px; overflow-y: auto; display: flex; flex-direction: column; }
+.cmprow { display: flex; align-items: center; gap: 8px; padding: 5px 4px; border-radius: 5px; cursor: pointer; font-size: 14px; }
+.cmprow:hover { background: var(--panel-2); }
+.cmprow input { flex: none; }
+.cmprow .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cmprow .st { flex: none; font-size: 11px; }
+.cmprow .st.up { color: var(--cover); } .cmprow .st.down { color: var(--miss); }
+.cmpcount { font-size: 12px; color: var(--ink-2); margin-bottom: 6px; }
+th.cmphead { min-width: 130px; }
+th.cmphead .x { float: right; background: none; border: 0; color: var(--ink-2); cursor: pointer; font-size: 13px; padding: 0 0 0 6px; }
+th.cmphead small { display: block; font: 400 11px var(--text); color: var(--ink-2); margin-top: 2px; }
+@media (max-width: 700px) { .cmpwrap { grid-template-columns: 1fr; } .cmplist { max-height: 220px; } }
 .survcurve { display: flex; align-items: flex-end; gap: 6px; height: 220px; padding: 26px 4px 0; }
 .survcurve .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
 .survcurve .bar { width: 100%; max-width: 40px; background: var(--cover); border-radius: 4px 4px 0 0; position: relative; min-height: 2px; }
@@ -531,7 +543,7 @@ const local = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-const S = { svA: null, svB: null, league: (lg => LEAGUES.includes(lg) ? lg : null)(new URLSearchParams(location.hash.slice(1)).get("lg")) || (LEAGUES.includes(local.get("cb-league", "nfl")) ? local.get("cb-league", "nfl") : "nfl"), svAlive: false, topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "card", q: "", onlyStarred: false, shown: 150,
+const S = { svSel: null, svPickQ: "", league: (lg => LEAGUES.includes(lg) ? lg : null)(new URLSearchParams(location.hash.slice(1)).get("lg")) || (LEAGUES.includes(local.get("cb-league", "nfl")) ? local.get("cb-league", "nfl") : "nfl"), svAlive: false, topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "card", q: "", onlyStarred: false, shown: 150,
   sortKey: "total", sortDir: -1, starred: new Set(local.get("cb-starred", [])), editing: null, queue: [] };
 
 function index() { return Store.get(P.index) || { weeks: {} }; }
@@ -1228,25 +1240,27 @@ function renderSvCompare() {
   if (!seasonReady(["picks", "scores", "card"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
   const { st } = survState(W), all = Object.keys(st).sort();
   if (!all.length) { el.innerHTML = `<div class="empty"><b>No Survivor entries yet.</b></div>`; return; }
-  if (!S.svA || !all.includes(S.svA)) S.svA = all[0];
-  if (!S.svB || !all.includes(S.svB) || S.svB === S.svA) S.svB = all.find(x => x !== S.svA) || all[0];
-  const a = st[S.svA], b = st[S.svB];
+  if (!S.svSel) S.svSel = all.slice(0, 2);                          // first time in: seed with two entries
+  S.svSel = S.svSel.filter(id => all.includes(id));
+  const q = S.svPickQ.trim().toUpperCase();
+  const listed = all.filter(id => !q || id.includes(q));
   const weeks = weeksList().filter(w => w <= W && index().weeks[w]?.picks);
+  const statusShort = s => s.alive ? `<span class="st up">Alive</span>` : `<span class="st down">Out W${s.out}</span>`;
   const statusLine = s => s.alive ? `<span class="up">Alive</span>` : `<span class="down">Out week ${s.out}</span> <span class="note">— ${esc(s.reason || "")}</span>`;
   const cellFor = (s, w) => { const u = s.used.find(x => x.w === w); return u ? survChip(u) : `<span class="note">${w > (s.out ?? 99) ? "—" : "No pick"}</span>`; };
-  const rows = weeks.map(w => `<tr><td class="place">W${w}</td><td>${cellFor(a, w)}</td><td>${cellFor(b, w)}</td></tr>`).join("");
-  el.innerHTML = `
-    <datalist id="sventrylist">${all.map(id => `<option value="${esc(id)}">`).join("")}</datalist>
-    <div class="svinputs">
-      <label>Entry A <input list="sventrylist" id="svAinput" value="${esc(S.svA)}"></label>
-      <label>Entry B <input list="sventrylist" id="svBinput" value="${esc(S.svB)}"></label>
-    </div>
-    <div class="strip">
-      <div><b>${esc(S.svA)}</b><span>${statusLine(a)}</span></div>
-      <div><b>${esc(S.svB)}</b><span>${statusLine(b)}</span></div>
-    </div>
-    <div class="table-wrap"><table style="min-width:520px"><thead><tr><th>Week</th><th>${esc(S.svA)}</th><th>${esc(S.svB)}</th></tr></thead>
-      <tbody>${rows}</tbody></table></div>`;
+  const picker = `<div class="cmppicker">
+      <input type="search" id="cmpQ" placeholder="Find a contestant" value="${esc(S.svPickQ)}" aria-label="Find a contestant">
+      <div class="cmpcount">${S.svSel.length} selected</div>
+      <div class="cmplist">${listed.map(id => `<label class="cmprow"><input type="checkbox" data-cmpid="${esc(id)}" ${S.svSel.includes(id) ? "checked" : ""}>
+        <span class="nm">${esc(id)}</span>${statusShort(st[id])}</label>`).join("") || `<p class="note">No matches.</p>`}</div>
+    </div>`;
+  const table = !S.svSel.length ? `<div class="empty"><b>Pick contestants from the list to compare their picks.</b></div>` : `
+    <div class="table-wrap"><table style="min-width:${140 + S.svSel.length * 160}px"><thead><tr><th>Week</th>
+      ${S.svSel.map(id => `<th class="cmphead">${esc(id)}<button class="x" data-cmpremove="${esc(id)}" title="Remove ${esc(id)}" aria-label="Remove ${esc(id)}">✕</button><small>${statusLine(st[id])}</small></th>`).join("")}
+    </tr></thead><tbody>
+      ${weeks.map(w => `<tr><td class="place">W${w}</td>${S.svSel.map(id => `<td>${cellFor(st[id], w)}</td>`).join("")}</tr>`).join("")}
+    </tbody></table></div>`;
+  el.innerHTML = `<div class="cmpwrap">${picker}<div>${table}</div></div>`;
 }
 function renderSvTrends() {
   const el = $("#svtrends"), W = S.week;
@@ -1357,6 +1371,7 @@ function bind() {
   main.addEventListener("click", e => {
     const t = e.target, c = s => t.closest(s);
     if (c("[data-gsort]")) { S.gameSort = c("[data-gsort]").dataset.gsort; render(); }
+    else if (c("[data-cmpremove]")) { const id = c("[data-cmpremove]").dataset.cmpremove; S.svSel = (S.svSel || []).filter(x => x !== id); render(); }
     else if (c("[data-star]")) { const id = c("[data-star]").dataset.star; S.starred.has(id) ? S.starred.delete(id) : S.starred.add(id); local.set("cb-starred", [...S.starred]); render(); }
     else if (c("[data-entry]")) openEntry(c("[data-entry]").dataset.entry);
     else if (c("[data-sventry]")) openSurvivorEntry(c("[data-sventry]").dataset.sventry);
@@ -1372,13 +1387,10 @@ function bind() {
     else if (t.id === "more") { S.shown = Infinity; render(); }
   });
   main.addEventListener("input", e => {
-    if (e.target.id === "svAinput" || e.target.id === "svBinput") {
-      const val = e.target.value.trim().toUpperCase();
-      const { st } = survState(S.week);
-      if (!(val in st)) return;                      // wait for a valid, exact entry id
-      if (e.target.id === "svAinput") S.svA = val; else S.svB = val;
-      clearTimeout(S.svT);
-      S.svT = setTimeout(() => { const id = e.target.id; render(); requestAnimationFrame(() => document.getElementById(id)?.focus()); }, 300);
+    if (e.target.id === "cmpQ") {
+      S.svPickQ = e.target.value; clearTimeout(S.cmpT);
+      S.cmpT = setTimeout(() => { const pos = e.target.selectionStart; render();
+        requestAnimationFrame(() => { const i = document.getElementById("cmpQ"); if (i) { i.focus(); i.setSelectionRange(pos, pos); } }); }, 150);
       return;
     }
     if (e.target.id === "topN") {
@@ -1389,6 +1401,11 @@ function bind() {
     if (e.target.id === "q") { S.q = e.target.value; S.shown = 150; clearTimeout(S.qT); S.qT = setTimeout(render, 150); } });
   main.addEventListener("change", e => {
     const t = e.target;
+    if (t.dataset.cmpid) {
+      const id = t.dataset.cmpid; S.svSel = S.svSel || [];
+      if (t.checked) { if (!S.svSel.includes(id)) S.svSel.push(id); } else { S.svSel = S.svSel.filter(x => x !== id); }
+      render(); return;
+    }
     if (t.id === "onlyStar") { S.onlyStarred = t.checked; render(); }
     else if (t.id === "svAlive") { S.svAlive = t.checked; render(); }
     else if (t.id === "topTies") { S.topTies = t.checked; render(); }
