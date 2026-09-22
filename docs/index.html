@@ -174,7 +174,7 @@ dialog .season td { vertical-align: middle; }
 .cmprow .st { flex: none; font-size: 11px; }
 .cmprow .st.up { color: var(--cover); } .cmprow .st.down { color: var(--miss); }
 .cmpcount { font-size: 12px; color: var(--ink-2); margin-bottom: 6px; }
-th.cmphead { min-width: 130px; }
+th.cmphead { min-width: 190px; text-align: left; font-weight: 700; }
 th.cmphead .x { float: right; background: none; border: 0; color: var(--ink-2); cursor: pointer; font-size: 13px; padding: 0 0 0 6px; }
 th.cmphead small { display: block; font: 400 11px var(--text); color: var(--ink-2); margin-top: 2px; }
 @media (max-width: 700px) { .cmpwrap { grid-template-columns: 1fr; } .cmplist { max-height: 220px; } }
@@ -543,7 +543,7 @@ const local = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-const S = { svSel: null, svPickQ: "", league: (lg => LEAGUES.includes(lg) ? lg : null)(new URLSearchParams(location.hash.slice(1)).get("lg")) || (LEAGUES.includes(local.get("cb-league", "nfl")) ? local.get("cb-league", "nfl") : "nfl"), svAlive: false, topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "card", q: "", onlyStarred: false, shown: 150,
+const S = { svSel: null, svPickQ: "", cmpShowOut: false, league: (lg => LEAGUES.includes(lg) ? lg : null)(new URLSearchParams(location.hash.slice(1)).get("lg")) || (LEAGUES.includes(local.get("cb-league", "nfl")) ? local.get("cb-league", "nfl") : "nfl"), svAlive: false, topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "card", q: "", onlyStarred: false, shown: 150,
   sortKey: "total", sortDir: -1, starred: new Set(local.get("cb-starred", [])), editing: null, queue: [] };
 
 function index() { return Store.get(P.index) || { weeks: {} }; }
@@ -1242,8 +1242,10 @@ function renderSvCompare() {
   if (!all.length) { el.innerHTML = `<div class="empty"><b>No Survivor entries yet.</b></div>`; return; }
   if (!S.svSel) S.svSel = all.slice(0, 2);                          // first time in: seed with two entries
   S.svSel = S.svSel.filter(id => all.includes(id));
+  const aliveIds = all.filter(id => st[id].alive), outCount = all.length - aliveIds.length;
+  const pool = S.cmpShowOut ? all : aliveIds;
   const q = S.svPickQ.trim().toUpperCase();
-  const listed = all.filter(id => !q || id.includes(q));
+  const listed = pool.filter(id => !q || id.includes(q));
   const weeks = weeksList().filter(w => w <= W && index().weeks[w]?.picks);
   const statusShort = s => s.alive ? `<span class="st up">Alive</span>` : `<span class="st down">Out W${s.out}</span>`;
   const statusLine = s => s.alive ? `<span class="up">Alive</span>` : `<span class="down">Out week ${s.out}</span> <span class="note">— ${esc(s.reason || "")}</span>`;
@@ -1253,12 +1255,15 @@ function renderSvCompare() {
       <div class="cmpcount">${S.svSel.length} selected</div>
       <div class="cmplist">${listed.map(id => `<label class="cmprow"><input type="checkbox" data-cmpid="${esc(id)}" ${S.svSel.includes(id) ? "checked" : ""}>
         <span class="nm">${esc(id)}</span>${statusShort(st[id])}</label>`).join("") || `<p class="note">No matches.</p>`}</div>
+      ${outCount ? `<label class="cmprow" style="font-size:12px;color:var(--ink-2);border-top:1px solid var(--rule);margin-top:6px;padding-top:8px">
+        <input type="checkbox" id="cmpShowOut" ${S.cmpShowOut ? "checked" : ""}> Show eliminated (${outCount})</label>` : ""}
     </div>`;
   const table = !S.svSel.length ? `<div class="empty"><b>Pick contestants from the list to compare their picks.</b></div>` : `
-    <div class="table-wrap"><table style="min-width:${140 + S.svSel.length * 160}px"><thead><tr><th>Week</th>
-      ${S.svSel.map(id => `<th class="cmphead">${esc(id)}<button class="x" data-cmpremove="${esc(id)}" title="Remove ${esc(id)}" aria-label="Remove ${esc(id)}">✕</button><small>${statusLine(st[id])}</small></th>`).join("")}
+    <div class="table-wrap"><table style="min-width:${180 + weeks.length * 70}px"><thead><tr><th>Entry</th>
+      ${weeks.map(w => `<th class="num">W${w}</th>`).join("")}
     </tr></thead><tbody>
-      ${weeks.map(w => `<tr><td class="place">W${w}</td>${S.svSel.map(id => `<td>${cellFor(st[id], w)}</td>`).join("")}</tr>`).join("")}
+      ${S.svSel.map(id => `<tr><th class="cmphead" scope="row">${esc(id)}<button class="x" data-cmpremove="${esc(id)}" title="Remove ${esc(id)}" aria-label="Remove ${esc(id)}">✕</button><small>${statusLine(st[id])}</small></th>
+        ${weeks.map(w => `<td>${cellFor(st[id], w)}</td>`).join("")}</tr>`).join("")}
     </tbody></table></div>`;
   el.innerHTML = `<div class="cmpwrap">${picker}<div>${table}</div></div>`;
 }
@@ -1401,6 +1406,7 @@ function bind() {
     if (e.target.id === "q") { S.q = e.target.value; S.shown = 150; clearTimeout(S.qT); S.qT = setTimeout(render, 150); } });
   main.addEventListener("change", e => {
     const t = e.target;
+    if (t.id === "cmpShowOut") { S.cmpShowOut = t.checked; render(); return; }
     if (t.dataset.cmpid) {
       const id = t.dataset.cmpid; S.svSel = S.svSel || [];
       if (t.checked) { if (!S.svSel.includes(id)) S.svSel.push(id); } else { S.svSel = S.svSel.filter(x => x !== id); }
