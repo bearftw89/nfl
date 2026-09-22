@@ -180,7 +180,9 @@ th.cmphead small { display: block; font: 400 11px var(--text); color: var(--ink-
 @media (max-width: 700px) { .cmpwrap { grid-template-columns: 1fr; } .cmplist { max-height: 220px; } }
 .survcurve { display: flex; align-items: flex-end; gap: 6px; height: 220px; padding: 26px 4px 0; }
 .survcurve .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
-.survcurve .bar { width: 100%; max-width: 40px; background: var(--cover); border-radius: 4px 4px 0 0; position: relative; min-height: 2px; }
+.survcurve .bar { width: 100%; max-width: 40px; background: var(--cover); border-radius: 4px 4px 0 0; position: relative; min-height: 2px;
+  border: 0; cursor: pointer; padding: 0; display: block; }
+.survcurve .bar:hover { filter: brightness(1.12); }
 .survcurve .bar .n { position: absolute; top: -20px; left: 0; right: 0; text-align: center; font: 700 13px/1 var(--cond); }
 .survcurve .wk { margin-top: 6px; font-size: 11px; color: var(--ink-2); }
 .survcurve .elim { font-size: 10px; color: var(--miss); margin-top: 2px; }
@@ -1284,9 +1286,42 @@ function renderSvTrends() {
     </div>
     <h2 class="sec" style="margin-top:0">Survival curve</h2>
     <p class="note">Entries still alive after each week. Red numbers are eliminations that week.</p>
-    <div class="survcurve">${rows.map(r => `<div class="col"><div class="bar" style="height:${Math.max(r.alive / start * 100, 2)}%">
-        <span class="n">${r.alive}</span></div><div class="wk">W${r.w}</div>${r.out ? `<div class="elim">-${r.out}</div>` : `<div class="elim">&nbsp;</div>`}</div>`).join("")}
-    </div>`;
+    <div class="survcurve">${rows.map(r => `<div class="col"><button class="bar" style="height:${Math.max(r.alive / start * 100, 2)}%" data-svweekdetail="${r.w}" title="Week ${r.w}: see the picks">
+        <span class="n">${r.alive}</span></button><div class="wk">W${r.w}</div>${r.out ? `<div class="elim">-${r.out}</div>` : `<div class="elim">&nbsp;</div>`}</div>`).join("")}
+    </div>
+    <p class="note" style="margin-top:14px">Click a bar to see that week's picks: who took what, and which teams got entries eliminated.</p>`;
+}
+function openSurvivorWeekDetail(w) {
+  const { st } = survState(S.week);
+  const entering = Object.values(st).filter(s => s.out === null || s.out >= w);
+  const byTeam = {};   // team -> {ids: [...], res}
+  for (const s of entering) {
+    const u = s.used.find(x => x.w === w);
+    if (!u) continue;
+    (byTeam[u.t] ||= { ids: [], res: u.res }).ids.push(s.id);
+  }
+  const opp = {};
+  for (const g of Store.get(P.card(w))?.games || []) {
+    const n = g.neutral;
+    opp[g.away.abbr] = { o: g.home.abbr, where: n ? "vs" : "@" };
+    opp[g.home.abbr] = { o: g.away.abbr, where: "vs" };
+  }
+  const rows = Object.entries(byTeam).sort((a, b) => b[1].ids.length - a[1].ids.length);
+  const won = rows.filter(([, v]) => v.res.st === "final" && v.res.r === "W");
+  const lost = rows.filter(([, v]) => v.res.st !== "final" || v.res.r !== "W");
+  const line = ([t, v]) => {
+    const r = v.res, cls = r.st === "pre" ? "" : r.r === "W" ? "st-W" : r.r === "T" ? "st-T" : "st-L";
+    const word = r.st === "pre" ? "Not started" : `${r.st === "final" ? (r.r === "W" ? "Won" : r.r === "T" ? "Tied" : "Lost") : (r.r === "W" ? "Winning" : r.r === "T" ? "Tied" : "Losing")} ${r.mine}–${r.theirs}`;
+    return `<li><span class="chip ${cls}${r.st === "live" ? " live" : ""}">${esc(t)}</span>
+      <span>${opp[t] ? `${opp[t].where} ${esc(opp[t].o)}` : ""} <small class="note">(${v.ids.length} ${v.ids.length === 1 ? "entry" : "entries"})</small></span>
+      <span class="d">${word}</span></li>`;
+  };
+  const d = $("#entry");
+  d.innerHTML = `<button class="btn close" data-close>Close</button><h2>Week ${w} picks</h2>
+    <p class="sub">${entering.length} entries had a pick to make this week.</p>
+    ${won.length ? `<h2 class="sec">Kept entries alive</h2><ul>${won.map(line).join("")}</ul>` : ""}
+    ${lost.length ? `<h2 class="sec">Cost entries (loss, tie, or still to finish)</h2><ul>${lost.map(line).join("")}</ul>` : ""}`;
+  d.showModal();
 }
 function openSurvivorEntry(id) {
   const W = S.week, { st } = survState(W), s = st[id];
@@ -1376,6 +1411,7 @@ function bind() {
   main.addEventListener("click", e => {
     const t = e.target, c = s => t.closest(s);
     if (c("[data-gsort]")) { S.gameSort = c("[data-gsort]").dataset.gsort; render(); }
+    else if (c("[data-svweekdetail]")) openSurvivorWeekDetail(+c("[data-svweekdetail]").dataset.svweekdetail);
     else if (c("[data-cmpremove]")) { const id = c("[data-cmpremove]").dataset.cmpremove; S.svSel = (S.svSel || []).filter(x => x !== id); render(); }
     else if (c("[data-star]")) { const id = c("[data-star]").dataset.star; S.starred.has(id) ? S.starred.delete(id) : S.starred.add(id); local.set("cb-starred", [...S.starred]); render(); }
     else if (c("[data-entry]")) openEntry(c("[data-entry]").dataset.entry);
