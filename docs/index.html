@@ -157,6 +157,12 @@ dialog { background: var(--panel); color: var(--ink); border: 1px solid var(--ru
 dialog .picks { flex-wrap: wrap; }
 dialog table { min-width: 0; }
 dialog .season td { vertical-align: middle; }
+.teamgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; margin-top: 6px; }
+.teamgrid .tg { display: flex; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 6px; background: var(--panel-2); }
+.teamgrid .tg.used { background: transparent; border: 1px solid var(--rule); }
+.teamgrid .tg .ab { font: 700 13px/1 var(--cond); }
+.teamgrid .tg .wk { font-size: 11px; color: var(--ink-2); margin-left: auto; }
+.teamgrid .tg.st-W { outline: 1px solid var(--cover); } .teamgrid .tg.st-L { outline: 1px solid var(--miss); } .teamgrid .tg.st-T { outline: 1px solid var(--push); }
 dialog::backdrop { background: rgba(10, 16, 24, .6); }
 dialog h2 { font: 700 26px/1.1 var(--cond); margin: 0 0 2px; }
 dialog .sub { color: var(--ink-2); margin: 0 0 14px; }
@@ -1197,10 +1203,30 @@ function renderSvEntries() {
       ${list.map(s => {
         const cur = s.used.find(u => u.w === W);
         const stat = s.alive ? `<span class="up">Alive</span>` : `<span class="down">Out week ${s.out}</span> <small class="note">${esc(s.reason || "")}</small>`;
-        return `<tr><td class="name"><b>${esc(s.id)}</b></td><td>${stat}</td><td>${cur ? survChip(cur) : `<span class="note">—</span>`}</td>
+        return `<tr><td class="name"><button data-sventry="${esc(s.id)}">${esc(s.id)}</button></td><td>${stat}</td><td>${cur ? survChip(cur) : `<span class="note">—</span>`}</td>
           <td><div class="picks">${s.used.map(u => survChip(u, true)).join("")}</div></td><td class="num">${32 - s.used.length}</td></tr>`;
       }).join("")}
     </tbody></table></div>`;
+}
+
+function openSurvivorEntry(id) {
+  const W = S.week, { st } = survState(W), s = st[id];
+  if (!s) return;
+  const used = new Map(s.used.map(u => [u.t, u]));
+  const teams = Object.keys(NICK).sort();
+  const cell = t => {
+    const u = used.get(t);
+    if (!u) return `<div class="tg">${teamBadge(t)}<span class="ab">${t}</span></div>`;
+    const cls = u.res.st === "pre" ? "" : u.res.r === "W" ? "st-W" : u.res.r === "T" ? "st-T" : "st-L";
+    return `<div class="tg used ${cls}">${teamBadge(t)}<span class="ab">${t}</span><span class="wk">Wk${u.w}</span></div>`;
+  };
+  const status = s.alive ? `<span class="up">Alive</span>` : `<span class="down">Eliminated week ${s.out}</span> — ${esc(s.reason || "")}`;
+  const d = $("#entry");
+  d.innerHTML = `<button class="btn close" data-close>Close</button><h2>${esc(id)}</h2>
+    <p class="sub">${status}. ${s.used.length} of 32 teams used, ${32 - s.used.length} still available, through week ${W}.</p>
+    <h2 class="sec" style="margin-top:14px">Teams</h2>
+    <div class="teamgrid">${teams.map(cell).join("")}</div>`;
+  d.showModal();
 }
 
 /* ================= render: scoreboard ================= */
@@ -1273,6 +1299,7 @@ function bind() {
     if (c("[data-gsort]")) { S.gameSort = c("[data-gsort]").dataset.gsort; render(); }
     else if (c("[data-star]")) { const id = c("[data-star]").dataset.star; S.starred.has(id) ? S.starred.delete(id) : S.starred.add(id); local.set("cb-starred", [...S.starred]); render(); }
     else if (c("[data-entry]")) openEntry(c("[data-entry]").dataset.entry);
+    else if (c("[data-sventry]")) openSurvivorEntry(c("[data-sventry]").dataset.sventry);
     else if (c("[data-team]")) openTeam(c("[data-team]").dataset.team);
     else if (c("[data-atssort]")) { const k = c("[data-atssort]").dataset.atssort; S.atsDir = (S.atsSort || "pct") === k ? -(S.atsDir || 1) : (k === "team" ? -1 : 1); S.atsSort = k; render(); }
     else if (c("[data-topn]")) { S.topN = +c("[data-topn]").dataset.topn; local.set("cb-topn", S.topN); render(); }
