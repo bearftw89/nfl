@@ -151,16 +151,15 @@ def scrape_kind(kind):
         S.log(f"! could not read college {kind} listing: {e}")
         return False
     S.log(f"college {kind}: weeks listed {sorted(pdfs)}")
-    ok, latest = True, max(pdfs) if pdfs else None
+    latest = max(pdfs) if pdfs else None
     for week, url in sorted(pdfs.items()):
         if (wk(week) / f"{kind}.json").exists() and week != latest:
             continue
         try:
-            ok &= SAVERS[kind](week, url, fetch_text(kind, week, url))
+            SAVERS[kind](week, url, fetch_text(kind, week, url))
         except Exception as e:
-            S.log(f"! college {kind} week {week}: {e}")
-            ok = False
-    return ok
+            S.log(f"! college {kind} week {week}: {e}")   # keeping old data; retried next run
+    return True
 
 
 def espn_events(dates):
@@ -256,6 +255,6 @@ def run():
             scrape_results(w)
             official_results(w)
         except Exception as e:
-            S.log(f"! college week {w} results: {e}")
+            S.log(f"! college week {w} results: {e}")   # non-fatal; retried next run
     build_manifest()
     return ok

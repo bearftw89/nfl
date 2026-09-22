@@ -36,7 +36,7 @@ OUT = ROOT / "docs" / "data" / str(SEASON)
 RAW = ROOT / "raw" / str(SEASON)          # extracted PDF text, for debugging parsers
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (personal contest tracker)"}
-WEEK_RE = re.compile(r"(?:WEEK|WK)\s*#?\s*(\d{1,2})", re.I)
+WEEK_RE = re.compile(r"(?:WEEK|WK)[\s_]*#?[\s_]*(\d{1,2})", re.I)
 
 # Minimum sizes before we trust a parse enough to overwrite existing data
 MIN = {"card": 8, "picks": 50, "standings": 50}
@@ -131,7 +131,6 @@ def scrape_kind(kind, only_week=None):
         log(f"! could not read {kind} listing: {e}")
         return False
     log(f"{kind}: weeks listed {sorted(pdfs)}")
-    ok = True
     latest = max(pdfs) if pdfs else None
     for week, url in sorted(pdfs.items()):
         if only_week and week != only_week:
@@ -144,7 +143,6 @@ def scrape_kind(kind, only_week=None):
             text = pdf_text(url)
         except Exception as e:
             log(f"! {kind} week {week}: download failed: {e}")
-            ok = False
             continue
         (RAW / f"week-{week}").mkdir(parents=True, exist_ok=True)
         (RAW / f"week-{week}" / f"{kind}.txt").write_text(text)
@@ -152,7 +150,6 @@ def scrape_kind(kind, only_week=None):
         if len(rows) < MIN[kind]:
             log(f"! {kind} week {week}: only {len(rows)} rows parsed; keeping old data. "
                 f"Check raw/{SEASON}/week-{week}/{kind}.txt")
-            ok = False
             continue
         payload = {"week": week, "source": url, "count": len(rows),
                    "fetched": datetime.now(timezone.utc).isoformat(timespec="seconds")}
@@ -165,7 +162,7 @@ def scrape_kind(kind, only_week=None):
                 continue
         write_json(dest, payload)
         log(f"  wrote {dest.relative_to(ROOT)} ({len(rows)} rows)")
-    return ok
+    return True
 
 
 def scrape_results(week):

@@ -168,8 +168,8 @@ def run():
                 if (cfg["out"] / f"week-{week}" / f"{kind}.json").exists() and week != latest:
                     continue
                 try:
-                    ok &= SAVERS[name][kind](cfg["out"], week, purl, S.get(purl).content)
+                    SAVERS[name][kind](cfg["out"], week, purl, S.get(purl).content)
                 except Exception as e:
-                    S.log(f"! {name} {kind} week {week}: {e}"); ok = False
+                    S.log(f"! {name} {kind} week {week}: {e}")   # keeping old data; retried next run
         build_manifest(name)
     return ok

@@ -1014,8 +1014,13 @@ function renderData() {
   const el = $("#data"), m = Store.manifest.weeks || {}, ws = Object.keys(m).map(Number).sort((a, b) => a - b);
   const sc = Store.get(P.scores(S.week));
   const pairing = isCollege() && sc ? `<p class="note">Week ${S.week}: ${Object.keys(sc.games || {}).length} of ${(Store.get(P.card(S.week))?.games || []).length} games found on ESPN${sc.unpaired ? ` (${sc.unpaired} not found; results for those come from the official standings once posted)` : ""}.</p>` : "";
+  const issues = (STATUS?.lines || []).filter(l => l.startsWith("!"));
+  const notes = (STATUS?.lines || []).filter(l => !l.startsWith("!"));
+  const box = (title, lines, warn) => !lines.length ? "" : `<h2 class="sec" style="margin:${warn ? "0" : "18px"} 0 6px">${title}</h2>
+    <div class="table-wrap" style="padding:10px 14px;font:12px/1.6 ui-monospace,Menlo,monospace;white-space:pre-wrap;${warn ? "border-left:3px solid var(--miss)" : "color:var(--ink-2)"}">${lines.map(esc).join("\n")}</div>`;
   const status = STATUS ? `<div class="have"><h2>Last updater run</h2><p class="note">${new Date(STATUS.updated).toLocaleString()}</p>
-    <div class="table-wrap" style="padding:10px 14px;font:12px/1.6 ui-monospace,Menlo,monospace;white-space:pre-wrap">${STATUS.lines.length ? STATUS.lines.map(esc).join("\n") : "Nothing new: no new files and no problems."}</div></div>` : "";
+    ${issues.length ? box("Needs a look", issues, true) : `<p class="note">No problems reported.</p>`}
+    ${box("Notes", notes, false)}</div>` : "";
   const yes = (v, t) => v ? `<span class="up">${t || "Yes"}</span>` : `<span class="note">—</span>`;
   el.innerHTML = `
     <div class="how" style="margin-top:0"><h2>${LEAGUE_NAME[S.league]}: where the data comes from</h2>
