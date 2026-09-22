@@ -178,6 +178,8 @@ def scrape_results(week):
             return
     try:
         data = espn_get(ESPN.format(week=week, season=SEASON)).json()
+    except Blocked:
+        return                            # already noted once this run; the browser handles scores
     except Exception as e:
         log(f"! ESPN week {week}: {e}")
         return
