@@ -40,6 +40,14 @@ The **Survivor** button opens its own section (`docs/data/2026/survivor/`):
 
 Rules applied: pick one team to win straight up (no spread); a loss, a tie or a missed pick eliminates; each team once. Scores are the same NFL games as the main contest. Weeks 1–2 were checked against Westgate's "teams previously used" sheet: the same 89 survivors after Week 1, each with the same team used.
 
+## Circa Million (ATS)
+
+In the NFL sub-switch: **SuperContest | Gold | Circa Million**. Circa Million is a season-long ATS contest at circasports.com — 5 picks/week against Circa's own point spreads (cover 1, push ½, loss 0). Each pick carries its own line in the selections PDF, so grading needs no separate card. Data lives under `docs/data/2026/circa-millio/`.
+
+- Its own two tabs: **Consensus** (most-picked teams this week with Circa's line and result) and **Standings** (official when Circa posts them, otherwise live week points; 200 shown at a time with Show all / search).
+- Updater discovers the weekly PDFs from circasports.com/circa-million; `raw/circa/` is the fallback.
+- Verified: all 2,597 Week 1 entries reconcile exactly with Circa's official Week 1 standings, and both weeks' picks match Circa's count tables.
+
 ## Circa Survivor
 
 The Survivor tab has a **Westgate | Circa** sub-switch. Circa Survivor is a separate, much larger pool (~25,000 entries) hosted at circasports.com. Rules are the same shape as Westgate: one team per week to win straight up, each team once, and a loss OR A TIE eliminates (Circa rule: a tie is graded a loss). Data lives under `docs/data/2026/circa-survivor/`.

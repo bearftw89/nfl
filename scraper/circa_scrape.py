@@ -128,7 +128,35 @@ def save_survivor_used(week, src):
     return True
 
 
-SAVERS = {("survivor", "picks"): save_survivor_picks, ("survivor", "used"): save_survivor_used}
+def save_millio_picks(week, src):
+    entries, table = C.parse_million_selections(_text(_bytes(src)))
+    got = Counter(p["abbr"] for e in entries for p in e["picks"])
+    if len(entries) < 50 or (table and got != Counter(table)):
+        S.log(f"! circa millio picks week {week}: {len(entries)} entries fail the count-table check; keeping old data")
+        return False
+    out = OUT["millio"] / f"week-{week}"
+    old = load(out / "picks.json")
+    if not old or old.get("entries") != entries:
+        S.write_json(out / "picks.json", {"week": week, "source": str(src), "count": len(entries), "entries": entries})
+        S.log(f"  circa millio picks week {week}: {len(entries)} entries")
+    return True
+
+
+def save_millio_standings(week, src):
+    rows = C.parse_million_standings(_text(_bytes(src)))
+    if len(rows) < 50:
+        S.log(f"! circa millio standings week {week}: only {len(rows)} rows; keeping old data")
+        return False
+    out = OUT["millio"] / f"week-{week}"
+    old = load(out / "standings.json")
+    if not old or old.get("rows") != rows:
+        S.write_json(out / "standings.json", {"week": week, "source": str(src), "count": len(rows), "rows": rows})
+        S.log(f"  circa millio standings week {week}: {len(rows)} rows")
+    return True
+
+
+SAVERS = {("survivor", "picks"): save_survivor_picks, ("survivor", "used"): save_survivor_used,
+          ("millio", "picks"): save_millio_picks, ("millio", "standings"): save_millio_standings}
 
 
 def build_manifest(contest):
@@ -153,7 +181,7 @@ def run():
     for (contest, kind, week), src in sorted(found.items()):
         saver = SAVERS.get((contest, kind))
         if not saver:
-            continue                                     # millio saved in a later build
+            continue
         latest = max((w for (cc, kk, w) in found if cc == contest and kk == kind), default=week)
         if (OUT[contest] / f"week-{week}" / f"{kind}.json").exists() and week != latest:
             continue

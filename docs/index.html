@@ -243,7 +243,7 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
       <button data-league="nfl-group">NFL</button><button data-league="ncaaf">NCAAF</button><button data-league="survivor-group">Survivor</button>
     </div>
     <div class="league sub" id="nflsub" role="group" aria-label="NFL contest">
-      <button data-league="nfl">SuperContest</button><button data-league="gold">Gold</button>
+      <button data-league="nfl">SuperContest</button><button data-league="gold">Gold</button><button data-league="circa-millio">Circa Million</button>
     </div>
     <div class="league sub" id="survsub" role="group" aria-label="Survivor contest">
       <button data-league="survivor">Westgate</button><button data-league="circa-survivor">Circa</button>
@@ -262,6 +262,8 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
     <button role="tab" data-tab="sventries" aria-selected="false">Entries</button>
     <button role="tab" data-tab="svcompare" aria-selected="false">Compare</button>
     <button role="tab" data-tab="svtrends" aria-selected="false">Trends</button>
+    <button role="tab" data-tab="mconsensus" aria-selected="false">Consensus</button>
+    <button role="tab" data-tab="mstandings" aria-selected="false">Standings</button>
     <button role="tab" data-tab="data" aria-selected="false">Data</button>
   </nav>
   <nav class="weekbar" id="weekbar" aria-label="Week"></nav>
@@ -277,6 +279,8 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
   <section id="sventries" class="view" hidden></section>
   <section id="svcompare" class="view" hidden></section>
   <section id="svtrends" class="view" hidden></section>
+  <section id="mconsensus" class="view" hidden></section>
+  <section id="mstandings" class="view" hidden></section>
   <section id="data" class="view" hidden></section>
 </main>
 <dialog id="entry"></dialog>
@@ -303,8 +307,10 @@ const fixAbbr = a => ABBR_FIX[a] || a;
 const LABELS = {};
 const isCollege = () => S.league === "ncaaf";
 const isSurvivor = () => S.league === "survivor" || S.league === "circa-survivor";
-const LEAGUES = ["nfl", "gold", "ncaaf", "survivor", "circa-survivor"];
-const LEAGUE_NAME = { nfl: "SuperContest (NFL)", gold: "SuperContest Gold (NFL)", ncaaf: "SuperContest College", survivor: "Westgate SuperContest Survivor", "circa-survivor": "Circa Survivor" };
+const isMillio = () => S.league === "circa-millio";
+const nflFamilyLeague = lg => lg === "nfl" || lg === "gold" || lg === "circa-millio";
+const LEAGUES = ["nfl", "gold", "ncaaf", "survivor", "circa-survivor", "circa-millio"];
+const LEAGUE_NAME = { nfl: "SuperContest (NFL)", gold: "SuperContest Gold (NFL)", ncaaf: "SuperContest College", survivor: "Westgate SuperContest Survivor", "circa-survivor": "Circa Survivor", "circa-millio": "Circa Million (ATS)" };
 const lbl = ab => isCollege() ? (LABELS[ab] || ab) : ab;
 const titleCase = s => s.toLowerCase().replace(/(^|[\s-])([a-z])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Lsu|Ucla|Usc|Tcu|Smu|Byu|Utep|Utsa|Uab|Unlv|Ucf|Ul|Nc)\b/g, m => m.toUpperCase());
 const squash = x => x.replace(/[^A-Z0-9]/g, "");
@@ -474,7 +480,7 @@ async function loadCollegeScores(w, m, base, official, manual) {
 }
 const Store = {
   mode: "static", season: 2026, manifest: { weeks: {} },
-  base() { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/", "circa-survivor": "circa-survivor/" }[S.league] || ""}`; },
+  base() { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/", "circa-survivor": "circa-survivor/", "circa-millio": "circa-millio/" }[S.league] || ""}`; },
   async reset() {
     this.cache.clear(); this.subs.clear(); this.pending.clear();
     for (const k of Object.keys(LABELS)) delete LABELS[k];
@@ -1062,6 +1068,7 @@ function renderData() {
     <div class="how" style="margin-top:0"><h2>${LEAGUE_NAME[S.league]}: where the data comes from</h2>
       ${isSurvivor() ? `<p>${S.league === "circa-survivor" ? "Circa Survivor" : "Westgate SuperContest Survivor"}: one team per week to win straight up (no spread). A loss or a tie eliminates the entry, each team can be used once, and an entry without a pick is eliminated. Scores come live from ESPN.${S.league === "circa-survivor" ? " Circa's field is large, so the Entries tab shows 200 at a time — search or Show all to see more." : ""}</p>` : ""}
       ${S.league === "gold" ? `<p>Gold uses the same weekly game sheet and lines as the main SuperContest, with its own entries, picks and standings.</p>` : ""}
+      ${isMillio() ? `<p>Circa Million is a season-long ATS contest at circasports.com: 5 picks per week against Circa's own point spreads (cover 1, push ½, loss 0). Each pick carries its line, so grading needs no separate card. The field is large, so Standings show 200 at a time — search or Show all. Scores come live from ESPN.</p>` : ""}
       ${isCollege() ? `<p>College picks are 7 per entry against the contest line, weeks 1–14. Westgate's short team names on the selections sheet are matched to the game sheet, and each week's picks are checked against Westgate's own team-count table. Once official standings are posted, the covers they imply are saved and used for any game the live score feed couldn't match.</p>` : ""}
       <p>The updater (a scheduled GitHub Action) checks the Westgate SuperContest pages every 15 minutes and saves each week's game sheet, selections and standings. Scores come live from ESPN while you have this page open: every 30 seconds during games, every 5 minutes otherwise.</p>
       <p>Forfeits or grading corrections: add <code>docs/data/${Store.season}/week-N/overrides.json</code> with, for example, <code>{"results": {"NYJ": "W", "GB": "L"}}</code> (W, L, P or C). Overrides beat the score feed.</p></div>
@@ -1082,8 +1089,9 @@ let raf = 0;
 function render() {
   cancelAnimationFrame(raf);
   raf = requestAnimationFrame(() => {
-    const ALL = ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "data"];
-    const shown = isSurvivor() ? ["svweek", "sventries", "svcompare", "svtrends", "data"]
+    const ALL = ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "mconsensus", "mstandings", "data"];
+    const shown = isMillio() ? ["mconsensus", "mstandings", "data"]
+      : isSurvivor() ? ["svweek", "sventries", "svcompare", "svtrends", "data"]
       : isCollege() ? ["games", "standings", "teams", "ats", "top", "data"]            // scoreboard: NFL only for now
       : ["board", "games", "standings", "teams", "ats", "top", "data"];
     document.querySelectorAll(".tabs button").forEach(b => b.hidden = !shown.includes(b.dataset.tab));
@@ -1091,7 +1099,8 @@ function render() {
     for (const t of ALL) $("#" + t).hidden = S.tab !== t;
     document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === S.tab));
     const focus = document.activeElement?.id === "q" ? $("#q").selectionStart : null;
-    if (S.tab === "svweek") renderSvWeek(); else if (S.tab === "sventries") renderSvEntries();
+    if (S.tab === "mconsensus") renderMConsensus(); else if (S.tab === "mstandings") renderMStandings();
+    else if (S.tab === "svweek") renderSvWeek(); else if (S.tab === "sventries") renderSvEntries();
     else if (S.tab === "svcompare") renderSvCompare(); else if (S.tab === "svtrends") renderSvTrends();
     else if (S.tab === "board") renderBoard(); else if (S.tab === "games") renderGames(); else if (S.tab === "standings") renderStandings();
     else if (S.tab === "teams") renderTeams(); else if (S.tab === "ats") renderAts();
@@ -1115,7 +1124,7 @@ function onIndex() {
   render();
 }
 function markLeague() {
-  const nflFamily = S.league === "nfl" || S.league === "gold";
+  const nflFamily = S.league === "nfl" || S.league === "gold" || S.league === "circa-millio";
   const survFamily = isSurvivor();
   document.querySelectorAll("[data-league]").forEach(b => b.setAttribute("aria-pressed",
     b.dataset.league === "nfl-group" ? nflFamily : b.dataset.league === "survivor-group" ? survFamily : b.dataset.league === S.league));
@@ -1124,25 +1133,25 @@ function markLeague() {
   document.getElementById("foot").textContent = isSurvivor()
     ? `Picks and teams used: ${S.league === "circa-survivor" ? "Circa Survivor" : "Westgate SuperContest Survivor"} PDFs. Scores: ESPN. Straight-up winners only; a loss, a tie or a missed pick eliminates. Unofficial.`
     : "Lines, picks and official standings: Westgate SuperContest PDFs. Scores: ESPN. Graded against the static Westgate line: cover 1, push ½, loss 0; rule 22 postponements ½. Live standings are unofficial until Westgate posts them.";
-  document.title = `Contest Board: ${{ nfl: "NFL", gold: "NFL Gold", ncaaf: "NCAAF", survivor: "Survivor", "circa-survivor": "Circa Survivor" }[S.league]}`;
+  document.title = `Contest Board: ${{ nfl: "NFL", gold: "NFL Gold", ncaaf: "NCAAF", survivor: "Survivor", "circa-survivor": "Circa Survivor", "circa-millio": "Circa Million" }[S.league]}`;
 }
 async function switchLeague(lg) {
   S.svShowAll = false;
   if (lg === "nfl-group") {                       // the NFL button returns to whichever NFL contest was last open
-    if (S.league === "nfl" || S.league === "gold") return;
-    lg = local.get("cb-nflsub", "nfl") === "gold" ? "gold" : "nfl";
+    if (nflFamilyLeague(S.league)) return;
+    lg = ["nfl", "gold", "circa-millio"].includes(local.get("cb-nflsub", "nfl")) ? local.get("cb-nflsub", "nfl") : "nfl";
   }
   if (lg === "survivor-group") {                  // same idea for the Survivor family
     if (isSurvivor()) return;
     lg = local.get("cb-survsub", "survivor") === "circa-survivor" ? "circa-survivor" : "survivor";
   }
   if (lg === S.league) return;
-  if (lg === "nfl" || lg === "gold") local.set("cb-nflsub", lg);
+  if (nflFamilyLeague(lg)) local.set("cb-nflsub", lg);
   if (lg === "survivor" || lg === "circa-survivor") local.set("cb-survsub", lg);
   S.league = lg; local.set("cb-league", lg); markLeague();
   history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
   S.week = null; S.shown = 150; S.q = "";
-  ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
+  ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "mconsensus", "mstandings"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
   await Store.reset();
   Store.watch(P.index, onIndex);
   setTimeout(scheduleRefresh, 1500);
@@ -1157,6 +1166,81 @@ function renderWeekbar(ws) {
   const cur = bar.querySelector('[aria-current="true"]');
   if (cur) bar.scrollLeft = Math.max(0, cur.offsetLeft - bar.clientWidth / 2);
 }
+/* ================= render: circa million (ATS) ================= */
+// Grade one {abbr, line} pick against the shared NFL scores for week w.
+function millioGrade(w, pk) {
+  const g = scoresMap(w)[pk.abbr];
+  if (!g || g.home_score == null || g.state === "pre") return { res: null };
+  const mine = g.home === pk.abbr ? g.home_score : g.away_score;
+  const theirs = g.home === pk.abbr ? g.away_score : g.home_score;
+  const adj = mine + pk.line - theirs;
+  return { res: adj > 0 ? "W" : adj < 0 ? "L" : "P", final: g.state === "post", live: g.state === "in", mine, theirs };
+}
+function millioChip(w, pk) {
+  const r = millioGrade(w, pk), cls = !r.res ? "" : r.res === "W" ? "st-W" : r.res === "P" ? "st-P" : "st-L";
+  const line = pk.line === 0 ? "PK" : (pk.line > 0 ? "+" : "") + pk.line;
+  const t = !r.res ? "not started" : `${r.final ? "" : "live "}${r.mine}–${r.theirs}`;
+  return `<span class="chip ${cls}${r.live ? " live" : ""}" title="${esc(pk.abbr)} ${line}: ${t}">${esc(pk.abbr)} ${line}</span>`;
+}
+function renderMConsensus() {
+  const el = $("#mconsensus"), W = S.week;
+  if (!seasonReady(["picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const picks = Store.get(P.picks(W))?.entries;
+  if (!picks) { el.innerHTML = `<div class="empty"><b>No Circa Million picks for week ${W} yet.</b></div>`; return; }
+  // tally by team; keep the most common line for that team as the display line
+  const tally = {};
+  for (const e of picks) for (const pk of e.picks) {
+    const t = (tally[pk.abbr] ||= { n: 0, lines: {} });
+    t.n++; t.lines[pk.line] = (t.lines[pk.line] || 0) + 1;
+  }
+  const rows = Object.entries(tally).sort((a, b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
+  const maxN = rows.length ? rows[0][1].n : 1;
+  const status = (t, line) => { const r = millioGrade(W, { abbr: t, line: +line }); return !r.res ? `<span class="chip">Not started</span>`
+    : `<span class="chip ${r.res === "W" ? "st-W" : r.res === "P" ? "st-P" : "st-L"}${r.live ? " live" : ""}">${r.final ? (r.res === "W" ? "Cover" : r.res === "P" ? "Push" : "No cover") : "Live"} ${r.mine}–${r.theirs}</span>`; };
+  el.innerHTML = `<p class="note"><b>${picks.length}</b> entries, ${picks.length * 5} picks. Most-picked teams this week, with Circa's line.</p>
+    <div class="table-wrap"><table style="min-width:560px"><thead><tr><th>Team</th><th>Line</th><th style="width:34%">Picked by</th><th class="num">Entries</th><th>Result</th></tr></thead><tbody>
+    ${rows.map(([t, v]) => { const line = Object.entries(v.lines).sort((a, b) => b[1] - a[1])[0][0];
+      return `<tr><td class="name">${teamBadge(t)} <b style="margin-left:6px">${esc(t)}</b> <small class="note">${esc(NICK[t] || "")}</small></td>
+        <td class="rec">${(+line) === 0 ? "PK" : ((+line) > 0 ? "+" : "") + line}</td>
+        <td><div style="display:flex;align-items:center;gap:8px"><b style="font:700 16px var(--cond);min-width:44px">${v.n}</b>
+          <div style="flex:1;height:9px;border-radius:5px;background:var(--panel-2)"><div style="height:100%;width:${v.n / maxN * 100}%;border-radius:5px;background:var(--ink-2)"></div></div></div></td>
+        <td class="num">${Math.round(v.n / picks.length * 100)}%</td><td>${status(t, line)}</td></tr>`; }).join("")}
+    </tbody></table></div>`;
+}
+function renderMStandings() {
+  const el = $("#mstandings"), W = S.week;
+  if (!seasonReady(["picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const official = Store.get(P.standings(W))?.rows;
+  const picks = Store.get(P.picks(W))?.entries || [];
+  const byId = Object.fromEntries(picks.map(e => [e.id, e.picks]));
+  // Use official standings when posted; otherwise grade this week live and show week points only.
+  let rows, live = false, note;
+  if (official) {
+    rows = official.map(r => ({ id: r.id, w: r.w, l: r.l, t: r.t, pts: r.pts, place: r.place }));
+    note = `Official Circa standings after week ${W}.`;
+  } else {
+    live = true;
+    rows = picks.map(e => {
+      let w = 0, l = 0, t = 0;
+      for (const pk of e.picks) { const g = millioGrade(W, pk); if (g.res === "W") w++; else if (g.res === "L") l++; else if (g.res === "P") t++; }
+      return { id: e.id, w, l, t, pts: w + t * 0.5 };
+    }).sort((a, b) => b.pts - a.pts || a.id.localeCompare(b.id));
+    rows.forEach((r, i) => r.place = i + 1);
+    note = `Week ${W} live points (Circa hasn't posted official standings yet).`;
+  }
+  const q = S.q.trim().toUpperCase();
+  const full = q ? rows.filter(r => r.id.includes(q)) : rows;
+  const cap = S.svShowAll ? full.length : 200;
+  const list = full.slice(0, cap);
+  el.innerHTML = `<div class="tools"><input type="search" id="q" placeholder="Find an entry" value="${esc(S.q)}" aria-label="Find an entry"></div>
+    <p class="note">${esc(note)} ${full.length > list.length ? `Showing ${list.length} of ${full.length}. <button class="pill" id="svShowAll">Show all</button>` : `${full.length} ${full.length === 1 ? "entry" : "entries"}.`}</p>
+    <div class="table-wrap"><table style="min-width:640px"><thead><tr><th>Place</th><th>Entry</th><th>${live ? "Week " + W : "Season"} record</th><th class="num">${live ? "Wk pts" : "Points"}</th><th>Week ${W} picks</th></tr></thead><tbody>
+    ${list.map(r => `<tr><td class="place">${r.place}</td><td class="name">${esc(r.id)}</td>
+      <td class="rec">${r.w}-${r.l}-${r.t}</td><td class="num">${fmtPts(r.pts)}</td>
+      <td>${byId[r.id] ? `<div class="picks">${byId[r.id].map(pk => millioChip(W, pk)).join("")}</div>` : `<span class="note">—</span>`}</td></tr>`).join("")}
+    </tbody></table></div>`;
+}
+
 /* ================= render: survivor ================= */
 // Straight-up result for a picked team in week w, from the same NFL scores as the main contest.
 function survResult(w, t) {
