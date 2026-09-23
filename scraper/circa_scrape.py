@@ -65,6 +65,19 @@ def classify(fname):
     return None
 
 
+_CONTENT_WEEK = re.compile(r"(?:AFTER|THROUGH)\s+WEEK\s+(\d{1,2})", re.I)
+
+
+def content_week(text):
+    """The real week a standings/availability PDF covers, read from its own header text.
+    Circa's page links these by their EVENTUAL target week (e.g. "1st Quarter, After Week 4"),
+    but the file behind that link is updated in place as the season goes — so the filename's
+    week number is not trustworthy once the season is underway; what the document itself says
+    ("Full Season Standings After Week 2") is."""
+    m = _CONTENT_WEEK.search(text)
+    return int(m.group(1)) if m else None
+
+
 def week_of(fname):
     # "...Week-2-Selections", "...After-Week-1", "...Contest-Point-Spreads-Week-2"
     m = re.search(r"WEEK[\s_-]*#?(\d{1,2})", fname, re.I)
@@ -136,7 +149,15 @@ def save_survivor_picks(week, src):
 
 
 def save_survivor_used(week, src):
-    with pdfplumber.open(io.BytesIO(_bytes(src))) as pdf:
+    data = _bytes(src)
+    with pdfplumber.open(io.BytesIO(data)) as pdf:
+        real_week = content_week(pdf.pages[0].extract_text() or "") or week
+        if real_week != week:
+            S.log(f"  circa survivor availability: link named 'week {week}' actually contains week {real_week} data; using week {real_week}")
+        week = real_week
+        if not sane_week(week, current_nfl_week()):
+            S.log(f"! circa survivor availability week {week}: skipped (beyond the current week; still a placeholder)")
+            return False
         used = C.parse_survivor_availability(pdf)
     if len(used) < 100:
         S.log(f"! circa survivor availability week {week}: only {len(used)} rows; keeping old data")
@@ -164,7 +185,15 @@ def save_millio_picks(week, src):
 
 
 def save_millio_standings(week, src):
-    rows = C.parse_million_standings(_text(_bytes(src)))
+    text = _text(_bytes(src))
+    real_week = content_week(text) or week
+    if real_week != week:
+        S.log(f"  circa millio standings: link named 'week {week}' actually contains week {real_week} data (Circa updates this file in place); using week {real_week}")
+    week = real_week
+    if not sane_week(week, current_nfl_week()):
+        S.log(f"! circa millio standings week {week}: skipped (beyond the current week; still a placeholder)")
+        return False
+    rows = C.parse_million_standings(text)
     if len(rows) < 50:
         S.log(f"! circa millio standings week {week}: only {len(rows)} rows; keeping old data")
         return False
@@ -203,6 +232,14 @@ def prune_future(current):
                 S.log(f"  circa {contest}: removed week {week} (beyond week {current + 1}; a stale/placeholder file, not real data)")
 
 
+# Circa's site links these two by their EVENTUAL target week (a quarter-end or "through" label
+# chosen once, at creation), but the file behind the link is updated in place as the season
+# progresses — so unlike the weekly selection sheets (confirmed one distinct URL per week), the
+# filename's week number can't be trusted here at all. These are always re-fetched and re-parsed
+# every run; the saver itself works out the real week from the document's own text.
+EVOLVING = {("millio", "standings"), ("survivor", "used")}
+
+
 def run():
     for c in OUT.values():
         c.mkdir(parents=True, exist_ok=True)
@@ -213,18 +250,19 @@ def run():
         found.setdefault(k, v)                          # discovery wins; fallback fills gaps
     if not found:
         S.log("! circa: no PDFs found by discovery or fallback (raw/circa/)")
-    skipped = [(c, k, w) for (c, k, w) in found if not sane_week(w, current)]
+    skipped = [(c, k, w) for (c, k, w) in found if (c, k) not in EVOLVING and not sane_week(w, current)]
     for c, k, w in skipped:
-        S.log(f"! circa {c} {k} week {w}: skipped (beyond week {current + 1}; likely a future-quarter placeholder link, not this week's real data)")
+        S.log(f"! circa {c} {k} week {w}: skipped (beyond week {current + 1}; likely a future-week placeholder link, not this week's real data)")
         del found[(c, k, w)]
     ok = True
     for (contest, kind, week), src in sorted(found.items()):
         saver = SAVERS.get((contest, kind))
         if not saver:
             continue
-        latest = max((w for (cc, kk, w) in found if cc == contest and kk == kind), default=week)
-        if (OUT[contest] / f"week-{week}" / f"{kind}.json").exists() and week != latest:
-            continue
+        if (contest, kind) not in EVOLVING:
+            latest = max((w for (cc, kk, w) in found if cc == contest and kk == kind), default=week)
+            if (OUT[contest] / f"week-{week}" / f"{kind}.json").exists() and week != latest:
+                continue
         try:
             ok &= saver(week, src)
         except Exception as e:
