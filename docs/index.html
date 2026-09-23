@@ -43,10 +43,15 @@ button, select, input, textarea { font: inherit; color: inherit; }
 .brand { margin: 0; font: 700 26px/1 var(--cond); }
 .league { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
 .league button { background: var(--panel); border: 0; padding: 6px 12px; font: 600 16px/1 var(--cond); cursor: pointer; color: var(--ink-2); }
-.league button[aria-pressed="true"] { background: var(--ink); color: var(--board); }
+.league button[aria-pressed="true"] { background: var(--push); color: #1B2430; }
 .league[hidden] { display: none; }
-.league.sub button { font-size: 14px; padding: 5px 10px; }
-.league.sub button[aria-pressed="true"] { background: var(--push); color: #1B2430; }
+.top-inner { align-items: flex-start; }
+.leaguenav { display: flex; flex-direction: column; gap: 6px; }
+.league.sub { border: 0; border-radius: 0; border-top: 1px solid var(--rule); gap: 18px; padding-top: 2px; overflow-x: auto; }
+.league.sub button { background: none; font: 500 15px/1 var(--cond); padding: 6px 2px; color: var(--ink-2); border-bottom: 2px solid transparent; }
+.league.sub button:hover { color: var(--ink); }
+.league.sub button[aria-pressed="true"] { background: none; color: var(--ink); border-bottom-color: var(--push); }
+.league button:focus-visible { outline: 2px solid var(--push); outline-offset: 2px; }
 select.week { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 10px; font: 600 18px/1 var(--cond); cursor: pointer; }
 .status { margin-left: auto; color: var(--ink-2); font-size: 13px; display: flex; align-items: center; gap: 8px; }
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--idle); flex: none; }
@@ -239,14 +244,16 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
 <header class="top">
   <div class="top-inner">
     <h1 class="brand">Contest Board</h1>
-    <div class="league" role="group" aria-label="Contest">
-      <button data-league="nfl-group">NFL</button><button data-league="ncaaf">NCAAF</button><button data-league="survivor-group">Survivor</button>
-    </div>
-    <div class="league sub" id="nflsub" role="group" aria-label="NFL contest">
-      <button data-league="nfl">SuperContest</button><button data-league="gold">Gold</button><button data-league="circa-millio">Circa Million</button>
-    </div>
-    <div class="league sub" id="survsub" role="group" aria-label="Survivor contest">
-      <button data-league="survivor">Westgate</button><button data-league="circa-survivor">Circa</button><button data-league="circa-grandissimo">Grandissimo</button>
+    <div class="leaguenav">
+      <div class="league" role="group" aria-label="Contest">
+        <button data-league="nfl-group">NFL</button><button data-league="ncaaf">NCAAF</button><button data-league="survivor-group">Survivor</button>
+      </div>
+      <div class="league sub" id="nflsub" role="group" aria-label="NFL contest">
+        <button data-league="nfl">SuperContest</button><button data-league="gold">Gold</button><button data-league="circa-millio">Circa Million</button>
+      </div>
+      <div class="league sub" id="survsub" role="group" aria-label="Survivor contest">
+        <button data-league="survivor">Westgate</button><button data-league="circa-survivor">Circa</button><button data-league="circa-grandissimo">Grandissimo</button>
+      </div>
     </div>
     <label><span class="sr">Week</span><select class="week" id="week"></select></label>
     <div class="status" id="status" aria-live="polite"></div>
