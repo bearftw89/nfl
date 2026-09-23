@@ -1283,19 +1283,28 @@ function renderMGames() {
   if (!g || !picks) { el.innerHTML = `<div class="empty"><b>Building this week's games…</b></div>`; return; }
   const n = picks.length;
   el.innerHTML = `<p class="note"><b>${n}</b> entries, ${n * 5} picks against Circa's own lines.</p>
-    <div class="board">${g.card.map(gm => {
-      const cA = picks.filter(e => e.picks.some(pk => pk.abbr === gm.fav.abbr)).length;
-      const cD = picks.filter(e => e.picks.some(pk => pk.abbr === gm.dog.abbr)).length;
-      const tot = cA + cD || 1;
+    <div class="games">${g.card.map(gm => {
+      const cnt = { [gm.fav.abbr]: picks.filter(e => e.picks.some(pk => pk.abbr === gm.fav.abbr)).length,
+                    [gm.dog.abbr]: picks.filter(e => e.picks.some(pk => pk.abbr === gm.dog.abbr)).length };
+      const tot = cnt[gm.fav.abbr] + cnt[gm.dog.abbr];
       const fg = grade(gm.fav.abbr, g.card, g.scores, g.ov);
-      const chip = s => `<span class="team">${esc(s.abbr)}<small>${NICK[s.abbr] || ""}${s.home ? " (home)" : ""}</small></span>`;
-      return `<article class="bgame">
-        <div class="brow"><div style="flex:1;display:flex;justify-content:space-between;align-items:center">${chip(gm.fav)}<b>${fmtLine(gm.fav.line)}</b></div></div>
-        <div style="height:10px;border-radius:5px;overflow:hidden;display:flex;margin:6px 0;background:var(--panel-2)">
-          <div style="width:${cA / tot * 100}%;background:var(--cover)"></div><div style="width:${cD / tot * 100}%;background:var(--miss)"></div></div>
-        <div class="brow"><div style="flex:1;display:flex;justify-content:space-between;align-items:center">${chip(gm.dog)}<b>${fmtLine(gm.dog.line)}</b></div></div>
-        <div class="bwin"><span>${cA} ${esc(gm.fav.abbr)} / ${cD} ${esc(gm.dog.abbr)} picks</span>
-        ${!fg.res ? `<span class="note">Not started</span>` : `<span class="chip ${fg.res === "W" ? "st-W" : fg.res === "P" ? "st-P" : "st-L"}${fg.final ? "" : " live"}">${fg.final ? "Final" : "Live"}</span>`}</div>
+      const sides = [gm.fav, gm.dog].sort((a, b) => a.home - b.home);   // away first, home second
+      const sg = g.scores[gm.fav.abbr];
+      const row = s => { const gr = grade(s.abbr, g.card, g.scores, g.ov);
+        const sc = sg && sg.state !== "pre" && sg.home_score != null ? (sg.home === s.abbr ? sg.home_score : sg.away_score) : "";
+        return `<div class="side ${gr.res ? "st-" + gr.res : ""}"><span class="team">${esc(s.abbr)}<small>${NICK[s.abbr] || ""}${s.home ? " (home)" : ""}</small></span>
+          <span class="line">${fmtLine(s.line)}</span><span class="score">${sc}</span></div>`; };
+      const seg = s => { const gr = grade(s.abbr, g.card, g.scores, g.ov), share = tot ? cnt[s.abbr] / tot : .5, sp = Math.round(share * 100);
+        const label = !tot ? esc(s.abbr) : share >= .24 ? `${esc(s.abbr)} ${sp}%` : share >= .12 ? `${sp}%` : "";
+        return `<div class="${gr.res ? "st-" + gr.res : ""}" style="flex:${tot ? Math.max(share, .03) : .5}" title="${esc(s.abbr)}: ${cnt[s.abbr]} entries${n ? ` (${Math.round(cnt[s.abbr] / n * 100)}% of field)` : ""}">${label}</div>`; };
+      const pl = x => `${x} ${x === 1 ? "pick" : "picks"}`;
+      const meta = !sg ? esc(kickoffLabel(null, gm)) : sg.state === "in" ? `<span class="live">${esc(sg.detail || "In progress")}</span>`
+        : sg.state === "post" ? esc(sg.detail || "Final") : esc(kickoffLabel(sg, gm));
+      return `<article class="game">
+        <div class="game-meta"><span>${gm.site ? "Neutral site" : ""}</span><span>${meta}</span></div>
+        ${row(sides[0])}${row(sides[1])}
+        <div class="split" role="img" aria-label="${sides.map(s => `${esc(s.abbr)} ${cnt[s.abbr]} picks`).join(", ")}">${seg(sides[0])}${seg(sides[1])}</div>
+        <div class="counts"><span>${pl(cnt[sides[0].abbr])}</span><span>${n ? Math.round(tot / n * 100) : 0}% of entries played this game</span><span>${pl(cnt[sides[1].abbr])}</span></div>
       </article>`;
     }).join("")}</div>`;
 }
