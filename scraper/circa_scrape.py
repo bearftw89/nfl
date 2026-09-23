@@ -12,6 +12,7 @@ raw/circa/ is used as a fallback.
 Scores come from ESPN in the browser, same as every other contest.
 """
 import io
+import json
 import re
 from collections import Counter
 from pathlib import Path
@@ -35,6 +36,26 @@ SIGN = [
     (re.compile(r"MILLION.*SELECTION", re.I), ("millio", "picks")),
 ]
 OUT = {"survivor": DATA / "circa-survivor", "millio": DATA / "circa-millio"}
+
+
+def current_nfl_week():
+    """How far the season has actually gotten, from the main Westgate NFL manifest (its own
+    updater only ever posts a week once real data exists for it, so this is a trustworthy
+    ceiling). Falls back to 18 if that manifest isn't there yet."""
+    mp = DATA / "manifest.json"
+    m = json.loads(mp.read_text()) if mp.exists() else None
+    if not m:
+        return 18
+    weeks = [int(w) for w, v in m.get("weeks", {}).items() if v.get("picks") or v.get("card")]
+    return max(weeks) if weeks else 1
+
+
+def sane_week(week, current):
+    """Circa's site links standings for whole-season 'quarters' (weeks 4, 9, 13, 18) ahead of
+    time, before those weeks are played, and whatever PDF sits at that URL until then is not
+    this week's real data. Reject anything more than one week ahead of where the season
+    actually is."""
+    return week <= current + 1
 
 
 def classify(fname):
@@ -169,14 +190,33 @@ def build_manifest(contest):
     S.write_json(out / "manifest.json", {"season": S.SEASON, "league": "circa-" + contest, **extra, "weeks": weeks})
 
 
+def prune_future(current):
+    """Delete any previously saved week folder that fails sane_week — self-heals a bad
+    week saved by an earlier, buggier run without needing manual file surgery."""
+    for contest, out in OUT.items():
+        for d in sorted(out.glob("week-*")):
+            week = int(d.name.split("-")[1])
+            if not sane_week(week, current):
+                for f in d.glob("*.json"):
+                    f.unlink()
+                d.rmdir()
+                S.log(f"  circa {contest}: removed week {week} (beyond week {current + 1}; a stale/placeholder file, not real data)")
+
+
 def run():
     for c in OUT.values():
         c.mkdir(parents=True, exist_ok=True)
+    current = current_nfl_week()
+    prune_future(current)
     found = discover()
     for k, v in from_fallback().items():
         found.setdefault(k, v)                          # discovery wins; fallback fills gaps
     if not found:
         S.log("! circa: no PDFs found by discovery or fallback (raw/circa/)")
+    skipped = [(c, k, w) for (c, k, w) in found if not sane_week(w, current)]
+    for c, k, w in skipped:
+        S.log(f"! circa {c} {k} week {w}: skipped (beyond week {current + 1}; likely a future-quarter placeholder link, not this week's real data)")
+        del found[(c, k, w)]
     ok = True
     for (contest, kind, week), src in sorted(found.items()):
         saver = SAVERS.get((contest, kind))
