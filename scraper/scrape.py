@@ -197,7 +197,7 @@ def scrape_results(week):
 
 def write_status():
     """Last run's notable lines, for the site's Data tab (no digging through Actions logs)."""
-    keep = [l.strip() for l in LOG if l.startswith("!") or l.strip().startswith(("college", "ESPN", "gold", "survivor")) or "wrote" in l or "  ESPN" in l]
+    keep = [l.strip() for l in LOG if l.startswith("!") or l.strip().startswith(("college", "ESPN", "gold", "survivor", "circa")) or "wrote" in l or "  ESPN" in l]
     write_json(ROOT / "docs" / "data" / "status.json",
                {"updated": datetime.now(timezone.utc).isoformat(timespec="seconds"), "lines": keep[-80:]})
 
@@ -250,4 +250,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # `python -m scraper.scrape` runs this file as __main__, but college/gold/circa import it
+    # as scraper.scrape, a second copy with its own LOG. Run main() in that copy so every
+    # scraper's log lines land in one LOG and reach status.json (the site's Data tab).
+    from scraper import scrape as _shared
+    _shared.main()
