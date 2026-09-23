@@ -228,6 +228,7 @@ details.paste textarea { width: 100%; min-height: 140px; background: var(--panel
 .topctl { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
 .topctl input { width: 80px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 10px; font: 600 18px var(--cond); }
 .topctl label { display: flex; gap: 8px; align-items: center; font-weight: 600; }
+.topctl input[type="checkbox"] { width: 18px; height: 18px; padding: 0; margin: 0; }
 h2.sec { font: 700 20px var(--cond); margin: 26px 0 8px; }
 td.diff { font: 600 15px var(--cond); text-align: right; }
 @media (max-width: 560px) {
@@ -394,13 +395,13 @@ function espnGames(data) {
   }
   return out;
 }
-async function loadScores(w) {
-  const m = Store.manifest.weeks[w] || {}, base = `${Store.base()}week-${w}/`;
+async function loadScores(w, lg = S.league, manifest = Store.manifest) {
+  const m = manifest.weeks[w] || {}, base = `${Store.base(lg)}week-${w}/`;
   const ovDoc = m.overrides ? await getJSON(base + "overrides.json").catch(() => null) : null;
   // "official" = covers confirmed from Westgate's standings; manual "results" win over everything
   const ov = { ...(ovDoc?.official || {}), ...(ovDoc?.results || {}) }, manual = ovDoc?.results || {};
-  if (isCollege()) return { ...(await loadCollegeScores(w, m, base, ovDoc?.official || {}, manual)), manual };
-  const shared = ["gold", "survivor", "circa-survivor", "circa-grandissimo", "circa-millio"].includes(S.league);  // same NFL games as the main contest
+  if (lg === "ncaaf") return { ...(await loadCollegeScores(w, m, base, ovDoc?.official || {}, manual)), manual };
+  const shared = ["gold", "survivor", "circa-survivor", "circa-grandissimo", "circa-millio"].includes(lg);  // same NFL games as the main contest
   const rbase = shared ? `${DATA}${Store.season}/week-${w}/` : base;
   const saved = (m.results || shared) ? await getJSON(rbase + "results.json").catch(() => null) : null;
   const allFinal = saved?.games?.length && saved.games.every(g => g.state === "post" && !/POSTPONED|CANCEL|SUSPENDED/i.test(g.status || ""));
@@ -489,7 +490,7 @@ async function loadCollegeScores(w, m, base, official, manual) {
 // plain team lists. After that every NFL tab grades Circa Million exactly like the SuperContest.
 const MRAW = new Map();
 function millioRaw(w) {
-  if (!MRAW.has(w)) MRAW.set(w, getJSON(`${Store.base()}week-${w}/picks.json`).catch(() => null));
+  if (!MRAW.has(w)) MRAW.set(w, getJSON(`${Store.base("circa-millio")}week-${w}/picks.json`).catch(() => null));
   return MRAW.get(w);
 }
 async function millioDoc(col, w) {
@@ -512,7 +513,7 @@ async function millioDoc(col, w) {
 }
 const Store = {
   mode: "static", season: 2026, manifest: { weeks: {} },
-  base() { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/", "circa-survivor": "circa-survivor/", "circa-grandissimo": "circa-grandissimo/", "circa-millio": "circa-millio/" }[S.league] || ""}`; },
+  base(lg = S.league) { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/", "circa-survivor": "circa-survivor/", "circa-grandissimo": "circa-grandissimo/", "circa-millio": "circa-millio/" }[lg] || ""}`; },
   async reset() {
     this.cache.clear(); this.subs.clear(); this.pending.clear(); MRAW.clear();
     for (const k of Object.keys(LABELS)) delete LABELS[k];
@@ -524,21 +525,23 @@ const Store = {
     this.season = seasons?.current || 2026;
     this.manifest = await getJSON(`${this.base()}manifest.json`).catch(() => ({ weeks: {} }));
   },
-  indexDoc() {
+  indexDoc(manifest = this.manifest, lg = S.league) {
     const weeks = {};
-    for (const [w, m0] of Object.entries(this.manifest.weeks || {})) {
-      const m = isMillio() ? { ...m0, card: m0.picks } : m0;    // Circa Million: the card is built from the picks
+    for (const [w, m0] of Object.entries(manifest.weeks || {})) {
+      const m = lg === "circa-millio" ? { ...m0, card: m0.picks } : m0;    // Circa Million: the card is built from the picks
       weeks[w] = { card: m.card ? 1 : 0, picks: m.picks ? 1 : 0, standings: m.standings ? 1 : 0, scores: m.card ? 1 : 0, results: !!m.results };
     }
     return { weeks };
   },
-  async load(path) {
-    if (path === "contest/index") return this.indexDoc();
+  // lg/manifest let the Top entries tab load another contest without switching to it.
+  async load(path, lg = S.league, manifest = this.manifest) {
+    if (path === "contest/index") return this.indexDoc(manifest, lg);
     const [col, id] = path.split("/"), w = +id.slice(1);
-    if (col === "scores") return loadScores(w);
-    if (isMillio() && (col === "cards" || col === "picks")) return millioDoc(col, w);
+    if (col === "scores") return loadScores(w, lg, manifest);
+    if (lg === "circa-millio" && (col === "cards" || col === "picks")) return millioDoc(col, w);
     const file = { cards: "card", picks: "picks", standings: "standings" }[col];
-    const doc = await getJSON(`${this.base()}week-${w}/${file}.json`).catch(() => null);
+    const doc = await getJSON(`${this.base(lg)}week-${w}/${file}.json`).catch(() => null);
+    if (lg !== S.league) return doc;
     if (doc && col === "cards") for (const g of doc.games || []) for (const s of [g.fav, g.dog, g.away, g.home]) if (s?.label) LABELS[s.abbr] = s.label;
     if (doc && col === "picks" && doc.labels) for (const [n, l] of Object.entries(doc.labels)) LABELS[n] ||= l;
     return doc;
@@ -574,7 +577,7 @@ function scheduleRefresh() {
   const live = games.some(g => g.state === "in");
   const soon = games.some(g => g.state === "pre" && g.kickoff && Math.abs(new Date(g.kickoff) - Date.now()) < 20 * 60e3);
   clearTimeout(S.refreshT);
-  S.refreshT = setTimeout(async () => { await Store.refreshScores(); scheduleRefresh(); }, live || soon ? 30e3 : 5 * 60e3);
+  S.refreshT = setTimeout(async () => { await Store.refreshScores(); xRefreshScores(); scheduleRefresh(); }, live || soon ? 30e3 : 5 * 60e3);
 }
 document.addEventListener("visibilitychange", () => { if (!document.hidden) Store.refreshScores(); });
 
@@ -1014,16 +1017,81 @@ function topGroup(W) {
   const group = S.topTies !== false ? st.list.filter((r, i) => i < N || r.total === cut) : st.list.slice(0, N);
   return { st, rankWeek, N, cut, tied, group, basis };
 }
+/* ---- other NFL contests on the Top entries tab ----
+   Each contest gets its own manifest + cache. Standings are computed by swapping it in
+   synchronously (computeStandings/topGroup only read Store and S.league), then restoring. */
+const TOP_FAMILY = ["nfl", "gold", "circa-millio"];
+const SHORT = { nfl: "SuperContest", gold: "Gold", "circa-millio": "Circa Million" };
+const XCTX = {};
+function topExtras() {
+  if (!nflFamilyLeague(S.league)) return [];
+  const saved = local.get(`cb-topx-${S.league}`, []);
+  return TOP_FAMILY.filter(l => l !== S.league && saved.includes(l));
+}
+function xCtx(lg) {
+  let c = XCTX[lg];
+  if (c && c.season === Store.season) return c;
+  c = XCTX[lg] = { lg, season: Store.season, manifest: null, cache: new Map(), pending: new Set() };
+  getJSON(`${Store.base(lg)}manifest.json`).catch(() => ({ weeks: {} })).then(m => {
+    c.manifest = m; c.cache.set(P.index, Store.indexDoc(m, lg)); if (S.tab === "top") render();
+  });
+  return c;
+}
+function inCtx(c, fn) {
+  const sv = [S.league, Store.cache, Store.manifest];
+  S.league = c.lg; Store.cache = c.cache; Store.manifest = c.manifest;
+  try { return fn(); } finally { [S.league, Store.cache, Store.manifest] = sv; }
+}
+function xLoad(c, paths) {
+  for (const p of paths) {
+    if (c.cache.has(p) || c.pending.has(p)) continue;
+    c.pending.add(p);
+    Store.load(p, c.lg, c.manifest).then(v => v, () => null).then(v => {
+      c.pending.delete(p); c.cache.set(p, v); if (S.tab === "top") render();
+    });
+  }
+}
+// Re-pull unfinished scores for the other contests shown on Top entries.
+function xRefreshScores() {
+  if (S.tab !== "top") return;
+  for (const lg of topExtras()) {
+    const c = XCTX[lg]; if (!c?.manifest) continue;
+    for (const [p, v] of c.cache) if (p.startsWith("scores/") && v?.source !== "final")
+      Store.load(p, lg, c.manifest).then(nv => { if (nv) { c.cache.set(p, nv); if (S.tab === "top") render(); } }, () => {});
+  }
+}
+// One contest's leaders for week W: { lg, T, picks, g } or { lg, loading } / { lg, none }.
+function topSource(lg, W) {
+  if (lg === S.league) return { lg, T: topGroup(W), picks: Store.get(P.picks(W))?.entries || null, g: weekGrades(W) };
+  const c = xCtx(lg);
+  if (!c.manifest) return { lg, loading: true };
+  return inCtx(c, () => {
+    const basis = S.topBasis || "entering", rankWeek = basis === "entering" ? W - 1 : W;
+    if (rankWeek < 1) return { lg, none: true };
+    const need = [...neededPaths(rankWeek).set, P.card(W), P.picks(W), P.scores(W)].filter(p => !c.cache.has(p));
+    if (need.length) { xLoad(c, need); return { lg, loading: true }; }
+    const T = topGroup(W);
+    if (T.none) return { lg, none: true };
+    return { lg, T, picks: Store.get(P.picks(W))?.entries || null, g: weekGrades(W) };
+  });
+}
+
 function renderTop() {
   const el = $("#top"), W = S.week;
   if (!seasonReady(["card", "picks", "scores", "standings"], W)) { el.innerHTML = `<p class="note">Loading the season…</p>`; return; }
   const T = topGroup(W);
+  const others = nflFamilyLeague(S.league) ? TOP_FAMILY.filter(l => l !== S.league) : [];
+  const extras = topExtras();
   const controls = `
     <div class="topctl">
       <label for="topN">Standings 1 to</label>
       <input id="topN" type="number" inputmode="numeric" min="1" value="${S.topN || 10}">
       ${[5, 10, 25, 50].map(k => `<button class="pill" data-topn="${k}" aria-pressed="${(S.topN || 10) === k}">Top ${k}</button>`).join("")}
     </div>
+    ${others.length ? `<div class="topctl">
+      <span style="font-weight:600">Also include leaders from</span>
+      ${others.map(l => `<label style="font-weight:400"><input type="checkbox" data-topx="${l}" ${extras.includes(l) ? "checked" : ""}> ${SHORT[l]}</label>`).join("")}
+    </div>` : ""}
     <div class="topctl">
       <label style="font-weight:400"><input type="checkbox" id="topTies" ${S.topTies !== false ? "checked" : ""}> Include everyone tied at the cutoff</label>
       <label style="font-weight:400">Rank by
@@ -1036,51 +1104,76 @@ function renderTop() {
     el.innerHTML = controls + `<div class="empty"><b>No standings before week ${W}.</b> Everyone starts week 1 at zero, so there are no leaders yet. Pick week 2 or later, or rank by live standings.</div>`;
     return;
   }
-  const picks = Store.get(P.picks(W))?.entries;
-  const g = weekGrades(W);
-  if (!picks || !g) { el.innerHTML = controls + `<div class="empty"><b>Week ${W} picks aren't uploaded yet.</b> Once the selections PDF is in, this shows what the leaders took.</div>`; return; }
-  const byId = Object.fromEntries(picks.map(e => [e.id, e.picks]));
-  const members = T.group;
-  const withPicks = members.filter(r => byId[r.id]);
-  const count = {}, who = {};
-  for (const r of withPicks) for (const a of byId[r.id]) { count[a] = (count[a] || 0) + 1; (who[a] ||= []).push(r.id); }
-  const fieldCnt = {}; picks.forEach(e => e.picks.forEach(a => fieldCnt[a] = (fieldCnt[a] || 0) + 1));
+  const main = topSource(S.league, W);
+  if (!main.picks || !main.g) { el.innerHTML = controls + `<div class="empty"><b>Week ${W} picks aren't uploaded yet.</b> Once the selections PDF is in, this shows what the leaders took.</div>`; return; }
+  const xs = extras.map(l => topSource(l, W));
+  const srcs = [main, ...xs.filter(x => x.T && x.picks && x.g)];
+  const multi = srcs.length > 1;
+  const count = {}, by = {}, who = {}, fieldCnt = {};
+  let n = 0, fieldN = 0, members = 0;
+  for (const s of srcs) {
+    s.byId = Object.fromEntries(s.picks.map(e => [e.id, e.picks]));
+    const withPicks = s.T.group.filter(r => s.byId[r.id]);
+    s.n = withPicks.length; n += s.n; members += s.T.group.length;
+    for (const r of withPicks) for (const a of s.byId[r.id]) {
+      count[a] = (count[a] || 0) + 1; ((by[a] ||= {})[s.lg] = (by[a][s.lg] || 0) + 1); (who[a] ||= []).push({ id: r.id, lg: s.lg });
+    }
+    fieldN += s.picks.length; s.picks.forEach(e => e.picks.forEach(a => fieldCnt[a] = (fieldCnt[a] || 0) + 1));
+  }
   S.topWho = who;
-  const n = withPicks.length;
   const rows = Object.entries(count).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
   const maxC = rows.length ? rows[0][1] : 1;
   const status = gr => gr.postponed ? "Postponed" : !gr.res ? "Not started" : gr.final ? RESULT_TEXT[gr.res] : { W: "Covering", L: "Not covering", P: "On the number" }[gr.res];
-  const range = T.group.length > T.N ? `1–${T.N}, plus ${T.group.length - T.N} tied at ${fmtPts(T.cut)} points` : `1–${T.N}`;
+  // Line and result come from the open contest's card; fall back to whichever contest has the game.
+  const gradeAny = a => { for (const s of srcs) { const gr = grade(a, s.g.card, s.g.scores, s.g.ov); if (gr.game) return gr; } return { ab: a, res: null }; };
+  const rangeOf = t => t.group.length > t.N ? `1–${t.N}, plus ${t.group.length - t.N} tied at ${fmtPts(t.cut)} points` : `1–${t.N}`;
   const basisTxt = T.basis === "live" ? `live standings through week ${W}` : `${T.st.official ? "official" : "live"} standings after week ${T.rankWeek}`;
-  el.innerHTML = controls + `
-    <p class="note"><b>${T.group.length} entries</b> (standings ${range}), ranked by ${basisTxt}.
+  const srcLine = s => `<b>${SHORT[s.lg] || LEAGUE_NAME[s.lg]}:</b> ${s.T.group.length} entries (standings ${rangeOf(s.T)})${s.n < s.T.group.length ? `, ${s.T.group.length - s.n} with no week ${W} picks` : ""}`;
+  const pending = xs.filter(x => !(x.T && x.picks && x.g)).map(x =>
+    `<b>${SHORT[x.lg]}:</b> ${x.loading ? "loading…" : x.none ? `no standings to rank by for week ${W}` : `week ${W} picks aren't uploaded yet`}`);
+  const books = new Set(srcs.map(s => s.lg === "circa-millio" ? "Circa" : "Westgate"));
+  const intro = multi || pending.length
+    ? `<p class="note"><b>${members} leaders</b> across ${srcs.length} contest${srcs.length > 1 ? "s" : ""}, each ranked by its own ${basisTxt.replace(/^(official|live) /, "")}.<br>
+        ${[...srcs.map(srcLine), ...pending].join("<br>")}</p>
+       ${books.size > 1 ? `<p class="note">Line and result use the ${BOOK()} line. Circa's and Westgate's lines can differ, so a pick can cover in one contest and not the other; each leader's own picks below are graded on their own contest's line.</p>` : ""}`
+    : `<p class="note"><b>${T.group.length} entries</b> (standings ${rangeOf(T)}), ranked by ${basisTxt}.
       ${!T.group.length || S.topTies !== false || !T.tied ? "" : `${T.tied} more ${T.tied === 1 ? "entry is" : "entries are"} tied at ${fmtPts(T.cut)} points and left out.`}
-      ${n < T.group.length ? `${T.group.length - n} of them submitted no week ${W} picks.` : ""}</p>
+      ${main.n < T.group.length ? `${T.group.length - main.n} of them submitted no week ${W} picks.` : ""}</p>`;
+  const perCols = multi ? srcs.map(s => `<th class="num">${SHORT[s.lg]}</th>`).join("") : "";
+  el.innerHTML = controls + intro + `
     <h2 class="sec">Week ${W}: teams picked by the leaders</h2>
-    <div class="table-wrap"><table style="min-width:640px"><thead><tr><th>Team</th><th>Line</th><th>Opp</th>
-      <th style="width:34%">Leaders who picked it</th><th class="num">% of leaders</th><th class="num">% of field</th><th>Result</th></tr></thead><tbody>
-    ${rows.map(([a, k]) => { const gr = grade(a, g.card, g.scores, g.ov); return `<tr>
+    <div class="table-wrap"><table style="min-width:${multi ? 640 + srcs.length * 80 : 640}px"><thead><tr><th>Team</th><th>Line</th><th>Opp</th>
+      <th style="width:${multi ? 26 : 34}%">Leaders who picked it</th>${perCols}<th class="num">% of leaders</th><th class="num">% of field</th><th>Result</th></tr></thead><tbody>
+    ${rows.map(([a, k]) => { const gr = gradeAny(a); return `<tr>
       <td class="name"><button data-topteam="${esc(a)}">${lbl(a)} ${nickOf(a)}</button></td>
       <td class="rec">${fmtLine(gr.side?.line ?? 0)}</td><td class="rec">${gr.side?.home ? "vs" : "@"} ${gr.opp ? lbl(gr.opp.abbr) : ""}</td>
       <td><div style="display:flex;align-items:center;gap:8px"><b style="font:700 18px var(--cond);min-width:22px">${k}</b>
         <div style="flex:1;height:10px;border-radius:5px;background:var(--panel-2)"><div style="height:100%;width:${k / maxC * 100}%;border-radius:5px;background:var(--ink-2)"></div></div></div></td>
-      <td class="num">${Math.round(k / n * 100)}%</td><td class="num">${Math.round((fieldCnt[a] || 0) / picks.length * 100)}%</td>
+      ${multi ? srcs.map(s => `<td class="num">${by[a][s.lg] || "—"}</td>`).join("") : ""}
+      <td class="num">${Math.round(k / n * 100)}%</td><td class="num">${Math.round((fieldCnt[a] || 0) / fieldN * 100)}%</td>
       <td><span class="chip ${gr.res ? "st-" + gr.res + (gr.final ? "" : " live") : ""}">${status(gr)}</span></td></tr>`; }).join("")}
     </tbody></table></div>
-    <p class="note" style="margin-top:8px">Select a team to see which leaders took it.</p>
+    <p class="note" style="margin-top:8px">Select a team to see which leaders took it.${multi ? " % of field is across all the contests shown." : ""}</p>
     <h2 class="sec">The leaders' week ${W} picks</h2>
-    <div class="table-wrap"><table style="min-width:620px"><thead><tr><th>Place</th><th>Entry</th><th class="num">Points</th><th>Week ${W} picks</th></tr></thead><tbody>
-    ${T.group.map(r => `<tr><td class="place">${r.place}${r.tie ? "T" : ""}</td>
-      <td class="name"><button data-entry="${esc(r.id)}">${esc(r.id)}</button></td><td class="num">${fmtPts(r.total)}</td>
-      <td>${byId[r.id] ? `<div class="picks">${byId[r.id].map(a => chip(grade(a, g.card, g.scores, g.ov), true)).join("")}</div>` : `<span class="note">No picks</span>`}</td></tr>`).join("")}
+    <div class="table-wrap"><table style="min-width:620px"><thead><tr>${multi ? "<th>Contest</th>" : ""}<th>Place</th><th>Entry</th><th class="num">Points</th><th>Week ${W} picks</th></tr></thead><tbody>
+    ${srcs.map(s => s.T.group.map(r => `<tr>${multi ? `<td class="note">${SHORT[s.lg]}</td>` : ""}<td class="place">${r.place}${r.tie ? "T" : ""}</td>
+      <td class="name">${s.lg === S.league ? `<button data-entry="${esc(r.id)}">${esc(r.id)}</button>` : esc(r.id)}</td><td class="num">${fmtPts(r.total)}</td>
+      <td>${s.byId[r.id] ? `<div class="picks">${s.byId[r.id].map(a => chip(grade(a, s.g.card, s.g.scores, s.g.ov), true)).join("")}</div>` : `<span class="note">No picks</span>`}</td></tr>`).join("")).join("")}
     </tbody></table></div>`;
 }
 function openTopTeam(a) {
-  const ids = (S.topWho?.[a] || []).slice().sort();
+  const list = (S.topWho?.[a] || []).slice();
+  const lgs = TOP_FAMILY.concat(LEAGUES).filter((l, i, arr) => arr.indexOf(l) === i && list.some(x => x.lg === l));
+  lgs.sort((x, y) => (y === S.league) - (x === S.league));
+  const chipOf = x => x.lg === S.league
+    ? `<button class="chip" data-entry="${esc(x.id)}" style="min-width:0;margin:0 4px 4px 0;cursor:pointer">${esc(x.id)}</button>`
+    : `<span class="chip" style="min-width:0;margin:0 4px 4px 0">${esc(x.id)}</span>`;
   const d = $("#entry");
   d.innerHTML = `<button class="btn close" data-close>Close</button><h2>${lbl(a)} ${nickOf(a)}</h2>
-    <p class="sub">${ids.length} of the leaders picked ${lbl(a)} in week ${S.week}.</p>
-    <p style="margin:0;line-height:1.9">${ids.map(id => `<button class="chip" data-entry="${esc(id)}" style="min-width:0;margin:0 4px 4px 0;cursor:pointer">${esc(id)}</button>`).join("")}</p>`;
+    <p class="sub">${list.length} of the leaders picked ${lbl(a)} in week ${S.week}.</p>
+    ${lgs.map(l => { const ids = list.filter(x => x.lg === l).sort((p, q) => p.id.localeCompare(q.id));
+      return `${lgs.length > 1 ? `<h3 style="margin:10px 0 4px;font:700 15px var(--cond)">${SHORT[l] || LEAGUE_NAME[l]} (${ids.length})</h3>` : ""}
+        <p style="margin:0;line-height:1.9">${ids.map(chipOf).join("")}</p>`; }).join("")}`;
   d.showModal();
 }
 
@@ -1510,6 +1603,10 @@ function bind() {
     else if (t.id === "svAlive") { S.svAlive = t.checked; render(); }
     else if (t.id === "topTies") { S.topTies = t.checked; render(); }
     else if (t.id === "topBasis") { S.topBasis = t.value; render(); }
+    else if (t.dataset.topx) {
+      const k = `cb-topx-${S.league}`, cur = local.get(k, []).filter(l => l !== t.dataset.topx);
+      local.set(k, t.checked ? [...cur, t.dataset.topx] : cur); render();
+    }
   });
   $("#entry").addEventListener("click", e => {
     const en = e.target.closest("[data-entry]");
