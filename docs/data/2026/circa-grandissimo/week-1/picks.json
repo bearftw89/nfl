@@ -1,0 +1,315 @@
+{
+ "week": 1,
+ "source": "/home/claude/nfl/raw/circa/Circa-Grandissimo-2026-Week-1-Selections.pdf",
+ "count": 77,
+ "entries": [
+  {
+   "id": "$30,000 SHORT-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "FTW DEGENERATES-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "RNJESUS-1",
+   "pick": "PHI"
+  },
+  {
+   "id": "100DIMES-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "GAMBLEBALLS-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "RNJESUS-2",
+   "pick": "PIT"
+  },
+  {
+   "id": "ACCORSI-1",
+   "pick": "DET"
+  },
+  {
+   "id": "GLOVE TO GLORY-1",
+   "pick": "PHI"
+  },
+  {
+   "id": "ROUGHRIDER-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "ACE VEGAS-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "GLOVE TO GLORY-2",
+   "pick": "DET"
+  },
+  {
+   "id": "S3B-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "ACTIONJOE-1",
+   "pick": "DET"
+  },
+  {
+   "id": "GODFATHER-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "S3B-2",
+   "pick": "DET"
+  },
+  {
+   "id": "ALL THE WAY HOME-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "HOOISERALUM-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "SALTY K-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "ALL THE WAY HOME-2",
+   "pick": "LAC"
+  },
+  {
+   "id": "HOOISERALUM-2",
+   "pick": "JAX"
+  },
+  {
+   "id": "SARATOGAS TOP DOG-1",
+   "pick": "PIT"
+  },
+  {
+   "id": "BC513-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "HUNTER BIDEN-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "SAVEPLUTO9-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "BH DADDY-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "ICON RACING-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "SAVEPLUTO9-2",
+   "pick": "JAX"
+  },
+  {
+   "id": "BH DADDY-2",
+   "pick": "LAC"
+  },
+  {
+   "id": "JCMMUP-1",
+   "pick": "CIN"
+  },
+  {
+   "id": "SPORTSCARDSPLUSMYRTL-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "BISON-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "JIMMYSHIVEOVERLY-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "STANDALONE-1",
+   "pick": "PIT"
+  },
+  {
+   "id": "BISON-2",
+   "pick": "LAC"
+  },
+  {
+   "id": "KDJ-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "SUKIAKI-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "BLUE BIRD-1",
+   "pick": "SEA"
+  },
+  {
+   "id": "LIVINGTHEDREAMTEAM-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "SUKIAKI-2",
+   "pick": "JAX"
+  },
+  {
+   "id": "BLUE JAY WAY-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "LONESOME HIGHWAY-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "SUMMIT BOYS-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "CAMP DAVID&CO-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "MAYBETOMORROW-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "TAMTAM-1",
+   "pick": "DET"
+  },
+  {
+   "id": "CHUCK ROAST-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "MR PANDA-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "TAMTAM-2",
+   "pick": "DET"
+  },
+  {
+   "id": "COCESARYUME-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "MVP VT-1",
+   "pick": "PIT"
+  },
+  {
+   "id": "THA GOOD PLAYA-1",
+   "pick": "PIT"
+  },
+  {
+   "id": "COUNTRY-1",
+   "pick": "PIT"
+  },
+  {
+   "id": "NAVIN R.JOHNSON-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "THA GOOD PLAYA-2",
+   "pick": "LAC"
+  },
+  {
+   "id": "DD3'S REVENGE-1",
+   "pick": "PHI"
+  },
+  {
+   "id": "NO MULLIGANS-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "THE DREAM TEAM-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "DEGENCHAT-1",
+   "pick": "PIT"
+  },
+  {
+   "id": "PARLAYSAM-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "TWEENTHEHEDGES-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "DEGENCHAT-2",
+   "pick": "JAX"
+  },
+  {
+   "id": "PJ551155-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "UTS-1",
+   "pick": "PIT"
+  },
+  {
+   "id": "DW7777777-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "POLAR BEARS-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "WADDLES BUG-1",
+   "pick": "PIT"
+  },
+  {
+   "id": "DYLAN W-1",
+   "pick": "DET"
+  },
+  {
+   "id": "PUNTING AROUND-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "WILLY BALTERS-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "DYLAN W-2",
+   "pick": "PHI"
+  },
+  {
+   "id": "PUNTING AROUND-2",
+   "pick": "DET"
+  },
+  {
+   "id": "ZACKOLINE 5-1",
+   "pick": "DET"
+  },
+  {
+   "id": "DYNAMITE AEHR-1",
+   "pick": "LAC"
+  },
+  {
+   "id": "RCCC-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "ZACKOLINE 5-2",
+   "pick": "DET"
+  },
+  {
+   "id": "FORT KNOX-1",
+   "pick": "JAX"
+  },
+  {
+   "id": "RCCC-2",
+   "pick": "LAC"
+  }
+ ]
+}

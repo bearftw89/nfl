@@ -1,0 +1,19 @@
+{
+ "season": 2026,
+ "league": "circa-grandissimo",
+ "picks_per_entry": 1,
+ "weeks": {
+  "1": {
+   "picks": true,
+   "used": false
+  },
+  "2": {
+   "picks": true,
+   "used": true
+  },
+  "3": {
+   "picks": false,
+   "used": true
+  }
+ }
+}

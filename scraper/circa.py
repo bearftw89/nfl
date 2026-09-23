@@ -82,7 +82,13 @@ _SV = re.compile(rf"(?P<name>\S.*?)\s+\d+\.\s+(?P<team>{_ALT})\s+PK", re.I)
 _GLUE = re.compile(rf"(-\d{{1,2}})(\d{{1,2}})\.\s+({_ALT})\s+PK", re.I)
 
 
+# Other glue order seen (Grandissimo Week 1): "SPORTSCARDSPLUSMYRTL22-1. CHARGERS PK"
+#   => entry "SPORTSCARDSPLUSMYRTL-1", pick "22. CHARGERS". Name ends in a letter, then game number, then -N.
+_GLUE2 = re.compile(rf"([A-Za-z])(\d{{1,2}})(-\d{{1,2}})\.\s+({_ALT})\s+PK", re.I)
+
+
 def _deglue(line):
+    line = _GLUE2.sub(lambda m: f"{m.group(1)}{m.group(3)} {m.group(2)}. {m.group(4)} PK", line)
     return _GLUE.sub(lambda m: f"{m.group(1)} {m.group(2)}. {m.group(3)} PK", line)
 
 
@@ -93,7 +99,7 @@ def parse_survivor_selections(text):
     for raw in text.splitlines():
         raw = _deglue(raw)
         line = raw.strip()
-        if not line or line.upper().startswith(("ENTRY NAME", "CIRCA SURVIVOR", "WEEK ")):
+        if not line or line.upper().startswith(("ENTRY NAME", "CIRCA SURVIVOR", "CIRCA GRANDISSIMO", "WEEK ")):
             continue
         for m in _SV.finditer(line):
             ab = to_abbr(m["team"])
@@ -129,7 +135,7 @@ def parse_survivor_availability(pdf):
                 continue
             rows.setdefault(round(w["top"]), []).append(w)
         for _, ws in sorted(rows.items()):
-            name = " ".join(w["text"] for w in sorted(ws, key=lambda w: w["x0"]) if w["x1"] < name_right).strip()
+            name = " ".join(w["text"] for w in sorted(ws, key=lambda w: w["x0"]) if w["x0"] < name_right).strip()
             if not name:
                 continue
             used = []

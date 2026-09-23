@@ -246,7 +246,7 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
       <button data-league="nfl">SuperContest</button><button data-league="gold">Gold</button><button data-league="circa-millio">Circa Million</button>
     </div>
     <div class="league sub" id="survsub" role="group" aria-label="Survivor contest">
-      <button data-league="survivor">Westgate</button><button data-league="circa-survivor">Circa</button>
+      <button data-league="survivor">Westgate</button><button data-league="circa-survivor">Circa</button><button data-league="circa-grandissimo">Grandissimo</button>
     </div>
     <label><span class="sr">Week</span><select class="week" id="week"></select></label>
     <div class="status" id="status" aria-live="polite"></div>
@@ -314,11 +314,12 @@ const fixAbbr = a => ABBR_FIX[a] || a;
 // form from the selections sheet ("N CAROLINA"). NFL teams are keyed by ESPN code.
 const LABELS = {};
 const isCollege = () => S.league === "ncaaf";
-const isSurvivor = () => S.league === "survivor" || S.league === "circa-survivor";
+const isSurvivor = () => S.league === "survivor" || S.league === "circa-survivor" || S.league === "circa-grandissimo";
+const SURV_NAME = { survivor: "Westgate SuperContest Survivor", "circa-survivor": "Circa Survivor", "circa-grandissimo": "Circa Grandissimo" };
 const isMillio = () => S.league === "circa-millio";
 const nflFamilyLeague = lg => lg === "nfl" || lg === "gold" || lg === "circa-millio";
-const LEAGUES = ["nfl", "gold", "ncaaf", "survivor", "circa-survivor", "circa-millio"];
-const LEAGUE_NAME = { nfl: "SuperContest (NFL)", gold: "SuperContest Gold (NFL)", ncaaf: "SuperContest College", survivor: "Westgate SuperContest Survivor", "circa-survivor": "Circa Survivor", "circa-millio": "Circa Million (ATS)" };
+const LEAGUES = ["nfl", "gold", "ncaaf", "survivor", "circa-survivor", "circa-grandissimo", "circa-millio"];
+const LEAGUE_NAME = { nfl: "SuperContest (NFL)", gold: "SuperContest Gold (NFL)", ncaaf: "SuperContest College", survivor: "Westgate SuperContest Survivor", "circa-survivor": "Circa Survivor", "circa-grandissimo": "Circa Grandissimo", "circa-millio": "Circa Million (ATS)" };
 const lbl = ab => isCollege() ? (LABELS[ab] || ab) : ab;
 const titleCase = s => s.toLowerCase().replace(/(^|[\s-])([a-z])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Lsu|Ucla|Usc|Tcu|Smu|Byu|Utep|Utsa|Uab|Unlv|Ucf|Ul|Nc)\b/g, m => m.toUpperCase());
 const squash = x => x.replace(/[^A-Z0-9]/g, "");
@@ -403,7 +404,7 @@ async function loadScores(w) {
   // "official" = covers confirmed from Westgate's standings; manual "results" win over everything
   const ov = { ...(ovDoc?.official || {}), ...(ovDoc?.results || {}) }, manual = ovDoc?.results || {};
   if (isCollege()) return { ...(await loadCollegeScores(w, m, base, ovDoc?.official || {}, manual)), manual };
-  const shared = ["gold", "survivor", "circa-survivor", "circa-millio"].includes(S.league);  // same NFL games as the main contest
+  const shared = ["gold", "survivor", "circa-survivor", "circa-grandissimo", "circa-millio"].includes(S.league);  // same NFL games as the main contest
   const rbase = shared ? `${DATA}${Store.season}/week-${w}/` : base;
   const saved = (m.results || shared) ? await getJSON(rbase + "results.json").catch(() => null) : null;
   const allFinal = saved?.games?.length && saved.games.every(g => g.state === "post" && !/POSTPONED|CANCEL|SUSPENDED/i.test(g.status || ""));
@@ -488,7 +489,7 @@ async function loadCollegeScores(w, m, base, official, manual) {
 }
 const Store = {
   mode: "static", season: 2026, manifest: { weeks: {} },
-  base() { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/", "circa-survivor": "circa-survivor/", "circa-millio": "circa-millio/" }[S.league] || ""}`; },
+  base() { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/", "circa-survivor": "circa-survivor/", "circa-grandissimo": "circa-grandissimo/", "circa-millio": "circa-millio/" }[S.league] || ""}`; },
   async reset() {
     this.cache.clear(); this.subs.clear(); this.pending.clear();
     for (const k of Object.keys(LABELS)) delete LABELS[k];
@@ -1074,7 +1075,7 @@ function renderData() {
   const yes = (v, t) => v ? `<span class="up">${t || "Yes"}</span>` : `<span class="note">—</span>`;
   el.innerHTML = `
     <div class="how" style="margin-top:0"><h2>${LEAGUE_NAME[S.league]}: where the data comes from</h2>
-      ${isSurvivor() ? `<p>${S.league === "circa-survivor" ? "Circa Survivor" : "Westgate SuperContest Survivor"}: one team per week to win straight up (no spread). A loss or a tie eliminates the entry, each team can be used once, and an entry without a pick is eliminated. Scores come live from ESPN.${S.league === "circa-survivor" ? " Circa's field is large, so the Entries tab shows 200 at a time — search or Show all to see more." : ""}</p>` : ""}
+      ${isSurvivor() ? `<p>${SURV_NAME[S.league]}: one team per week to win straight up (no spread). A loss or a tie eliminates the entry, each team can be used once, and an entry without a pick is eliminated. Scores come live from ESPN.${S.league === "circa-survivor" ? " Circa's field is large, so the Entries tab shows 200 at a time — search or Show all to see more." : ""}</p>` : ""}
       ${S.league === "gold" ? `<p>Gold uses the same weekly game sheet and lines as the main SuperContest, with its own entries, picks and standings.</p>` : ""}
       ${isMillio() ? `<p>Circa Million is a season-long ATS contest at circasports.com: 5 picks per week against Circa's own point spreads (cover 1, push ½, loss 0). Each pick carries its line, so grading needs no separate card. The field is large, so Standings show 200 at a time — search or Show all. Top entries ranks leaders by the last posted official week and needs that week's standings to be up. Scores come live from ESPN.</p>` : ""}
       ${isCollege() ? `<p>College picks are 7 per entry against the contest line, weeks 1–14. Westgate's short team names on the selections sheet are matched to the game sheet, and each week's picks are checked against Westgate's own team-count table. Once official standings are posted, the covers they imply are saved and used for any game the live score feed couldn't match.</p>` : ""}
@@ -1141,9 +1142,9 @@ function markLeague() {
   document.getElementById("nflsub").hidden = !nflFamily;
   document.getElementById("survsub").hidden = !survFamily;
   document.getElementById("foot").textContent = isSurvivor()
-    ? `Picks and teams used: ${S.league === "circa-survivor" ? "Circa Survivor" : "Westgate SuperContest Survivor"} PDFs. Scores: ESPN. Straight-up winners only; a loss, a tie or a missed pick eliminates. Unofficial.`
+    ? `Picks and teams used: ${SURV_NAME[S.league]} PDFs. Scores: ESPN. Straight-up winners only; a loss, a tie or a missed pick eliminates. Unofficial.`
     : "Lines, picks and official standings: Westgate SuperContest PDFs. Scores: ESPN. Graded against the static Westgate line: cover 1, push ½, loss 0; rule 22 postponements ½. Live standings are unofficial until Westgate posts them.";
-  document.title = `Contest Board: ${{ nfl: "NFL", gold: "NFL Gold", ncaaf: "NCAAF", survivor: "Survivor", "circa-survivor": "Circa Survivor", "circa-millio": "Circa Million" }[S.league]}`;
+  document.title = `Contest Board: ${{ nfl: "NFL", gold: "NFL Gold", ncaaf: "NCAAF", survivor: "Survivor", "circa-survivor": "Circa Survivor", "circa-grandissimo": "Circa Grandissimo", "circa-millio": "Circa Million" }[S.league]}`;
 }
 async function switchLeague(lg) {
   S.svShowAll = false;
@@ -1153,11 +1154,11 @@ async function switchLeague(lg) {
   }
   if (lg === "survivor-group") {                  // same idea for the Survivor family
     if (isSurvivor()) return;
-    lg = local.get("cb-survsub", "survivor") === "circa-survivor" ? "circa-survivor" : "survivor";
+    lg = ["survivor", "circa-survivor", "circa-grandissimo"].includes(local.get("cb-survsub", "survivor")) ? local.get("cb-survsub", "survivor") : "survivor";
   }
   if (lg === S.league) return;
   if (nflFamilyLeague(lg)) local.set("cb-nflsub", lg);
-  if (lg === "survivor" || lg === "circa-survivor") local.set("cb-survsub", lg);
+  if (lg === "survivor" || lg === "circa-survivor" || lg === "circa-grandissimo") local.set("cb-survsub", lg);
   S.league = lg; local.set("cb-league", lg); markLeague();
   history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
   S.week = null; S.shown = 150; S.q = "";

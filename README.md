@@ -56,6 +56,13 @@ The Survivor tab has a **Westgate | Circa** sub-switch. Circa Survivor is a sepa
 - Because the field is huge, the Entries tab shows 200 at a time with a Show-all button; search narrows instantly. This week, Trends, Compare and the team-grid popup all work the same as Westgate.
 - Verified: Weeks 1-2 picks reconcile exactly with Circa's own team-count tables (24,999 and 16,935 entries), and every entry's Week 1 pick matches Circa's Week 2 availability grid (100%).
 
+## Circa Grandissimo
+
+Third button in the Survivor sub-switch: **Westgate | Circa | Grandissimo**. Circa's $100K-entry survivor pool — same rules as Circa Survivor (one team per week straight up, each team once, a loss or a tie eliminates), just a much smaller field. Data lives under `docs/data/2026/circa-grandissimo/`; every Survivor tab (This week, Entries, Compare, Trends) works the same.
+
+- Weekly PDFs go in `raw/circa/` with Circa's own file names: **"Grandissimo" + "Selections"** → picks, **"Grandissimo" + "Team Availability"** → teams used. The updater also tries circasports.com/grandissimo first.
+- Verified: Week 1 (77 entries) and Week 2 (49) picks match Circa's Week 2 and Week 3 availability grids exactly — the same 49 and 30 survivors, each with the same teams used.
+
 ## Contest rules implemented (2026 SuperContest rules)
 
 - **Graded against the spread, never the straight score.** Pick result = team score + contest line vs. opponent score, using the static Westgate line from the weekly card.

@@ -6,7 +6,8 @@ links from the two contest pages rather than guessing URLs. If discovery fails (
 markup changed, or the run can't reach circasports.com), a committed PDF placed in
 raw/circa/ is used as a fallback.
 
-  circa-survivor -> docs/data/<season>/circa-survivor/week-N/{picks,used}.json
+  circa-survivor    -> docs/data/<season>/circa-survivor/week-N/{picks,used}.json
+  circa-grandissimo -> docs/data/<season>/circa-grandissimo/week-N/{picks,used}.json
   circa-millio   -> docs/data/<season>/circa-millio/week-N/{picks,standings}.json   (built later)
 
 Scores come from ESPN in the browser, same as every other contest.
@@ -27,16 +28,21 @@ from . import circa as C
 DATA = S.ROOT / "docs" / "data" / str(S.SEASON)
 RAWDIR = S.ROOT / "raw" / "circa"                      # optional committed-PDF fallback
 PAGES = {"survivor": "https://www.circasports.com/circa-survivor",
+         "grandissimo": "https://www.circasports.com/grandissimo",
          "millio": "https://www.circasports.com/circa-million"}
 CURRENT_SEASON_TAG = "VIII"     # Circa Million/Survivor's roman-numeral season label
 # file-name signatures -> (contest, kind)
 SIGN = [
+    (re.compile(r"GRANDISSIMO.*TEAM.*AVAIL", re.I), ("grandissimo", "used")),
+    (re.compile(r"GRANDISSIMO.*SELECTION", re.I), ("grandissimo", "picks")),
     (re.compile(r"SURVIVOR.*TEAM.*AVAIL", re.I), ("survivor", "used")),
     (re.compile(r"SURVIVOR.*SELECTION", re.I), ("survivor", "picks")),
     (re.compile(r"MILLION.*STANDING", re.I), ("millio", "standings")),
     (re.compile(r"MILLION.*SELECTION", re.I), ("millio", "picks")),
 ]
-OUT = {"survivor": DATA / "circa-survivor", "millio": DATA / "circa-millio"}
+OUT = {"survivor": DATA / "circa-survivor", "grandissimo": DATA / "circa-grandissimo", "millio": DATA / "circa-millio"}
+SURVIVOR_LIKE = ("survivor", "grandissimo")          # same file formats, same rules
+MIN_ROWS = {"survivor": 100, "grandissimo": 1}       # Grandissimo is a small field (dozens of entries)
 
 
 def current_nfl_week():
@@ -62,7 +68,8 @@ def is_current_season(fname):
     """The Circa Million page also links every PAST season's results (VII, VI, V, IV, III, II —
     2020-2025), each with its own perfectly legitimate "After Week 4/9/13/18" in the filename.
     Without this check those get mistaken for this season's not-yet-played future weeks."""
-    m = re.search(r"MILLION[\s-]+([IVX]+)", fname, re.I) or re.search(r"SURVIVOR[\s-]+(\d{4})", fname, re.I)
+    m = (re.search(r"MILLION[\s-]+([IVX]+)", fname, re.I) or re.search(r"SURVIVOR[\s-]+(\d{4})", fname, re.I)
+         or re.search(r"GRANDISSIMO[\s-]+(\d{4})", fname, re.I))
     return not m or m.group(1).upper() == CURRENT_SEASON_TAG or m.group(1) == str(S.SEASON)
 
 
@@ -141,39 +148,39 @@ def _text(data):
         return "\n".join((pg.extract_text() or "") for pg in pdf.pages)
 
 
-def save_survivor_picks(week, src):
+def save_survivor_picks(week, src, contest="survivor"):
     entries, table = C.parse_survivor_selections(_text(_bytes(src)))
     got = Counter(e["pick"] for e in entries)
-    if len(entries) < 100 or (table and got != Counter(table)):
-        S.log(f"! circa survivor picks week {week}: {len(entries)} entries fail the count-table check; keeping old data, not a run failure")
+    if len(entries) < MIN_ROWS[contest] or (table and got != Counter(table)):
+        S.log(f"! circa {contest} picks week {week}: {len(entries)} entries fail the count-table check; keeping old data, not a run failure")
         return True
-    out = OUT["survivor"] / f"week-{week}"
+    out = OUT[contest] / f"week-{week}"
     old = load(out / "picks.json")
     if not old or old.get("entries") != entries:
         S.write_json(out / "picks.json", {"week": week, "source": str(src), "count": len(entries), "entries": entries})
-        S.log(f"  circa survivor picks week {week}: {len(entries)} entries")
+        S.log(f"  circa {contest} picks week {week}: {len(entries)} entries")
     return True
 
 
-def save_survivor_used(week, src):
+def save_survivor_used(week, src, contest="survivor"):
     data = _bytes(src)
     with pdfplumber.open(io.BytesIO(data)) as pdf:
         real_week = content_week(pdf.pages[0].extract_text() or "") or week
         if real_week != week:
-            S.log(f"  circa survivor availability: link named 'week {week}' actually contains week {real_week} data; using week {real_week}")
+            S.log(f"  circa {contest} availability: link named 'week {week}' actually contains week {real_week} data; using week {real_week}")
         week = real_week
         if not sane_week(week, current_nfl_week()):
-            S.log(f"  circa survivor availability week {week}: skipped (beyond the current week; still a placeholder, not a problem)")
+            S.log(f"  circa {contest} availability week {week}: skipped (beyond the current week; still a placeholder, not a problem)")
             return True
         used = C.parse_survivor_availability(pdf)
-    if len(used) < 100:
-        S.log(f"! circa survivor availability week {week}: only {len(used)} rows; keeping old data, not a run failure")
+    if len(used) < MIN_ROWS[contest]:
+        S.log(f"! circa {contest} availability week {week}: only {len(used)} rows; keeping old data, not a run failure")
         return True
-    out = OUT["survivor"] / f"week-{week}"
+    out = OUT[contest] / f"week-{week}"
     old = load(out / "used.json")
     if not old or old.get("entries") != used:
         S.write_json(out / "used.json", {"week": week, "source": str(src), "count": len(used), "entries": used})
-        S.log(f"  circa survivor availability through week {week}: {len(used)} entries")
+        S.log(f"  circa {contest} availability through week {week}: {len(used)} entries")
     return True
 
 
@@ -213,16 +220,18 @@ def save_millio_standings(week, src):
 
 
 SAVERS = {("survivor", "picks"): save_survivor_picks, ("survivor", "used"): save_survivor_used,
+          ("grandissimo", "picks"): lambda w, s: save_survivor_picks(w, s, "grandissimo"),
+          ("grandissimo", "used"): lambda w, s: save_survivor_used(w, s, "grandissimo"),
           ("millio", "picks"): save_millio_picks, ("millio", "standings"): save_millio_standings}
 
 
 def build_manifest(contest):
     out = OUT[contest]
-    kinds = ("picks", "used") if contest == "survivor" else ("picks", "standings")
+    kinds = ("picks", "used") if contest in SURVIVOR_LIKE else ("picks", "standings")
     weeks = {}
     for d in sorted(out.glob("week-*"), key=lambda p: int(p.name.split("-")[1])):
         weeks[int(d.name.split("-")[1])] = {k: (d / f"{k}.json").exists() for k in kinds}
-    extra = {"picks_per_entry": 1} if contest == "survivor" else {"picks_per_entry": 5}
+    extra = {"picks_per_entry": 1} if contest in SURVIVOR_LIKE else {"picks_per_entry": 5}
     S.write_json(out / "manifest.json", {"season": S.SEASON, "league": "circa-" + contest, **extra, "weeks": weeks})
 
 
@@ -244,7 +253,7 @@ def prune_future(current):
 # progresses — so unlike the weekly selection sheets (confirmed one distinct URL per week), the
 # filename's week number can't be trusted here at all. These are always re-fetched and re-parsed
 # every run; the saver itself works out the real week from the document's own text.
-EVOLVING = {("millio", "standings"), ("survivor", "used")}
+EVOLVING = {("millio", "standings"), ("survivor", "used"), ("grandissimo", "used")}
 
 
 def run():
