@@ -96,26 +96,102 @@ def week_of(fname):
     return int(m.group(1)) if m else None
 
 
-def discover():
-    """{(contest, kind, week): url} from the two Circa pages."""
+# Circa announces each PDF in a tweet. Their site embeds that X feed, so the tweets can be read
+# from circasports.com itself, with no X account or API. The contest pages link each tweet's PDF
+# as a t.co short link; the contests blog shows the full wp-content URL as text.
+FEED_PAGES = ["https://www.circasports.com/blog/category/contests"]
+UPLOAD_RE = re.compile(r"https?://(?:www\.)?circasports\.com/wp-content/uploads/\d{4}/\d{2}/[\w.%-]+?\.pdf", re.I)
+TCO_RE = re.compile(r"https?://t\.co/[A-Za-z0-9]{6,15}")
+TCO_CACHE = RAWDIR / "tco.json"          # short link -> where it points (never changes), so each is resolved once
+TCO_MAX = 40                             # new short links to resolve per run
+
+
+def resolve_tco(links):
+    """Where each t.co link points, from its redirect. Cached, since a short link never changes."""
+    import requests
+    cache = load(TCO_CACHE) or {}
+    new = 0
+    for u in links:
+        if u in cache or new >= TCO_MAX:
+            continue
+        new += 1
+        try:
+            r = requests.get(u, headers={"User-Agent": "curl/8.5"}, allow_redirects=False, timeout=15)
+            dest = r.headers.get("Location") or ""
+            if not dest:                  # browser-style reply: the target sits in the page
+                m = re.search(r"URL=([^\"'>]+)", r.text or "", re.I)
+                dest = m.group(1) if m else ""
+            cache[u] = dest
+        except Exception as e:
+            S.log(f"  circa: could not resolve {u}: {e}")
+    if new:
+        S.write_json(TCO_CACHE, cache)
+    return {u: cache.get(u, "") for u in links}
+
+
+def pdf_links(html, base):
+    """Every Circa PDF URL a page mentions: plain links, wp-content URLs in tweet text, and
+    t.co links from the embedded X feed."""
+    urls = set(UPLOAD_RE.findall(html))
+    for a in BeautifulSoup(html, "html.parser").find_all("a", href=True):
+        if ".pdf" in a["href"].lower():
+            urls.add(urljoin(base, a["href"]))
+    tco = sorted(set(TCO_RE.findall(html)))
+    urls.update(d for d in resolve_tco(tco).values() if ".pdf" in d.lower())
+    return urls
+
+
+def add_found(found, url):
+    fname = unquote(url.split("?")[0].split("/")[-1])
+    if not is_current_season(fname):
+        return
+    tag, wk = classify(fname), week_of(fname)
+    if tag and wk:
+        found.setdefault((tag[0], tag[1], wk), url.replace(" ", "%20"))
+
+
+def probe(found, current):
+    """Survivor and Grandissimo files are named the same way every week, so for a week the pages
+    don't show yet, check the expected upload URLs directly (this month's and last month's folder)."""
+    import requests
+    from datetime import date
+    today = date.today()
+    months = [today, date(today.year - (today.month == 1), (today.month - 2) % 12 + 1, 1)]
+    names = {("survivor", "picks"): "Circa-Survivor-{y}-Week-{w}-Selections.pdf",
+             ("survivor", "used"): "Circa-Survivor-{y}-Week-{w}-Team-Availability.pdf",
+             ("grandissimo", "picks"): "Circa-Grandissimo-{y}-Week-{w}-Selections.pdf",
+             ("grandissimo", "used"): "Circa-Grandissimo-{y}-Week-{w}-Team-Availability.pdf"}
+    for (contest, kind), pat in names.items():
+        for w in (current, current + 1):
+            if (contest, kind, w) in found or (OUT[contest] / f"week-{w}" / f"{kind}.json").exists():
+                continue
+            for d in months:
+                url = (f"https://www.circasports.com/wp-content/uploads/{d.year}/{d.month:02d}/"
+                       + pat.format(y=S.SEASON, w=w))
+                try:
+                    if requests.head(url, headers=S.HEADERS, timeout=15, allow_redirects=True).status_code == 200:
+                        found[(contest, kind, w)] = url
+                        S.log(f"circa {contest} {kind} week {w}: found at its usual URL")
+                        break
+                except Exception:
+                    pass
+
+
+def discover(current=None):
+    """{(contest, kind, week): url} from Circa's pages and the tweets embedded in them."""
     found = {}
-    for page in PAGES.values():
+    for page in [*PAGES.values(), *FEED_PAGES]:
         try:
             html = S.get(page).text
         except Exception as e:
             S.log(f"! circa: could not read {page}: {e}")
             continue
-        for a in BeautifulSoup(html, "html.parser").find_all("a", href=True):
-            href = a["href"]
-            if ".pdf" not in href.lower():
-                continue
-            fname = unquote(href.split("/")[-1])
-            if not is_current_season(fname):
-                continue
-            tag = classify(fname)
-            wk = week_of(fname)
-            if tag and wk:
-                found[(tag[0], tag[1], wk)] = urljoin(page, href).replace(" ", "%20")
+        for url in sorted(pdf_links(html, page)):
+            add_found(found, url)
+    if current is not None:
+        probe(found, current)
+    S.log(f"circa: found {len(found)} current-season PDFs "
+          f"({', '.join(f'{c} {k} wk{w}' for c, k, w in sorted(found)) or 'none'})")
     return found
 
 
@@ -261,7 +337,7 @@ def run():
         c.mkdir(parents=True, exist_ok=True)
     current = current_nfl_week()
     prune_future(current)
-    found = discover()
+    found = discover(current)
     for k, v in from_fallback().items():
         found.setdefault(k, v)                          # discovery wins; fallback fills gaps
     if not found:
