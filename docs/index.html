@@ -262,8 +262,11 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
     <button role="tab" data-tab="sventries" aria-selected="false">Entries</button>
     <button role="tab" data-tab="svcompare" aria-selected="false">Compare</button>
     <button role="tab" data-tab="svtrends" aria-selected="false">Trends</button>
-    <button role="tab" data-tab="mconsensus" aria-selected="false">Consensus</button>
+    <button role="tab" data-tab="mboard" aria-selected="false">Scoreboard</button>
+    <button role="tab" data-tab="mgames" aria-selected="false">Picks by game</button>
     <button role="tab" data-tab="mstandings" aria-selected="false">Standings</button>
+    <button role="tab" data-tab="mconsensus" aria-selected="false">Consensus</button>
+    <button role="tab" data-tab="mats" aria-selected="false">Teams ATS</button>
     <button role="tab" data-tab="mtop" aria-selected="false">Top entries</button>
     <button role="tab" data-tab="data" aria-selected="false">Data</button>
   </nav>
@@ -280,8 +283,11 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
   <section id="sventries" class="view" hidden></section>
   <section id="svcompare" class="view" hidden></section>
   <section id="svtrends" class="view" hidden></section>
+  <section id="mboard" class="view" hidden></section>
+  <section id="mgames" class="view" hidden></section>
   <section id="mconsensus" class="view" hidden></section>
   <section id="mstandings" class="view" hidden></section>
+  <section id="mats" class="view" hidden></section>
   <section id="mtop" class="view" hidden></section>
   <section id="data" class="view" hidden></section>
 </main>
@@ -397,7 +403,7 @@ async function loadScores(w) {
   // "official" = covers confirmed from Westgate's standings; manual "results" win over everything
   const ov = { ...(ovDoc?.official || {}), ...(ovDoc?.results || {}) }, manual = ovDoc?.results || {};
   if (isCollege()) return { ...(await loadCollegeScores(w, m, base, ovDoc?.official || {}, manual)), manual };
-  const shared = S.league === "gold" || S.league === "survivor";      // same NFL games as the main contest
+  const shared = ["gold", "survivor", "circa-survivor", "circa-millio"].includes(S.league);  // same NFL games as the main contest
   const rbase = shared ? `${DATA}${Store.season}/week-${w}/` : base;
   const saved = (m.results || shared) ? await getJSON(rbase + "results.json").catch(() => null) : null;
   const allFinal = saved?.games?.length && saved.games.every(g => g.state === "post" && !/POSTPONED|CANCEL|SUSPENDED/i.test(g.status || ""));
@@ -1091,8 +1097,8 @@ let raf = 0;
 function render() {
   cancelAnimationFrame(raf);
   raf = requestAnimationFrame(() => {
-    const ALL = ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "mconsensus", "mstandings", "mtop", "data"];
-    const shown = isMillio() ? ["mconsensus", "mstandings", "mtop", "data"]
+    const ALL = ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "mboard", "mgames", "mconsensus", "mstandings", "mats", "mtop", "data"];
+    const shown = isMillio() ? ["mboard", "mgames", "mstandings", "mconsensus", "mats", "mtop", "data"]
       : isSurvivor() ? ["svweek", "sventries", "svcompare", "svtrends", "data"]
       : isCollege() ? ["games", "standings", "teams", "ats", "top", "data"]            // scoreboard: NFL only for now
       : ["board", "games", "standings", "teams", "ats", "top", "data"];
@@ -1101,7 +1107,9 @@ function render() {
     for (const t of ALL) $("#" + t).hidden = S.tab !== t;
     document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === S.tab));
     const focus = document.activeElement?.id === "q" ? $("#q").selectionStart : null;
-    if (S.tab === "mconsensus") renderMConsensus(); else if (S.tab === "mstandings") renderMStandings(); else if (S.tab === "mtop") renderMTop();
+    if (S.tab === "mboard") renderMBoard(); else if (S.tab === "mgames") renderMGames();
+    else if (S.tab === "mconsensus") renderMConsensus(); else if (S.tab === "mstandings") renderMStandings();
+    else if (S.tab === "mats") renderMAts(); else if (S.tab === "mtop") renderMTop();
     else if (S.tab === "svweek") renderSvWeek(); else if (S.tab === "sventries") renderSvEntries();
     else if (S.tab === "svcompare") renderSvCompare(); else if (S.tab === "svtrends") renderSvTrends();
     else if (S.tab === "board") renderBoard(); else if (S.tab === "games") renderGames(); else if (S.tab === "standings") renderStandings();
@@ -1153,7 +1161,7 @@ async function switchLeague(lg) {
   S.league = lg; local.set("cb-league", lg); markLeague();
   history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
   S.week = null; S.shown = 150; S.q = "";
-  ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "mconsensus", "mstandings", "mtop"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
+  ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "mboard", "mgames", "mconsensus", "mstandings", "mats", "mtop"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
   await Store.reset();
   Store.watch(P.index, onIndex);
   setTimeout(scheduleRefresh, 1500);
@@ -1184,6 +1192,127 @@ function millioChip(w, pk) {
   const t = !r.res ? "not started" : `${r.final ? "" : "live "}${r.mine}–${r.theirs}`;
   return `<span class="chip ${cls}${r.live ? " live" : ""}" title="${esc(pk.abbr)} ${line}: ${t}">${esc(pk.abbr)} ${line}</span>`;
 }
+// Circa doesn't publish its own game sheet — every game is the same real NFL matchup as the
+// main contest, just with Circa's own point spread. We build a card in the same {fav,dog}
+// shape the rest of the site already knows how to grade with grade()/etc., using the real
+// week's matchups (borrowed from the main NFL card, cached separately since it's outside the
+// current league's data prefix) and Circa's own consensus line per team (the line most of that
+// week's entries actually picked — every entry against a team sees the same market line, so
+// "most common" is just noise-proofing against a stray parse quirk, not entry-specific).
+const NFL_CARD_CACHE = new Map();
+function nflMatchups(w) {
+  if (NFL_CARD_CACHE.has(w)) return NFL_CARD_CACHE.get(w);
+  if (!NFL_CARD_CACHE.has("__pending_" + w)) {
+    NFL_CARD_CACHE.set("__pending_" + w, true);
+    getJSON(`${DATA}${Store.season}/week-${w}/card.json`).then(d => { NFL_CARD_CACHE.set(w, d?.games || null); render(); })
+      .catch(() => { NFL_CARD_CACHE.set(w, null); render(); });
+  }
+  return null;
+}
+function millioLines(w) {
+  const picks = Store.get(P.picks(w))?.entries;
+  if (!picks) return null;
+  const tally = {};
+  for (const e of picks) for (const pk of e.picks) { const t = (tally[pk.abbr] ||= {}); t[pk.line] = (t[pk.line] || 0) + 1; }
+  const line = {};
+  for (const [t, ls] of Object.entries(tally)) line[t] = +Object.entries(ls).sort((a, b) => b[1] - a[1])[0][0];
+  return line;
+}
+function millioCard(w) {
+  const matchups = nflMatchups(w), lines = millioLines(w);
+  if (!matchups || !lines) return null;
+  return matchups.map(g => {
+    const aLine = lines[g.fav.abbr], bLine = lines[g.dog.abbr];
+    const favIsA = (aLine ?? 0) <= (bLine ?? 0);       // more negative (or only known) side is the favorite
+    const [F, D] = favIsA ? [g.fav, g.dog] : [g.dog, g.fav];
+    const fLine = favIsA ? aLine : bLine, dLine = favIsA ? bLine : aLine;
+    return { id: g.id, site: g.site,
+      fav: { abbr: F.abbr, home: F.home, num: F.num, line: fLine ?? (dLine != null ? -dLine : 0) },
+      dog: { abbr: D.abbr, home: D.home, num: D.num, line: dLine ?? (fLine != null ? -fLine : 0) } };
+  });
+}
+function millioWeekGrades(w) {
+  const card = millioCard(w); if (!card) return null;
+  return { card, scores: scoresMap(w), ov: Store.get(P.scores(w))?.overrides || {} };
+}
+function millioAtsThrough(W) {
+  const rec = {};
+  for (const w of weeksList().filter(w => w <= W && index().weeks[w]?.picks)) {
+    const g = millioWeekGrades(w); if (!g) continue;
+    for (const gm of g.card) for (const side of [gm.fav, gm.dog]) {
+      const r = rec[side.abbr] ||= { w: 0, l: 0, p: 0 };
+      const gr = grade(side.abbr, g.card, g.scores, g.ov);
+      if (gr.final && gr.res) gr.res === "W" ? r.w++ : gr.res === "L" ? r.l++ : r.p++;
+    }
+  }
+  return rec;
+}
+function renderMBoard() {
+  const el = $("#mboard"), W = S.week;
+  if (!seasonReady(["picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const g = millioWeekGrades(W);
+  if (!g) { el.innerHTML = `<div class="empty"><b>Building this week's board…</b> Needs the real matchups and this week's picks.</div>`; return; }
+  const rec = millioAtsThrough(W);
+  const cnt = {}; (Store.get(P.picks(W))?.entries || []).forEach(e => e.picks.forEach(pk => cnt[pk.abbr] = (cnt[pk.abbr] || 0) + 1));
+  const games = g.card.map(gm => ({ gm, sg: g.scores[gm.fav.abbr] })).sort((a, b) => (a.sg?.kickoff || "").localeCompare(b.sg?.kickoff || "") || a.gm.id - b.gm.id);
+  const recTxt = ab => { const r = rec[ab] || { w: 0, l: 0, p: 0 }; return `ATS ${r.w}-${r.l}${r.p ? "-" + r.p : ""}`; };
+  el.innerHTML = `<p class="note">Week ${W}, Circa's own lines. ATS records count final games through week ${W}.</p>
+    <div class="board">${games.map(({ gm, sg }) => {
+      const neutral = !gm.fav.home && !gm.dog.home;
+      const home = gm.fav.home ? gm.fav : gm.dog, away = home === gm.fav ? gm.dog : gm.fav;
+      const fg = grade(gm.fav.abbr, g.card, g.scores, g.ov);
+      const started = sg && sg.state !== "pre" && sg.home_score != null;
+      const score = s => started ? (sg.home === s.abbr ? sg.home_score : sg.away_score) : "";
+      const lead = started && sg.state === "post" ? (score(home) > score(away) ? home.abbr : score(away) > score(home) ? away.abbr : null) : null;
+      const row = (s, where) => `<div class="brow ${lead && lead !== s.abbr ? "lose" : ""}">${teamBadge(s.abbr)}
+          <div class="bname">${esc(s.abbr)} ${NICK[s.abbr] ? `<small>${esc(NICK[s.abbr])}${where ? " · " + where : ""}</small>` : `<small>${where}</small>`}</div>
+          <div class="bline">${fmtLine(s.line)}</div><div class="bats">${recTxt(s.abbr)}</div><div class="bscore">${score(s)}</div></div>`;
+      const meta = !sg ? esc(kickoffLabel(null, gm)) : sg.state === "in" ? `<span class="live">${esc(sg.detail || "In progress")}</span>` : sg.state === "post" ? esc(sg.detail || "Final") : esc(kickoffLabel(sg, gm));
+      const winner = fg.res === "W" ? gm.fav : fg.res === "L" ? gm.dog : null;
+      const ats = !fg.res ? `<span>ATS winner: not started</span>` : fg.res === "P" ? `<span class="chip st-P${fg.final ? "" : " live"}">${fg.final ? "ATS push" : "On the number"}</span>`
+        : `<span class="chip st-W${fg.final ? "" : " live"}">${fg.final ? "ATS winner" : "Covering"}: ${esc(winner.abbr)} ${fmtLine(winner.line)}</span>`;
+      return `<article class="bgame"><div class="bmeta"><span>${neutral ? "Neutral site" : away.num != null && home.num != null ? `#${away.num} at #${home.num}` : ""}</span>${meta}</div>
+        ${row(away, neutral ? "Neutral" : "Away")}${row(home, neutral ? "Neutral" : "Home")}
+        <div class="bwin">${ats}<span>Picks: ${cnt[away.abbr] || 0} ${esc(away.abbr)} / ${cnt[home.abbr] || 0} ${esc(home.abbr)}</span></div></article>`;
+    }).join("")}</div>`;
+}
+function renderMGames() {
+  const el = $("#mgames"), W = S.week;
+  if (!seasonReady(["picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const g = millioWeekGrades(W), picks = Store.get(P.picks(W))?.entries;
+  if (!g || !picks) { el.innerHTML = `<div class="empty"><b>Building this week's games…</b></div>`; return; }
+  const n = picks.length;
+  el.innerHTML = `<p class="note"><b>${n}</b> entries, ${n * 5} picks against Circa's own lines.</p>
+    <div class="board">${g.card.map(gm => {
+      const cA = picks.filter(e => e.picks.some(pk => pk.abbr === gm.fav.abbr)).length;
+      const cD = picks.filter(e => e.picks.some(pk => pk.abbr === gm.dog.abbr)).length;
+      const tot = cA + cD || 1;
+      const fg = grade(gm.fav.abbr, g.card, g.scores, g.ov);
+      const chip = s => `<span class="team">${esc(s.abbr)}<small>${NICK[s.abbr] || ""}${s.home ? " (home)" : ""}</small></span>`;
+      return `<article class="bgame">
+        <div class="brow"><div style="flex:1;display:flex;justify-content:space-between;align-items:center">${chip(gm.fav)}<b>${fmtLine(gm.fav.line)}</b></div></div>
+        <div style="height:10px;border-radius:5px;overflow:hidden;display:flex;margin:6px 0;background:var(--panel-2)">
+          <div style="width:${cA / tot * 100}%;background:var(--cover)"></div><div style="width:${cD / tot * 100}%;background:var(--miss)"></div></div>
+        <div class="brow"><div style="flex:1;display:flex;justify-content:space-between;align-items:center">${chip(gm.dog)}<b>${fmtLine(gm.dog.line)}</b></div></div>
+        <div class="bwin"><span>${cA} ${esc(gm.fav.abbr)} / ${cD} ${esc(gm.dog.abbr)} picks</span>
+        ${!fg.res ? `<span class="note">Not started</span>` : `<span class="chip ${fg.res === "W" ? "st-W" : fg.res === "P" ? "st-P" : "st-L"}${fg.final ? "" : " live"}">${fg.final ? "Final" : "Live"}</span>`}</div>
+      </article>`;
+    }).join("")}</div>`;
+}
+function renderMAts() {
+  const el = $("#mats"), W = S.week;
+  if (!seasonReady(["picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const rec = millioAtsThrough(W);
+  const rows = Object.entries(rec).map(([t, r]) => ({ t, ...r, pct: r.w + r.l ? r.w / (r.w + r.l) : 0 }))
+    .sort((a, b) => b.pct - a.pct || b.w - a.w || a.l - b.l || a.t.localeCompare(b.t));
+  if (!rows.length) { el.innerHTML = `<div class="empty"><b>No graded games yet through week ${W}.</b></div>`; return; }
+  el.innerHTML = `<p class="note">Every team's record against Circa's own line, final games through week ${W}.</p>
+    <div class="table-wrap"><table style="min-width:420px"><thead><tr><th>Team</th><th>ATS</th><th class="num">Cover %</th></tr></thead><tbody>
+    ${rows.map(r => `<tr><td class="name">${teamBadge(r.t)} <b style="margin-left:6px">${esc(r.t)}</b> <small class="note">${esc(NICK[r.t] || "")}</small></td>
+      <td class="rec">${r.w}-${r.l}${r.p ? "-" + r.p : ""}</td><td class="num">${Math.round(r.pct * 100)}%</td></tr>`).join("")}
+    </tbody></table></div>`;
+}
+
 function renderMConsensus() {
   const el = $("#mconsensus"), W = S.week;
   if (!seasonReady(["picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
@@ -1209,34 +1338,43 @@ function renderMConsensus() {
         <td class="num">${Math.round(v.n / picks.length * 100)}%</td><td>${status(t, line)}</td></tr>`; }).join("")}
     </tbody></table></div>`;
 }
+// Season-to-date, blended: last posted official week (already cumulative — Circa posts
+// "Full Season Standings After Week N") as a base, plus every week live-graded on top, the
+// same way the main NFL Standings tab keeps a running total between official postings.
+function millioStandings(W) {
+  const idx = index().weeks, ws = weeksList();
+  const baseWeek = Math.max(0, ...ws.filter(w => w <= W && idx[w]?.standings));
+  const rows = new Map();
+  const ensure = id => rows.get(id) || rows.set(id, { id, w: 0, l: 0, t: 0, pts: 0 }).get(id);
+  if (baseWeek) for (const r of Store.get(P.standings(baseWeek))?.rows || []) Object.assign(ensure(r.id), { w: r.w, l: r.l, t: r.t, pts: r.pts });
+  for (const w of ws.filter(w => w > baseWeek && w <= W)) {
+    const picks = Store.get(P.picks(w))?.entries; if (!picks) continue;
+    for (const e of picks) {
+      const r = ensure(e.id);
+      for (const pk of e.picks) { const g = millioGrade(w, pk); if (g.res === "W") r.w++; else if (g.res === "L") r.l++; else if (g.res === "P") { r.t++; r.pts += 0.5; } if (g.res === "W") r.pts++; }
+    }
+  }
+  const list = [...rows.values()].sort((a, b) => b.pts - a.pts || a.id.localeCompare(b.id));
+  let place = 0, prev = null;
+  list.forEach((r, i) => { if (r.pts !== prev) place = i + 1; r.place = place; prev = r.pts; });
+  return { list, baseWeek, official: baseWeek === W };
+}
 function renderMStandings() {
   const el = $("#mstandings"), W = S.week;
-  if (!seasonReady(["picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
-  const official = Store.get(P.standings(W))?.rows;
+  if (!seasonReady(["picks", "scores", "standings"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
   const picks = Store.get(P.picks(W))?.entries || [];
   const byId = Object.fromEntries(picks.map(e => [e.id, e.picks]));
-  // Use official standings when posted; otherwise grade this week live and show week points only.
-  let rows, live = false, note;
-  if (official) {
-    rows = official.map(r => ({ id: r.id, w: r.w, l: r.l, t: r.t, pts: r.pts, place: r.place }));
-    note = `Official Circa standings after week ${W}.`;
-  } else {
-    live = true;
-    rows = picks.map(e => {
-      let w = 0, l = 0, t = 0;
-      for (const pk of e.picks) { const g = millioGrade(W, pk); if (g.res === "W") w++; else if (g.res === "L") l++; else if (g.res === "P") t++; }
-      return { id: e.id, w, l, t, pts: w + t * 0.5 };
-    }).sort((a, b) => b.pts - a.pts || a.id.localeCompare(b.id));
-    rows.forEach((r, i) => r.place = i + 1);
-    note = `Week ${W} live points (Circa hasn't posted official standings yet).`;
-  }
+  const { list: rows, baseWeek, official } = millioStandings(W);
+  const note = official ? `Official Circa standings after week ${W}.`
+    : baseWeek ? `Season-to-date through week ${W}: official through week ${baseWeek}, week${W - baseWeek > 1 ? "s" : ""} ${Array.from({ length: W - baseWeek }, (_, i) => baseWeek + i + 1).join(", ")} graded live.`
+    : `Week ${W} live points (Circa hasn't posted official standings yet, and none exist before week ${W} either).`;
   const q = S.q.trim().toUpperCase();
   const full = q ? rows.filter(r => r.id.includes(q)) : rows;
   const cap = S.svShowAll ? full.length : 200;
   const list = full.slice(0, cap);
   el.innerHTML = `<div class="tools"><input type="search" id="q" placeholder="Find an entry" value="${esc(S.q)}" aria-label="Find an entry"></div>
     <p class="note">${esc(note)} ${full.length > list.length ? `Showing ${list.length} of ${full.length}. <button class="pill" id="svShowAll">Show all</button>` : `${full.length} ${full.length === 1 ? "entry" : "entries"}.`}</p>
-    <div class="table-wrap"><table style="min-width:640px"><thead><tr><th>Place</th><th>Entry</th><th>${live ? "Week " + W : "Season"} record</th><th class="num">${live ? "Wk pts" : "Points"}</th><th>Week ${W} picks</th></tr></thead><tbody>
+    <div class="table-wrap"><table style="min-width:640px"><thead><tr><th>Place</th><th>Entry</th><th>Season record</th><th class="num">Points</th><th>Week ${W} picks</th></tr></thead><tbody>
     ${list.map(r => `<tr><td class="place">${r.place}</td><td class="name">${esc(r.id)}</td>
       <td class="rec">${r.w}-${r.l}-${r.t}</td><td class="num">${fmtPts(r.pts)}</td>
       <td>${byId[r.id] ? `<div class="picks">${byId[r.id].map(pk => millioChip(W, pk)).join("")}</div>` : `<span class="note">—</span>`}</td></tr>`).join("")}
