@@ -1,6 +1,19 @@
 {
- "updated": "2026-09-23T21:28:27+00:00",
+ "updated": "2026-09-23T21:43:03+00:00",
  "lines": [
-  "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead"
+  "wrote docs/data/2026/week-3/card.json (16 rows)",
+  "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
+  "college card: weeks listed [1, 2, 3, 4]",
+  "college picks: weeks listed [1, 2, 3]",
+  "college standings: weeks listed [1, 2, 3]",
+  "gold card: weeks listed [1, 2, 3]",
+  "gold card week 3: 16",
+  "gold picks: weeks listed [1, 2]",
+  "gold standings: weeks listed [1, 2]",
+  "survivor card: weeks listed [1, 2, 3]",
+  "survivor card week 3: 16",
+  "survivor picks: weeks listed [1, 2]",
+  "survivor used: weeks listed [1, 2]",
+  "! circa: no PDFs found by discovery or fallback (raw/circa/)"
  ]
 }
