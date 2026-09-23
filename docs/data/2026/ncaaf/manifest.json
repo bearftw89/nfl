@@ -23,6 +23,13 @@
    "standings": true,
    "results": false,
    "overrides": true
+  },
+  "4": {
+   "card": true,
+   "picks": false,
+   "standings": false,
+   "results": false,
+   "overrides": false
   }
  }
 }
