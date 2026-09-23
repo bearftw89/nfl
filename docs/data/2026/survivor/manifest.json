@@ -11,7 +11,7 @@
   "2": {
    "card": true,
    "picks": true,
-   "used": true
+   "used": false
   }
  }
 }

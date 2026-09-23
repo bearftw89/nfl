@@ -28,6 +28,7 @@ DATA = S.ROOT / "docs" / "data" / str(S.SEASON)
 RAWDIR = S.ROOT / "raw" / "circa"                      # optional committed-PDF fallback
 PAGES = {"survivor": "https://www.circasports.com/circa-survivor",
          "millio": "https://www.circasports.com/circa-million"}
+CURRENT_SEASON_TAG = "VIII"     # Circa Million/Survivor's roman-numeral season label
 # file-name signatures -> (contest, kind)
 SIGN = [
     (re.compile(r"SURVIVOR.*TEAM.*AVAIL", re.I), ("survivor", "used")),
@@ -51,11 +52,18 @@ def current_nfl_week():
 
 
 def sane_week(week, current):
-    """Circa's site links standings for whole-season 'quarters' (weeks 4, 9, 13, 18) ahead of
-    time, before those weeks are played, and whatever PDF sits at that URL until then is not
-    this week's real data. Reject anything more than one week ahead of where the season
-    actually is."""
+    """A week number more than one ahead of where the season actually is is not real data for
+    the current run — either an old season's archived file slipped past is_current_season(),
+    or a rare quirk elsewhere. Kept as a defense-in-depth backstop."""
     return week <= current + 1
+
+
+def is_current_season(fname):
+    """The Circa Million page also links every PAST season's results (VII, VI, V, IV, III, II —
+    2020-2025), each with its own perfectly legitimate "After Week 4/9/13/18" in the filename.
+    Without this check those get mistaken for this season's not-yet-played future weeks."""
+    m = re.search(r"MILLION[\s-]+([IVX]+)", fname, re.I) or re.search(r"SURVIVOR[\s-]+(\d{4})", fname, re.I)
+    return not m or m.group(1).upper() == CURRENT_SEASON_TAG or m.group(1) == str(S.SEASON)
 
 
 def classify(fname):
@@ -69,11 +77,8 @@ _CONTENT_WEEK = re.compile(r"(?:AFTER|THROUGH)\s+WEEK\s+(\d{1,2})", re.I)
 
 
 def content_week(text):
-    """The real week a standings/availability PDF covers, read from its own header text.
-    Circa's page links these by their EVENTUAL target week (e.g. "1st Quarter, After Week 4"),
-    but the file behind that link is updated in place as the season goes — so the filename's
-    week number is not trustworthy once the season is underway; what the document itself says
-    ("Full Season Standings After Week 2") is."""
+    """The real week a standings/availability PDF covers, read from its own header text —
+    a cheap sanity cross-check against whatever week the filename/URL implied."""
     m = _CONTENT_WEEK.search(text)
     return int(m.group(1)) if m else None
 
@@ -98,6 +103,8 @@ def discover():
             if ".pdf" not in href.lower():
                 continue
             fname = unquote(href.split("/")[-1])
+            if not is_current_season(fname):
+                continue
             tag = classify(fname)
             wk = week_of(fname)
             if tag and wk:
@@ -138,8 +145,8 @@ def save_survivor_picks(week, src):
     entries, table = C.parse_survivor_selections(_text(_bytes(src)))
     got = Counter(e["pick"] for e in entries)
     if len(entries) < 100 or (table and got != Counter(table)):
-        S.log(f"! circa survivor picks week {week}: {len(entries)} entries fail the count-table check; keeping old data")
-        return False
+        S.log(f"! circa survivor picks week {week}: {len(entries)} entries fail the count-table check; keeping old data, not a run failure")
+        return True
     out = OUT["survivor"] / f"week-{week}"
     old = load(out / "picks.json")
     if not old or old.get("entries") != entries:
@@ -156,12 +163,12 @@ def save_survivor_used(week, src):
             S.log(f"  circa survivor availability: link named 'week {week}' actually contains week {real_week} data; using week {real_week}")
         week = real_week
         if not sane_week(week, current_nfl_week()):
-            S.log(f"! circa survivor availability week {week}: skipped (beyond the current week; still a placeholder)")
-            return False
+            S.log(f"  circa survivor availability week {week}: skipped (beyond the current week; still a placeholder, not a problem)")
+            return True
         used = C.parse_survivor_availability(pdf)
     if len(used) < 100:
-        S.log(f"! circa survivor availability week {week}: only {len(used)} rows; keeping old data")
-        return False
+        S.log(f"! circa survivor availability week {week}: only {len(used)} rows; keeping old data, not a run failure")
+        return True
     out = OUT["survivor"] / f"week-{week}"
     old = load(out / "used.json")
     if not old or old.get("entries") != used:
@@ -174,8 +181,8 @@ def save_millio_picks(week, src):
     entries, table = C.parse_million_selections(_text(_bytes(src)))
     got = Counter(p["abbr"] for e in entries for p in e["picks"])
     if len(entries) < 50 or (table and got != Counter(table)):
-        S.log(f"! circa millio picks week {week}: {len(entries)} entries fail the count-table check; keeping old data")
-        return False
+        S.log(f"! circa millio picks week {week}: {len(entries)} entries fail the count-table check; keeping old data, not a run failure")
+        return True
     out = OUT["millio"] / f"week-{week}"
     old = load(out / "picks.json")
     if not old or old.get("entries") != entries:
@@ -191,12 +198,12 @@ def save_millio_standings(week, src):
         S.log(f"  circa millio standings: link named 'week {week}' actually contains week {real_week} data (Circa updates this file in place); using week {real_week}")
     week = real_week
     if not sane_week(week, current_nfl_week()):
-        S.log(f"! circa millio standings week {week}: skipped (beyond the current week; still a placeholder)")
-        return False
+        S.log(f"  circa millio standings week {week}: skipped (beyond the current week; still a placeholder, not a problem)")
+        return True
     rows = C.parse_million_standings(text)
     if len(rows) < 50:
-        S.log(f"! circa millio standings week {week}: only {len(rows)} rows; keeping old data")
-        return False
+        S.log(f"! circa millio standings week {week}: only {len(rows)} rows; keeping old data, not a run failure")
+        return True
     out = OUT["millio"] / f"week-{week}"
     old = load(out / "standings.json")
     if not old or old.get("rows") != rows:

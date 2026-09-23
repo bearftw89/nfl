@@ -13,7 +13,7 @@
   "2": {
    "card": true,
    "picks": true,
-   "standings": true,
+   "standings": false,
    "results": false,
    "overrides": false
   }
