@@ -10,6 +10,34 @@
   "2": {
    "picks": true,
    "standings": false
+  },
+  "4": {
+   "picks": false,
+   "standings": true
+  },
+  "8": {
+   "picks": false,
+   "standings": true
+  },
+  "9": {
+   "picks": false,
+   "standings": true
+  },
+  "12": {
+   "picks": false,
+   "standings": true
+  },
+  "13": {
+   "picks": false,
+   "standings": true
+  },
+  "17": {
+   "picks": false,
+   "standings": true
+  },
+  "18": {
+   "picks": false,
+   "standings": true
   }
  }
 }
