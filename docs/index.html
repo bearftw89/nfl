@@ -1249,9 +1249,12 @@ function renderTop() {
     <p class="note" style="margin-top:8px">Select a team to see which leaders took it.${multi ? " % of field is across all the contests shown." : ""}</p>
     <h2 class="sec">The leaders' week ${W} picks</h2>
     <div class="table-wrap"><table style="min-width:620px"><thead><tr>${multi ? "<th>Contest</th>" : ""}<th>Place</th><th>Entry</th><th class="num">Points</th><th>Week ${W} picks</th></tr></thead><tbody>
-    ${srcs.map(s => s.T.group.map(r => `<tr>${multi ? `<td class="note">${SHORT[s.lg]}</td>` : ""}<td class="place">${r.place}${r.tie ? "T" : ""}</td>
+    ${srcs.flatMap((s, si) => s.T.group.map(r => ({ s, si, r })))
+      // With several contests, interleave them by points (then each contest's own place) instead of listing one contest after another.
+      .sort((x, y) => multi ? y.r.total - x.r.total || x.r.place - y.r.place || x.si - y.si : 0)
+      .map(({ s, r }) => `<tr>${multi ? `<td class="note">${SHORT[s.lg]}</td>` : ""}<td class="place">${r.place}${r.tie ? "T" : ""}</td>
       <td class="name">${s.lg === S.league ? `<button data-entry="${esc(r.id)}">${esc(r.id)}</button>` : esc(r.id)}</td><td class="num">${fmtPts(r.total)}</td>
-      <td>${s.byId[r.id] ? `<div class="picks">${s.byId[r.id].map(a => chip(grade(a, s.g.card, s.g.scores, s.g.ov), true)).join("")}</div>` : `<span class="note">No picks</span>`}</td></tr>`).join("")).join("")}
+      <td>${s.byId[r.id] ? `<div class="picks">${s.byId[r.id].map(a => chip(grade(a, s.g.card, s.g.scores, s.g.ov), true)).join("")}</div>` : `<span class="note">No picks</span>`}</td></tr>`).join("")}
     </tbody></table></div>`;
 }
 function openTopTeam(a) {
