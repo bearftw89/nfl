@@ -731,7 +731,7 @@ function renderGames() {
     </div>
     ${n ? `<div class="five"><h2>Most picked five (${fmtPts(t5.proj)} pts)</h2>${t5.grades.map(chip).join("")}</div>`
         : `<p class="note">Picks for week ${w} aren't uploaded yet. Lines and scores are shown below.</p>`}
-    <div class="sortbar"><span>Sort</span>${[["kickoff","Kickoff"],["card","Card order"],["lopsided","Most lopsided"],["total","Most picked game"]]
+    <div class="sortbar"><span>Sort</span>${[["kickoff","Kickoff"],["total","Most picked game"],["lopsided","Most lopsided"]]
       .map(([k, t]) => `<button class="pill" data-gsort="${k}" aria-pressed="${S.gameSort === k}">${t}</button>`).join("")}</div>
     <p class="note" style="margin:-4px 0 10px">Lines are the ${BOOK()} contest lines; ATS records count final games through week ${w}.</p>
     <div class="board">${games.map(x => gameCard(x, n, scores, card, ov, rec)).join("")}</div>`;
