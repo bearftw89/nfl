@@ -1208,6 +1208,10 @@ function renderData() {
   const status = STATUS ? `<div class="have"><h2>Last updater run</h2><p class="note">${new Date(STATUS.updated).toLocaleString()}</p>
     ${issues.length ? box("Needs a look", issues, true) : `<p class="note">No problems reported.</p>`}
     ${box("Notes", notes, false)}</div>` : "";
+  // Survivor pools have no standings sheet; their files are selections and a teams-used sheet (Circa posts no game sheet).
+  const cols = isSurvivor()
+    ? [...(S.league === "survivor" ? [["card", "Game sheet"]] : []), ["picks", "Selections"], ["used", "Teams used"], ["overrides", "Overrides"]]
+    : [["card", "Game sheet"], ["picks", "Selections"], ["standings", "Official standings"], ["results", "Saved scores"], ["overrides", "Overrides"]];
   const yes = (v, t) => v ? `<span class="up">${t || "Yes"}</span>` : `<span class="note">—</span>`;
   el.innerHTML = `
     <div class="how" style="margin-top:0"><h2>${LEAGUE_NAME[S.league]}: where the data comes from</h2>
@@ -1218,9 +1222,9 @@ function renderData() {
       <p>The updater (a scheduled GitHub Action) checks the Westgate SuperContest pages every 15 minutes and saves each week's game sheet, selections and standings. Scores come live from ESPN while you have this page open: every 30 seconds during games, every 5 minutes otherwise.</p>
       <p>Forfeits or grading corrections: add <code>docs/data/${Store.season}/week-N/overrides.json</code> with, for example, <code>{"results": {"NYJ": "W", "GB": "L"}}</code> (W, L, P or C). Overrides beat the score feed.</p></div>
     <div class="have"><h2>Weeks on file, ${Store.season}</h2>
-      ${ws.length ? `<div class="table-wrap"><table style="min-width:0"><thead><tr><th>Week</th><th>Game sheet</th><th>Selections</th><th>Official standings</th><th>Saved scores</th><th>Overrides</th></tr></thead><tbody>
-        ${ws.map(w => `<tr><td>${w}</td><td>${yes(m[w].card)}</td><td>${yes(m[w].picks)}</td><td>${yes(m[w].standings)}</td><td>${yes(m[w].results)}</td><td>${yes(m[w].overrides)}</td></tr>`).join("")}
-      </tbody></table></div>` : `<p class="note">Nothing yet. Run the updater once (Actions tab, "Update contest data", Run workflow).</p>`}${pairing}</div>${status}`;
+      ${ws.length ? `<div class="table-wrap"><table style="min-width:0"><thead><tr><th>Week</th>${cols.map(([, t]) => `<th>${t}</th>`).join("")}</tr></thead><tbody>
+        ${ws.map(w => `<tr><td>${w}</td>${cols.map(([k]) => `<td>${yes(m[w][k])}</td>`).join("")}</tr>`).join("")}
+      </tbody></table></div>${isSurvivor() ? `<p class="note">Survivor pools don't publish standings. Who's alive is worked out from the selections and ESPN scores; the teams-used sheet is the book's own record of which teams remaining entries have used.</p>` : ""}` : `<p class="note">Nothing yet. Run the updater once (Actions tab, "Update contest data", Run workflow).</p>`}${pairing}</div>${status}`;
 }
 /* ================= shell ================= */
 function renderStatus() {
