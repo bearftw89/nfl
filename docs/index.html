@@ -86,8 +86,12 @@ select.week { display: none; }
 .bats { font: 500 14px var(--cond); color: var(--ink-2); text-align: right; white-space: nowrap; }
 .bscore { font: 700 24px/1 var(--cond); text-align: right; }
 .brow.lose .bname, .brow.lose .bscore { color: var(--ink-2); }
+.brow.nb { grid-template-columns: 1fr 50px 74px 40px; }
+.brow.st-W .bname, .brow.st-W .bscore { color: var(--cover); }
+.brow.st-L .bname { color: var(--ink-2); }
+.bgame .split { margin-top: 8px; height: 22px; }
 .bwin { margin-top: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--ink-2); }
-@media (max-width: 560px) { .board { grid-template-columns: 1fr; } .brow { grid-template-columns: 40px 1fr 44px 66px 34px; gap: 8px; } }
+@media (max-width: 560px) { .board { grid-template-columns: 1fr; } .brow { grid-template-columns: 40px 1fr 44px 66px 34px; gap: 8px; } .brow.nb { grid-template-columns: 1fr 44px 66px 34px; } }
 main { padding-top: 18px; padding-bottom: 40px; }
 .foot { color: var(--ink-2); font-size: 12px; padding-bottom: 32px; }
 
@@ -262,8 +266,7 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
     <div class="status" id="status" aria-live="polite"></div>
   </div>
   <nav class="tabs" role="tablist">
-    <button role="tab" data-tab="board" aria-selected="false">Scoreboard</button>
-    <button role="tab" data-tab="games" aria-selected="true">Picks by game</button>
+    <button role="tab" data-tab="games" aria-selected="true">Scoreboard</button>
     <button role="tab" data-tab="standings" aria-selected="false">Standings</button>
     <button role="tab" data-tab="teams" aria-selected="false">Consensus</button>
     <button role="tab" data-tab="ats" aria-selected="false">Teams ATS</button>
@@ -277,7 +280,6 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
   <nav class="weekbar" id="weekbar" aria-label="Week"></nav>
 </header>
 <main id="main">
-  <section id="board" class="view" hidden></section>
   <section id="games" class="view"></section>
   <section id="standings" class="view" hidden></section>
   <section id="teams" class="view" hidden></section>
@@ -594,7 +596,7 @@ const local = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-const S = { svSel: null, svPickQ: "", cmpShowOut: false, league: (lg => LEAGUES.includes(lg) ? lg : null)(new URLSearchParams(location.hash.slice(1)).get("lg")) || (LEAGUES.includes(local.get("cb-league", "nfl")) ? local.get("cb-league", "nfl") : "nfl"), svAlive: false, topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "card", q: "", onlyStarred: false, shown: 150,
+const S = { svSel: null, svPickQ: "", cmpShowOut: false, league: (lg => LEAGUES.includes(lg) ? lg : null)(new URLSearchParams(location.hash.slice(1)).get("lg")) || (LEAGUES.includes(local.get("cb-league", "nfl")) ? local.get("cb-league", "nfl") : "nfl"), svAlive: false, topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "kickoff", q: "", onlyStarred: false, shown: 150,
   sortKey: "total", sortDir: -1, starred: new Set(local.get("cb-starred", [])), editing: null, queue: [] };
 
 function index() { return Store.get(P.index) || { weeks: {} }; }
@@ -700,6 +702,7 @@ function chip(gr, withLine) {
     : { W: "covering", L: "not covering", P: "on the number" }[gr.res];
   return `<span class="chip ${cls}" title="${lbl(gr.ab)} ${fmtLine(gr.side?.line ?? 0)}: ${t}">${lbl(gr.ab)}${withLine && gr.side ? ` (${fmtLine(gr.side.line)})` : ""}</span>`;
 }
+/* ================= render: scoreboard (games + picks) ================= */
 function renderGames() {
   const el = $("#games"), w = S.week;
   const card = Store.get(P.card(w))?.games;
@@ -713,8 +716,11 @@ function renderGames() {
   const done = card.filter(g => { const x = grade(g.fav.abbr, card, scores, ov); return x.res && x.final; }).length;
   const top5 = Object.entries(count).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([a]) => a);
   const t5 = scoreEntry(top5, card, scores, ov);
+  // Season ATS records need every earlier week; they fill in once those load.
+  const rec = seasonReady(["card", "scores"], w) ? atsThrough(w) : null;
   let games = card.map(g => ({ g, sg: scores[g.fav.abbr], cf: count[g.fav.abbr] || 0, cd: count[g.dog.abbr] || 0 }));
-  if (S.gameSort === "lopsided") games.sort((a, b) => Math.abs(b.cf - b.cd) - Math.abs(a.cf - a.cd));
+  if (S.gameSort === "kickoff") games.sort((a, b) => (a.sg?.kickoff || a.g.kickoff || "").localeCompare(b.sg?.kickoff || b.g.kickoff || "") || a.g.id - b.g.id);
+  else if (S.gameSort === "lopsided") games.sort((a, b) => Math.abs(b.cf - b.cd) - Math.abs(a.cf - a.cd));
   else if (S.gameSort === "total") games.sort((a, b) => (b.cf + b.cd) - (a.cf + a.cd));
   el.innerHTML = `
     <div class="strip">
@@ -724,27 +730,32 @@ function renderGames() {
       <div><b>${done} / ${card.length}</b><span>games final</span></div>
     </div>
     ${n ? `<div class="five"><h2>Most picked five (${fmtPts(t5.proj)} pts)</h2>${t5.grades.map(chip).join("")}</div>`
-        : `<p class="note">Picks for week ${w} aren't uploaded yet. Lines are shown below.</p>`}
-    <div class="sortbar"><span>Sort</span>${[["card","Card order"],["lopsided","Most lopsided"],["total","Most picked game"]]
+        : `<p class="note">Picks for week ${w} aren't uploaded yet. Lines and scores are shown below.</p>`}
+    <div class="sortbar"><span>Sort</span>${[["kickoff","Kickoff"],["card","Card order"],["lopsided","Most lopsided"],["total","Most picked game"]]
       .map(([k, t]) => `<button class="pill" data-gsort="${k}" aria-pressed="${S.gameSort === k}">${t}</button>`).join("")}</div>
-    <div class="games">${games.map(x => gameCard(x, n, scores, card, ov)).join("")}</div>`;
+    <p class="note" style="margin:-4px 0 10px">Lines are the ${BOOK()} contest lines; ATS records count final games through week ${w}.</p>
+    <div class="board">${games.map(x => gameCard(x, n, scores, card, ov, rec)).join("")}</div>`;
 }
-function gameCard({ g, sg, cf, cd }, n, scores, card, ov) {
-  const sides = [g.fav, g.dog].sort((a, b) => a.home - b.home);
+function gameCard({ g, sg, cf, cd }, n, scores, card, ov, rec) {
+  const neutral = !g.fav.home && !g.dog.home;
+  const home = g.fav.home ? g.fav : g.dog, away = home === g.fav ? g.dog : g.fav;
   const cnt = s => s === g.fav ? cf : cd, tot = cf + cd;
   const st = s => grade(s.abbr, card, scores, ov);
-  const home = sides[1], away = sides[0];
   const ovTxt = ov[g.fav.abbr] || ov[g.dog.abbr];
   const manualOv = Store.get(P.scores(S.week))?.manual || {};
   const meta = (manualOv[g.fav.abbr] || manualOv[g.dog.abbr]) ? "Graded by override"
     : ovTxt && (!sg || sg.state !== "in") ? (sg?.state === "post" && sg.detail ? esc(sg.detail) : "Final") : !sg ? esc(kickoffLabel(null, g)) :
     DEAD.test(sg.status || "") ? "Postponed" : sg.state === "in" ? `<span class="live">${esc(sg.detail || "In progress")}</span>` :
     sg.state === "post" ? esc(sg.detail || "Final") : esc(kickoffLabel(sg, g));
-  const row = s => {
-    const gr = st(s);
-    const sc = sg && sg.state !== "pre" && sg.home_score != null ? (sg.home === s.abbr ? sg.home_score : sg.away_score) : "";
-    return `<div class="side ${gr.res ? "st-" + gr.res : ""}"><span class="team">${lbl(s.abbr)}<small>${nickOf(s.abbr)}${s.home ? " (home)" : ""}</small></span>
-      <span class="line">${fmtLine(s.line)}</span><span class="score">${sc}</span></div>`;
+  const started = sg && sg.state !== "pre" && sg.home_score != null;
+  const recTxt = ab => { if (!rec) return ""; const r = rec[ab] || { w: 0, l: 0, p: 0 }; return `ATS ${r.w}-${r.l}${r.p ? "-" + r.p : ""}`; };
+  const row = (s, where) => {
+    const gr = st(s), badge = TEAM_COLORS[s.abbr];
+    const sc = started ? (sg.home === s.abbr ? sg.home_score : sg.away_score) : "";
+    const nick = tNick(s.abbr);
+    return `<div class="brow ${badge ? "" : "nb"} ${gr.res ? "st-" + gr.res : ""}">${badge ? teamBadge(s.abbr) : ""}
+      <div class="bname">${esc(tLabel(s.abbr))} <small>${nick ? esc(nick) + " · " : ""}${where}</small></div>
+      <div class="bline">${fmtLine(s.line)}</div><div class="bats">${recTxt(s.abbr)}</div><div class="bscore">${sc}</div></div>`;
   };
   const seg = s => {
     const gr = st(s), share = tot ? cnt(s) / tot : .5, sp = Math.round(share * 100);
@@ -752,12 +763,16 @@ function gameCard({ g, sg, cf, cd }, n, scores, card, ov) {
     return `<div class="${gr.res ? "st-" + gr.res : ""}" style="flex:${tot ? Math.max(share, .03) : .5}" title="${lbl(s.abbr)}: ${cnt(s)} entries${n ? ` (${Math.round(cnt(s) / n * 100)}% of field)` : ""}">${label}</div>`;
   };
   const pl = x => `${x} ${x === 1 ? "pick" : "picks"}`;
-  return `<article class="game">
-    <div class="game-meta"><span>#${g.fav.num} / #${g.dog.num}</span><span>${meta}</span>
-</div>
-    ${row(away)}${row(home)}
-    <div class="split" role="img" aria-label="${sides.map(s => `${lbl(s.abbr)} ${cnt(s)} picks`).join(", ")}">${seg(away)}${seg(home)}</div>
-    <div class="counts"><span>${pl(cnt(away))}</span><span>${n ? Math.round(tot / n * 100) : 0}% of entries played this game</span><span>${pl(cnt(home))}</span></div>
+  const fg = st(g.fav), winner = fg.res === "W" ? g.fav : fg.res === "L" ? g.dog : null;
+  const ats = !fg.res ? `<span>ATS winner: not started</span>`
+    : fg.res === "P" || fg.res === "C" ? `<span class="chip st-P${fg.final ? "" : " live"}">${fg.res === "C" ? "Not played: ½ pt each" : fg.final ? "ATS push" : "On the number"}</span>`
+    : `<span class="chip st-W${fg.final ? "" : " live"}">${fg.final ? "ATS winner" : "Covering"}: ${esc(tLabel(winner.abbr))} ${fmtLine(winner.line)}</span>`;
+  return `<article class="bgame">
+    <div class="bmeta"><span>${neutral ? "Neutral site · " : ""}#${away.num} at #${home.num}</span><span>${meta}</span></div>
+    ${row(away, neutral ? "Neutral" : "Away")}${row(home, neutral ? "Neutral" : "Home")}
+    ${n ? `<div class="split" role="img" aria-label="${lbl(away.abbr)} ${cnt(away)} picks, ${lbl(home.abbr)} ${cnt(home)} picks">${seg(away)}${seg(home)}</div>
+    <div class="counts"><span>${pl(cnt(away))}</span><span>${Math.round(tot / n * 100)}% of entries played this game</span><span>${pl(cnt(home))}</span></div>` : ""}
+    <div class="bwin">${ats}</div>
 </article>`;
 }
 /* ================= render: standings ================= */
@@ -1219,10 +1234,9 @@ let raf = 0;
 function render() {
   cancelAnimationFrame(raf);
   raf = requestAnimationFrame(() => {
-    const ALL = ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "data"];
+    const ALL = ["games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "data"];
     const shown = isSurvivor() ? ["svweek", "sventries", "svcompare", "svtrends", "data"]
-      : isCollege() ? ["games", "standings", "teams", "ats", "top", "data"]            // scoreboard: NFL only for now
-      : ["board", "games", "standings", "teams", "ats", "top", "data"];
+      : ["games", "standings", "teams", "ats", "top", "data"];
     document.querySelectorAll(".tabs button").forEach(b => b.hidden = !shown.includes(b.dataset.tab));
     if (!shown.includes(S.tab)) S.tab = shown[0];
     for (const t of ALL) $("#" + t).hidden = S.tab !== t;
@@ -1230,7 +1244,7 @@ function render() {
     const focus = document.activeElement?.id === "q" ? $("#q").selectionStart : null;
     if (S.tab === "svweek") renderSvWeek(); else if (S.tab === "sventries") renderSvEntries();
     else if (S.tab === "svcompare") renderSvCompare(); else if (S.tab === "svtrends") renderSvTrends();
-    else if (S.tab === "board") renderBoard(); else if (S.tab === "games") renderGames(); else if (S.tab === "standings") renderStandings();
+    else if (S.tab === "games") renderGames(); else if (S.tab === "standings") renderStandings();
     else if (S.tab === "teams") renderTeams(); else if (S.tab === "ats") renderAts();
     else if (S.tab === "top") renderTop(); else renderData();
     if (focus !== null && $("#q")) { $("#q").focus(); $("#q").setSelectionRange(focus, focus); }
@@ -1280,7 +1294,7 @@ async function switchLeague(lg) {
   S.league = lg; local.set("cb-league", lg); markLeague();
   history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
   S.week = null; S.shown = 150; S.q = "";
-  ["board", "games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
+  ["games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
   await Store.reset();
   Store.watch(P.index, onIndex);
   setTimeout(scheduleRefresh, 1500);
@@ -1517,40 +1531,6 @@ function atsThrough(W) {
   }
   return rec;
 }
-function renderBoard() {
-  const el = $("#board"), W = S.week;
-  if (!seasonReady(["card", "scores"], W)) { el.innerHTML = `<p class="note">Loading the scoreboard…</p>`; return; }
-  const g = weekGrades(W);
-  if (!g) { el.innerHTML = `<div class="empty"><b>No game sheet for week ${W} yet.</b></div>`; return; }
-  const rec = atsThrough(W);
-  const cnt = {}; (Store.get(P.picks(W))?.entries || []).forEach(e => e.picks.forEach(a => cnt[a] = (cnt[a] || 0) + 1));
-  const games = g.card.map(gm => ({ gm, sg: g.scores[gm.fav.abbr] }))
-    .sort((a, b) => (a.sg?.kickoff || "").localeCompare(b.sg?.kickoff || "") || a.gm.id - b.gm.id);
-  const recTxt = ab => { const r = rec[ab] || { w: 0, l: 0, p: 0 }; return `ATS ${r.w}-${r.l}${r.p ? "-" + r.p : ""}`; };
-  el.innerHTML = `<p class="note">Week ${W}, in kickoff order. Lines are the ${BOOK()} contest lines; ATS records count final games through week ${W}.</p>
-    <div class="board">${games.map(({ gm, sg }) => {
-      const neutral = !gm.fav.home && !gm.dog.home;
-      const home = gm.fav.home ? gm.fav : gm.dog, away = home === gm.fav ? gm.dog : gm.fav;
-      const fg = grade(gm.fav.abbr, g.card, g.scores, g.ov);
-      const started = sg && sg.state !== "pre" && sg.home_score != null;
-      const score = s => started ? (sg.home === s.abbr ? sg.home_score : sg.away_score) : "";
-      const lead = started && sg.state === "post" ? (score(home) > score(away) ? home.abbr : score(away) > score(home) ? away.abbr : null) : null;
-      const row = (s, where) => `<div class="brow ${lead && lead !== s.abbr ? "lose" : ""}">
-          ${teamBadge(s.abbr)}
-          <div class="bname">${esc(tLabel(s.abbr))} ${tNick(s.abbr) ? `<small>${esc(tNick(s.abbr))}${where ? " · " + where : ""}</small>` : `<small>${where}</small>`}</div>
-          <div class="bline">${fmtLine(s.line)}</div><div class="bats">${recTxt(s.abbr)}</div><div class="bscore">${score(s)}</div></div>`;
-      const meta = !sg ? esc(kickoffLabel(null, gm)) : sg.state === "in" ? `<span class="live">${esc(sg.detail || "In progress")}</span>`
-        : sg.state === "post" ? esc(sg.detail || "Final") : esc(kickoffLabel(sg, gm));
-      const winner = fg.res === "W" ? gm.fav : fg.res === "L" ? gm.dog : null;
-      const ats = !fg.res ? `<span>ATS winner: not started</span>`
-        : fg.res === "P" || fg.res === "C" ? `<span class="chip st-P${fg.final ? "" : " live"}">${fg.res === "C" ? "Not played: ½ pt each" : fg.final ? "ATS push" : "On the number"}</span>`
-        : `<span class="chip st-W${fg.final ? "" : " live"}">${fg.final ? "ATS winner" : "Covering"}: ${esc(tLabel(winner.abbr))} ${fmtLine(winner.line)}</span>`;
-      return `<article class="bgame"><div class="bmeta"><span>${neutral ? "Neutral site" : "#" + away.num + " at #" + home.num}</span>${meta}</div>
-        ${row(away, neutral ? "Neutral" : "Away")}${row(home, neutral ? "Neutral" : "Home")}
-        <div class="bwin">${ats}<span>Picks: ${cnt[away.abbr] || 0} ${esc(tLabel(away.abbr))} / ${cnt[home.abbr] || 0} ${esc(tLabel(home.abbr))}</span></div></article>`;
-    }).join("")}</div>`;
-}
-
 function bind() {
   document.getElementById("weekbar").addEventListener("click", e => {
     const b = e.target.closest("[data-goweek]"); if (!b || b.disabled) return;
