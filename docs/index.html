@@ -1097,7 +1097,7 @@ function renderTop() {
     <div class="topctl">
       <label style="font-weight:400"><input type="checkbox" id="topTies" ${S.topTies !== false ? "checked" : ""}> Include everyone tied at the cutoff</label>
       <label style="font-weight:400">Rank by
-        <select id="topBasis" class="week" style="font-size:15px;padding:4px 8px">
+        <select id="topBasis" style="font-size:15px;padding:4px 8px">
           <option value="entering" ${T.basis !== "live" ? "selected" : ""}>standings entering week ${W}</option>
           <option value="live" ${T.basis === "live" ? "selected" : ""}>live standings including week ${W}</option>
         </select></label>
