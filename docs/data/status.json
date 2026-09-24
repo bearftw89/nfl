@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-24T20:33:07+00:00",
+ "updated": "2026-09-24T20:55:20+00:00",
  "lines": [
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
   "college card: weeks listed [1, 2, 3, 4]",
