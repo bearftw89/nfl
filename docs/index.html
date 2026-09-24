@@ -47,6 +47,7 @@ button, select, input, textarea { font: inherit; color: inherit; }
 .league[hidden] { display: none; }
 .top-inner { align-items: flex-start; }
 .leaguenav { display: flex; flex-direction: column; gap: 6px; }
+.leaguenav > .league:not(.sub) { align-self: flex-start; }   /* size the NFL/NCAAF/Survivor pill to its buttons, not the sub-tab row */
 .league.sub { border: 0; border-radius: 0; border-top: 1px solid var(--rule); gap: 18px; padding-top: 2px; overflow-x: auto; }
 .league.sub button { background: none; font: 500 15px/1 var(--cond); padding: 6px 2px; color: var(--ink-2); border-bottom: 2px solid transparent; }
 .league.sub button:hover { color: var(--ink); }
