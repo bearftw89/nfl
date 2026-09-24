@@ -83,6 +83,8 @@ select.week { display: none; }
 .bname { font: 600 19px/1.1 var(--cond); }
 .bname small { display: block; font: 400 12px var(--text); color: var(--ink-2); margin-top: 2px; }
 .bline { font: 500 16px var(--cond); color: var(--ink-2); text-align: right; }
+.bline small { display: block; font: 400 11px var(--text); margin-top: 2px; white-space: nowrap; }
+.bline small.gap { color: var(--cover); font-weight: 600; }
 .bats { font: 500 14px var(--cond); color: var(--ink-2); text-align: right; white-space: nowrap; }
 .bscore { font: 700 24px/1 var(--cond); text-align: right; }
 .brow.lose .bname, .brow.lose .bscore { color: var(--ink-2); }
@@ -386,11 +388,28 @@ async function getJSON(url, ms = 10000) {
   try { const r = await fetch(url, { signal: ctl.signal, cache: "no-store" }); if (!r.ok) throw new Error(r.status); return await r.json(); }
   finally { clearTimeout(t); }
 }
+// Market spread from ESPN's odds, as the HOME team's line (e.g. -3.5). null when ESPN has none.
+function espnSpread(comp) {
+  const o = comp?.odds?.[0]; if (!o) return null;
+  const det = String(o.details || "").trim();
+  if (/^(EVEN|PK|PICK)/i.test(det)) return 0;
+  const m = det.match(/^(\S+)\s+([-+]?\d+(?:\.\d+)?)$/);
+  if (m) {
+    const c = comp.competitors.find(c => c.team?.abbreviation === m[1]);
+    if (c) return c.homeAway === "home" ? +m[2] : -m[2];
+  }
+  if (typeof o.spread === "number") {
+    const v = Math.abs(o.spread);
+    if (o.homeTeamOdds?.favorite) return -v;
+    if (o.awayTeamOdds?.favorite) return v;
+  }
+  return null;
+}
 function espnGames(data) {
   const out = [];
   for (const ev of data.events || []) {
     const comp = ev.competitions[0], st = (comp.status || ev.status).type;
-    const g = { kickoff: ev.date, state: st.state, detail: st.shortDetail, status: st.name };
+    const g = { kickoff: ev.date, state: st.state, detail: st.shortDetail, status: st.name, mkt_home: espnSpread(comp), mkt_src: comp.odds?.[0]?.provider?.name || "" };
     for (const c of comp.competitors) {
       g[c.homeAway] = c.team.abbreviation;
       g[c.homeAway + "_score"] = c.score === "" || c.score == null ? null : Number(c.score);
@@ -444,7 +463,7 @@ function pairCollege(card, events) {
     }
     if (!hit.length) continue;
     const { e, cs } = hit[0], comp = e.competitions[0], st = (comp.status || e.status).type;
-    const row = { espn_id: e.id, kickoff: e.date, state: st.state, detail: st.shortDetail, status: st.name };
+    const row = { espn_id: e.id, kickoff: e.date, state: st.state, detail: st.shortDetail, status: st.name, mkt_home: espnSpread(comp), mkt_src: comp.odds?.[0]?.provider?.name || "" };
     for (const { c, keys } of cs) {
       const mine = overlaps(keys, A) ? g.fav.abbr : overlaps(keys, B) ? g.dog.abbr : null;
       row[c.homeAway] = mine;
@@ -633,6 +652,15 @@ function grade(abbr, card, scores, ov = {}) {
   const adj = mine + side.line - theirs;     // against the spread, never straight up
   return { ...base, res: adj > 0 ? "W" : adj < 0 ? "L" : "P", final: sg.state === "post", live: sg.state === "in", mine, theirs };
 }
+// The field's five most-picked teams (ties broken alphabetically so every tab agrees).
+const topFive = count => Object.entries(count).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 5).map(([a]) => a);
+// ESPN's market line for one side of a card game; hidden while the game is live (ESPN may show in-game odds).
+function marketLine(s, sg) {
+  if (!sg || sg.mkt_home == null || sg.state === "in") return null;
+  if (sg.home === s.abbr) return sg.mkt_home;
+  if (sg.away === s.abbr) return -sg.mkt_home;
+  return null;
+}
 function scoreEntry(picks, card, scores, ov) {
   const r = { w: 0, l: 0, p: 0, c: 0, lw: 0, ll: 0, lp: 0, pending: 0, pts: 0, proj: 0, grades: [] };
   for (const ab of picks) {
@@ -714,14 +742,18 @@ function renderGames() {
   const avg = n ? scored.reduce((s, r) => s + r.proj, 0) / n : 0;
   const perfect = scored.filter(r => r.l + r.ll + r.p + r.lp + r.c === 0).length;
   const done = card.filter(g => { const x = grade(g.fav.abbr, card, scores, ov); return x.res && x.final; }).length;
-  const top5 = Object.entries(count).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([a]) => a);
-  const t5 = scoreEntry(top5, card, scores, ov);
+  const t5 = scoreEntry(topFive(count), card, scores, ov);
   // Season ATS records need every earlier week; they fill in once those load.
   const rec = seasonReady(["card", "scores"], w) ? atsThrough(w) : null;
   let games = card.map(g => ({ g, sg: scores[g.fav.abbr], cf: count[g.fav.abbr] || 0, cd: count[g.dog.abbr] || 0 }));
   if (S.gameSort === "kickoff") games.sort((a, b) => (a.sg?.kickoff || a.g.kickoff || "").localeCompare(b.sg?.kickoff || b.g.kickoff || "") || a.g.id - b.g.id);
   else if (S.gameSort === "lopsided") games.sort((a, b) => Math.abs(b.cf - b.cd) - Math.abs(a.cf - a.cd));
   else if (S.gameSort === "total") games.sort((a, b) => (b.cf + b.cd) - (a.cf + a.cd));
+  else if (S.gameSort === "gap") {
+    const gap = x => { const m = marketLine(x.g.fav, x.sg); return m == null ? -1 : Math.abs(x.g.fav.line - m); };
+    games.sort((a, b) => gap(b) - gap(a));
+  }
+  const anyMkt = games.some(x => marketLine(x.g.fav, x.sg) != null);
   el.innerHTML = `
     <div class="strip">
       <div><b>${n || "—"}</b><span>entries with picks</span></div>
@@ -729,11 +761,11 @@ function renderGames() {
       <div><b>${n ? perfect : "—"}</b><span>still unbeaten this week</span></div>
       <div><b>${done} / ${card.length}</b><span>games final</span></div>
     </div>
-    ${n ? `<div class="five"><h2>Most picked five (${fmtPts(t5.proj)} pts)</h2>${t5.grades.map(chip).join("")}</div>`
+    ${n ? `<div class="five"><h2>Most picked five (${fmtPts(t5.proj)} pts)</h2>${t5.grades.map(g => chip(g, true)).join("")}</div>`
         : `<p class="note">Picks for week ${w} aren't uploaded yet. Lines and scores are shown below.</p>`}
-    <div class="sortbar"><span>Sort</span>${[["kickoff","Kickoff"],["total","Most Picked Game"],["lopsided","Most Lopsided"]]
+    <div class="sortbar"><span>Sort</span>${[["kickoff","Kickoff"],["total","Most Picked Game"],["lopsided","Most Lopsided"],["gap","Biggest Line Gap"]]
       .map(([k, t]) => `<button class="pill" data-gsort="${k}" aria-pressed="${S.gameSort === k}">${t}</button>`).join("")}</div>
-    <p class="note" style="margin:-4px 0 10px">Lines are the ${BOOK()} contest lines; ATS records count final games through week ${w}.</p>
+    <p class="note" style="margin:-4px 0 10px">Lines are the ${BOOK()} contest lines; ATS records count final games through week ${w}.${anyMkt ? " Small line under each contest line is the current market line from ESPN; green means the contest line gives that side at least a point more than the market." : " Market lines from ESPN appear here when its feed has them (usually before kickoff; not for games loaded from saved final scores)."}</p>
     <div class="board">${games.map(x => gameCard(x, n, scores, card, ov, rec)).join("")}</div>`;
 }
 function gameCard({ g, sg, cf, cd }, n, scores, card, ov, rec) {
@@ -749,13 +781,15 @@ function gameCard({ g, sg, cf, cd }, n, scores, card, ov, rec) {
     sg.state === "post" ? esc(sg.detail || "Final") : esc(kickoffLabel(sg, g));
   const started = sg && sg.state !== "pre" && sg.home_score != null;
   const recTxt = ab => { if (!rec) return ""; const r = rec[ab] || { w: 0, l: 0, p: 0 }; return `ATS ${r.w}-${r.l}${r.p ? "-" + r.p : ""}`; };
+  const mk = s => { const m = marketLine(s, sg); if (m == null) return "";
+    return `<small class="${s.line - m >= 1 ? "gap" : ""}" title="Market line${sg.mkt_src ? " (" + esc(sg.mkt_src) + ")" : ""}">mkt ${fmtLine(m)}</small>`; };
   const row = (s, where) => {
     const gr = st(s), badge = TEAM_COLORS[s.abbr];
     const sc = started ? (sg.home === s.abbr ? sg.home_score : sg.away_score) : "";
     const nick = tNick(s.abbr);
     return `<div class="brow ${badge ? "" : "nb"} ${gr.res ? "st-" + gr.res : ""}">${badge ? teamBadge(s.abbr) : ""}
       <div class="bname">${esc(tLabel(s.abbr))} <small>${nick ? esc(nick) + " · " : ""}${where}</small></div>
-      <div class="bline">${fmtLine(s.line)}</div><div class="bats">${recTxt(s.abbr)}</div><div class="bscore">${sc}</div></div>`;
+      <div class="bline">${fmtLine(s.line)}${mk(s)}</div><div class="bats">${recTxt(s.abbr)}</div><div class="bscore">${sc}</div></div>`;
   };
   const seg = s => {
     const gr = st(s), share = tot ? cnt(s) / tot : .5, sp = Math.round(share * 100);
@@ -763,6 +797,8 @@ function gameCard({ g, sg, cf, cd }, n, scores, card, ov, rec) {
     return `<div class="${gr.res ? "st-" + gr.res : ""}" style="flex:${tot ? Math.max(share, .03) : .5}" title="${lbl(s.abbr)}: ${cnt(s)} entries${n ? ` (${Math.round(cnt(s) / n * 100)}% of field)` : ""}">${label}</div>`;
   };
   const pl = x => `${x} ${x === 1 ? "pick" : "picks"}`;
+  const mf = marketLine(g.fav, sg), gv = mf == null ? 0 : g.fav.line - mf;
+  const gapTxt = Math.abs(gv) >= 0.5 ? `<span>Contest line ${fmtPts(Math.abs(gv))} better on ${esc(tLabel((gv > 0 ? g.fav : g.dog).abbr))}</span>` : "";
   const fg = st(g.fav), winner = fg.res === "W" ? g.fav : fg.res === "L" ? g.dog : null;
   const ats = !fg.res ? `<span>ATS winner: not started</span>`
     : fg.res === "P" || fg.res === "C" ? `<span class="chip st-P${fg.final ? "" : " live"}">${fg.res === "C" ? "Not played: ½ pt each" : fg.final ? "ATS push" : "On the number"}</span>`
@@ -772,7 +808,7 @@ function gameCard({ g, sg, cf, cd }, n, scores, card, ov, rec) {
     ${row(away, neutral ? "Neutral" : "Away")}${row(home, neutral ? "Neutral" : "Home")}
     ${n ? `<div class="split" role="img" aria-label="${lbl(away.abbr)} ${cnt(away)} picks, ${lbl(home.abbr)} ${cnt(home)} picks">${seg(away)}${seg(home)}</div>
     <div class="counts"><span>${pl(cnt(away))}</span><span>${Math.round(tot / n * 100)}% of entries played this game</span><span>${pl(cnt(home))}</span></div>` : ""}
-    <div class="bwin">${ats}</div>
+    <div class="bwin">${ats}${gapTxt}</div>
 </article>`;
 }
 /* ================= render: standings ================= */
@@ -875,7 +911,7 @@ function renderTeams() {
   const card = Store.get(P.card(w))?.games;
   const picks = Store.get(P.picks(w))?.entries || [];
   if (!card || !picks.length) {
-    el.innerHTML = `<div class="empty"><b>Nothing to total yet.</b> This tab needs both the game sheet and the selections for week ${w}.</div>`;
+    el.innerHTML = `<div class="empty"><b>Nothing to total yet.</b> This tab needs both the game sheet and the selections for week ${w}.</div>${w > 1 ? crowdRecord(w - 1) : ""}`;
     return;
   }
   const scores = scoresMap(w), ov = Store.get(P.scores(w))?.overrides || {};
@@ -915,6 +951,46 @@ function renderTeams() {
         <td class="rec">${fmtLine(r.line)}</td><td class="rec">${lbl(r.opp)}</td>
         <td class="num">${r.who.length}</td><td class="num">${Math.round(r.who.length / n * 100)}%</td>
         ${cell(r)}<td class="num">${r.pts == null ? "\u2014" : fmtPts(r.pts)}</td></tr>`).join("")}
+    </tbody></table></div>
+    ${crowdRecord(w)}`;
+}
+/* Season record of following (or fading) the crowd, week by week through week W.
+   Crowd five = the field's 5 most-picked teams; Fade five = their opponents;
+   Leaders' five = the most-picked teams among the Top entries group ranked entering that week. */
+function leadersFive(w) {
+  if (w < 2) return null;
+  const st = computeStandings(w - 1); if (!st.list.length) return null;
+  const N = Math.min(Math.max(1, S.topN || 10), st.list.length), cut = st.list[N - 1].total;
+  const group = S.topTies !== false ? st.list.filter((r, i) => i < N || r.total === cut) : st.list.slice(0, N);
+  const byId = Object.fromEntries((Store.get(P.picks(w))?.entries || []).map(e => [e.id, e.picks]));
+  const count = {}; for (const r of group) for (const a of byId[r.id] || []) count[a] = (count[a] || 0) + 1;
+  return Object.keys(count).length ? { five: topFive(count), size: group.length } : null;
+}
+function crowdRecord(W) {
+  if (!seasonReady(["card", "picks", "scores", "standings"], W)) return `<h2 class="sec">Following the crowd</h2><p class="note">Loading the season…</p>`;
+  const weeks = weeksList().filter(w => w <= W && Store.get(P.card(w))?.games && Store.get(P.picks(w))?.entries?.length);
+  if (!weeks.length) return "";
+  const rows = [], tot = { crowd: 0, fade: 0, lead: 0, field: 0, leadWeeks: 0 };
+  const recOf = r => `${r.w + r.lw}-${r.l + r.ll}${r.p + r.lp + r.c ? "-" + (r.p + r.lp + r.c) : ""}`;
+  for (const w of weeks) {
+    const g = weekGrades(w), picks = Store.get(P.picks(w)).entries;
+    const count = {}; picks.forEach(e => e.picks.forEach(a => count[a] = (count[a] || 0) + 1));
+    const five = topFive(count);
+    const fadeAbs = five.map(a => { const gm = g.card.find(x => x.fav.abbr === a || x.dog.abbr === a); return gm ? (gm.fav.abbr === a ? gm.dog.abbr : gm.fav.abbr) : null; }).filter(Boolean);
+    const crowd = scoreEntry(five, g.card, g.scores, g.ov), fade = scoreEntry(fadeAbs, g.card, g.scores, g.ov);
+    const L = leadersFive(w), lead = L ? scoreEntry(L.five, g.card, g.scores, g.ov) : null;
+    const field = picks.reduce((s, e) => s + scoreEntry(e.picks, g.card, g.scores, g.ov).proj, 0) / picks.length;
+    const live = [crowd, fade, lead].some(r => r && (r.lw + r.ll + r.lp + r.pending));
+    tot.crowd += crowd.proj; tot.fade += fade.proj; tot.field += field; if (lead) { tot.lead += lead.proj; tot.leadWeeks++; }
+    rows.push({ w, crowd, fade, lead, field, live });
+  }
+  const cellOf = r => r ? `<td class="num"><b>${fmtPts(r.proj)}</b> <small class="note">${recOf(r)}</small></td>` : `<td class="num note">—</td>`;
+  return `<h2 class="sec">Following the crowd, weeks ${weeks[0]}–${weeks[weeks.length - 1]}</h2>
+    <p class="note">Points each five would have scored (cover 1, push ½). <b>Crowd five</b>: the field's five most-picked teams. <b>Fade five</b>: the other side of each of those games. <b>Leaders' five</b>: the five most-picked teams among the standings 1–${S.topN || 10} entering that week (the Top entries setting). Weeks still in progress count games as they stand now.</p>
+    <div class="table-wrap"><table style="min-width:560px"><thead><tr><th>Week</th><th class="num">Crowd five</th><th class="num">Fade five</th><th class="num">Leaders' five</th><th class="num">Field average</th></tr></thead><tbody>
+    ${rows.map(r => `<tr><td>${r.w}${r.live ? ' <small class="note">(live)</small>' : ""}</td>${cellOf(r.crowd)}${cellOf(r.fade)}${cellOf(r.lead)}<td class="num">${r.field.toFixed(2)}</td></tr>`).join("")}
+    <tr style="border-top:2px solid var(--rule)"><td><b>Total</b></td><td class="num"><b>${fmtPts(tot.crowd)}</b></td><td class="num"><b>${fmtPts(tot.fade)}</b></td>
+      <td class="num"><b>${tot.leadWeeks ? fmtPts(tot.lead) : "—"}</b>${tot.leadWeeks && tot.leadWeeks < rows.length ? ` <small class="note">(${tot.leadWeeks} wk)</small>` : ""}</td><td class="num"><b>${tot.field.toFixed(2)}</b></td></tr>
     </tbody></table></div>`;
 }
 function openTeam(abbr) {
