@@ -1376,6 +1376,7 @@ async function switchLeague(lg) {
   S.league = lg; local.set("cb-league", lg); markLeague();
   history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
   S.week = keepWeek; S.shown = 150; S.q = "";
+  S.svPickQ = ""; S.svSel = []; S.cmpShowOut = false;   // Compare picks belong to one contest; start fresh in the next
   ["games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
   await Store.reset();
   Store.watch(P.index, onIndex);
@@ -1515,7 +1516,12 @@ function renderSvCompare() {
       ${S.svSel.map(id => `<tr><th class="cmphead" scope="row">${esc(id)}<button class="x" data-cmpremove="${esc(id)}" title="Remove ${esc(id)}" aria-label="Remove ${esc(id)}">✕</button><small>${statusLine(st[id])}</small></th>
         ${weeks.map(w => `<td>${cellFor(st[id], w)}</td>`).join("")}</tr>`).join("")}
     </tbody></table></div>`;
+  // Keep the name list where it was scrolled (re-render would jump it to the top), unless the search or list changed.
+  const listKey = `${S.league}|${q}|${S.cmpShowOut}|${W}`, oldList = el.querySelector(".cmplist");
+  const keepTop = oldList && S.cmpListKey === listKey ? oldList.scrollTop : 0;
+  S.cmpListKey = listKey;
   el.innerHTML = `<div class="cmpwrap">${picker}<div>${table}</div></div>`;
+  if (keepTop) el.querySelector(".cmplist").scrollTop = keepTop;
 }
 function renderSvTrends() {
   const el = $("#svtrends"), W = S.week;
