@@ -1369,11 +1369,13 @@ async function switchLeague(lg) {
     lg = ["survivor", "circa-survivor", "circa-grandissimo"].includes(local.get("cb-survsub", "survivor")) ? local.get("cb-survsub", "survivor") : "survivor";
   }
   if (lg === S.league) return;
+  // Every contest except college runs on the NFL schedule, so keep the week when moving between them.
+  const keepWeek = S.league !== "ncaaf" && lg !== "ncaaf" ? S.week : null;
   if (nflFamilyLeague(lg)) local.set("cb-nflsub", lg);
   if (lg === "survivor" || lg === "circa-survivor" || lg === "circa-grandissimo") local.set("cb-survsub", lg);
   S.league = lg; local.set("cb-league", lg); markLeague();
   history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
-  S.week = null; S.shown = 150; S.q = "";
+  S.week = keepWeek; S.shown = 150; S.q = "";
   ["games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
   await Store.reset();
   Store.watch(P.index, onIndex);
