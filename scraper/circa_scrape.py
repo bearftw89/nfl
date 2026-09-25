@@ -8,7 +8,7 @@ raw/circa/ is used as a fallback.
 
   circa-survivor    -> docs/data/<season>/circa-survivor/week-N/{picks,used}.json
   circa-grandissimo -> docs/data/<season>/circa-grandissimo/week-N/{picks,used}.json
-  circa-millio   -> docs/data/<season>/circa-millio/week-N/{picks,standings}.json   (built later)
+  circa-millio   -> docs/data/<season>/circa-millio/week-N/{card,picks,standings}.json
 
 Scores come from ESPN in the browser, same as every other contest.
 """
@@ -39,6 +39,7 @@ SIGN = [
     (re.compile(r"SURVIVOR.*SELECTION", re.I), ("survivor", "picks")),
     (re.compile(r"MILLION.*STANDING", re.I), ("millio", "standings")),
     (re.compile(r"MILLION.*SELECTION", re.I), ("millio", "picks")),
+    (re.compile(r"MILLION.*POINT.*SPREAD", re.I), ("millio", "card")),
 ]
 OUT = {"survivor": DATA / "circa-survivor", "grandissimo": DATA / "circa-grandissimo", "millio": DATA / "circa-millio"}
 SURVIVOR_LIKE = ("survivor", "grandissimo")          # same file formats, same rules
@@ -160,14 +161,16 @@ def probe(found, current):
     names = {("survivor", "picks"): "Circa-Survivor-{y}-Week-{w}-Selections.pdf",
              ("survivor", "used"): "Circa-Survivor-{y}-Week-{w}-Team-Availability.pdf",
              ("grandissimo", "picks"): "Circa-Grandissimo-{y}-Week-{w}-Selections.pdf",
-             ("grandissimo", "used"): "Circa-Grandissimo-{y}-Week-{w}-Team-Availability.pdf"}
+             ("grandissimo", "used"): "Circa-Grandissimo-{y}-Week-{w}-Team-Availability.pdf",
+             # Posted Thursdays ~10 a.m. PT; the tweet often reaches the contest page late, so check directly
+             ("millio", "card"): "Circa-Sports-Million-{tag}-Contest-Point-Spreads-Week-{w}.pdf"}
     for (contest, kind), pat in names.items():
         for w in (current, current + 1):
             if (contest, kind, w) in found or (OUT[contest] / f"week-{w}" / f"{kind}.json").exists():
                 continue
             for d in months:
                 url = (f"https://www.circasports.com/wp-content/uploads/{d.year}/{d.month:02d}/"
-                       + pat.format(y=S.SEASON, w=w))
+                       + pat.format(y=S.SEASON, w=w, tag=CURRENT_SEASON_TAG))
                 try:
                     if requests.head(url, headers=S.HEADERS, timeout=15, allow_redirects=True).status_code == 200:
                         found[(contest, kind, w)] = url
@@ -274,6 +277,25 @@ def save_millio_picks(week, src):
     return True
 
 
+def save_millio_card(week, src):
+    """Circa's own lines for the week, from the Thursday Contest Point Spreads sheet (OCR; see circa_card)."""
+    from .circa_card import parse_million_card
+    from .teams import TEAMS
+    nfl = load(DATA / f"week-{week}" / "card.json")
+    games, problems = parse_million_card(_bytes(src), TEAMS, (nfl or {}).get("games"))
+    for p in problems:
+        S.log(f"! circa millio card week {week}: {p}")
+    if len(games) < 10 or problems:
+        S.log(f"! circa millio card week {week}: {len(games)} games read cleanly; keeping old data, not a run failure")
+        return True
+    out = OUT["millio"] / f"week-{week}"
+    old = load(out / "card.json")
+    if not old or old.get("games") != games:
+        S.write_json(out / "card.json", {"week": week, "source": str(src), "count": len(games), "games": games})
+        S.log(f"  circa millio card week {week}: {len(games)} games")
+    return True
+
+
 def save_millio_standings(week, src):
     text = _text(_bytes(src))
     real_week = content_week(text) or week
@@ -298,12 +320,13 @@ def save_millio_standings(week, src):
 SAVERS = {("survivor", "picks"): save_survivor_picks, ("survivor", "used"): save_survivor_used,
           ("grandissimo", "picks"): lambda w, s: save_survivor_picks(w, s, "grandissimo"),
           ("grandissimo", "used"): lambda w, s: save_survivor_used(w, s, "grandissimo"),
-          ("millio", "picks"): save_millio_picks, ("millio", "standings"): save_millio_standings}
+          ("millio", "picks"): save_millio_picks, ("millio", "standings"): save_millio_standings,
+          ("millio", "card"): save_millio_card}
 
 
 def build_manifest(contest):
     out = OUT[contest]
-    kinds = ("picks", "used") if contest in SURVIVOR_LIKE else ("picks", "standings")
+    kinds = ("picks", "used") if contest in SURVIVOR_LIKE else ("card", "picks", "standings")
     weeks = {}
     for d in sorted(out.glob("week-*"), key=lambda p: int(p.name.split("-")[1])):
         weeks[int(d.name.split("-")[1])] = {k: (d / f"{k}.json").exists() for k in kinds}

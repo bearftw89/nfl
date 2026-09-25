@@ -1,0 +1,279 @@
+{
+ "week": 3,
+ "source": "https://www.circasports.com/wp-content/uploads/2026/09/Circa-Sports-Million-VIII-Contest-Point-Spreads-Week-3.pdf",
+ "count": 16,
+ "games": [
+  {
+   "id": 1,
+   "time_pt": "5:15 PM",
+   "neutral": false,
+   "fav": {
+    "num": 1,
+    "abbr": "GB",
+    "home": true,
+    "line": -4.5
+   },
+   "dog": {
+    "num": 2,
+    "abbr": "ATL",
+    "home": false,
+    "line": 4.5
+   }
+  },
+  {
+   "id": 2,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 3,
+    "abbr": "SEA",
+    "home": false,
+    "line": -7.5
+   },
+   "dog": {
+    "num": 4,
+    "abbr": "WSH",
+    "home": true,
+    "line": 7.5
+   }
+  },
+  {
+   "id": 3,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 5,
+    "abbr": "CIN",
+    "home": false,
+    "line": -3.5
+   },
+   "dog": {
+    "num": 6,
+    "abbr": "PIT",
+    "home": true,
+    "line": 3.5
+   }
+  },
+  {
+   "id": 4,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 7,
+    "abbr": "DET",
+    "home": true,
+    "line": -6.5
+   },
+   "dog": {
+    "num": 8,
+    "abbr": "NYJ",
+    "home": false,
+    "line": 6.5
+   }
+  },
+  {
+   "id": 5,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 9,
+    "abbr": "NYG",
+    "home": true,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 10,
+    "abbr": "TEN",
+    "home": false,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 6,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 11,
+    "abbr": "JAX",
+    "home": true,
+    "line": -3
+   },
+   "dog": {
+    "num": 12,
+    "abbr": "NE",
+    "home": false,
+    "line": 3.0
+   }
+  },
+  {
+   "id": 7,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 13,
+    "abbr": "KC",
+    "home": false,
+    "line": -11.5
+   },
+   "dog": {
+    "num": 14,
+    "abbr": "MIA",
+    "home": true,
+    "line": 11.5
+   }
+  },
+  {
+   "id": 8,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 15,
+    "abbr": "HOU",
+    "home": false,
+    "line": -1.5
+   },
+   "dog": {
+    "num": 16,
+    "abbr": "IND",
+    "home": true,
+    "line": 1.5
+   }
+  },
+  {
+   "id": 9,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 17,
+    "abbr": "CAR",
+    "home": false,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 18,
+    "abbr": "CLE",
+    "home": true,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 10,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 19,
+    "abbr": "BUF",
+    "home": true,
+    "line": -7
+   },
+   "dog": {
+    "num": 20,
+    "abbr": "LAC",
+    "home": false,
+    "line": 7.0
+   }
+  },
+  {
+   "id": 11,
+   "time_pt": "1:05 PM",
+   "neutral": false,
+   "fav": {
+    "num": 21,
+    "abbr": "MIN",
+    "home": false,
+    "line": -1
+   },
+   "dog": {
+    "num": 22,
+    "abbr": "TB",
+    "home": true,
+    "line": 1.0
+   }
+  },
+  {
+   "id": 12,
+   "time_pt": "1:05 PM",
+   "neutral": false,
+   "fav": {
+    "num": 23,
+    "abbr": "SF",
+    "home": true,
+    "line": -8.5
+   },
+   "dog": {
+    "num": 24,
+    "abbr": "ARI",
+    "home": false,
+    "line": 8.5
+   }
+  },
+  {
+   "id": 13,
+   "time_pt": "1:25 PM",
+   "neutral": false,
+   "fav": {
+    "num": 25,
+    "abbr": "NO",
+    "home": true,
+    "line": -3
+   },
+   "dog": {
+    "num": 26,
+    "abbr": "LV",
+    "home": false,
+    "line": 3.0
+   }
+  },
+  {
+   "id": 14,
+   "time_pt": "1:25 PM",
+   "neutral": true,
+   "fav": {
+    "num": 27,
+    "abbr": "BAL",
+    "home": false,
+    "line": -3
+   },
+   "dog": {
+    "num": 28,
+    "abbr": "DAL",
+    "home": false,
+    "line": 3.0
+   }
+  },
+  {
+   "id": 15,
+   "time_pt": "5:20 PM",
+   "neutral": false,
+   "fav": {
+    "num": 29,
+    "abbr": "LAR",
+    "home": false,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 30,
+    "abbr": "DEN",
+    "home": true,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 16,
+   "time_pt": "5:15 PM",
+   "neutral": false,
+   "fav": {
+    "num": 31,
+    "abbr": "PHI",
+    "home": false,
+    "line": -4.5
+   },
+   "dog": {
+    "num": 32,
+    "abbr": "CHI",
+    "home": true,
+    "line": 4.5
+   }
+  }
+ ]
+}

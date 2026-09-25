@@ -4,12 +4,19 @@
  "picks_per_entry": 5,
  "weeks": {
   "1": {
+   "card": false,
    "picks": true,
    "standings": true
   },
   "2": {
+   "card": false,
    "picks": true,
    "standings": true
+  },
+  "3": {
+   "card": true,
+   "picks": false,
+   "standings": false
   }
  }
 }

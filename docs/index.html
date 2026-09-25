@@ -507,38 +507,47 @@ async function loadCollegeScores(w, m, base, official, manual) {
   return { week: w, games: map, overrides: ov, updated: new Date().toISOString(), source,
            unpaired: card.length - rows.length, fromOfficial: Object.keys(ov).filter(t => !(t in manual)).length / 2 };
 }
-// Circa Million: picks carry Circa's own line ("NYJ +3.5"). Circa posts no game sheet, so the
-// card is the real NFL matchups (main contest card) with Circa's line per team from the picks
-// sheet (every entry on a team has the same line; the most common one is used). Picks become
-// plain team lists. After that every NFL tab grades Circa Million exactly like the SuperContest.
-const MRAW = new Map();
+// Circa Million: the card is the real NFL matchups (main contest card) with Circa's line per team.
+// Lines come from Circa's Thursday Contest Point Spreads sheet (circa-millio card.json) when it has
+// been read; otherwise from the Saturday picks sheet (every entry on a team has the same line; the
+// most common one is used). Picks become plain team lists. After that every NFL tab grades Circa
+// Million exactly like the SuperContest.
+const MRAW = new Map(), MCARD = new Map();
+function millioCard(w) {
+  if (!MCARD.has(w)) MCARD.set(w, getJSON(`${Store.base("circa-millio")}week-${w}/card.json`).catch(() => null));
+  return MCARD.get(w);
+}
 function millioRaw(w) {
   if (!MRAW.has(w)) MRAW.set(w, getJSON(`${Store.base("circa-millio")}week-${w}/picks.json`).catch(() => null));
   return MRAW.get(w);
 }
 async function millioDoc(col, w) {
   const raw = await millioRaw(w);
-  if (!raw) return null;
-  if (col === "picks") return { ...raw, entries: raw.entries.map(e => ({ id: e.id, picks: e.picks.map(p => p.abbr) })) };
+  if (col === "picks") return raw && { ...raw, entries: raw.entries.map(e => ({ id: e.id, picks: e.picks.map(p => p.abbr) })) };
+  const cc = await millioCard(w);
+  if (!raw && !cc?.games) return null;
   const nfl = await getJSON(`${DATA}${Store.season}/week-${w}/card.json`).catch(() => null);
   if (!nfl?.games) return null;
-  const tally = {};
-  for (const e of raw.entries) for (const p of e.picks) { const t = (tally[p.abbr] ||= {}); t[p.line] = (t[p.line] || 0) + 1; }
   const line = {};
-  for (const [t, ls] of Object.entries(tally)) line[t] = +Object.entries(ls).sort((a, b) => b[1] - a[1])[0][0];
+  if (cc?.games) for (const g of cc.games) for (const s of [g.fav, g.dog]) line[s.abbr] = s.line;
+  else {
+    const tally = {};
+    for (const e of raw.entries) for (const p of e.picks) { const t = (tally[p.abbr] ||= {}); t[p.line] = (t[p.line] || 0) + 1; }
+    for (const [t, ls] of Object.entries(tally)) line[t] = +Object.entries(ls).sort((a, b) => b[1] - a[1])[0][0];
+  }
   const games = nfl.games.map(g => {
     const a = line[g.fav.abbr], b = line[g.dog.abbr];
     const la = a ?? (b != null ? -b : g.fav.line), lb = b ?? (a != null ? -a : g.dog.line);
     const [F, D, lf, ld] = la <= lb ? [g.fav, g.dog, la, lb] : [g.dog, g.fav, lb, la];
     return { ...g, fav: { ...F, line: lf }, dog: { ...D, line: ld } };
   });
-  return { ...nfl, source: "Circa lines from the Circa Million selections", games };
+  return { ...nfl, source: cc?.games ? "Circa Million contest point spreads" : "Circa lines from the Circa Million selections", games };
 }
 const Store = {
   mode: "static", season: 2026, manifest: { weeks: {} },
   base(lg = S.league) { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/", "circa-survivor": "circa-survivor/", "circa-grandissimo": "circa-grandissimo/", "circa-millio": "circa-millio/" }[lg] || ""}`; },
   async reset() {
-    this.cache.clear(); this.subs.clear(); this.pending.clear(); MRAW.clear();
+    this.cache.clear(); this.subs.clear(); this.pending.clear(); MRAW.clear(); MCARD.clear();
     for (const k of Object.keys(LABELS)) delete LABELS[k];
     this.manifest = await getJSON(`${this.base()}manifest.json`).catch(() => ({ weeks: {} }));
   },
@@ -551,7 +560,7 @@ const Store = {
   indexDoc(manifest = this.manifest, lg = S.league) {
     const weeks = {};
     for (const [w, m0] of Object.entries(manifest.weeks || {})) {
-      const m = lg === "circa-millio" ? { ...m0, card: m0.picks } : m0;    // Circa Million: the card is built from the picks
+      const m = lg === "circa-millio" ? { ...m0, card: m0.card || m0.picks } : m0;    // Circa Million: spreads sheet, else built from the picks
       weeks[w] = { card: m.card ? 1 : 0, picks: m.picks ? 1 : 0, standings: m.standings ? 1 : 0, scores: m.card ? 1 : 0, results: !!m.results };
     }
     return { weeks };
