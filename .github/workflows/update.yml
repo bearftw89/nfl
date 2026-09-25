@@ -28,7 +28,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-            - name: Install OCR (Circa Million spreads sheet has no text layer)
+      - name: Install OCR (Circa Million spreads sheet has no text layer)
         run: sudo apt-get install -y -qq --no-install-recommends tesseract-ocr > /dev/null
       - name: Scrape Westgate + ESPN
         id: scrape
