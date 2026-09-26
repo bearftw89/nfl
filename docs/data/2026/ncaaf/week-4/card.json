@@ -1,7 +1,7 @@
 {
  "week": 4,
  "source": "https://www.westgateresorts.com/supercontest/download/2026%20SUPERCONTEST%20COLLEGE%20WK%204.pdf?contest=/2026/College/Card",
- "count": 57,
+ "count": 58,
  "games": [
   {
    "id": 1,
@@ -12,13 +12,15 @@
     "num": 1,
     "home": false,
     "line": -2.5,
-    "abbr": "LIBERTY"
+    "abbr": "LIBERTY",
+    "label": "LIBERTY"
    },
    "dog": {
     "num": 2,
     "home": true,
     "line": 2.5,
-    "abbr": "COASTAL CAROLINA"
+    "abbr": "COASTAL CAROLINA",
+    "label": "COASTAL CAR"
    }
   },
   {
@@ -30,13 +32,15 @@
     "num": 3,
     "home": false,
     "line": -3.5,
-    "abbr": "ARMY"
+    "abbr": "ARMY",
+    "label": "ARMY"
    },
    "dog": {
     "num": 4,
     "home": true,
     "line": 3.5,
-    "abbr": "TEMPLE"
+    "abbr": "TEMPLE",
+    "label": "TEMPLE"
    }
   },
   {
@@ -48,13 +52,15 @@
     "num": 5,
     "home": false,
     "line": -6.5,
-    "abbr": "NAVY"
+    "abbr": "NAVY",
+    "label": "NAVY"
    },
    "dog": {
     "num": 6,
     "home": true,
     "line": 6.5,
-    "abbr": "UAB"
+    "abbr": "UAB",
+    "label": "UAB"
    }
   },
   {
@@ -66,17 +72,39 @@
     "num": 7,
     "home": true,
     "line": -21.5,
-    "abbr": "INDIANA"
+    "abbr": "INDIANA",
+    "label": "INDIANA"
    },
    "dog": {
     "num": 8,
     "home": false,
     "line": 21.5,
-    "abbr": "NORTHWESTERN"
+    "abbr": "NORTHWESTERN",
+    "label": "N` WESTERN"
    }
   },
   {
    "id": 5,
+   "date": "2026-09-25",
+   "time_pt": "7:30 PM",
+   "site": null,
+   "fav": {
+    "num": 9,
+    "home": false,
+    "line": -0.5,
+    "abbr": "CLEMSON",
+    "label": "CLEMSON"
+   },
+   "dog": {
+    "num": 10,
+    "home": true,
+    "line": 0.5,
+    "abbr": "CALIFORNIA",
+    "label": "CAL"
+   }
+  },
+  {
+   "id": 6,
    "date": "2026-09-26",
    "time_pt": "10:30 AM",
    "site": null,
@@ -84,17 +112,19 @@
     "num": 11,
     "home": false,
     "line": -1.5,
-    "abbr": "UCLA"
+    "abbr": "UCLA",
+    "label": "UCLA"
    },
    "dog": {
     "num": 12,
     "home": true,
     "line": 1.5,
-    "abbr": "MARYLAND"
+    "abbr": "MARYLAND",
+    "label": "MARYLAND"
    }
   },
   {
-   "id": 6,
+   "id": 7,
    "date": "2026-09-26",
    "time_pt": "3:30 PM",
    "site": null,
@@ -102,17 +132,19 @@
     "num": 13,
     "home": false,
     "line": -10.5,
-    "abbr": "LOUISIANA"
+    "abbr": "LOUISIANA",
+    "label": "LOUISIANA"
    },
    "dog": {
     "num": 14,
     "home": true,
     "line": 10.5,
-    "abbr": "CHARLOTTE"
+    "abbr": "CHARLOTTE",
+    "label": "CHARLOTTE"
    }
   },
   {
-   "id": 7,
+   "id": 8,
    "date": "2026-09-26",
    "time_pt": "2:00 PM",
    "site": null,
@@ -120,17 +152,19 @@
     "num": 15,
     "home": false,
     "line": -5.5,
-    "abbr": "NEBRASKA"
+    "abbr": "NEBRASKA",
+    "label": "NEBRASKA"
    },
    "dog": {
     "num": 16,
     "home": true,
     "line": 5.5,
-    "abbr": "MICHIGAN STATE"
+    "abbr": "MICHIGAN STATE",
+    "label": "MICHIGAN ST"
    }
   },
   {
-   "id": 8,
+   "id": 9,
    "date": "2026-09-26",
    "time_pt": "12:30 PM",
    "site": null,
@@ -138,17 +172,19 @@
     "num": 17,
     "home": true,
     "line": -3.5,
-    "abbr": "MIAMI-OH"
+    "abbr": "MIAMI-OH",
+    "label": "MIAMI OH"
    },
    "dog": {
     "num": 18,
     "home": false,
     "line": 3.5,
-    "abbr": "UCONN"
+    "abbr": "UCONN",
+    "label": "UCONN"
    }
   },
   {
-   "id": 9,
+   "id": 10,
    "date": "2026-09-26",
    "time_pt": "4:30 PM",
    "site": null,
@@ -156,17 +192,19 @@
     "num": 19,
     "home": true,
     "line": -14.5,
-    "abbr": "NC STATE"
+    "abbr": "NC STATE",
+    "label": "NC STATE"
    },
    "dog": {
     "num": 20,
     "home": false,
     "line": 14.5,
-    "abbr": "APPALACHIAN STATE"
+    "abbr": "APPALACHIAN STATE",
+    "label": "APP ST"
    }
   },
   {
-   "id": 10,
+   "id": 11,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -174,17 +212,19 @@
     "num": 21,
     "home": true,
     "line": -12.5,
-    "abbr": "LOUISVILLE"
+    "abbr": "LOUISVILLE",
+    "label": "LOUISVILLE"
    },
    "dog": {
     "num": 22,
     "home": false,
     "line": 12.5,
-    "abbr": "WAKE FOREST"
+    "abbr": "WAKE FOREST",
+    "label": "WAKE FOREST"
    }
   },
   {
-   "id": 11,
+   "id": 12,
    "date": "2026-09-26",
    "time_pt": "2:00 PM",
    "site": null,
@@ -192,17 +232,19 @@
     "num": 23,
     "home": false,
     "line": -17.5,
-    "abbr": "SOUTH FLORIDA"
+    "abbr": "SOUTH FLORIDA",
+    "label": "S FLORIDA"
    },
    "dog": {
     "num": 24,
     "home": true,
     "line": 17.5,
-    "abbr": "BOWLING GREEN"
+    "abbr": "BOWLING GREEN",
+    "label": "BOWL GREEN"
    }
   },
   {
-   "id": 12,
+   "id": 13,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -210,17 +252,19 @@
     "num": 25,
     "home": false,
     "line": -4.5,
-    "abbr": "TEXAS"
+    "abbr": "TEXAS",
+    "label": "TEXAS"
    },
    "dog": {
     "num": 26,
     "home": true,
     "line": 4.5,
-    "abbr": "TENNESSEE"
+    "abbr": "TENNESSEE",
+    "label": "TENNESSEE"
    }
   },
   {
-   "id": 13,
+   "id": 14,
    "date": "2026-09-26",
    "time_pt": "12:30 PM",
    "site": null,
@@ -228,17 +272,19 @@
     "num": 27,
     "home": true,
     "line": -5.5,
-    "abbr": "MICHIGAN"
+    "abbr": "MICHIGAN",
+    "label": "MICHIGAN"
    },
    "dog": {
     "num": 28,
     "home": false,
     "line": 5.5,
-    "abbr": "IOWA"
+    "abbr": "IOWA",
+    "label": "IOWA"
    }
   },
   {
-   "id": 14,
+   "id": 15,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -246,17 +292,19 @@
     "num": 29,
     "home": false,
     "line": -13.5,
-    "abbr": "UNLV"
+    "abbr": "UNLV",
+    "label": "UNLV"
    },
    "dog": {
     "num": 30,
     "home": true,
     "line": 13.5,
-    "abbr": "AKRON"
+    "abbr": "AKRON",
+    "label": "AKRON"
    }
   },
   {
-   "id": 15,
+   "id": 16,
    "date": "2026-09-26",
    "time_pt": "9:45 AM",
    "site": null,
@@ -264,17 +312,19 @@
     "num": 31,
     "home": true,
     "line": -20.5,
-    "abbr": "KENTUCKY"
+    "abbr": "KENTUCKY",
+    "label": "KENTUCKY"
    },
    "dog": {
     "num": 32,
     "home": false,
     "line": 20.5,
-    "abbr": "SOUTH ALABAMA"
+    "abbr": "SOUTH ALABAMA",
+    "label": "S ALABAMA"
    }
   },
   {
-   "id": 16,
+   "id": 17,
    "date": "2026-09-26",
    "time_pt": "3:00 PM",
    "site": null,
@@ -282,17 +332,19 @@
     "num": 33,
     "home": false,
     "line": -5.5,
-    "abbr": "JAMES MADISON"
+    "abbr": "JAMES MADISON",
+    "label": "J MADISON"
    },
    "dog": {
     "num": 34,
     "home": true,
     "line": 5.5,
-    "abbr": "OLD DOMINION"
+    "abbr": "OLD DOMINION",
+    "label": "OLD DOMINION"
    }
   },
   {
-   "id": 17,
+   "id": 18,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -300,17 +352,19 @@
     "num": 35,
     "home": true,
     "line": -2.5,
-    "abbr": "TOLEDO"
+    "abbr": "TOLEDO",
+    "label": "TOLEDO"
    },
    "dog": {
     "num": 36,
     "home": false,
     "line": 2.5,
-    "abbr": "SAN DIEGO STATE"
+    "abbr": "SAN DIEGO STATE",
+    "label": "SAN DIEGO ST"
    }
   },
   {
-   "id": 18,
+   "id": 19,
    "date": "2026-09-26",
    "time_pt": "3:00 PM",
    "site": null,
@@ -318,17 +372,19 @@
     "num": 37,
     "home": true,
     "line": -19.5,
-    "abbr": "VIRGINIA"
+    "abbr": "VIRGINIA",
+    "label": "VIRGINIA"
    },
    "dog": {
     "num": 38,
     "home": false,
     "line": 19.5,
-    "abbr": "DELAWARE"
+    "abbr": "DELAWARE",
+    "label": "DELAWARE"
    }
   },
   {
-   "id": 19,
+   "id": 20,
    "date": "2026-09-26",
    "time_pt": "12:30 PM",
    "site": null,
@@ -336,17 +392,19 @@
     "num": 39,
     "home": true,
     "line": -3.5,
-    "abbr": "FLORIDA"
+    "abbr": "FLORIDA",
+    "label": "FLORIDA"
    },
    "dog": {
     "num": 40,
     "home": false,
     "line": 3.5,
-    "abbr": "OLE MISS"
+    "abbr": "OLE MISS",
+    "label": "OLE MISS"
    }
   },
   {
-   "id": 20,
+   "id": 21,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -354,17 +412,19 @@
     "num": 41,
     "home": false,
     "line": -13.5,
-    "abbr": "VIRGINIA TECH"
+    "abbr": "VIRGINIA TECH",
+    "label": "VA TECH"
    },
    "dog": {
     "num": 42,
     "home": true,
     "line": 13.5,
-    "abbr": "BOSTON COLLEGE"
+    "abbr": "BOSTON COLLEGE",
+    "label": "BOSTON COLL"
    }
   },
   {
-   "id": 21,
+   "id": 22,
    "date": "2026-09-26",
    "time_pt": "4:00 PM",
    "site": null,
@@ -372,31 +432,15 @@
     "num": 43,
     "home": false,
     "line": -6.5,
-    "abbr": "KANSAS STATE"
+    "abbr": "KANSAS STATE",
+    "label": "KANSAS ST"
    },
    "dog": {
     "num": 44,
     "home": true,
     "line": 6.5,
-    "abbr": "CINCINNATI"
-   }
-  },
-  {
-   "id": 22,
-   "date": "2026-09-26",
-   "time_pt": "12:30 PM",
-   "site": null,
-   "fav": {
-    "num": 45,
-    "home": false,
-    "line": -7.5,
-    "abbr": "BOISE STATE"
-   },
-   "dog": {
-    "num": 46,
-    "home": true,
-    "line": 7.5,
-    "abbr": "WESTERN MICHIGAN"
+    "abbr": "CINCINNATI",
+    "label": "CINCINNATI"
    }
   },
   {
@@ -405,20 +449,42 @@
    "time_pt": "12:30 PM",
    "site": null,
    "fav": {
+    "num": 45,
+    "home": false,
+    "line": -7.5,
+    "abbr": "BOISE STATE",
+    "label": "BOISE ST"
+   },
+   "dog": {
+    "num": 46,
+    "home": true,
+    "line": 7.5,
+    "abbr": "WESTERN MICHIGAN",
+    "label": "W MICHIGAN"
+   }
+  },
+  {
+   "id": 24,
+   "date": "2026-09-26",
+   "time_pt": "12:30 PM",
+   "site": null,
+   "fav": {
     "num": 47,
     "home": false,
     "line": -3.5,
-    "abbr": "TCU"
+    "abbr": "TCU",
+    "label": "TCU"
    },
    "dog": {
     "num": 48,
     "home": true,
     "line": 3.5,
-    "abbr": "CENTRAL FLORIDA"
+    "abbr": "CENTRAL FLORIDA",
+    "label": "UCF"
    }
   },
   {
-   "id": 24,
+   "id": 25,
    "date": "2026-09-26",
    "time_pt": "11:00 AM",
    "site": null,
@@ -426,17 +492,19 @@
     "num": 49,
     "home": true,
     "line": -10.5,
-    "abbr": "GEORGIA STATE"
+    "abbr": "GEORGIA STATE",
+    "label": "GEORGIA ST"
    },
    "dog": {
     "num": 50,
     "home": false,
     "line": 10.5,
-    "abbr": "NORTHERN ILLINOIS"
+    "abbr": "NORTHERN ILLINOIS",
+    "label": "NO ILLINOIS"
    }
   },
   {
-   "id": 25,
+   "id": 26,
    "date": "2026-09-26",
    "time_pt": "12:30 PM",
    "site": null,
@@ -444,17 +512,19 @@
     "num": 51,
     "home": true,
     "line": -14.5,
-    "abbr": "GEORGIA"
+    "abbr": "GEORGIA",
+    "label": "GEORGIA"
    },
    "dog": {
     "num": 52,
     "home": false,
     "line": 14.5,
-    "abbr": "OKLAHOMA"
+    "abbr": "OKLAHOMA",
+    "label": "OKLAHOMA"
    }
   },
   {
-   "id": 26,
+   "id": 27,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -462,17 +532,19 @@
     "num": 53,
     "home": true,
     "line": -27.5,
-    "abbr": "OHIO STATE"
+    "abbr": "OHIO STATE",
+    "label": "OHIO ST"
    },
    "dog": {
     "num": 54,
     "home": false,
     "line": 27.5,
-    "abbr": "ILLINOIS"
+    "abbr": "ILLINOIS",
+    "label": "ILLINOIS"
    }
   },
   {
-   "id": 27,
+   "id": 28,
    "date": "2026-09-26",
    "time_pt": "2:00 PM",
    "site": null,
@@ -480,17 +552,19 @@
     "num": 55,
     "home": true,
     "line": -9.5,
-    "abbr": "PENN STATE"
+    "abbr": "PENN STATE",
+    "label": "PENN ST"
    },
    "dog": {
     "num": 56,
     "home": false,
     "line": 9.5,
-    "abbr": "WISCONSIN"
+    "abbr": "WISCONSIN",
+    "label": "WISCONSIN"
    }
   },
   {
-   "id": 28,
+   "id": 29,
    "date": "2026-09-26",
    "time_pt": "11:00 AM",
    "site": null,
@@ -498,17 +572,19 @@
     "num": 57,
     "home": false,
     "line": -27.5,
-    "abbr": "NOTRE DAME"
+    "abbr": "NOTRE DAME",
+    "label": "NOTRE DAME"
    },
    "dog": {
     "num": 58,
     "home": true,
     "line": 27.5,
-    "abbr": "PURDUE"
+    "abbr": "PURDUE",
+    "label": "PURDUE"
    }
   },
   {
-   "id": 29,
+   "id": 30,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -516,17 +592,19 @@
     "num": 59,
     "home": true,
     "line": -3.5,
-    "abbr": "KENT STATE"
+    "abbr": "KENT STATE",
+    "label": "KENT ST"
    },
    "dog": {
     "num": 60,
     "home": false,
     "line": 3.5,
-    "abbr": "BALL STATE"
+    "abbr": "BALL STATE",
+    "label": "BALL ST"
    }
   },
   {
-   "id": 30,
+   "id": 31,
    "date": "2026-09-26",
    "time_pt": "4:00 PM",
    "site": null,
@@ -534,17 +612,19 @@
     "num": 61,
     "home": true,
     "line": -1.5,
-    "abbr": "WEST VIRGINIA"
+    "abbr": "WEST VIRGINIA",
+    "label": "W VIRGINIA"
    },
    "dog": {
     "num": 62,
     "home": false,
     "line": 1.5,
-    "abbr": "OKLAHOMA STATE"
+    "abbr": "OKLAHOMA STATE",
+    "label": "OKLAHOMA ST"
    }
   },
   {
-   "id": 31,
+   "id": 32,
    "date": "2026-09-26",
    "time_pt": "1:00 PM",
    "site": null,
@@ -552,17 +632,19 @@
     "num": 63,
     "home": false,
     "line": -18.5,
-    "abbr": "HOUSTON"
+    "abbr": "HOUSTON",
+    "label": "HOUSTON"
    },
    "dog": {
     "num": 64,
     "home": true,
     "line": 18.5,
-    "abbr": "GEORGIA SOUTHERN"
+    "abbr": "GEORGIA SOUTHERN",
+    "label": "GA SOUTHERN"
    }
   },
   {
-   "id": 32,
+   "id": 33,
    "date": "2026-09-26",
    "time_pt": "7:30 PM",
    "site": null,
@@ -570,17 +652,19 @@
     "num": 65,
     "home": false,
     "line": -5.5,
-    "abbr": "AIR FORCE"
+    "abbr": "AIR FORCE",
+    "label": "AIR FORCE"
    },
    "dog": {
     "num": 66,
     "home": true,
     "line": 5.5,
-    "abbr": "NEVADA"
+    "abbr": "NEVADA",
+    "label": "NEVADA"
    }
   },
   {
-   "id": 33,
+   "id": 34,
    "date": "2026-09-26",
    "time_pt": "8:00 PM",
    "site": null,
@@ -588,17 +672,19 @@
     "num": 67,
     "home": true,
     "line": -9.5,
-    "abbr": "WASHINGTON"
+    "abbr": "WASHINGTON",
+    "label": "WASHINGTON"
    },
    "dog": {
     "num": 68,
     "home": false,
     "line": 9.5,
-    "abbr": "MINNESOTA"
+    "abbr": "MINNESOTA",
+    "label": "MINNESOTA"
    }
   },
   {
-   "id": 34,
+   "id": 35,
    "date": "2026-09-26",
    "time_pt": "12:00 PM",
    "site": null,
@@ -606,17 +692,19 @@
     "num": 69,
     "home": false,
     "line": -3.5,
-    "abbr": "HAWAII"
+    "abbr": "HAWAII",
+    "label": "HAWAII"
    },
    "dog": {
     "num": 70,
     "home": true,
     "line": 3.5,
-    "abbr": "WYOMING"
+    "abbr": "WYOMING",
+    "label": "WYOMING"
    }
   },
   {
-   "id": 35,
+   "id": 36,
    "date": "2026-09-26",
    "time_pt": "6:00 PM",
    "site": null,
@@ -624,17 +712,19 @@
     "num": 71,
     "home": false,
     "line": -4.5,
-    "abbr": "MASSACHUSETTS"
+    "abbr": "MASSACHUSETTS",
+    "label": "UMASS"
    },
    "dog": {
     "num": 72,
     "home": true,
     "line": 4.5,
-    "abbr": "SACRAMENTO STATE"
+    "abbr": "SACRAMENTO STATE",
+    "label": "SACRAMENTO ST"
    }
   },
   {
-   "id": 36,
+   "id": 37,
    "date": "2026-09-26",
    "time_pt": "4:45 PM",
    "site": null,
@@ -642,17 +732,19 @@
     "num": 73,
     "home": true,
     "line": -6.5,
-    "abbr": "MISSISSIPPI STATE"
+    "abbr": "MISSISSIPPI STATE",
+    "label": "MISS ST"
    },
    "dog": {
     "num": 74,
     "home": false,
     "line": 6.5,
-    "abbr": "MISSOURI"
+    "abbr": "MISSOURI",
+    "label": "MISSOURI"
    }
   },
   {
-   "id": 37,
+   "id": 38,
    "date": "2026-09-26",
    "time_pt": "6:00 PM",
    "site": null,
@@ -660,17 +752,19 @@
     "num": 75,
     "home": true,
     "line": -34.5,
-    "abbr": "SMU"
+    "abbr": "SMU",
+    "label": "SMU"
    },
    "dog": {
     "num": 76,
     "home": false,
     "line": 34.5,
-    "abbr": "MISSOURI STATE"
+    "abbr": "MISSOURI STATE",
+    "label": "MISSOURI ST"
    }
   },
   {
-   "id": 38,
+   "id": 39,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -678,17 +772,19 @@
     "num": 77,
     "home": true,
     "line": -10.5,
-    "abbr": "BAYLOR"
+    "abbr": "BAYLOR",
+    "label": "BAYLOR"
    },
    "dog": {
     "num": 78,
     "home": false,
     "line": 10.5,
-    "abbr": "COLORADO"
+    "abbr": "COLORADO",
+    "label": "COLORADO"
    }
   },
   {
-   "id": 39,
+   "id": 40,
    "date": "2026-09-26",
    "time_pt": "5:00 PM",
    "site": null,
@@ -696,17 +792,19 @@
     "num": 79,
     "home": true,
     "line": -7.5,
-    "abbr": "ARKANSAS"
+    "abbr": "ARKANSAS",
+    "label": "ARKANSAS"
    },
    "dog": {
     "num": 80,
     "home": false,
     "line": 7.5,
-    "abbr": "TULSA"
+    "abbr": "TULSA",
+    "label": "TULSA"
    }
   },
   {
-   "id": 40,
+   "id": 41,
    "date": "2026-09-26",
    "time_pt": "4:30 PM",
    "site": null,
@@ -714,17 +812,19 @@
     "num": 81,
     "home": true,
     "line": -8.5,
-    "abbr": "LSU"
+    "abbr": "LSU",
+    "label": "LSU"
    },
    "dog": {
     "num": 82,
     "home": false,
     "line": 8.5,
-    "abbr": "TEXAS A&M"
+    "abbr": "TEXAS A&M",
+    "label": "TEXAS A & M"
    }
   },
   {
-   "id": 41,
+   "id": 42,
    "date": "2026-09-26",
    "time_pt": "4:00 PM",
    "site": null,
@@ -732,17 +832,19 @@
     "num": 83,
     "home": true,
     "line": -18.5,
-    "abbr": "TULANE"
+    "abbr": "TULANE",
+    "label": "TULANE"
    },
    "dog": {
     "num": 84,
     "home": false,
     "line": 18.5,
-    "abbr": "SOUTHERN MISS"
+    "abbr": "SOUTHERN MISS",
+    "label": "SO MISS"
    }
   },
   {
-   "id": 42,
+   "id": 43,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -750,17 +852,19 @@
     "num": 85,
     "home": true,
     "line": -34.5,
-    "abbr": "TEXAS TECH"
+    "abbr": "TEXAS TECH",
+    "label": "TEXAS TECH"
    },
    "dog": {
     "num": 86,
     "home": false,
     "line": 34.5,
-    "abbr": "SAM HOUSTON STATE"
+    "abbr": "SAM HOUSTON STATE",
+    "label": "SAM HOU ST"
    }
   },
   {
-   "id": 43,
+   "id": 44,
    "date": "2026-09-26",
    "time_pt": "1:15 PM",
    "site": null,
@@ -768,17 +872,19 @@
     "num": 87,
     "home": true,
     "line": -9.5,
-    "abbr": "AUBURN"
+    "abbr": "AUBURN",
+    "label": "AUBURN"
    },
    "dog": {
     "num": 88,
     "home": false,
     "line": 9.5,
-    "abbr": "VANDERBILT"
+    "abbr": "VANDERBILT",
+    "label": "VANDERBILT"
    }
   },
   {
-   "id": 44,
+   "id": 45,
    "date": "2026-09-26",
    "time_pt": "9:00 AM",
    "site": null,
@@ -786,17 +892,19 @@
     "num": 89,
     "home": true,
     "line": -13.5,
-    "abbr": "UTSA"
+    "abbr": "UTSA",
+    "label": "UTSA"
    },
    "dog": {
     "num": 90,
     "home": false,
     "line": 13.5,
-    "abbr": "COLORADO STATE"
+    "abbr": "COLORADO STATE",
+    "label": "COLO ST"
    }
   },
   {
-   "id": 45,
+   "id": 46,
    "date": "2026-09-26",
    "time_pt": "4:00 PM",
    "site": null,
@@ -804,17 +912,19 @@
     "num": 91,
     "home": true,
     "line": -12.5,
-    "abbr": "ALABAMA"
+    "abbr": "ALABAMA",
+    "label": "ALABAMA"
    },
    "dog": {
     "num": 92,
     "home": false,
     "line": 12.5,
-    "abbr": "SOUTH CAROLINA"
+    "abbr": "SOUTH CAROLINA",
+    "label": "S CAROLINA"
    }
   },
   {
-   "id": 46,
+   "id": 47,
    "date": "2026-09-26",
    "time_pt": "5:00 PM",
    "site": null,
@@ -822,17 +932,19 @@
     "num": 93,
     "home": false,
     "line": -13.5,
-    "abbr": "FLORIDA ATLANTIC"
+    "abbr": "FLORIDA ATLANTIC",
+    "label": "FLA ATLANTIC"
    },
    "dog": {
     "num": 94,
     "home": true,
     "line": 13.5,
-    "abbr": "UL MONROE"
+    "abbr": "UL MONROE",
+    "label": "UL MONROE"
    }
   },
   {
-   "id": 47,
+   "id": 48,
    "date": "2026-09-26",
    "time_pt": "12:30 PM",
    "site": null,
@@ -840,17 +952,19 @@
     "num": 95,
     "home": false,
     "line": -7.5,
-    "abbr": "UTAH"
+    "abbr": "UTAH",
+    "label": "UTAH"
    },
    "dog": {
     "num": 96,
     "home": true,
     "line": 7.5,
-    "abbr": "IOWA STATE"
+    "abbr": "IOWA STATE",
+    "label": "IOWA ST"
    }
   },
   {
-   "id": 48,
+   "id": 49,
    "date": "2026-09-26",
    "time_pt": "4:30 PM",
    "site": null,
@@ -858,17 +972,19 @@
     "num": 97,
     "home": false,
     "line": -2.5,
-    "abbr": "OREGON"
+    "abbr": "OREGON",
+    "label": "OREGON"
    },
    "dog": {
     "num": 98,
     "home": true,
     "line": 2.5,
-    "abbr": "USC"
+    "abbr": "USC",
+    "label": "USC"
    }
   },
   {
-   "id": 49,
+   "id": 50,
    "date": "2026-09-26",
    "time_pt": "12:30 PM",
    "site": null,
@@ -876,17 +992,19 @@
     "num": 99,
     "home": false,
     "line": -11.5,
-    "abbr": "NEW MEXICO"
+    "abbr": "NEW MEXICO",
+    "label": "NEW MEXICO"
    },
    "dog": {
     "num": 100,
     "home": true,
     "line": 11.5,
-    "abbr": "NEW MEXICO STATE"
+    "abbr": "NEW MEXICO STATE",
+    "label": "NEW MEX ST"
    }
   },
   {
-   "id": 50,
+   "id": 51,
    "date": "2026-09-26",
    "time_pt": "3:30 PM",
    "site": null,
@@ -894,31 +1012,15 @@
     "num": 101,
     "home": true,
     "line": -41.5,
-    "abbr": "MIAMI-FL"
+    "abbr": "MIAMI-FL",
+    "label": "MIAMI FL"
    },
    "dog": {
     "num": 102,
     "home": false,
     "line": 41.5,
-    "abbr": "CENTRAL MICHIGAN"
-   }
-  },
-  {
-   "id": 51,
-   "date": "2026-09-26",
-   "time_pt": "4:00 PM",
-   "site": null,
-   "fav": {
-    "num": 103,
-    "home": true,
-    "line": -6.5,
-    "abbr": "ARKANSAS STATE"
-   },
-   "dog": {
-    "num": 104,
-    "home": false,
-    "line": 6.5,
-    "abbr": "KENNESAW STATE"
+    "abbr": "CENTRAL MICHIGAN",
+    "label": "C MICHIGAN"
    }
   },
   {
@@ -927,34 +1029,38 @@
    "time_pt": "4:00 PM",
    "site": null,
    "fav": {
-    "num": 105,
+    "num": 103,
     "home": true,
-    "line": -7.5,
-    "abbr": "JACKSONVILLE STATE"
+    "line": -6.5,
+    "abbr": "ARKANSAS STATE",
+    "label": "ARK ST"
    },
    "dog": {
-    "num": 106,
+    "num": 104,
     "home": false,
-    "line": 7.5,
-    "abbr": "MIDDLE TENNESSEE"
+    "line": 6.5,
+    "abbr": "KENNESAW STATE",
+    "label": "KENNESAW"
    }
   },
   {
    "id": 53,
    "date": "2026-09-26",
-   "time_pt": "4:30 PM",
+   "time_pt": "4:00 PM",
    "site": null,
    "fav": {
-    "num": 107,
+    "num": 105,
     "home": true,
-    "line": -3.5,
-    "abbr": "UTAH STATE"
+    "line": -7.5,
+    "abbr": "JACKSONVILLE STATE",
+    "label": "J'VILLE ST"
    },
    "dog": {
-    "num": 108,
+    "num": 106,
     "home": false,
-    "line": 3.5,
-    "abbr": "TROY"
+    "line": 7.5,
+    "abbr": "MIDDLE TENNESSEE",
+    "label": "MID TENN ST"
    }
   },
   {
@@ -963,20 +1069,42 @@
    "time_pt": "4:30 PM",
    "site": null,
    "fav": {
+    "num": 107,
+    "home": true,
+    "line": -3.5,
+    "abbr": "UTAH STATE",
+    "label": "UTAH ST"
+   },
+   "dog": {
+    "num": 108,
+    "home": false,
+    "line": 3.5,
+    "abbr": "TROY",
+    "label": "TROY"
+   }
+  },
+  {
+   "id": 55,
+   "date": "2026-09-26",
+   "time_pt": "4:30 PM",
+   "site": null,
+   "fav": {
     "num": 109,
     "home": false,
     "line": -10.5,
-    "abbr": "ARIZONA"
+    "abbr": "ARIZONA",
+    "label": "ARIZONA"
    },
    "dog": {
     "num": 110,
     "home": true,
     "line": 10.5,
-    "abbr": "WASHINGTON STATE"
+    "abbr": "WASHINGTON STATE",
+    "label": "WASH ST"
    }
   },
   {
-   "id": 55,
+   "id": 56,
    "date": "2026-09-26",
    "time_pt": "6:00 PM",
    "site": null,
@@ -984,17 +1112,19 @@
     "num": 111,
     "home": false,
     "line": -10.5,
-    "abbr": "OREGON STATE"
+    "abbr": "OREGON STATE",
+    "label": "OREGON ST"
    },
    "dog": {
     "num": 112,
     "home": true,
     "line": 10.5,
-    "abbr": "UTEP"
+    "abbr": "UTEP",
+    "label": "UTEP"
    }
   },
   {
-   "id": 56,
+   "id": 57,
    "date": "2026-09-26",
    "time_pt": "7:00 PM",
    "site": null,
@@ -1002,17 +1132,19 @@
     "num": 113,
     "home": true,
     "line": -13.5,
-    "abbr": "FRESNO STATE"
+    "abbr": "FRESNO STATE",
+    "label": "FRESNO ST"
    },
    "dog": {
     "num": 114,
     "home": false,
     "line": 13.5,
-    "abbr": "RICE"
+    "abbr": "RICE",
+    "label": "RICE"
    }
   },
   {
-   "id": 57,
+   "id": 58,
    "date": "2026-09-26",
    "time_pt": "7:30 PM",
    "site": null,
@@ -1020,13 +1152,15 @@
     "num": 115,
     "home": false,
     "line": -3.5,
-    "abbr": "GEORGIA TECH"
+    "abbr": "GEORGIA TECH",
+    "label": "GEORGIA TECH"
    },
    "dog": {
     "num": 116,
     "home": true,
     "line": 3.5,
-    "abbr": "STANFORD"
+    "abbr": "STANFORD",
+    "label": "STANFORD"
    }
   }
  ]
