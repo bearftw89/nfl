@@ -1,9 +1,10 @@
 {
- "updated": "2026-09-26T00:46:34+00:00",
+ "updated": "2026-09-26T01:00:06+00:00",
  "lines": [
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
   "college card: weeks listed [1, 2, 3, 4]",
-  "college picks: weeks listed [1, 2, 3]",
+  "college picks: weeks listed [1, 2, 3, 4]",
+  "! college picks week 4: unmatched abbreviations: [('CAL', []), ('CLEMSON', [])]. Add the spelling to ALIASES in scraper/college.py",
   "college standings: weeks listed [1, 2, 3]",
   "gold card: weeks listed [1, 2, 3]",
   "gold picks: weeks listed [1, 2]",
