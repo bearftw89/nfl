@@ -22,7 +22,7 @@ _CARD = re.compile(
     r"^[ \t]*(?P<n1>\d{1,3})[ \t]+(?P<t1>[A-Z0-9][A-Z0-9 .'&\-]*?)(?P<h1>\*?)[ \t]+(?:@(?P<site>[^\n]*?)[ \t]+)?"
     r"(?P<time>\d{1,2}:\d{2}[ \t]*[AP]M)[ \t]+"
     r"(?P<n2>\d{1,3})[ \t]+(?P<t2>[A-Z0-9][A-Z0-9 .'&\-]*?)(?P<h2>\*?)[ \t]+"
-    r"(?P<line>[+-]?\d+(?:\.\d+)?|PK|P)\b", re.M)
+    r"(?P<line>[+-]?(?:\d+(?:\.\d+)?|\.\d+)|PK|P)(?![\w.])", re.M)
 _DAY = re.compile(r"COLLEGE FOOTBALL\s*-\s*[A-Z]+,\s*([A-Z]+)\s+(\d{1,2}),\s*(\d{4})")
 
 
