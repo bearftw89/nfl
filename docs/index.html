@@ -768,6 +768,12 @@ function wkRecord(wk) {
   const w = wk.w + wk.lw, l = wk.l + wk.ll, t = wk.p + wk.lp;
   return `${w}-${l}-${t}${wk.c ? "-" + wk.c : ""}${wk.pending ? `<small class="note"> (${wk.pending} left)</small>` : ""}`;
 }
+// Week win rate for sorting: wins / (wins + losses), live games included; more wins breaks ties (4-0 over 2-0).
+function wkPct(r) {
+  const k = r.week; if (!k) return -2;
+  const w = k.w + k.lw, l = k.l + k.ll;
+  return w + l ? (w / (w + l)) * 10 + w / 100 : -1;
+}
 function moveOf(r) { return r.basePlace == null || lastSt?.official ? null : r.basePlace - r.place; }
 function renderStandings() {
   const el = $("#standings");
@@ -776,7 +782,7 @@ function renderStandings() {
   const q = S.q.trim().toUpperCase();
   let rows = st.list.filter(r => (!q || r.id.includes(q)) && (!S.onlyStarred || S.starred.has(r.id)));
   if (S.sortKey !== "total") {
-    const key = { name: r => r.id, week: r => r.week?.proj ?? -1, move: r => moveOf(r) ?? -999, pct: r => winPct(r) ?? -1 }[S.sortKey];
+    const key = { name: r => r.id, week: r => r.week?.proj ?? -1, move: r => moveOf(r) ?? -999, pct: r => winPct(r) ?? -1, wkpct: wkPct }[S.sortKey];
     rows = [...rows].sort((a, b) => { const A = key(a), B = key(b); return (typeof A === "string" ? A.localeCompare(B) : A - B) * S.sortDir || a.place - b.place; });
   } else if (S.sortDir === 1) rows = [...rows].reverse();
   const note = st.official ? `Official ${BOOK()} standings after week ${S.week}.`
@@ -787,7 +793,7 @@ function renderStandings() {
       <label><input type="checkbox" id="onlyStar" ${S.onlyStarred ? "checked" : ""}> Starred only (${S.starred.size})</label></div>
     <p class="note">${note}</p>
     <div class="table-wrap"><table><thead><tr>${th("total", "Place")}${th("move", "Move")}<th></th>${th("name", "Entry")}<th>Week ${S.week} picks</th>
-      <th>Wk record</th><th title="W-L-T-C">Season record</th>${th("pct", "Win %", "num")}${th("week", "Wk pts", "num")}${th("total", "Total pts", "num")}</tr></thead>
+      ${th("wkpct", "Wk record")}<th title="W-L-T-C">Season record</th>${th("pct", "Win %", "num")}${th("week", "Wk pts", "num")}${th("total", "Total pts", "num")}</tr></thead>
       <tbody>${rows.slice(0, S.shown).map(rowHTML).join("")}</tbody></table></div>
     ${rows.length > S.shown ? `<button class="btn more" id="more">Show all ${rows.length}</button>` : ""}
     ${!rows.length ? `<p class="note">No entries match.</p>` : ""}`;
