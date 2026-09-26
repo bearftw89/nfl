@@ -6,6 +6,7 @@ line that doesn't match, so headers/footers/page breaks fall out naturally.
 """
 import re
 from .teams import TEAMS, to_abbr
+from .lines import LINE, to_float, card_matches
 
 # ---------- Card ----------
 # e.g. "3 PACKERS 10:00 AM 4 JETS* +3.5"   (left = favorite, right gets +line)
@@ -17,19 +18,19 @@ _CARD_RE = re.compile(
     r"^[ \t]*(?P<n1>\d{1,3})[ \t]+(?P<t1>[A-Z0-9][A-Z0-9 .']*?)(?P<h1>\*?)[ \t]+(?:@[^\n]*?[ \t]+)?"
     r"(?P<time>\d{1,2}:\d{2}[ \t]*[AP]M)[ \t]+"
     r"(?P<n2>\d{1,3})[ \t]+(?P<t2>[A-Z0-9][A-Z0-9 .']*?)(?P<h2>\*?)[ \t]+"
-    r"(?P<line>[+-]?\d+(?:\.\d+)?|PK|P)\b",
+    rf"(?P<line>{LINE})(?![\w.])",
     re.M,
 )
 
 
 def parse_card(text: str):
     games = []
-    for m in _CARD_RE.finditer(text.upper()):
+    for m in card_matches(_CARD_RE, text.upper()):
         a1, a2 = to_abbr(m["t1"]), to_abbr(m["t2"])
         if not a1 or not a2:
             continue
         raw = m["line"]
-        dog_line = 0.0 if raw in ("PK", "P") else abs(float(raw))
+        dog_line = abs(to_float(raw))
         games.append({
             "id": len(games) + 1,
             "time_pt": m["time"].replace("  ", " "),
