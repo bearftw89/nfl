@@ -56,3 +56,11 @@ def test_week3_reconciles_with_official_standings():
     res, bad = derive_results(card, picks, now, prev)
     assert bad == 0 and len(res) == 114                # all 57 games, all 778 entries agree
     assert res["HOUSTON"] == "W" and res["TEXAS TECH"] == "L"
+
+
+def test_card_line_without_leading_zero():
+    from scraper.college import parse_card
+    g = parse_card("COLLEGE FOOTBALL - FRIDAY, SEPTEMBER 25, 2026\n9 CLEMSON 7:30 PM 10 CAL* +.5\n")
+    assert len(g) == 1
+    assert g[0]["fav"]["name"] == "CLEMSON" and g[0]["dog"]["name"] == "CALIFORNIA"
+    assert g[0]["dog"]["line"] == 0.5 and g[0]["dog"]["home"]
