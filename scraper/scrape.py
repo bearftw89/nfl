@@ -19,6 +19,7 @@ import pdfplumber
 import requests
 from bs4 import BeautifulSoup
 
+from .lines import missed_rows
 from .parse import parse_card, parse_selections, parse_standings
 
 SEASON = 2026
@@ -147,6 +148,10 @@ def scrape_kind(kind, only_week=None):
         (RAW / f"week-{week}").mkdir(parents=True, exist_ok=True)
         (RAW / f"week-{week}" / f"{kind}.txt").write_text(text)
         rows = PARSERS[kind](text)
+        if kind == "card":
+            miss = missed_rows(text, rows)
+            if miss:
+                log(f"! card week {week}: couldn't read {len(miss)} row(s), those games are missing: {miss}")
         if len(rows) < MIN[kind]:
             log(f"! {kind} week {week}: only {len(rows)} rows parsed; keeping old data. "
                 f"Check raw/{SEASON}/week-{week}/{kind}.txt")

@@ -15,6 +15,7 @@ from urllib.parse import urljoin, unquote
 from bs4 import BeautifulSoup
 
 from . import scrape as S
+from .lines import missed_rows
 from .college import parse_card, parse_selections, map_abbreviations, derive_results, match_espn, _team_keys, _wanted
 from .parse import parse_standings
 
@@ -66,6 +67,9 @@ def fetch_text(kind, week, url):
 
 def save_card(week, url, text):
     games = parse_card(text)
+    miss = missed_rows(text, games)
+    if miss:
+        S.log(f"! college card week {week}: couldn't read {len(miss)} row(s), those games are missing: {miss}")
     if len(games) < MIN["card"]:
         S.log(f"! college card week {week}: only {len(games)} games parsed; keeping old data")
         return False
@@ -103,7 +107,13 @@ def save_picks(week, url, text):
     try:
         mapping = map_abbreviations(table.keys(), names)
     except ValueError as e:
-        S.log(f"! college picks week {week}: {e}. Add the spelling to ALIASES in scraper/college.py")
+        bad = getattr(e, "bad", [])
+        if bad and all(not c for _, c in bad):
+            S.log(f"! college picks week {week}: {[a for a, _ in bad]} match nothing on the card. "
+                  f"Usually a game the card parser dropped (see card warnings / raw card.txt), "
+                  f"otherwise add the spelling to ALIASES in scraper/college.py")
+        else:
+            S.log(f"! college picks week {week}: {e}. Add the spelling to ALIASES in scraper/college.py")
         return False
     total = sum(len(e["picks"]) for e in entries)
     if len(entries) < MIN["picks"] or total != sum(table.values()):

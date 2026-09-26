@@ -18,11 +18,12 @@ from collections import Counter
 MONTHS = {m: i for i, m in enumerate(
     "JANUARY FEBRUARY MARCH APRIL MAY JUNE JULY AUGUST SEPTEMBER OCTOBER NOVEMBER DECEMBER".split(), 1)}
 
+from .lines import LINE, to_float, card_matches
 _CARD = re.compile(
     r"^[ \t]*(?P<n1>\d{1,3})[ \t]+(?P<t1>[A-Z0-9][A-Z0-9 .'&\-]*?)(?P<h1>\*?)[ \t]+(?:@(?P<site>[^\n]*?)[ \t]+)?"
     r"(?P<time>\d{1,2}:\d{2}[ \t]*[AP]M)[ \t]+"
     r"(?P<n2>\d{1,3})[ \t]+(?P<t2>[A-Z0-9][A-Z0-9 .'&\-]*?)(?P<h2>\*?)[ \t]+"
-    r"(?P<line>[+-]?(?:\d+(?:\.\d+)?|\.\d+)|PK|P)(?![\w.])", re.M)
+    rf"(?P<line>{LINE})(?![\w.])", re.M)
 _DAY = re.compile(r"COLLEGE FOOTBALL\s*-\s*[A-Z]+,\s*([A-Z]+)\s+(\d{1,2}),\s*(\d{4})")
 
 
@@ -55,15 +56,15 @@ def parse_card(text):
     heads = [(m.start(), f"{m.group(3)}-{MONTHS[m.group(1)]:02d}-{int(m.group(2)):02d}")
              for m in _DAY.finditer(text) if m.group(1) in MONTHS]
     games = []
-    for m in _CARD.finditer(text):
-        dog = 0.0 if m["line"] in ("PK", "P") else abs(float(m["line"]))
+    for m in card_matches(_CARD, text):
+        dog = abs(to_float(m["line"]))
         date = None
         for pos, d in heads:
             if pos < m.start():
                 date = d
         games.append({
             "id": len(games) + 1, "time_pt": re.sub(r"\s+", " ", m["time"]), "date": date,
-            "site": (m["site"] or "").strip().title() or None,
+            "site": (m.groupdict().get("site") or "").strip().title() or None,
             "fav": {"num": int(m["n1"]), "name": _clean(m["t1"]), "home": bool(m["h1"]), "line": -dog if dog else 0.0},
             "dog": {"num": int(m["n2"]), "name": _clean(m["t2"]), "home": bool(m["h2"]), "line": dog},
         })
@@ -75,7 +76,7 @@ _ENTRY = re.compile(r"^(?P<name>.+?)\s+-\s+(?P<n>\d{1,2})\s+(?P<rest>.+)$")
 _COUNT_ROW = re.compile(r"([A-Z][A-Z0-9 .'&`\-]*?)\s+(\d{1,4})(?=\s|$)")
 
 
-_INLINE_LINE = re.compile(r"(?<=[A-Z])\s[+-]\d+(?:½|\.5)?(?=\s|$)")
+_INLINE_LINE = re.compile(r"(?<=[A-Z])\s[+\-\u2212\u2013](?:\d+(?:\.\d+|½)?|\.\d+|½)(?=\s|$)")
 
 
 def _normalize(text):
@@ -194,7 +195,9 @@ def map_abbreviations(abbrs, card_names):
         else:
             bad.append((a, sorted(pref)))
     if bad:
-        raise ValueError(f"unmatched abbreviations: {bad}")
+        err = ValueError(f"unmatched abbreviations: {bad}")
+        err.bad = bad
+        raise err
     return out
 
 
