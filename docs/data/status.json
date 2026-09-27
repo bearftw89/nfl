@@ -1,12 +1,13 @@
 {
- "updated": "2026-09-27T00:18:55+00:00",
+ "updated": "2026-09-27T00:47:40+00:00",
  "lines": [
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
   "college card: weeks listed [1, 2, 3, 4]",
   "college picks: weeks listed [1, 2, 3, 4]",
   "college standings: weeks listed [1, 2, 3]",
   "gold card: weeks listed [1, 2, 3]",
-  "gold picks: weeks listed [1, 2]",
+  "gold picks: weeks listed [1, 2, 3]",
+  "gold picks week 3: 66",
   "gold standings: weeks listed [1, 2]",
   "survivor card: weeks listed [1, 2, 3]",
   "survivor picks: weeks listed [1, 2]",
