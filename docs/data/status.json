@@ -1,10 +1,12 @@
 {
- "updated": "2026-09-27T14:29:02+00:00",
+ "updated": "2026-09-27T14:44:16+00:00",
  "lines": [
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
   "college card: weeks listed [1, 2, 3, 4]",
   "college picks: weeks listed [1, 2, 3, 4]",
-  "college standings: weeks listed [1, 2, 3]",
+  "college standings: weeks listed [1, 2, 3, 4]",
+  "college standings week 4: 778 rows",
+  "college week 4: covers confirmed from official standings (58 games)",
   "gold card: weeks listed [1, 2, 3]",
   "gold picks: weeks listed [1, 2, 3]",
   "gold standings: weeks listed [1, 2]",
