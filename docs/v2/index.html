@@ -1782,7 +1782,7 @@ function bind() {
   });
   document.querySelectorAll(".league").forEach(g => g.addEventListener("click", e => { const b = e.target.closest("[data-league]"); if (b) switchLeague(b.dataset.league); }));
   $("#week").addEventListener("change", e => { S.week = +e.target.value; S.shown = 150; onIndex(); setTimeout(scheduleRefresh, 1500); });
-  document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) { S.tab = b.dataset.tab; render(); } });
+  document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) { if (b.dataset.tab === "top" && S.tab !== "top") local.set(`cb-topx-${S.league}`, []); S.tab = b.dataset.tab; render(); } });
   const main = $("#main");
   main.addEventListener("click", e => {
     const t = e.target, c = s => t.closest(s);
