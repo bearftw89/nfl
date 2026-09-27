@@ -1,16 +1,17 @@
 {
- "updated": "2026-09-27T00:47:40+00:00",
+ "updated": "2026-09-27T01:13:20+00:00",
  "lines": [
+  "wrote docs/data/2026/week-3/picks.json (595 rows)",
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
   "college card: weeks listed [1, 2, 3, 4]",
   "college picks: weeks listed [1, 2, 3, 4]",
   "college standings: weeks listed [1, 2, 3]",
   "gold card: weeks listed [1, 2, 3]",
   "gold picks: weeks listed [1, 2, 3]",
-  "gold picks week 3: 66",
   "gold standings: weeks listed [1, 2]",
   "survivor card: weeks listed [1, 2, 3]",
-  "survivor picks: weeks listed [1, 2]",
+  "survivor picks: weeks listed [1, 2, 3]",
+  "survivor picks week 3: 56",
   "survivor used: weeks listed [1, 2]",
   "circa: found 6 current-season PDFs (grandissimo picks wk2, grandissimo used wk3, millio card wk3, millio standings wk2, survivor picks wk2, survivor used wk3)"
  ]
