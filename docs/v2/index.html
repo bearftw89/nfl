@@ -253,6 +253,7 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
 .cstrip { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; display: flex; align-items: center; gap: 18px;
   padding: 10px 28px; background: var(--panel); border-bottom: 1px solid var(--rule); }
 .cstrip .groups { display: flex; align-items: center; gap: 18px; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.cstrip .groups > :first-child { margin-left: auto; } .cstrip .groups > :last-child { margin-right: auto; }
 .cstrip .groups::-webkit-scrollbar { display: none; }
 .cstrip .grp { display: flex; flex-direction: column; gap: 4px; flex: none; }
 .cstrip .glbl { padding-left: 12px; font: 600 11px/1 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
@@ -267,7 +268,7 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
 .themebtn:hover { border-color: var(--ink-2); }
 .themebtn .i-sun { display: none; }
 .dark-on .themebtn .i-sun { display: block; } .dark-on .themebtn .i-moon { display: none; }
-.titlebar { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 20px 28px 0; }
+.titlebar { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 20px 28px 0; max-width: var(--wrap); margin: 0 auto; box-sizing: border-box; }
 .ctitle { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .ctitle .eyebrow { font: 600 12px/1 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 .ctitle h1 { margin: 0; font: 700 40px/1 var(--cond); }
@@ -275,11 +276,18 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
 .titlebar .status { margin: 0; font-size: 12px; }
 .titlebar .classic { font-size: 13px; color: var(--ink-2); white-space: nowrap; }
 .top { top: calc(env(safe-area-inset-top, 0px) + var(--striph, 58px)); border-bottom: 0; }
-.top .tabs, .top .weekbar, main, .foot { max-width: none; margin: 0; padding-left: 28px; padding-right: 28px; }
+:root { --wrap: 1280px; }
+.top .tabs, .top .weekbar, main, .foot { max-width: var(--wrap); margin: 0 auto; box-sizing: border-box; padding-left: 28px; padding-right: 28px; }
+.top { border-bottom: 1px solid var(--rule); }
 .top .tabs { margin-top: 12px; gap: 22px; }
+.top .tabs + .weekbar { margin-top: 0; }
 .top .tabs button { padding: 10px 2px 11px; font-size: 18px; }
-.top .weekbar { padding-top: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.top .weekbar { padding-top: 10px; padding-bottom: 12px; }
 main { padding-top: 22px; }
+@media (min-width: 1121px) {
+  .cstrip { padding-left: 140px; padding-right: 140px; }
+  .cstrip .themebtn { position: absolute; right: 28px; top: 50%; transform: translateY(-50%); }
+}
 @media (max-width: 1120px) and (min-width: 761px) {
   .cstrip { padding: 10px 20px; gap: 12px; }
   .cstrip .groups { gap: 12px; }
