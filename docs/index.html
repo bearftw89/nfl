@@ -873,8 +873,9 @@ function rowHTML(r) {
 }
 function openEntry(id, lg = S.league) {
   if (lg !== S.league) { openXEntry(id, lg); return; }
-  if (!lastSt) lastSt = computeStandings(S.week);   // may be opened from the totals tab
-  const html = entryHtml(id, lastSt); if (!html) return;
+  // Always recompute: lastSt is only refreshed by the Standings tab, so it can be from another week or contest.
+  lastSt = computeStandings(S.week);
+  const html = entryHtml(id, lastSt) || `<button class="btn close" data-close>Close</button><h2>${esc(id)}</h2><p class="sub">Not found in week ${S.week} standings yet.</p>`;
   const d = $("#entry"); d.dataset.for = "";
   d.innerHTML = html + `<div class="season" data-for="${esc(id)}"><p class="sub" style="margin-top:16px">Loading earlier weeks…</p></div>`;
   d.showModal();
