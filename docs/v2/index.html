@@ -1223,6 +1223,7 @@ function topGroup(W) {
 const TOP_FAMILY = ["nfl", "gold", "circa-millio"];
 const SHORT = { nfl: "SuperContest", gold: "Gold", "circa-millio": "Circa Million" };
 const XCTX = {};
+function clearTopX() { for (const l of TOP_FAMILY) local.set(`cb-topx-${l}`, []); }
 function topExtras() {
   if (!nflFamilyLeague(S.league)) return [];
   const saved = local.get(`cb-topx-${S.league}`, []);
@@ -1512,7 +1513,7 @@ async function switchLeague(lg) {
   const keepWeek = S.league !== "ncaaf" && lg !== "ncaaf" ? S.week : null;
   if (nflFamilyLeague(lg)) local.set("cb-nflsub", lg);
   if (lg === "survivor" || lg === "circa-survivor" || lg === "circa-grandissimo") local.set("cb-survsub", lg);
-  S.league = lg; local.set("cb-league", lg); markLeague();
+  S.league = lg; local.set("cb-league", lg); clearTopX(); markLeague();
   history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
   S.week = keepWeek; S.shown = 150; S.q = "";
   S.svPickQ = ""; S.svSel = []; S.cmpShowOut = false;   // Compare picks belong to one contest; start fresh in the next
@@ -1781,8 +1782,8 @@ function bind() {
     const sel = $("#week"); sel.value = b.dataset.goweek; sel.dispatchEvent(new Event("change"));
   });
   document.querySelectorAll(".league").forEach(g => g.addEventListener("click", e => { const b = e.target.closest("[data-league]"); if (b) switchLeague(b.dataset.league); }));
-  $("#week").addEventListener("change", e => { S.week = +e.target.value; S.shown = 150; onIndex(); setTimeout(scheduleRefresh, 1500); });
-  document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) { if (b.dataset.tab === "top" && S.tab !== "top") local.set(`cb-topx-${S.league}`, []); S.tab = b.dataset.tab; render(); } });
+  $("#week").addEventListener("change", e => { S.week = +e.target.value; S.shown = 150; clearTopX(); onIndex(); setTimeout(scheduleRefresh, 1500); });
+  document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) { if (b.dataset.tab === "top" && S.tab !== "top") clearTopX(); S.tab = b.dataset.tab; render(); } });
   const main = $("#main");
   main.addEventListener("click", e => {
     const t = e.target, c = s => t.closest(s);
@@ -1795,7 +1796,7 @@ function bind() {
     else if (c("[data-sventry]")) openSurvivorEntry(c("[data-sventry]").dataset.sventry);
     else if (c("[data-team]")) openTeam(c("[data-team]").dataset.team);
     else if (c("[data-atssort]")) { const k = c("[data-atssort]").dataset.atssort; S.atsDir = (S.atsSort || "pct") === k ? -(S.atsDir || 1) : (k === "team" ? -1 : 1); S.atsSort = k; render(); }
-    else if (c("[data-topn]")) { S.topN = +c("[data-topn]").dataset.topn; local.set("cb-topn", S.topN); render(); }
+    else if (c("[data-topn]")) { S.topN = +c("[data-topn]").dataset.topn; local.set("cb-topn", S.topN); clearTopX(); render(); }
     else if (c("[data-topteam]")) openTopTeam(c("[data-topteam]").dataset.topteam);
     else if (c("th[data-sort]")) {
       const k = c("th[data-sort]").dataset.sort;
@@ -1813,7 +1814,7 @@ function bind() {
     }
     if (e.target.id === "topN") {
       const v = parseInt(e.target.value, 10);
-      if (v > 0) { S.topN = v; local.set("cb-topn", v); clearTimeout(S.tnT); S.tnT = setTimeout(() => { render(); requestAnimationFrame(() => { const i = $("#topN"); if (i) { i.focus(); const l = i.value.length; try { i.setSelectionRange(l, l); } catch {} } }); }, 350); }
+      if (v > 0) { S.topN = v; local.set("cb-topn", v); clearTopX(); clearTimeout(S.tnT); S.tnT = setTimeout(() => { render(); requestAnimationFrame(() => { const i = $("#topN"); if (i) { i.focus(); const l = i.value.length; try { i.setSelectionRange(l, l); } catch {} } }); }, 350); }
       return;
     }
     if (e.target.id === "q") { S.q = e.target.value; S.shown = 150; clearTimeout(S.qT); S.qT = setTimeout(render, 150); } });
