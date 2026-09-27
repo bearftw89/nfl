@@ -249,84 +249,101 @@ td.diff { font: 600 15px var(--cond); text-align: right; }
 }
 @media (prefers-reduced-motion: reduce) { .pulse.on { animation: none; } .split > div { transition: none; } }
 
-/* ===== v2 shell: contests across the top (same tokens, fonts and components as v1) ===== */
-.cstrip { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; display: flex; align-items: center; gap: 18px;
-  padding: 10px 28px; background: var(--panel); border-bottom: 1px solid var(--rule); }
-.cstrip .groups { display: flex; align-items: center; gap: 18px; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
-.cstrip .groups > :first-child { margin-left: auto; } .cstrip .groups > :last-child { margin-right: auto; }
-.cstrip .groups::-webkit-scrollbar { display: none; }
-.cstrip .grp { display: flex; flex-direction: column; gap: 4px; flex: none; }
-.cstrip .glbl { padding-left: 12px; font: 600 11px/1 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
-.cstrip .gsep { width: 1px; align-self: stretch; background: var(--rule); flex: none; }
-.cstrip .league { display: flex; gap: 2px; border: 0; border-radius: 0; overflow: visible; }
-.cstrip .league button { min-height: 36px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; cursor: pointer;
-  font: 600 17px/1 var(--cond); color: var(--ink); white-space: nowrap; }
-.cstrip .league button:hover { background: var(--panel-2); }
-.cstrip .league button[aria-pressed="true"] { background: color-mix(in srgb, var(--push) 22%, var(--panel)); font-weight: 700; }
-.themebtn { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; flex: none; background: var(--panel); border: 1px solid var(--rule);
-  border-radius: 999px; cursor: pointer; font: 600 16px/1 var(--cond); color: var(--ink); }
-.themebtn:hover { border-color: var(--ink-2); }
-.themebtn .i-sun { display: none; }
-.dark-on .themebtn .i-sun { display: block; } .dark-on .themebtn .i-moon { display: none; }
-.titlebar { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 20px 28px 0; max-width: var(--wrap); margin: 0 auto; box-sizing: border-box; }
+/* ===== v2 shell: contest rail + content column (same tokens, fonts and components as v1) ===== */
+body { min-height: 100%; }
+.app { display: flex; min-height: 100vh; }
+.rail { width: 232px; flex: none; position: sticky; top: env(safe-area-inset-top, 0px); height: calc(100vh - env(safe-area-inset-top, 0px));
+  box-sizing: border-box; background: var(--panel); border-right: 1px solid var(--rule); display: flex; flex-direction: column; padding: 26px 14px 18px; overflow-y: auto; }
+.rail .brand { font: 700 26px/1 var(--cond); padding: 0 8px 22px; margin: 0; }
+.rail .grp { display: flex; flex-direction: column; gap: 2px; margin-bottom: 20px; }
+.rail .grp h2 { margin: 0; font: 600 12px/1.2 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); padding: 0 8px 6px; }
+.rail .league { display: flex; flex-direction: column; gap: 2px; border: 0; border-radius: 0; overflow: visible; }
+.rail .league button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 40px; padding: 0 10px;
+  border: 0; border-radius: 8px; background: transparent; cursor: pointer; text-align: left; font: 600 18px/1 var(--cond); color: var(--ink); }
+.rail .league button:hover { background: var(--panel-2); }
+.rail .league button[aria-pressed="true"] { background: color-mix(in srgb, var(--push) 22%, var(--panel)); color: var(--ink); font-weight: 700; }
+.rail .league button small { font: 400 12px/1 var(--text); color: var(--ink-2); }
+.rail .railfoot { margin-top: auto; padding: 14px 8px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+.rail .status { margin: 0; width: auto; font-size: 12px; align-items: flex-start; }
+.rail .status .pulse { margin-top: 4px; }
+.rail .classic { font-size: 13px; color: var(--ink-2); }
+.content { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.content .top { border-bottom: 0; }
+.content .top-inner, .content .tabs, .content main, .content .foot { max-width: none; margin: 0; padding-left: 28px; padding-right: 28px; }
+.content .top-inner { padding-top: 22px; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .ctitle { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .ctitle .eyebrow { font: 600 12px/1 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 .ctitle h1 { margin: 0; font: 700 40px/1 var(--cond); }
-.titlebar .meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-.titlebar .status { margin: 0; font-size: 12px; }
-.titlebar .classic { font-size: 13px; color: var(--ink-2); white-space: nowrap; }
-.top { top: calc(env(safe-area-inset-top, 0px) + var(--striph, 58px)); border-bottom: 0; }
-:root { --wrap: 1280px; }
-.top .tabs, .top .weekbar, main, .foot { max-width: var(--wrap); margin: 0 auto; box-sizing: border-box; padding-left: 28px; padding-right: 28px; }
-.top { border-bottom: 1px solid var(--rule); }
-.top .tabs { margin-top: 12px; gap: 22px; }
-.top .tabs + .weekbar { margin-top: 0; }
-.top .tabs button { padding: 10px 2px 11px; font-size: 18px; }
-.top .weekbar { padding-top: 10px; padding-bottom: 12px; }
-main { padding-top: 22px; }
-@media (min-width: 1121px) {
-  .cstrip { padding-left: 140px; padding-right: 140px; }
-  .cstrip .themebtn { position: absolute; right: 28px; top: 50%; transform: translateY(-50%); }
-}
-@media (max-width: 1120px) and (min-width: 761px) {
-  .cstrip { padding: 10px 20px; gap: 12px; }
-  .cstrip .groups { gap: 12px; }
-  .cstrip .league button { padding: 0 9px; font-size: 16px; }
-}
+.content .weekbar { max-width: none; margin: 0; padding: 10px 28px 12px; border-bottom: 1px solid var(--rule); }
+.content .tabs { margin-top: 14px; gap: 22px; }
+.content .tabs button { padding: 10px 2px 11px; font-size: 18px; }
+.content main { padding-top: 22px; }
+.menubtn, .sheetclose { display: none; }
+.themebtn { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; background: var(--panel); border: 1px solid var(--rule);
+  border-radius: 999px; cursor: pointer; font: 600 16px/1 var(--cond); color: var(--ink); align-self: flex-start; }
+.themebtn:hover { border-color: var(--ink-2); }
+.themebtn .i-sun { display: none; }
+.dark-on .themebtn .i-sun { display: block; } .dark-on .themebtn .i-moon { display: none; }
+.scrim { display: none; }
 @media (max-width: 760px) {
-  .cstrip { padding: 8px 0 8px 16px; gap: 10px; }
-  .cstrip .groups { overflow-x: auto; scrollbar-width: none; gap: 12px; padding-right: 8px; }
-  .cstrip .groups::-webkit-scrollbar { display: none; }
-  .cstrip .league button { min-height: 40px; font-size: 16px; padding: 0 10px; }
-  .cstrip .themebtn { margin-right: 12px; width: 44px; height: 44px; padding: 0; justify-content: center; }
-  .cstrip .themebtn span { display: none; }
-  .titlebar { padding: 14px 16px 0; flex-direction: column; align-items: stretch; gap: 6px; }
-  .titlebar .meta { flex-direction: row; justify-content: space-between; align-items: center; }
-  .ctitle h1 { font-size: 30px; }
-  .top .tabs, .top .weekbar, main, .foot { padding-left: 16px; padding-right: 16px; }
-  .top .tabs { gap: 18px; margin-top: 8px; }
+  .app { display: block; }
+  .rail { position: fixed; left: 0; right: 0; bottom: 0; top: auto; width: auto; height: auto; max-height: 85vh; z-index: 30;
+    border-right: 0; border-radius: 16px 16px 0 0; padding: 14px 12px calc(20px + env(safe-area-inset-bottom, 0px));
+    transform: translateY(105%); transition: transform .22s ease; }
+  body.sheet .rail { transform: none; }
+  body.sheet .scrim { display: block; position: fixed; inset: 0; background: rgba(10, 16, 24, .55); z-index: 25; }
+  .rail .brand { display: none; }
+  .rail .league button { min-height: 48px; font-size: 20px; }
+  .sheetclose { display: block; align-self: flex-end; background: none; border: 0; min-height: 44px; padding: 0 12px; font: 600 16px/1 var(--cond); color: var(--focus); cursor: pointer; }
+  .content .top-inner, .content .tabs, .content main, .content .foot { padding-left: 16px; padding-right: 16px; }
+  .content .top-inner { padding-top: 14px; flex-direction: row; align-items: center; flex-wrap: nowrap; gap: 10px; }
+  .themebtn { align-self: center; padding: 0 12px; min-height: 44px; }
+  .themebtn span { display: none; }
+  .menubtn { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; background: none; border: 0; padding: 0; min-height: 44px; cursor: pointer; text-align: left; color: var(--ink); }
+  .menubtn .eyebrow { font: 600 11px/1 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+  .menubtn b { display: flex; align-items: center; gap: 6px; font: 700 28px/1 var(--cond); }
+  .ctitle { display: none; }
+  .content .weekbar { padding-left: 16px; padding-right: 16px; }
+  .content .tabs { gap: 18px; margin-top: 10px; }
 }
+@media (prefers-reduced-motion: reduce) { .rail { transition: none; } }
 </style>
 </head>
 <body>
 <div class="app">
-<header class="cstrip" id="cstrip">
-  <nav class="groups" aria-label="Contests">
-    <div class="grp"><span class="glbl">NFL · ATS</span><div class="league" role="group" aria-label="NFL contests"><button data-league="nfl">SuperContest</button><button data-league="gold">Gold</button><button data-league="circa-millio">Circa Million</button></div></div>
-    <span class="gsep"></span>
-    <div class="grp"><span class="glbl">College</span><div class="league" role="group" aria-label="College contests"><button data-league="ncaaf">SuperContest College</button></div></div>
-    <span class="gsep"></span>
-    <div class="grp"><span class="glbl">Survivor</span><div class="league" role="group" aria-label="Survivor contests"><button data-league="survivor">Westgate</button><button data-league="circa-survivor">Circa</button><button data-league="circa-grandissimo">Grandissimo</button></div></div>
-  </nav>
-  <button class="themebtn" id="themebtn" type="button" aria-label="Switch to dark mode"><svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span id="themelbl">Dark</span></button>
-</header>
-<div id="nflsub" hidden></div><div id="survsub" hidden></div>
-<div class="titlebar">
-  <div class="ctitle"><span class="eyebrow" id="ceyebrow"></span><h1 id="ctitle">Contest Board</h1></div>
-  <div class="meta"><div class="status" id="status" aria-live="polite"></div><a class="classic" href="../">Classic layout</a></div>
-  <label hidden><span class="sr">Week</span><select class="week" id="week"></select></label>
-</div>
+<aside class="rail" id="rail" aria-label="Contests">
+  <button class="sheetclose" id="sheetclose">Done</button>
+  <div class="grp"><h2>NFL · ATS</h2>
+    <div class="league" role="group" aria-label="NFL contests">
+      <button data-league="nfl">SuperContest <small>Westgate</small></button>
+      <button data-league="gold">Gold <small>Westgate</small></button>
+      <button data-league="circa-millio">Circa Million <small>Circa</small></button>
+    </div></div>
+  <div class="grp"><h2>College</h2>
+    <div class="league" role="group" aria-label="College contests">
+      <button data-league="ncaaf">SuperContest College</button>
+    </div></div>
+  <div class="grp"><h2>Survivor</h2>
+    <div class="league" role="group" aria-label="Survivor contests">
+      <button data-league="survivor">Westgate <small>Survivor</small></button>
+      <button data-league="circa-survivor">Circa <small>Survivor</small></button>
+      <button data-league="circa-grandissimo">Grandissimo <small>Circa</small></button>
+    </div></div>
+  <div id="nflsub" hidden></div><div id="survsub" hidden></div>
+  <div class="railfoot">
+    <div class="status" id="status" aria-live="polite"></div>
+    <a class="classic" href="../">Classic layout</a>
+  </div>
+</aside>
+<div class="scrim" id="scrim"></div>
+<div class="content">
 <header class="top">
+  <div class="top-inner">
+    <button class="menubtn" id="menubtn" aria-haspopup="true" aria-controls="rail"><span class="eyebrow" id="ceyebrow2"></span><b><span id="ctitle2">Contest Board</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></b></button>
+    <div class="ctitle"><span class="eyebrow" id="ceyebrow"></span><h1 id="ctitle">Contest Board</h1></div>
+    <button class="themebtn" id="themebtn" type="button" aria-label="Switch to dark mode"><svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span id="themelbl">Dark</span></button>
+    <label hidden><span class="sr">Week</span><select class="week" id="week"></select></label>
+  </div>
   <nav class="tabs" role="tablist">
     <button role="tab" data-tab="games" aria-selected="true">Scoreboard</button>
     <button role="tab" data-tab="standings" aria-selected="false">Standings</button>
@@ -355,7 +372,7 @@ main { padding-top: 22px; }
 </main>
 <dialog id="entry"></dialog>
 <footer class="foot" id="foot">Lines, picks and official standings: Westgate SuperContest PDFs. Scores: ESPN. Graded against the static Westgate SuperContest line: cover 1, push ½, loss 0; rule 22 postponements ½. Live standings are unofficial until Westgate posts them.</footer>
-</div>
+</div></div>
 
 <script>
 (() => {
@@ -1477,7 +1494,7 @@ function markLeague() {
       "circa-millio": ["Circa Sports · NFL · against the spread", "Circa Million"], ncaaf: ["Westgate · College · against the spread", "SuperContest College"],
       survivor: ["Westgate · Survivor", "SuperContest Survivor"], "circa-survivor": ["Circa Sports · Survivor", "Circa Survivor"],
       "circa-grandissimo": ["Circa Sports · Survivor", "Circa Grandissimo"] }[S.league] || ["", "Contest Board"];
-    document.getElementById("ceyebrow").textContent = T[0]; document.getElementById("ctitle").textContent = T[1]; }
+    for (const s of ["", "2"]) { document.getElementById("ceyebrow" + s).textContent = T[0]; document.getElementById("ctitle" + s).textContent = T[1]; } }
   document.title = `Contest Board: ${{ nfl: "NFL", gold: "NFL Gold", ncaaf: "NCAAF", survivor: "Survivor", "circa-survivor": "Circa Survivor", "circa-grandissimo": "Circa Grandissimo", "circa-millio": "Circa Million" }[S.league]}`;
 }
 async function switchLeague(lg) {
@@ -1753,14 +1770,12 @@ function bind() {
     paintTheme(); });
   mq.addEventListener?.("change", paintTheme);
   paintTheme();
-  // Keep the tabs + week bar pinned just under the contest strip, whatever height the strip wraps to.
-  const strip = document.getElementById("cstrip");
-  const setH = () => document.documentElement.style.setProperty("--striph", strip.offsetHeight + "px");
-  setH(); if (window.ResizeObserver) new ResizeObserver(setH).observe(strip); else addEventListener("resize", setH);
-  // On phones the strip scrolls sideways; bring the active contest into view.
-  const showActive = () => { const b = strip.querySelector('.league button[aria-pressed="true"]'); if (b) b.scrollIntoView({ block: "nearest", inline: "nearest" }); };
-  strip.addEventListener("click", e => { if (e.target.closest("[data-league]")) setTimeout(showActive, 0); });
-  setTimeout(showActive, 300);
+  const sheet = on => document.body.classList.toggle("sheet", on);
+  document.getElementById("menubtn").addEventListener("click", () => sheet(true));
+  document.getElementById("sheetclose").addEventListener("click", () => sheet(false));
+  document.getElementById("scrim").addEventListener("click", () => sheet(false));
+  document.getElementById("rail").addEventListener("click", e => { if (e.target.closest("[data-league]")) sheet(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") sheet(false); });
   document.getElementById("weekbar").addEventListener("click", e => {
     const b = e.target.closest("[data-goweek]"); if (!b || b.disabled) return;
     const sel = $("#week"); sel.value = b.dataset.goweek; sel.dispatchEvent(new Event("change"));
