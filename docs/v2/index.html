@@ -1,0 +1,1838 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contest Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --board: #E6EBF1; --panel: #FFFFFF; --panel-2: #D9E1EA; --rule: #C6D0DC;
+  --ink: #1B2430; --ink-2: #536579; --on: #FFFFFF;
+  --cover: #1E8C5A; --miss: #C4413E; --push: #B07A17; --idle: #8595A8; --focus: #2F6FD0;
+  --cond: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --text: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --board: #1B2430; --panel: #243142; --panel-2: #2D3C50; --rule: #3A4B61;
+    --ink: #E8EEF4; --ink-2: #A9B7C6; --on: #1B2430;
+    --cover: #3FB27F; --miss: #E0605E; --push: #E8B04A; --idle: #5D6F86; --focus: #8CC8FF;
+  }
+}
+:root[data-theme="dark"] {
+  --board: #1B2430; --panel: #243142; --panel-2: #2D3C50; --rule: #3A4B61;
+  --ink: #E8EEF4; --ink-2: #A9B7C6; --on: #1B2430;
+  --cover: #3FB27F; --miss: #E0605E; --push: #E8B04A; --idle: #5D6F86; --focus: #8CC8FF;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; background: var(--board); color: var(--ink); font: 400 15px/1.45 var(--text); -webkit-font-smoothing: antialiased; }
+button, select, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--board); border-bottom: 1px solid var(--rule); }
+.top-inner, .tabs, main, .foot { max-width: 1360px; margin: 0 auto; padding: 0 16px; }
+.top-inner { display: flex; align-items: center; gap: 14px; padding-top: 14px; flex-wrap: wrap; }
+.brand { margin: 0; font: 700 26px/1 var(--cond); }
+.league { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.league button { background: var(--panel); border: 0; padding: 6px 12px; font: 600 16px/1 var(--cond); cursor: pointer; color: var(--ink-2); }
+.league button[aria-pressed="true"] { background: var(--push); color: #1B2430; }
+.league[hidden] { display: none; }
+.top-inner { align-items: flex-start; }
+.leaguenav { display: flex; flex-direction: column; gap: 6px; }
+.leaguenav > .league:not(.sub) { align-self: flex-start; }   /* size the NFL/NCAAF/Survivor pill to its buttons, not the sub-tab row */
+.league.sub { border: 0; border-radius: 0; border-top: 1px solid var(--rule); gap: 18px; padding-top: 2px; overflow-x: auto; }
+.league.sub button { background: none; font: 500 15px/1 var(--cond); padding: 6px 2px; color: var(--ink-2); border-bottom: 2px solid transparent; }
+.league.sub button:hover { color: var(--ink); }
+.league.sub button[aria-pressed="true"] { background: none; color: var(--ink); border-bottom-color: var(--push); }
+.league button:focus-visible { outline: 2px solid var(--push); outline-offset: 2px; }
+select.week { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 10px; font: 600 18px/1 var(--cond); cursor: pointer; }
+.status { margin-left: auto; color: var(--ink-2); font-size: 13px; display: flex; align-items: center; gap: 8px; }
+.pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--idle); flex: none; }
+.pulse.on { background: var(--cover); animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.tabs { display: flex; gap: 4px; margin-top: 10px; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button { white-space: nowrap; flex: none; background: none; border: 0; border-bottom: 3px solid transparent; padding: 8px 12px 9px; font: 600 17px/1 var(--cond); color: var(--ink-2); cursor: pointer; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-color: var(--ink); }
+.weekbar { max-width: 1360px; margin: 0 auto; padding: 8px 16px 10px; display: flex; gap: 4px; align-items: center;
+  overflow-x: auto; scrollbar-width: none; }
+.weekbar::-webkit-scrollbar { display: none; }
+.weekbar .wb-label { color: var(--ink-2); font: 600 14px/1 var(--cond); margin-right: 6px; flex: none; }
+.weekbar button { flex: none; min-width: 34px; height: 30px; padding: 0 8px; border: 1px solid var(--rule); border-radius: 6px;
+  background: var(--panel); color: var(--ink); font: 600 16px/1 var(--cond); cursor: pointer; }
+.weekbar button:hover:not(:disabled) { border-color: var(--ink-2); }
+.weekbar button[aria-current="true"] { background: var(--ink); color: var(--board); border-color: var(--ink); }
+.weekbar button:disabled { opacity: .35; cursor: default; }
+select.week { display: none; }
+.board { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 12px; }
+.bgame { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 14px 12px; }
+.bmeta { display: flex; justify-content: space-between; color: var(--ink-2); font-size: 12px; margin-bottom: 6px; }
+.bmeta .live { color: var(--cover); font-weight: 600; }
+.brow { display: grid; grid-template-columns: 44px 1fr 50px 74px 40px; align-items: center; gap: 10px; padding: 5px 0; }
+.brow + .brow { border-top: 1px solid var(--rule); }
+.tbadge { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 28px; border-radius: 6px;
+  color: #fff; font: 700 14px/1 var(--cond); letter-spacing: .02em; }
+.bname { font: 600 19px/1.1 var(--cond); }
+.bname small { display: block; font: 400 12px var(--text); color: var(--ink-2); margin-top: 2px; }
+.bline { font: 500 16px var(--cond); color: var(--ink-2); text-align: right; }
+.bline small { display: block; font: 400 11px var(--text); margin-top: 2px; white-space: nowrap; }
+.bline small.gap { color: var(--cover); font-weight: 600; }
+.bats { font: 500 14px var(--cond); color: var(--ink-2); text-align: right; white-space: nowrap; }
+.bscore { font: 700 24px/1 var(--cond); text-align: right; }
+.brow.lose .bname, .brow.lose .bscore { color: var(--ink-2); }
+.brow.nb { grid-template-columns: 1fr 50px 74px 40px; }
+.brow.st-W .bname, .brow.st-W .bscore { color: var(--cover); }
+.brow.st-L .bname { color: var(--ink-2); }
+.bgame .split { margin-top: 8px; height: 22px; }
+.bwin { margin-top: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--ink-2); }
+@media (max-width: 560px) { .board { grid-template-columns: 1fr; } .brow { grid-template-columns: 40px 1fr 44px 66px 34px; gap: 8px; } .brow.nb { grid-template-columns: 1fr 44px 66px 34px; } }
+main { padding-top: 18px; padding-bottom: 40px; }
+.foot { color: var(--ink-2); font-size: 12px; padding-bottom: 32px; }
+
+.strip { display: flex; flex-wrap: wrap; gap: 28px; margin: 0 0 18px; }
+.strip div { display: flex; flex-direction: column; }
+.strip b { font: 700 28px/1 var(--cond); }
+.strip span { color: var(--ink-2); font-size: 13px; }
+.five { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; align-items: center; }
+.five h2 { font: 600 17px/1 var(--cond); margin: 0 6px 0 0; color: var(--ink-2); }
+.sortbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; color: var(--ink-2); font-size: 13px; }
+.pill { background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 3px 12px; cursor: pointer; font-size: 13px; white-space: nowrap; }
+.pill[aria-pressed="true"] { background: var(--ink); color: var(--board); border-color: var(--ink); }
+
+.games { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
+.game { background: var(--panel); border-radius: 10px; padding: 12px 14px 14px; border: 1px solid var(--rule); }
+.game-meta { display: flex; justify-content: space-between; align-items: center; color: var(--ink-2); font-size: 12px; margin-bottom: 8px; gap: 8px; }
+.game-meta .live { color: var(--cover); font-weight: 600; }
+.edit-btn { background: none; border: 1px solid var(--rule); border-radius: 5px; padding: 1px 8px; font-size: 12px; cursor: pointer; color: var(--ink-2); }
+.side { display: grid; grid-template-columns: 1fr auto auto; align-items: baseline; gap: 10px; padding: 2px 0; }
+.side .team { font: 600 20px/1.1 var(--cond); }
+.side .team small { font: 400 12px var(--text); color: var(--ink-2); margin-left: 4px; }
+.side .line { font: 500 16px var(--cond); color: var(--ink-2); min-width: 44px; text-align: right; }
+.side .score { font: 700 22px/1 var(--cond); min-width: 30px; text-align: right; }
+.side.st-W .team, .side.st-W .score { color: var(--cover); }
+.side.st-L .team { color: var(--ink-2); }
+.split { display: flex; height: 26px; margin-top: 10px; border-radius: 5px; overflow: hidden; background: var(--panel-2); }
+.split > div { display: flex; align-items: center; padding: 0 8px; min-width: 0; font: 600 14px/1 var(--cond); white-space: nowrap; color: var(--on); background: var(--idle); transition: background-color .4s; }
+.split > div + div { justify-content: flex-end; border-left: 2px solid var(--panel); }
+.split .st-W { background: var(--cover); }
+.split .st-L { background: var(--miss); }
+.split .st-P, .split .st-C { background: var(--push); }
+.counts { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-2); margin-top: 5px; gap: 6px; }
+.editor { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px; }
+.editor label { display: flex; flex-direction: column; gap: 3px; color: var(--ink-2); }
+.editor input, .editor select { background: var(--board); border: 1px solid var(--rule); border-radius: 5px; padding: 5px 8px; color: var(--ink); }
+.editor .row { grid-column: 1 / -1; display: flex; gap: 8px; justify-content: flex-end; }
+
+.chip { display: inline-flex; align-items: center; justify-content: center; min-width: 42px; height: 24px; padding: 0 6px; border-radius: 4px; font: 600 14px/1 var(--cond); background: var(--panel-2); color: var(--ink); border: 1px solid var(--rule); }
+.chip.st-W { background: var(--cover); color: var(--on); border-color: var(--cover); }
+.chip.st-L { background: var(--miss); color: var(--on); border-color: var(--miss); }
+.chip.st-P, .chip.st-C { background: var(--push); color: var(--on); border-color: var(--push); }
+.chip.live { border-style: dashed; background: transparent; }
+.chip.live.st-W { color: var(--cover); } .chip.live.st-L { color: var(--miss); } .chip.live.st-P { color: var(--push); }
+
+.tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+.tools input[type="search"] { flex: 1 1 240px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 12px; }
+.tools label { display: flex; gap: 6px; align-items: center; color: var(--ink-2); font-size: 14px; cursor: pointer; }
+.note { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; max-width: 80ch; }
+.table-wrap { overflow-x: auto; border-radius: 10px; background: var(--panel); border: 1px solid var(--rule); }
+table { width: 100%; border-collapse: collapse; min-width: 1040px; }
+th, td { padding: 7px 8px; text-align: left; border-bottom: 1px solid var(--rule); }
+th { font: 600 14px/1 var(--cond); color: var(--ink-2); background: var(--panel); white-space: nowrap; }
+th[data-sort] { cursor: pointer; }
+th[aria-sort] { color: var(--ink); }
+td.num, th.num { text-align: right; font-family: var(--cond); font-size: 17px; }
+td.place { font: 700 17px var(--cond); width: 56px; }
+td.move { font: 600 13px var(--cond); width: 36px; }
+td.rec { font: 500 16px var(--cond); color: var(--ink-2); white-space: nowrap; }
+.up { color: var(--cover); } .down { color: var(--miss); }
+td.name button { background: none; border: 0; padding: 0; cursor: pointer; text-align: left; font-weight: 600; }
+td.name button:hover { text-decoration: underline; }
+.picks { display: flex; gap: 3px; white-space: nowrap; }
+.picks .chip { min-width: 0; padding: 0 5px; font-size: 13px; height: 22px; }
+.star { background: none; border: 0; cursor: pointer; font-size: 17px; color: var(--idle); padding: 0 4px; }
+.star[aria-pressed="true"] { color: var(--push); }
+tr.mine td { background: color-mix(in srgb, var(--push) 10%, transparent); }
+.btn { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 16px; cursor: pointer; }
+.btn.primary { background: var(--ink); color: var(--board); border-color: var(--ink); font-weight: 600; }
+.btn:disabled { opacity: .5; cursor: default; }
+.more { margin: 14px auto 0; display: block; }
+
+dialog { background: var(--panel); color: var(--ink); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; width: min(760px, 94vw); max-height: 88vh; overflow: auto; }
+dialog .picks { flex-wrap: wrap; }
+dialog table { min-width: 0; }
+dialog .season td { vertical-align: middle; }
+.teamgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; margin-top: 6px; }
+.teamgrid .tg { display: flex; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 6px; background: var(--panel-2); }
+.teamgrid .tg.used { background: transparent; border: 1px solid var(--rule); }
+.teamgrid .tg .ab { font: 700 13px/1 var(--cond); }
+.teamgrid .tg .wk { font-size: 11px; color: var(--ink-2); margin-left: auto; }
+.teamgrid .tg.st-W { outline: 1px solid var(--cover); } .teamgrid .tg.st-L { outline: 1px solid var(--miss); } .teamgrid .tg.st-T { outline: 1px solid var(--push); }
+.cmpwrap { display: grid; grid-template-columns: 260px 1fr; gap: 16px; align-items: start; }
+.cmppicker { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 10px; }
+.cmppicker input[type="search"] { width: 100%; background: var(--board); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 9px; margin-bottom: 8px; }
+.cmplist { max-height: 420px; overflow-y: auto; display: flex; flex-direction: column; }
+.cmprow { display: flex; align-items: center; gap: 8px; padding: 5px 4px; border-radius: 5px; cursor: pointer; font-size: 14px; }
+.cmprow:hover { background: var(--panel-2); }
+.cmprow input { flex: none; }
+.cmprow .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cmprow .st { flex: none; font-size: 11px; }
+.cmprow .st.up { color: var(--cover); } .cmprow .st.down { color: var(--miss); }
+.cmpcount { font-size: 12px; color: var(--ink-2); margin-bottom: 6px; }
+th.cmphead { min-width: 190px; text-align: left; font-weight: 700; }
+th.cmphead .x { float: right; background: none; border: 0; color: var(--ink-2); cursor: pointer; font-size: 13px; padding: 0 0 0 6px; }
+th.cmphead small { display: block; font: 400 11px var(--text); color: var(--ink-2); margin-top: 2px; }
+@media (max-width: 700px) { .cmpwrap { grid-template-columns: 1fr; } .cmplist { max-height: 220px; } }
+.survcurve { display: flex; align-items: flex-end; gap: 6px; height: 220px; padding: 26px 4px 0; }
+.survcurve .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
+.survcurve .bar { width: 100%; max-width: 40px; background: var(--cover); border-radius: 4px 4px 0 0; position: relative; min-height: 2px;
+  border: 0; cursor: pointer; padding: 0; display: block; }
+.survcurve .bar:hover { filter: brightness(1.12); }
+.survcurve .bar .n { position: absolute; top: -20px; left: 0; right: 0; text-align: center; font: 700 13px/1 var(--cond); }
+.survcurve .wk { margin-top: 6px; font-size: 11px; color: var(--ink-2); }
+.survcurve .elim { font-size: 10px; color: var(--miss); margin-top: 2px; }
+dialog::backdrop { background: rgba(10, 16, 24, .6); }
+dialog h2 { font: 700 26px/1.1 var(--cond); margin: 0 0 2px; }
+dialog .sub { color: var(--ink-2); margin: 0 0 14px; }
+dialog ul { list-style: none; margin: 0; padding: 0; }
+dialog li { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+dialog li .d { color: var(--ink-2); font-size: 13px; text-align: right; }
+dialog .close { float: right; }
+
+.empty { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 24px; color: var(--ink-2); }
+.empty b { color: var(--ink); }
+
+/* data tab */
+.drop { border: 2px dashed var(--rule); border-radius: 12px; padding: 28px; text-align: center; background: var(--panel); cursor: pointer; }
+.drop.over { border-color: var(--focus); }
+.drop b { font: 700 22px var(--cond); display: block; margin-bottom: 4px; }
+.drop span { color: var(--ink-2); font-size: 14px; }
+.queue { margin: 16px 0; }
+.qrow { display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; align-items: center; background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; font-size: 14px; }
+.qrow select { background: var(--board); border: 1px solid var(--rule); border-radius: 5px; padding: 3px 6px; }
+.qrow .ok { color: var(--cover); } .qrow .bad { color: var(--miss); }
+.have { margin-top: 26px; }
+.have h2, .how h2 { font: 700 20px var(--cond); margin: 0 0 8px; }
+.have table { min-width: 0; }
+.how { margin-top: 26px; max-width: 72ch; }
+.how p { margin: 0 0 10px; }
+details.paste { margin-top: 12px; }
+details.paste textarea { width: 100%; min-height: 140px; background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 10px; margin: 8px 0; font-size: 13px; }
+
+.cnt { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 24px; border-radius: 4px;
+  font: 600 14px/1 var(--cond); background: var(--panel-2); color: var(--ink); }
+.cnt.st-W { background: var(--cover); color: var(--on); } .cnt.st-L { background: var(--miss); color: var(--on); }
+.cnt.st-P, .cnt.st-C { background: var(--push); color: var(--on); } .cnt.live { outline: 1px dashed var(--ink-2); }
+.wk { font: 600 13px/1 var(--cond); white-space: nowrap; }
+.wk small { display: block; font: 400 11px var(--text); color: var(--ink-2); margin-top: 2px; }
+.topctl { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+.topctl input { width: 80px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 10px; font: 600 18px var(--cond); }
+.topctl label { display: flex; gap: 8px; align-items: center; font-weight: 600; }
+.topctl input[type="checkbox"] { width: 18px; height: 18px; padding: 0; margin: 0; }
+.topctl select { background: var(--panel); color: inherit; border: 1px solid var(--rule); border-radius: 6px; padding: 6px 10px; font: inherit; }
+h2.sec { font: 700 20px var(--cond); margin: 26px 0 8px; }
+td.diff { font: 600 15px var(--cond); text-align: right; }
+@media (max-width: 560px) {
+  .brand { font-size: 22px; }
+  .status { margin-left: 0; width: 100%; }
+  .games { grid-template-columns: 1fr; }
+  .strip { gap: 18px; }
+  .qrow { grid-template-columns: 1fr 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .pulse.on { animation: none; } .split > div { transition: none; } }
+
+/* ===== v2 shell: contest rail + content column (same tokens, fonts and components as v1) ===== */
+body { min-height: 100%; }
+.app { display: flex; min-height: 100vh; }
+.rail { width: 232px; flex: none; position: sticky; top: env(safe-area-inset-top, 0px); height: calc(100vh - env(safe-area-inset-top, 0px));
+  box-sizing: border-box; background: var(--panel); border-right: 1px solid var(--rule); display: flex; flex-direction: column; padding: 22px 14px 18px; overflow-y: auto; }
+.rail .brand { font: 700 26px/1 var(--cond); padding: 0 8px 22px; margin: 0; }
+.rail .grp { display: flex; flex-direction: column; gap: 2px; margin-bottom: 20px; }
+.rail .grp h2 { margin: 0; font: 600 12px/1.2 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); padding: 0 8px 6px; }
+.rail .league { display: flex; flex-direction: column; gap: 2px; border: 0; border-radius: 0; overflow: visible; }
+.rail .league button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 40px; padding: 0 10px;
+  border: 0; border-radius: 8px; background: transparent; cursor: pointer; text-align: left; font: 600 18px/1 var(--cond); color: var(--ink); }
+.rail .league button:hover { background: var(--panel-2); }
+.rail .league button[aria-pressed="true"] { background: color-mix(in srgb, var(--push) 22%, var(--panel)); color: var(--ink); font-weight: 700; }
+.rail .league button small { font: 400 12px/1 var(--text); color: var(--ink-2); }
+.rail .railfoot { margin-top: auto; padding: 14px 8px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+.rail .status { margin: 0; width: auto; font-size: 12px; align-items: flex-start; }
+.rail .status .pulse { margin-top: 4px; }
+.rail .classic { font-size: 13px; color: var(--ink-2); }
+.content { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.content .top { border-bottom: 0; }
+.content .top-inner, .content .tabs, .content main, .content .foot { max-width: none; margin: 0; padding-left: 28px; padding-right: 28px; }
+.content .top-inner { padding-top: 22px; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.ctitle { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ctitle .eyebrow { font: 600 12px/1 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.ctitle h1 { margin: 0; font: 700 40px/1 var(--cond); }
+.content .weekbar { flex: 0 1 auto; max-width: 100%; margin: 0; padding: 0 0 2px; }
+.content .weekbar button { min-width: 30px; padding: 0 6px; }
+.content .tabs { margin-top: 14px; gap: 22px; border-bottom: 1px solid var(--rule); }
+.content .tabs button { padding: 10px 2px 11px; font-size: 18px; }
+.content main { padding-top: 22px; }
+.menubtn, .sheetclose { display: none; }
+.scrim { display: none; }
+@media (max-width: 760px) {
+  .app { display: block; }
+  .rail { position: fixed; left: 0; right: 0; bottom: 0; top: auto; width: auto; height: auto; max-height: 85vh; z-index: 30;
+    border-right: 0; border-radius: 16px 16px 0 0; padding: 14px 12px calc(20px + env(safe-area-inset-bottom, 0px));
+    transform: translateY(105%); transition: transform .22s ease; }
+  body.sheet .rail { transform: none; }
+  body.sheet .scrim { display: block; position: fixed; inset: 0; background: rgba(10, 16, 24, .55); z-index: 25; }
+  .rail .brand { display: none; }
+  .rail .league button { min-height: 48px; font-size: 20px; }
+  .sheetclose { display: block; align-self: flex-end; background: none; border: 0; min-height: 44px; padding: 0 12px; font: 600 16px/1 var(--cond); color: var(--focus); cursor: pointer; }
+  .content .top-inner, .content .tabs, .content main, .content .foot { padding-left: 16px; padding-right: 16px; }
+  .content .top-inner { padding-top: 14px; flex-direction: column; align-items: stretch; gap: 10px; }
+  .menubtn { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; background: none; border: 0; padding: 0; min-height: 44px; cursor: pointer; text-align: left; color: var(--ink); }
+  .menubtn .eyebrow { font: 600 11px/1 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+  .menubtn b { display: flex; align-items: center; gap: 6px; font: 700 28px/1 var(--cond); }
+  .ctitle { display: none; }
+  .content .weekbar { max-width: 100%; }
+  .content .tabs { gap: 18px; margin-top: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .rail { transition: none; } }
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="rail" id="rail" aria-label="Contests">
+  <button class="sheetclose" id="sheetclose">Done</button>
+  <p class="brand">Contest Board</p>
+  <div class="grp"><h2>NFL · ATS</h2>
+    <div class="league" role="group" aria-label="NFL contests">
+      <button data-league="nfl">SuperContest <small>Westgate</small></button>
+      <button data-league="gold">Gold <small>Westgate</small></button>
+      <button data-league="circa-millio">Circa Million <small>Circa</small></button>
+    </div></div>
+  <div class="grp"><h2>College</h2>
+    <div class="league" role="group" aria-label="College contests">
+      <button data-league="ncaaf">SuperContest College</button>
+    </div></div>
+  <div class="grp"><h2>Survivor</h2>
+    <div class="league" role="group" aria-label="Survivor contests">
+      <button data-league="survivor">Westgate <small>Survivor</small></button>
+      <button data-league="circa-survivor">Circa <small>Survivor</small></button>
+      <button data-league="circa-grandissimo">Grandissimo <small>Circa</small></button>
+    </div></div>
+  <div id="nflsub" hidden></div><div id="survsub" hidden></div>
+  <div class="railfoot">
+    <div class="status" id="status" aria-live="polite"></div>
+    <a class="classic" href="../">Classic layout</a>
+  </div>
+</aside>
+<div class="scrim" id="scrim"></div>
+<div class="content">
+<header class="top">
+  <div class="top-inner">
+    <button class="menubtn" id="menubtn" aria-haspopup="true" aria-controls="rail"><span class="eyebrow" id="ceyebrow2"></span><b><span id="ctitle2">Contest Board</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></b></button>
+    <div class="ctitle"><span class="eyebrow" id="ceyebrow"></span><h1 id="ctitle">Contest Board</h1></div>
+    <label hidden><span class="sr">Week</span><select class="week" id="week"></select></label>
+    <nav class="weekbar" id="weekbar" aria-label="Week"></nav>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="games" aria-selected="true">Scoreboard</button>
+    <button role="tab" data-tab="standings" aria-selected="false">Standings</button>
+    <button role="tab" data-tab="teams" aria-selected="false">Consensus</button>
+    <button role="tab" data-tab="ats" aria-selected="false">Teams ATS</button>
+    <button role="tab" data-tab="top" aria-selected="false">Top entries</button>
+    <button role="tab" data-tab="svweek" aria-selected="false">This week</button>
+    <button role="tab" data-tab="sventries" aria-selected="false">Entries</button>
+    <button role="tab" data-tab="svcompare" aria-selected="false">Compare</button>
+    <button role="tab" data-tab="svtrends" aria-selected="false">Trends</button>
+    <button role="tab" data-tab="data" aria-selected="false">Data</button>
+  </nav>
+</header>
+<main id="main">
+  <section id="games" class="view"></section>
+  <section id="standings" class="view" hidden></section>
+  <section id="teams" class="view" hidden></section>
+  <section id="ats" class="view" hidden></section>
+  <section id="top" class="view" hidden></section>
+  <section id="svweek" class="view" hidden></section>
+  <section id="sventries" class="view" hidden></section>
+  <section id="svcompare" class="view" hidden></section>
+  <section id="svtrends" class="view" hidden></section>
+  <section id="data" class="view" hidden></section>
+</main>
+<dialog id="entry"></dialog>
+<footer class="foot" id="foot">Lines, picks and official standings: Westgate SuperContest PDFs. Scores: ESPN. Graded against the static Westgate SuperContest line: cover 1, push ½, loss 0; rule 22 postponements ½. Live standings are unofficial until Westgate posts them.</footer>
+</div></div>
+
+<script>
+(() => {
+"use strict";
+
+/* ================= teams ================= */
+const TEAMS = { BILLS:"BUF", DOLPHINS:"MIA", PATRIOTS:"NE", JETS:"NYJ", RAVENS:"BAL", BENGALS:"CIN", BROWNS:"CLE",
+  STEELERS:"PIT", TEXANS:"HOU", COLTS:"IND", JAGUARS:"JAX", JAGS:"JAX", TITANS:"TEN", BRONCOS:"DEN", CHIEFS:"KC",
+  RAIDERS:"LV", CHARGERS:"LAC", COWBOYS:"DAL", GIANTS:"NYG", EAGLES:"PHI", COMMANDERS:"WSH", BEARS:"CHI", LIONS:"DET",
+  PACKERS:"GB", VIKINGS:"MIN", FALCONS:"ATL", PANTHERS:"CAR", SAINTS:"NO", BUCCANEERS:"TB", BUCS:"TB", CARDINALS:"ARI",
+  RAMS:"LAR", "49ERS":"SF", NINERS:"SF", SEAHAWKS:"SEA" };
+const NICK = { BUF:"Bills", MIA:"Dolphins", NE:"Patriots", NYJ:"Jets", BAL:"Ravens", CIN:"Bengals", CLE:"Browns",
+  PIT:"Steelers", HOU:"Texans", IND:"Colts", JAX:"Jaguars", TEN:"Titans", DEN:"Broncos", KC:"Chiefs", LV:"Raiders",
+  LAC:"Chargers", DAL:"Cowboys", NYG:"Giants", PHI:"Eagles", WSH:"Commanders", CHI:"Bears", DET:"Lions", GB:"Packers",
+  MIN:"Vikings", ATL:"Falcons", CAR:"Panthers", NO:"Saints", TB:"Buccaneers", ARI:"Cardinals", LAR:"Rams", SF:"49ers", SEA:"Seahawks" };
+const ABBR_FIX = { WAS: "WSH", LA: "LAR", JAC: "JAX" };
+const fixAbbr = a => ABBR_FIX[a] || a;
+// College teams are keyed by their game-sheet name ("NORTH CAROLINA"); LABELS holds Westgate's short
+// form from the selections sheet ("N CAROLINA"). NFL teams are keyed by ESPN code.
+const LABELS = {};
+const isCollege = () => S.league === "ncaaf";
+const isSurvivor = () => S.league === "survivor" || S.league === "circa-survivor" || S.league === "circa-grandissimo";
+const SURV_NAME = { survivor: "Westgate SuperContest Survivor", "circa-survivor": "Circa Survivor", "circa-grandissimo": "Circa Grandissimo" };
+const isMillio = () => S.league === "circa-millio";
+const BOOK = () => isMillio() ? "Circa" : "Westgate";
+const nflFamilyLeague = lg => lg === "nfl" || lg === "gold" || lg === "circa-millio";
+const LEAGUES = ["nfl", "gold", "ncaaf", "survivor", "circa-survivor", "circa-grandissimo", "circa-millio"];
+const LEAGUE_NAME = { nfl: "SuperContest (NFL)", gold: "SuperContest Gold (NFL)", ncaaf: "SuperContest College", survivor: "Westgate SuperContest Survivor", "circa-survivor": "Circa Survivor", "circa-grandissimo": "Circa Grandissimo", "circa-millio": "Circa Million (ATS)" };
+const lbl = ab => isCollege() ? (LABELS[ab] || ab) : ab;
+const titleCase = s => s.toLowerCase().replace(/(^|[\s-])([a-z])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Lsu|Ucla|Usc|Tcu|Smu|Byu|Utep|Utsa|Uab|Unlv|Ucf|Ul|Nc)\b/g, m => m.toUpperCase());
+const squash = x => x.replace(/[^A-Z0-9]/g, "");
+const nickOf = ab => isCollege() ? (LABELS[ab] && squash(LABELS[ab]) !== squash(ab) ? titleCase(ab) : "") : (NICK[ab] || "");
+const toAbbr = n => TEAMS[String(n).trim().toUpperCase().replace(/\*$/, "")] || null;
+
+/* ================= parsers (same rules as the GitHub version) ================= */
+// Anchored per line with spaces only, so a date header ending in "2026" can't glue onto
+// the next game row (that bug dropped the first game of each day). "@ Melbourne..." notes are skipped.
+const CARD_RE = /^[ \t]*(\d{1,3})[ \t]+([A-Z0-9][A-Z0-9 .']*?)(\*?)[ \t]+(?:@[^\n]*?[ \t]+)?(\d{1,2}:\d{2}[ \t]*[AP]M)[ \t]+(\d{1,3})[ \t]+([A-Z0-9][A-Z0-9 .']*?)(\*?)[ \t]+([+-]?\d+(?:\.\d+)?|PK|P)\b/gm;
+function parseCard(text) {
+  const games = [];
+  for (const m of text.toUpperCase().matchAll(CARD_RE)) {
+    const a1 = toAbbr(m[2]), a2 = toAbbr(m[6]);
+    if (!a1 || !a2) continue;
+    const dog = (m[8] === "PK" || m[8] === "P") ? 0 : Math.abs(parseFloat(m[8]));
+    games.push({ id: games.length + 1, time_pt: m[4],
+      fav: { num: +m[1], abbr: a1, home: !!m[3], line: dog ? -dog : 0 },
+      dog: { num: +m[5], abbr: a2, home: !!m[7], line: dog } });
+  }
+  return games;
+}
+const ENTRY_RE = /^(.+?)\s+-\s+(\d{1,2})\s+(.+)$/;
+function parseSelections(text) {
+  const out = [], seen = new Set();
+  for (const raw of text.split("\n")) {
+    const m = raw.trim().toUpperCase().match(ENTRY_RE);
+    if (!m) continue;
+    const picks = m[3].split(/\s+/).map(toAbbr);
+    if (!picks.length || picks.some(p => !p)) continue;
+    const id = `${m[1].trim()}-${+m[2]}`;
+    if (seen.has(id)) continue;           // rule 15: first submission counts
+    seen.add(id); out.push({ id, picks });
+  }
+  return out;
+}
+const STAND_RE = /^(\d+T?)\s+(.+-\d{1,2})\s+(\d+)-(\d+)-(\d+)-(\d+)\s+(\d+(?:\.\d+)?)$/;
+function parseStandings(text) {
+  const rows = [];
+  for (const raw of text.split("\n")) {
+    const m = raw.trim().toUpperCase().match(STAND_RE);
+    if (m) rows.push({ place: m[1], id: m[2].trim(), w: +m[3], l: +m[4], t: +m[5], c: +m[6], pts: +m[7] });
+  }
+  return rows;
+}
+const MIN_ROWS = { card: 8, picks: 20, standings: 20 };
+function detect(text, filename) {
+  const res = { card: parseCard(text), picks: parseSelections(text), standings: parseStandings(text) };
+  let kind = null, best = 0;
+  for (const k of Object.keys(res)) if (res[k].length >= MIN_ROWS[k] && res[k].length > best) { kind = k; best = res[k].length; }
+  const wk = (text.match(/WEEK\s*#?\s*(\d{1,2})/i) || filename.match(/(?:WEEK|WK)\s*#?\s*(\d{1,2})/i) || [])[1];
+  return { kind, week: wk ? +wk : null, rows: res };
+}
+
+/* PDFs are read by the scraper (scraper/parse.py), not in the browser. */
+
+/* ================= data: scraper JSON + live ESPN scores ================= */
+const DATA = "../data/";
+const ESPN_URL = (season, week) =>
+  `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=${week}&dates=${season}`;
+async function getJSON(url, ms = 10000) {
+  const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), ms);
+  try { const r = await fetch(url, { signal: ctl.signal, cache: "no-store" }); if (!r.ok) throw new Error(r.status); return await r.json(); }
+  finally { clearTimeout(t); }
+}
+// Market spread from ESPN's odds, as the HOME team's line (e.g. -3.5). null when ESPN has none.
+function espnSpread(comp) {
+  const o = comp?.odds?.[0]; if (!o) return null;
+  const det = String(o.details || "").trim();
+  if (/^(EVEN|PK|PICK)/i.test(det)) return 0;
+  const m = det.match(/^(\S+)\s+([-+]?\d+(?:\.\d+)?)$/);
+  if (m) {
+    const c = comp.competitors.find(c => c.team?.abbreviation === m[1]);
+    if (c) return c.homeAway === "home" ? +m[2] : -m[2];
+  }
+  if (typeof o.spread === "number") {
+    const v = Math.abs(o.spread);
+    if (o.homeTeamOdds?.favorite) return -v;
+    if (o.awayTeamOdds?.favorite) return v;
+  }
+  return null;
+}
+function espnGames(data) {
+  const out = [];
+  for (const ev of data.events || []) {
+    const comp = ev.competitions[0], st = (comp.status || ev.status).type;
+    const g = { kickoff: ev.date, state: st.state, detail: st.shortDetail, status: st.name, mkt_home: espnSpread(comp), mkt_src: comp.odds?.[0]?.provider?.name || "" };
+    for (const c of comp.competitors) {
+      g[c.homeAway] = c.team.abbreviation;
+      g[c.homeAway + "_score"] = c.score === "" || c.score == null ? null : Number(c.score);
+    }
+    out.push(g);
+  }
+  return out;
+}
+async function loadScores(w, lg = S.league, manifest = Store.manifest) {
+  const m = manifest.weeks[w] || {}, base = `${Store.base(lg)}week-${w}/`;
+  const ovDoc = m.overrides ? await getJSON(base + "overrides.json").catch(() => null) : null;
+  // "official" = covers confirmed from Westgate's standings; manual "results" win over everything
+  const ov = { ...(ovDoc?.official || {}), ...(ovDoc?.results || {}) }, manual = ovDoc?.results || {};
+  if (lg === "ncaaf") return { ...(await loadCollegeScores(w, m, base, ovDoc?.official || {}, manual)), manual };
+  const shared = ["gold", "survivor", "circa-survivor", "circa-grandissimo", "circa-millio"].includes(lg);  // same NFL games as the main contest
+  const rbase = shared ? `${DATA}${Store.season}/week-${w}/` : base;
+  const saved = (m.results || shared) ? await getJSON(rbase + "results.json").catch(() => null) : null;
+  const allFinal = saved?.games?.length && saved.games.every(g => g.state === "post" && !/POSTPONED|CANCEL|SUSPENDED/i.test(g.status || ""));
+  let games, source;
+  if (allFinal) { games = saved.games; source = "final"; }
+  else {
+    try { games = espnGames(await getJSON(ESPN_URL(Store.season, w), 8000)); source = "espn"; }
+    catch { games = saved?.games || []; source = saved ? "snapshot" : "none"; }
+  }
+  const map = {};
+  for (const g of games) { const h = fixAbbr(g.home), a = fixAbbr(g.away); map[h] = { ...g, home: h, away: a }; }
+  return { week: w, games: map, overrides: ov, manual, updated: new Date().toISOString(), source };
+}
+// College scores: the browser looks each game-sheet row up on ESPN's college scoreboard by team
+// names (ESPN refuses GitHub's servers, so this can't be done ahead of time by the updater).
+const ESPN_NAMES = {"MIAMI-FL":["MIAMI","MIAMI FL","MIAMI FLORIDA"],"MIAMI-OH":["MIAMI OH","MIAMI OHIO"],"CENTRAL FLORIDA":["UCF"],"NC STATE":["NC STATE","NORTH CAROLINA STATE"],"FLORIDA INT'L":["FLORIDA INTERNATIONAL","FIU"],"SOUTHERN MISS":["SOUTHERN MISS","SOUTHERN MISSISSIPPI"],"MIDDLE TENNESSEE":["MIDDLE TENNESSEE","MTSU"],"MASSACHUSETTS":["MASSACHUSETTS","UMASS"],"SAM HOUSTON STATE":["SAM HOUSTON","SAM HOUSTON STATE"],"UL MONROE":["UL MONROE","LOUISIANA MONROE"],"LOUISIANA":["LOUISIANA","LOUISIANA LAFAYETTE"],"APPALACHIAN STATE":["APPALACHIAN STATE","APP STATE"],"PITTSBURGH":["PITTSBURGH","PITT"],"CALIFORNIA":["CALIFORNIA","CAL"],"SOUTH FLORIDA":["SOUTH FLORIDA","USF"],"UCONN":["UCONN","CONNECTICUT"],"OLE MISS":["OLE MISS","MISSISSIPPI"],"BYU":["BYU","BRIGHAM YOUNG"],"HAWAII":["HAWAII"],"SAN JOSE STATE":["SAN JOSE STATE"],"TEXAS A&M":["TEXAS A&M","TEXAS A AND M"],"USC":["USC","SOUTHERN CALIFORNIA"],"SMU":["SMU"],"TCU":["TCU"],"LSU":["LSU"],"UTEP":["UTEP"],"UTSA":["UTSA"],"UAB":["UAB"],"UNLV":["UNLV"],"KENNESAW STATE":["KENNESAW STATE","KENNESAW"]};
+const normName = x => (x || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toUpperCase()
+  .replace(/['\u2019.()]/g, "").replace(/[\s-]+/g, " ").trim();
+function espnKeys(t) {
+  const k = new Set([t.location, t.shortDisplayName, t.abbreviation, t.name].map(normName).filter(Boolean));
+  const d = normName(t.displayName), n = normName(t.name);
+  if (n && d.endsWith(" " + n)) k.add(d.slice(0, -n.length - 1));      // "Miami (OH) RedHawks" -> "MIAMI OH"
+  return k;
+}
+const wantedNames = name => new Set([name, ...(ESPN_NAMES[name] || [])].map(normName));
+const overlaps = (a, b) => { for (const x of a) if (b.has(x)) return true; return false; };
+function pairCollege(card, events) {
+  const evs = events.map(e => ({ e, cs: e.competitions[0].competitors.map(c => ({ c, keys: espnKeys(c.team) })) }));
+  const rows = [];
+  for (const g of card) {
+    const A = wantedNames(g.fav.abbr), B = wantedNames(g.dog.abbr);
+    let hit = evs.filter(x => x.cs.some(c => overlaps(c.keys, A)) && x.cs.some(c => overlaps(c.keys, B)));
+    if (hit.length !== 1) {
+      const one = evs.filter(x => x.cs.some(c => overlaps(c.keys, A) || overlaps(c.keys, B)));
+      hit = one.length === 1 ? one : [];
+    }
+    if (!hit.length) continue;
+    const { e, cs } = hit[0], comp = e.competitions[0], st = (comp.status || e.status).type;
+    const row = { espn_id: e.id, kickoff: e.date, state: st.state, detail: st.shortDetail, status: st.name, mkt_home: espnSpread(comp), mkt_src: comp.odds?.[0]?.provider?.name || "" };
+    for (const { c, keys } of cs) {
+      const mine = overlaps(keys, A) ? g.fav.abbr : overlaps(keys, B) ? g.dog.abbr : null;
+      row[c.homeAway] = mine;
+      row[c.homeAway + "_score"] = c.score === "" || c.score == null ? null : Number(c.score);
+    }
+    if (!row.home || !row.away) {                   // one side named differently: it's the other team
+      const other = x => x === g.fav.abbr ? g.dog.abbr : g.fav.abbr;
+      if (row.home && !row.away) row.away = other(row.home); else if (row.away && !row.home) row.home = other(row.away);
+    }
+    if (row.home && row.away && row.home !== row.away) rows.push(row);
+  }
+  return rows;
+}
+const ESPN_CFB = (d, g) => `https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=${d}&groups=${g}&limit=400`;
+// Grading order: a result set by hand > the actual score > the official-standings result
+// (that last one only fills in games ESPN couldn't find or hasn't finished).
+async function loadCollegeScores(w, m, base, official, manual) {
+  const card = (Store.get(P.card(w)) || await getJSON(base + "card.json").catch(() => null))?.games || [];
+  const saved = m.results ? await getJSON(base + "results.json").catch(() => null) : null;
+  let rows = [], source;
+  if (saved?.games?.length === card.length && saved.games.every(g => g.state === "post")) { rows = saved.games; source = "final"; }
+  else {
+    try {
+      const dates = [...new Set(card.map(g => g.date).filter(Boolean))].map(d => d.replace(/-/g, ""));
+      const events = {};
+      for (const d of dates) for (const grp of [80, 81]) {        // FBS, then FCS (North Dakota State, etc.)
+        const data = await getJSON(ESPN_CFB(d, grp), 8000).catch(err => { if (grp === 80) throw err; return {}; });
+        for (const ev of data.events || []) events[ev.id] = ev;
+      }
+      rows = pairCollege(card, Object.values(events));
+      const today = new Date().toISOString().slice(0, 10);
+      const done = rows.every(r => r.state === "post") && (rows.length === card.length || card.every(g => !g.date || g.date < today));
+      source = done ? "final" : "espn";
+    } catch { rows = saved?.games || []; source = rows.length ? "snapshot" : Object.keys(official).length ? "final" : "none"; }
+  }
+  const map = {}, byTeam = {};
+  for (const r of rows) { map[r.home] = r; byTeam[r.home] = r; byTeam[r.away] = r; }
+  const scored = t => byTeam[t]?.state === "post" && byTeam[t].home_score != null && byTeam[t].away_score != null;
+  const ov = { ...manual };
+  for (const [t, res] of Object.entries(official)) if (!(t in manual) && !scored(t)) ov[t] = res;
+  return { week: w, games: map, overrides: ov, updated: new Date().toISOString(), source,
+           unpaired: card.length - rows.length, fromOfficial: Object.keys(ov).filter(t => !(t in manual)).length / 2 };
+}
+// Circa Million: the card is the real NFL matchups (main contest card) with Circa's line per team.
+// Lines come from Circa's Thursday Contest Point Spreads sheet (circa-millio card.json) when it has
+// been read; otherwise from the Saturday picks sheet (every entry on a team has the same line; the
+// most common one is used). Picks become plain team lists. After that every NFL tab grades Circa
+// Million exactly like the SuperContest.
+const MRAW = new Map(), MCARD = new Map();
+function millioCard(w) {
+  if (!MCARD.has(w)) MCARD.set(w, getJSON(`${Store.base("circa-millio")}week-${w}/card.json`).catch(() => null));
+  return MCARD.get(w);
+}
+function millioRaw(w) {
+  if (!MRAW.has(w)) MRAW.set(w, getJSON(`${Store.base("circa-millio")}week-${w}/picks.json`).catch(() => null));
+  return MRAW.get(w);
+}
+async function millioDoc(col, w) {
+  const raw = await millioRaw(w);
+  if (col === "picks") return raw && { ...raw, entries: raw.entries.map(e => ({ id: e.id, picks: e.picks.map(p => p.abbr) })) };
+  const cc = await millioCard(w);
+  if (!raw && !cc?.games) return null;
+  const nfl = await getJSON(`${DATA}${Store.season}/week-${w}/card.json`).catch(() => null);
+  if (!nfl?.games) return null;
+  const line = {};
+  if (cc?.games) for (const g of cc.games) for (const s of [g.fav, g.dog]) line[s.abbr] = s.line;
+  else {
+    const tally = {};
+    for (const e of raw.entries) for (const p of e.picks) { const t = (tally[p.abbr] ||= {}); t[p.line] = (t[p.line] || 0) + 1; }
+    for (const [t, ls] of Object.entries(tally)) line[t] = +Object.entries(ls).sort((a, b) => b[1] - a[1])[0][0];
+  }
+  const games = nfl.games.map(g => {
+    const a = line[g.fav.abbr], b = line[g.dog.abbr];
+    const la = a ?? (b != null ? -b : g.fav.line), lb = b ?? (a != null ? -a : g.dog.line);
+    const [F, D, lf, ld] = la <= lb ? [g.fav, g.dog, la, lb] : [g.dog, g.fav, lb, la];
+    return { ...g, fav: { ...F, line: lf }, dog: { ...D, line: ld } };
+  });
+  return { ...nfl, source: cc?.games ? "Circa Million contest point spreads" : "Circa lines from the Circa Million selections", games };
+}
+const Store = {
+  mode: "static", season: 2026, manifest: { weeks: {} },
+  base(lg = S.league) { return `${DATA}${this.season}/${{ nfl: "", gold: "gold/", ncaaf: "ncaaf/", survivor: "survivor/", "circa-survivor": "circa-survivor/", "circa-grandissimo": "circa-grandissimo/", "circa-millio": "circa-millio/" }[lg] || ""}`; },
+  async reset() {
+    this.cache.clear(); this.subs.clear(); this.pending.clear(); MRAW.clear(); MCARD.clear();
+    for (const k of Object.keys(LABELS)) delete LABELS[k];
+    this.manifest = await getJSON(`${this.base()}manifest.json`).catch(() => ({ weeks: {} }));
+  },
+  cache: new Map(), subs: new Map(), pending: new Set(),
+  async init() {
+    const seasons = await getJSON(DATA + "seasons.json").catch(() => null);
+    this.season = seasons?.current || 2026;
+    this.manifest = await getJSON(`${this.base()}manifest.json`).catch(() => ({ weeks: {} }));
+  },
+  indexDoc(manifest = this.manifest, lg = S.league) {
+    const weeks = {};
+    for (const [w, m0] of Object.entries(manifest.weeks || {})) {
+      const m = lg === "circa-millio" ? { ...m0, card: m0.card || m0.picks } : m0;    // Circa Million: spreads sheet, else built from the picks
+      weeks[w] = { card: m.card ? 1 : 0, picks: m.picks ? 1 : 0, standings: m.standings ? 1 : 0, scores: m.card ? 1 : 0, results: !!m.results };
+    }
+    return { weeks };
+  },
+  // lg/manifest let the Top entries tab load another contest without switching to it.
+  async load(path, lg = S.league, manifest = this.manifest) {
+    if (path === "contest/index") return this.indexDoc(manifest, lg);
+    const [col, id] = path.split("/"), w = +id.slice(1);
+    if (col === "scores") return loadScores(w, lg, manifest);
+    if (lg === "circa-millio" && (col === "cards" || col === "picks")) return millioDoc(col, w);
+    const file = { cards: "card", picks: "picks", standings: "standings" }[col];
+    const doc = await getJSON(`${this.base(lg)}week-${w}/${file}.json`).catch(() => null);
+    if (lg !== S.league) return doc;
+    if (doc && col === "cards") for (const g of doc.games || []) for (const s of [g.fav, g.dog, g.away, g.home]) if (s?.label) LABELS[s.abbr] = s.label;
+    if (doc && col === "picks" && doc.labels) for (const [n, l] of Object.entries(doc.labels)) LABELS[n] ||= l;
+    return doc;
+  },
+  watch(path, cb) {
+    if (this.subs.has(path)) return;
+    this.subs.set(path, cb);
+    const lg = S.league;
+    this.load(path).then(v => { if (S.league !== lg) return; this.cache.set(path, v); cb(path); });
+  },
+  fetchOnce(path, cb) {
+    if (this.cache.has(path) || this.pending.has(path)) return;
+    this.pending.add(path);
+    const lg = S.league;
+    this.load(path).then(v => { this.pending.delete(path); if (S.league !== lg) return; this.cache.set(path, v); cb(path); });
+  },
+  unwatchExcept(keep) { for (const p of [...this.subs.keys()]) if (!keep.has(p)) this.subs.delete(p); },
+  get(path) { return this.cache.get(path) ?? null; },
+  // Re-pull live scores for watched weeks that still have games left.
+  async refreshScores() {
+    for (const [p, cb] of this.subs) {
+      if (!p.startsWith("scores/")) continue;
+      const cur = this.cache.get(p);
+      if (cur?.source === "final") continue;
+      const lg = S.league, v = await this.load(p);
+      if (S.league === lg) { this.cache.set(p, v); cb(p); }
+    }
+  },
+};
+function scheduleRefresh() {
+  const d = Store.get(P.scores(S.week));
+  const games = Object.values(d?.games || {});
+  const live = games.some(g => g.state === "in");
+  const soon = games.some(g => g.state === "pre" && g.kickoff && Math.abs(new Date(g.kickoff) - Date.now()) < 20 * 60e3);
+  clearTimeout(S.refreshT);
+  S.refreshT = setTimeout(async () => { await Store.refreshScores(); xRefreshScores(); scheduleRefresh(); }, live || soon ? 30e3 : 5 * 60e3);
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden) Store.refreshScores(); });
+
+const P = { index: "contest/index", card: w => `cards/w${w}`, picks: w => `picks/w${w}`, standings: w => `standings/w${w}`, scores: w => `scores/w${w}` };
+
+/* ================= helpers ================= */
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const fmtPts = n => (Math.round(n * 2) / 2).toFixed(n % 1 ? 1 : 0);
+const fmtLine = n => n === 0 ? "PK" : (n > 0 ? "+" : "") + n;
+const local = {
+  get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+const S = { svSel: null, svPickQ: "", cmpShowOut: false, league: (lg => LEAGUES.includes(lg) ? lg : null)(new URLSearchParams(location.hash.slice(1)).get("lg")) || (LEAGUES.includes(local.get("cb-league", "nfl")) ? local.get("cb-league", "nfl") : "nfl"), svAlive: false, topN: local.get("cb-topn", 10), topTies: true, topBasis: "entering", atsSort: null, atsDir: 1, week: null, tab: "games", gameSort: "kickoff", q: "", onlyStarred: false, shown: 150,
+  sortKey: "total", sortDir: -1, starred: new Set(local.get("cb-starred", [])), editing: null, queue: [] };
+
+function index() { return Store.get(P.index) || { weeks: {} }; }
+function weeksList() { return Object.keys(index().weeks).map(Number).sort((a, b) => a - b); }
+function scoresMap(w) {
+  const d = Store.get(P.scores(w)); const out = {};
+  for (const g of Object.values(d?.games || {})) { out[g.home] = g; out[g.away] = g; }
+  return out;
+}
+
+/* ================= grading ================= */
+const DEAD = /POSTPONED|CANCEL|SUSPENDED/i;
+function rule22Deadline(iso) {
+  const d = new Date(new Date(iso).getTime() - 8 * 3600e3); d.setUTCHours(12, 0, 0, 0);
+  d.setUTCDate(d.getUTCDate() + (((2 - d.getUTCDay() + 7) % 7) || 7));
+  const pdt = d < new Date(Date.UTC(2026, 10, 1, 9));
+  d.setUTCDate(d.getUTCDate() + 1); d.setUTCHours(pdt ? 6 : 7, 59, 0, 0);
+  return d;
+}
+function grade(abbr, card, scores, ov = {}) {
+  const game = card.find(g => g.fav.abbr === abbr || g.dog.abbr === abbr);
+  if (!game) return { res: null, ab: abbr };
+  const side = game.fav.abbr === abbr ? game.fav : game.dog;
+  const opp = side === game.fav ? game.dog : game.fav;
+  const sg = scores[abbr];
+  const base = { ab: abbr, game, side, opp, sg };
+  if (ov[abbr]) return { ...base, res: ov[abbr], final: true, override: true };
+  if (sg && DEAD.test(sg.status || "")) {
+    return sg.kickoff && Date.now() > rule22Deadline(sg.kickoff) ? { ...base, res: "C", final: true } : { ...base, res: null, postponed: true };
+  }
+  if (!sg || sg.state === "pre" || sg.home_score == null || sg.away_score == null) return { ...base, res: null };
+  const mine = sg.home === abbr ? sg.home_score : sg.away_score;
+  const theirs = sg.home === abbr ? sg.away_score : sg.home_score;
+  const adj = mine + side.line - theirs;     // against the spread, never straight up
+  return { ...base, res: adj > 0 ? "W" : adj < 0 ? "L" : "P", final: sg.state === "post", live: sg.state === "in", mine, theirs };
+}
+// The field's five most-picked teams (ties broken alphabetically so every tab agrees).
+const topFive = count => Object.entries(count).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 5).map(([a]) => a);
+// ESPN's market line for one side of a card game; hidden while the game is live (ESPN may show in-game odds).
+function marketLine(s, sg) {
+  if (!sg || sg.mkt_home == null || sg.state === "in") return null;
+  if (sg.home === s.abbr) return sg.mkt_home;
+  if (sg.away === s.abbr) return -sg.mkt_home;
+  return null;
+}
+function scoreEntry(picks, card, scores, ov) {
+  const r = { w: 0, l: 0, p: 0, c: 0, lw: 0, ll: 0, lp: 0, pending: 0, pts: 0, proj: 0, grades: [] };
+  for (const ab of picks) {
+    const g = grade(ab, card, scores, ov); r.grades.push(g);
+    if (!g.res) { r.pending++; continue; }
+    r[(g.final ? "" : "l") + g.res.toLowerCase()]++;
+  }
+  r.pts = r.w + (r.p + r.c) * 0.5;
+  r.proj = r.pts + r.lw + r.lp * 0.5;
+  return r;
+}
+function addRec(rec, sc, live) {
+  rec.w += sc.w + (live ? sc.lw : 0); rec.l += sc.l + (live ? sc.ll : 0); rec.t += sc.p + (live ? sc.lp : 0); rec.c += sc.c;
+}
+
+/* ================= standings ================= */
+function neededPaths(week) {
+  const idx = index().weeks, ws = weeksList();
+  const baseWeek = Math.max(0, ...ws.filter(w => w <= week && idx[w]?.standings));
+  const set = new Set([P.index]);
+  if (baseWeek) set.add(P.standings(baseWeek));
+  for (const w of ws.filter(w => w > baseWeek && w <= week)) { set.add(P.card(w)); set.add(P.picks(w)); set.add(P.scores(w)); }
+  set.add(P.card(week)); set.add(P.picks(week)); set.add(P.scores(week));
+  return { set, baseWeek };
+}
+function computeStandings(week) {
+  const { baseWeek } = neededPaths(week);
+  const rows = new Map();
+  const ensure = id => rows.get(id) || rows.set(id, { id, base: 0, basePlace: null, baseRec: null, add: 0, rec: { w: 0, l: 0, t: 0, c: 0 }, week: null }).get(id);
+  if (baseWeek) for (const s of Store.get(P.standings(baseWeek))?.rows || []) {
+    const r = ensure(s.id);
+    Object.assign(r, { base: s.pts, basePlace: parseInt(s.place, 10), baseRec: `${s.w}-${s.l}-${s.t}-${s.c}`, rec: { w: s.w, l: s.l, t: s.t, c: s.c } });
+  }
+  const official = baseWeek === week;
+  for (const w of weeksList().filter(w => w > baseWeek && w <= week)) {
+    const card = Store.get(P.card(w))?.games, picks = Store.get(P.picks(w))?.entries;
+    if (!card || !picks) continue;
+    const sc = scoresMap(w), ov = Store.get(P.scores(w))?.overrides || {};
+    for (const e of picks) {
+      const x = scoreEntry(e.picks, card, sc, ov), r = ensure(e.id);
+      if (w === week) { r.week = x; addRec(r.rec, x, true); } else { r.add += x.pts; addRec(r.rec, x, false); }
+    }
+  }
+  if (official) {
+    const card = Store.get(P.card(week))?.games, picks = Store.get(P.picks(week))?.entries;
+    if (card && picks) { const sc = scoresMap(week), ov = Store.get(P.scores(week))?.overrides || {};
+      for (const e of picks) ensure(e.id).week = scoreEntry(e.picks, card, sc, ov); }
+  }
+  const list = [...rows.values()];
+  for (const r of list) r.total = r.base + r.add + (official ? 0 : (r.week ? r.week.proj : 0));
+  list.sort((a, b) => b.total - a.total || (b.week?.proj ?? 0) - (a.week?.proj ?? 0) || a.id.localeCompare(b.id));
+  let place = 0; const counts = {};
+  list.forEach((r, i) => { if (i === 0 || r.total !== list[i - 1].total) place = i + 1; r.place = place; counts[place] = (counts[place] || 0) + 1; });
+  list.forEach(r => r.tie = counts[r.place] > 1);
+  return { list, baseWeek, official };
+}
+
+/* ================= render: games ================= */
+function kickoffLabel(sg, g) {
+  if (sg?.kickoff) return new Date(sg.kickoff).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" });
+  return g?.time_pt ? g.time_pt + " PT" : "";
+}
+function chip(gr, withLine) {
+  const cls = gr.res ? `st-${gr.res}${gr.final ? "" : " live"}` : "";
+  const t = gr.postponed ? "postponed, pending rule 22" : !gr.res ? "not started" : gr.final
+    ? { W: "covered", L: "did not cover", P: "push", C: "not played in time, ½ point" }[gr.res]
+    : { W: "covering", L: "not covering", P: "on the number" }[gr.res];
+  return `<span class="chip ${cls}" title="${lbl(gr.ab)} ${fmtLine(gr.side?.line ?? 0)}: ${t}">${lbl(gr.ab)}${withLine && gr.side ? ` (${fmtLine(gr.side.line)})` : ""}</span>`;
+}
+/* ================= render: scoreboard (games + picks) ================= */
+function renderGames() {
+  const el = $("#games"), w = S.week;
+  const card = Store.get(P.card(w))?.games;
+  if (!card) { el.innerHTML = `<div class="empty"><b>No card for week ${w ?? ""} yet.</b> The updater picks it up once ${BOOK()} posts it${isMillio() ? " (Circa's lines come from the picks sheet)" : ", usually midweek"}.</div>`; return; }
+  const picks = Store.get(P.picks(w))?.entries || [], n = picks.length;
+  const scores = scoresMap(w), ov = Store.get(P.scores(w))?.overrides || {};
+  const count = {}; picks.forEach(e => e.picks.forEach(a => count[a] = (count[a] || 0) + 1));
+  const scored = picks.map(e => scoreEntry(e.picks, card, scores, ov));
+  const avg = n ? scored.reduce((s, r) => s + r.proj, 0) / n : 0;
+  const perfect = scored.filter(r => r.l + r.ll + r.p + r.lp + r.c === 0).length;
+  const done = card.filter(g => { const x = grade(g.fav.abbr, card, scores, ov); return x.res && x.final; }).length;
+  const t5 = scoreEntry(topFive(count), card, scores, ov);
+  // Season ATS records need every earlier week; they fill in once those load.
+  const rec = seasonReady(["card", "scores"], w) ? atsThrough(w) : null;
+  let games = card.map(g => ({ g, sg: scores[g.fav.abbr], cf: count[g.fav.abbr] || 0, cd: count[g.dog.abbr] || 0 }));
+  if (S.gameSort === "kickoff") games.sort((a, b) => (a.sg?.kickoff || a.g.kickoff || "").localeCompare(b.sg?.kickoff || b.g.kickoff || "") || a.g.id - b.g.id);
+  else if (S.gameSort === "lopsided") games.sort((a, b) => Math.abs(b.cf - b.cd) - Math.abs(a.cf - a.cd));
+  else if (S.gameSort === "total") games.sort((a, b) => (b.cf + b.cd) - (a.cf + a.cd));
+  else if (S.gameSort === "gap") {
+    const gap = x => { const m = marketLine(x.g.fav, x.sg); return m == null ? -1 : Math.abs(x.g.fav.line - m); };
+    games.sort((a, b) => gap(b) - gap(a));
+  }
+  const anyMkt = games.some(x => marketLine(x.g.fav, x.sg) != null);
+  el.innerHTML = `
+    <div class="strip">
+      <div><b>${n || "—"}</b><span>entries with picks</span></div>
+      <div><b>${n ? avg.toFixed(2) : "—"}</b><span>average points so far</span></div>
+      <div><b>${n ? perfect : "—"}</b><span>still unbeaten this week</span></div>
+      <div><b>${done} / ${card.length}</b><span>games final</span></div>
+    </div>
+    ${n ? `<div class="five"><h2>Most picked five (${fmtPts(t5.proj)} pts)</h2>${t5.grades.map(g => chip(g, true)).join("")}</div>`
+        : `<p class="note">Picks for week ${w} aren't uploaded yet. Lines and scores are shown below.</p>`}
+    <div class="sortbar"><span>Sort</span>${[["kickoff","Kickoff"],["total","Most Picked Game"],["lopsided","Most Lopsided"],["gap","Biggest Line Gap"]]
+      .map(([k, t]) => `<button class="pill" data-gsort="${k}" aria-pressed="${S.gameSort === k}">${t}</button>`).join("")}</div>
+    <p class="note" style="margin:-4px 0 10px">Lines are the ${BOOK()} contest lines; ATS records count final games through week ${w}.${anyMkt ? " Small line under each contest line is the current market line from ESPN; green means the contest line gives that side at least a point more than the market." : " Market lines from ESPN appear here when its feed has them (usually before kickoff; not for games loaded from saved final scores)."}</p>
+    <div class="board">${games.map(x => gameCard(x, n, scores, card, ov, rec)).join("")}</div>`;
+}
+function gameCard({ g, sg, cf, cd }, n, scores, card, ov, rec) {
+  const neutral = !g.fav.home && !g.dog.home;
+  const home = g.fav.home ? g.fav : g.dog, away = home === g.fav ? g.dog : g.fav;
+  const cnt = s => s === g.fav ? cf : cd, tot = cf + cd;
+  const st = s => grade(s.abbr, card, scores, ov);
+  const ovTxt = ov[g.fav.abbr] || ov[g.dog.abbr];
+  const manualOv = Store.get(P.scores(S.week))?.manual || {};
+  const meta = (manualOv[g.fav.abbr] || manualOv[g.dog.abbr]) ? "Graded by override"
+    : ovTxt && (!sg || sg.state !== "in") ? (sg?.state === "post" && sg.detail ? esc(sg.detail) : "Final") : !sg ? esc(kickoffLabel(null, g)) :
+    DEAD.test(sg.status || "") ? "Postponed" : sg.state === "in" ? `<span class="live">${esc(sg.detail || "In progress")}</span>` :
+    sg.state === "post" ? esc(sg.detail || "Final") : esc(kickoffLabel(sg, g));
+  const started = sg && sg.state !== "pre" && sg.home_score != null;
+  const recTxt = ab => { if (!rec) return ""; const r = rec[ab] || { w: 0, l: 0, p: 0 }; return `ATS ${r.w}-${r.l}${r.p ? "-" + r.p : ""}`; };
+  const mk = s => { const m = marketLine(s, sg); if (m == null) return "";
+    return `<small class="${s.line - m >= 1 ? "gap" : ""}" title="Market line${sg.mkt_src ? " (" + esc(sg.mkt_src) + ")" : ""}">mkt ${fmtLine(m)}</small>`; };
+  const row = (s, where) => {
+    const gr = st(s), badge = TEAM_COLORS[s.abbr];
+    const sc = started ? (sg.home === s.abbr ? sg.home_score : sg.away_score) : "";
+    const nick = tNick(s.abbr);
+    return `<div class="brow ${badge ? "" : "nb"} ${gr.res ? "st-" + gr.res : ""}">${badge ? teamBadge(s.abbr) : ""}
+      <div class="bname">${esc(tLabel(s.abbr))} <small>${nick ? esc(nick) + " · " : ""}${where}</small></div>
+      <div class="bline">${fmtLine(s.line)}${mk(s)}</div><div class="bats">${recTxt(s.abbr)}</div><div class="bscore">${sc}</div></div>`;
+  };
+  const seg = s => {
+    const gr = st(s), share = tot ? cnt(s) / tot : .5, sp = Math.round(share * 100);
+    const label = !tot ? lbl(s.abbr) : share >= .24 ? `${lbl(s.abbr)} ${sp}%` : share >= .12 ? `${sp}%` : "";
+    return `<div class="${gr.res ? "st-" + gr.res : ""}" style="flex:${tot ? Math.max(share, .03) : .5}" title="${lbl(s.abbr)}: ${cnt(s)} entries${n ? ` (${Math.round(cnt(s) / n * 100)}% of field)` : ""}">${label}</div>`;
+  };
+  const pl = x => `${x} ${x === 1 ? "pick" : "picks"}`;
+  const mf = marketLine(g.fav, sg), gv = mf == null ? 0 : g.fav.line - mf;
+  const gapTxt = Math.abs(gv) >= 0.5 ? `<span>Contest line ${fmtPts(Math.abs(gv))} better on ${esc(tLabel((gv > 0 ? g.fav : g.dog).abbr))}</span>` : "";
+  const fg = st(g.fav), winner = fg.res === "W" ? g.fav : fg.res === "L" ? g.dog : null;
+  const ats = !fg.res ? `<span>ATS winner: not started</span>`
+    : fg.res === "P" || fg.res === "C" ? `<span class="chip st-P${fg.final ? "" : " live"}">${fg.res === "C" ? "Not played: ½ pt each" : fg.final ? "ATS push" : "On the number"}</span>`
+    : `<span class="chip st-W${fg.final ? "" : " live"}">${fg.final ? "ATS winner" : "Covering"}: ${esc(tLabel(winner.abbr))} ${fmtLine(winner.line)}</span>`;
+  return `<article class="bgame">
+    <div class="bmeta"><span>${neutral ? "Neutral site · " : ""}#${away.num} at #${home.num}</span><span>${meta}</span></div>
+    ${row(away, neutral ? "Neutral" : "Away")}${row(home, neutral ? "Neutral" : "Home")}
+    ${n ? `<div class="split" role="img" aria-label="${lbl(away.abbr)} ${cnt(away)} picks, ${lbl(home.abbr)} ${cnt(home)} picks">${seg(away)}${seg(home)}</div>
+    <div class="counts"><span>${pl(cnt(away))}</span><span>${Math.round(tot / n * 100)}% of entries played this game</span><span>${pl(cnt(home))}</span></div>` : ""}
+    <div class="bwin">${ats}${gapTxt}</div>
+</article>`;
+}
+/* ================= render: standings ================= */
+let lastSt = null;
+// Popup history: opening an entry from a list inside the popup saves the list so Back can return to it.
+const BACK = [];
+const closeBtns = () => `<button class="btn close" data-close>Close</button>${BACK.length ? `<button class="btn close" data-back style="margin-right:8px">← Back</button>` : ""}`;
+// Season ATS win % = wins / (wins + losses); pushes and C's left out.
+function winPct(r) { const d = r.rec.w + r.rec.l; return d ? r.rec.w / d : null; }
+function wkRecord(wk) {
+  if (!wk) return "—";
+  const w = wk.w + wk.lw, l = wk.l + wk.ll, t = wk.p + wk.lp;
+  return `${w}-${l}-${t}${wk.c ? "-" + wk.c : ""}${wk.pending ? `<small class="note"> (${wk.pending} left)</small>` : ""}`;
+}
+// Week win rate for sorting: wins / (wins + losses), live games included; more wins breaks ties (4-0 over 2-0).
+function wkPct(r) {
+  const k = r.week; if (!k) return -2;
+  const w = k.w + k.lw, l = k.l + k.ll;
+  return w + l ? (w / (w + l)) * 10 + w / 100 : -1;
+}
+function moveOf(r) { return r.basePlace == null || lastSt?.official ? null : r.basePlace - r.place; }
+function renderStandings() {
+  const el = $("#standings");
+  const st = lastSt = computeStandings(S.week);
+  if (!st.list.length) { el.innerHTML = `<div class="empty"><b>No standings yet.</b> They appear once the updater has picks or standings.</div>`; return; }
+  const q = S.q.trim().toUpperCase();
+  let rows = st.list.filter(r => (!q || r.id.includes(q)) && (!S.onlyStarred || S.starred.has(r.id)));
+  if (S.sortKey !== "total") {
+    const key = { name: r => r.id, week: r => r.week?.proj ?? -1, move: r => moveOf(r) ?? -999, pct: r => winPct(r) ?? -1, wkpct: wkPct, rec: r => r.rec.w * 1000 - r.rec.l }[S.sortKey];
+    rows = [...rows].sort((a, b) => { const A = key(a), B = key(b); return (typeof A === "string" ? A.localeCompare(B) : A - B) * S.sortDir || a.place - b.place; });
+  } else if (S.sortDir === 1) rows = [...rows].reverse();
+  const note = st.official ? `Official ${BOOK()} standings after week ${S.week}.`
+    : `Live and unofficial: ${st.baseWeek ? `${BOOK()} standings through week ${st.baseWeek}` : "no official standings uploaded yet"}, plus week ${S.week} as games stand now. Dashed chips are games in progress.`;
+  const th = (k, t, cls = "") => `<th class="${cls}" data-sort="${k}" ${S.sortKey === k ? `aria-sort="${S.sortDir < 0 ? "descending" : "ascending"}"` : ""}>${t}</th>`;
+  el.innerHTML = `
+    <div class="tools"><input type="search" id="q" placeholder="Find an entry" value="${esc(S.q)}" aria-label="Find an entry">
+      <label><input type="checkbox" id="onlyStar" ${S.onlyStarred ? "checked" : ""}> Starred only (${S.starred.size})</label></div>
+    <p class="note">${note}</p>
+    <div class="table-wrap"><table><thead><tr>${th("total", "Place")}${th("move", "Move")}<th></th>${th("name", "Entry")}<th>Week ${S.week} picks</th>
+      ${th("wkpct", "Wk record")}${th("rec", `<span title="W-L-T-C">Season record</span>`)}${th("pct", "Win %", "num")}${th("week", "Wk pts", "num")}${th("total", "Total pts", "num")}</tr></thead>
+      <tbody>${rows.slice(0, S.shown).map(rowHTML).join("")}</tbody></table></div>
+    ${rows.length > S.shown ? `<button class="btn more" id="more">Show all ${rows.length}</button>` : ""}
+    ${!rows.length ? `<p class="note">No entries match.</p>` : ""}`;
+}
+function rowHTML(r) {
+  const mv = moveOf(r), mine = S.starred.has(r.id);
+  const mvH = mv == null ? "" : mv > 0 ? `<span class="up">▲${mv}</span>` : mv < 0 ? `<span class="down">▼${-mv}</span>` : "";
+  return `<tr class="${mine ? "mine" : ""}"><td class="place">${r.place}${r.tie ? "T" : ""}</td><td class="move">${mvH}</td>
+    <td><button class="star" data-star="${esc(r.id)}" aria-pressed="${mine}" aria-label="Star ${esc(r.id)}">★</button></td>
+    <td class="name"><button data-entry="${esc(r.id)}">${esc(r.id)}</button></td>
+    <td><div class="picks">${r.week ? r.week.grades.map(g => chip(g, true)).join("") : `<span class="note">No picks</span>`}</div></td>
+    <td class="rec">${wkRecord(r.week)}</td>
+    <td class="rec">${r.rec.w}-${r.rec.l}-${r.rec.t}-${r.rec.c}</td>
+    <td class="num">${winPct(r) == null ? "—" : (winPct(r) * 100).toFixed(1) + "%"}</td>
+    <td class="num">${r.week ? fmtPts(r.week.proj) : "—"}</td><td class="num">${fmtPts(r.total)}</td></tr>`;
+}
+function openEntry(id, lg = S.league) {
+  if (lg !== S.league) { openXEntry(id, lg); return; }
+  // Always recompute: lastSt is only refreshed by the Standings tab, so it can be from another week or contest.
+  lastSt = computeStandings(S.week);
+  const html = entryHtml(id, lastSt) || `${closeBtns()}<h2>${esc(id)}</h2><p class="sub">Not found in week ${S.week} standings yet.</p>`;
+  const d = $("#entry"); d.dataset.for = "";
+  d.innerHTML = html + `<div class="season" data-for="${esc(id)}"><p class="sub" style="margin-top:16px">Loading earlier weeks…</p></div>`;
+  if (!d.open) d.showModal();
+  fillSeason(id);
+}
+// Entry popup body (header, this week's picks) from standings st, for whichever contest is active in Store.
+function entryHtml(id, st, tag = "") {
+  const r = st.list.find(x => x.id === id); if (!r) return null;
+  const wk = r.week;
+  const line = gr => {
+    const s = gr.postponed ? "Postponed; ½ point if not played by Tuesday" : gr.res === "C" ? "Not played in time, ½ point" :
+      gr.override ? `${{ W: "Covered", L: "Did not cover", P: "Push", C: "½ point" }[gr.res]}${(Store.get(P.scores(S.week))?.manual || {})[gr.ab] ? " (set by hand)" : " (per official standings)"}` : !gr.res ? kickoffLabel(gr.sg, gr.game) || "Not started" :
+      `${gr.final ? { W: "Covered", L: "Did not cover", P: "Push" }[gr.res] : { W: "Covering", L: "Not covering", P: "On the number" }[gr.res]}, ${gr.mine}–${gr.theirs}${gr.final ? " final" : " " + esc(gr.sg.detail || "")}`;
+    return `<li>${chip(gr)}<span>${nickOf(gr.ab) || lbl(gr.ab)} ${fmtLine(gr.side?.line ?? 0)} vs ${gr.opp ? lbl(gr.opp.abbr) : ""}</span><span class="d">${s}</span></li>`;
+  };
+  return `${closeBtns()}<h2>${esc(r.id)}${tag ? ` <small class="note" style="font-size:14px">${esc(tag)}</small>` : ""}</h2>
+    <p class="sub">Place ${r.place}${r.tie ? "T" : ""} with ${fmtPts(r.total)} points, record ${r.rec.w}-${r.rec.l}-${r.rec.t}-${r.rec.c}.
+    ${r.basePlace != null && !st.official ? `Official after week ${st.baseWeek}: ${r.basePlace} (${r.baseRec}).` : ""}</p>
+    ${wk ? `<ul>${wk.grades.map(line).join("")}</ul><p class="sub" style="margin-top:12px">Week ${S.week}: ${wk.w}-${wk.l}-${wk.p}-${wk.c} final${wk.lw + wk.ll + wk.lp ? `, ${wk.lw}-${wk.ll}-${wk.lp} in progress` : ""}${wk.pending ? `, ${wk.pending} not started` : ""}.</p>`
+      : `<p class="sub">No picks for week ${S.week}.</p>`}`;
+}
+// Wait (up to 15s) until every earlier week's game sheet, picks and scores are loaded.
+function ensureSeason(upTo) {
+  return new Promise(res => {
+    const t0 = Date.now();
+    (function tick() { if (seasonReady(["card", "picks", "scores"], upTo) || Date.now() - t0 > 15000) res(); else setTimeout(tick, 250); })();
+  });
+}
+async function fillSeason(id) {
+  const W = S.week;
+  await ensureSeason(W);
+  const box = document.querySelector("#entry .season");
+  if (!box || box.dataset.for !== id || S.week !== W) return;             // popup closed or changed
+  box.innerHTML = seasonHtml(id, W);
+}
+// "Earlier weeks" table for one entry, for whichever contest is active in Store.
+function seasonHtml(id, W) {
+  const weeks = weeksList().filter(w => w < W && index().weeks[w]?.card && index().weeks[w]?.picks).reverse();
+  if (!weeks.length) return "";
+  let tw = 0, tl = 0, tt = 0, tpts = 0;
+  const rows = weeks.map(w => {
+    const p = (Store.get(P.picks(w))?.entries || []).find(e => e.id === id)?.picks;
+    if (!p) return `<tr><td class="place">W${w}</td><td><span class="note">No picks</span></td><td class="rec">—</td><td class="num">0</td></tr>`;
+    const g = weekGrades(w), sc = scoreEntry(p, g.card, g.scores, g.ov);
+    tw += sc.w + sc.lw; tl += sc.l + sc.ll; tt += sc.p + sc.lp; tpts += sc.proj;
+    return `<tr><td class="place">W${w}</td><td><div class="picks">${sc.grades.map(x => chip(x, true)).join("")}</div></td>
+      <td class="rec">${sc.w + sc.lw}-${sc.l + sc.ll}-${sc.p + sc.lp}${sc.c ? "-" + sc.c : ""}</td><td class="num">${fmtPts(sc.proj)}</td></tr>`;
+  }).join("");
+  return `<h2 class="sec" style="margin-top:22px">Earlier weeks</h2>
+    <div class="table-wrap"><table><thead><tr><th>Week</th><th>Picks</th><th>W-L-T</th><th class="num">Pts</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>
+    <p class="sub" style="margin-top:8px">Weeks 1–${weeks[0]}: ${tw}-${tl}-${tt}, ${fmtPts(tpts)} points (graded from the posted lines and final scores).</p>`;
+}
+
+/* ================= render: pick totals ================= */
+const RESULT_TEXT = { W: "Covered", L: "Lost", P: "Push", C: "\u00bd pt (rule 22)" };
+function renderTeams() {
+  const el = $("#teams"), w = S.week;
+  const card = Store.get(P.card(w))?.games;
+  const picks = Store.get(P.picks(w))?.entries || [];
+  if (!card || !picks.length) {
+    el.innerHTML = `<div class="empty"><b>Nothing to total yet.</b> This tab needs both the game sheet and the selections for week ${w}.</div>${w > 1 ? crowdRecord(w - 1) : ""}`;
+    return;
+  }
+  const scores = scoresMap(w), ov = Store.get(P.scores(w))?.overrides || {};
+  const by = {};
+  picks.forEach(e => e.picks.forEach(a => (by[a] ||= []).push(e.id)));
+  const rows = [];
+  for (const g of card) for (const side of [g.fav, g.dog]) {
+    const gr = grade(side.abbr, card, scores, ov), other = side === g.fav ? g.dog : g.fav;
+    const who = by[side.abbr] || [];
+    const pts = !gr.res ? null : gr.res === "W" ? who.length : (gr.res === "P" || gr.res === "C") ? who.length / 2 : 0;
+    rows.push({ abbr: side.abbr, line: side.line, opp: other.abbr, home: side.home, gr, who, pts, sg: gr.sg });
+  }
+  rows.sort((a, b) => b.who.length - a.who.length || a.abbr.localeCompare(b.abbr));
+  const n = picks.length;
+  const tally = k => rows.filter(r => r.gr.final && r.gr.res === k).reduce((s, r) => s + r.who.length, 0);
+  const live = rows.filter(r => r.gr.live).reduce((s, r) => s + r.who.length, 0);
+  const cell = r => {
+    const st = !r.gr.res ? (r.gr.postponed ? "Postponed" : kickoffLabel(r.sg, r.gr.game) || "Not started")
+      : r.gr.final ? RESULT_TEXT[r.gr.res] : { W: "Covering", L: "Not covering", P: "On the number" }[r.gr.res];
+    const cls = r.gr.res ? `st-${r.gr.res}` : "";
+    const score = r.sg && r.sg.state !== "pre" && r.sg.home_score != null
+      ? `${r.sg.home === r.abbr ? r.sg.home_score : r.sg.away_score}\u2013${r.sg.home === r.abbr ? r.sg.away_score : r.sg.home_score}` : "";
+    return `<td class="rec">${score}</td><td><span class="chip ${cls}${r.gr.final || !r.gr.res ? "" : " live"}">${st}</span>
+      ${r.gr.live ? `<small class="note"> ${esc(r.sg.detail || "")}</small>` : ""}</td>`;
+  };
+  el.innerHTML = `
+    <div class="strip">
+      <div><b>${n}</b><span>entries, ${n * (Store.manifest.picks_per_entry || 5)} picks</span></div>
+      <div><b>${tally("W")}</b><span>picks already won</span></div>
+      <div><b>${tally("L")}</b><span>picks already lost</span></div>
+      <div><b>${live}</b><span>picks still in play</span></div>
+    </div>
+    <p class="note">Every team on the week ${w} card, most picked first. Select a row to see which entries took it.</p>
+    <div class="table-wrap"><table><thead><tr><th>Team</th><th>Line</th><th>Opponent</th><th class="num">Entries</th>
+      <th class="num">% of field</th><th>Score</th><th>Status</th><th class="num">Field pts</th></tr></thead><tbody>
+      ${rows.map(r => `<tr><td class="name"><button data-team="${esc(r.abbr)}">${lbl(r.abbr)} ${nickOf(r.abbr)}${r.home ? "" : " (away)"}</button></td>
+        <td class="rec">${fmtLine(r.line)}</td><td class="rec">${lbl(r.opp)}</td>
+        <td class="num">${r.who.length}</td><td class="num">${Math.round(r.who.length / n * 100)}%</td>
+        ${cell(r)}<td class="num">${r.pts == null ? "\u2014" : fmtPts(r.pts)}</td></tr>`).join("")}
+    </tbody></table></div>
+    ${crowdRecord(w)}`;
+}
+/* Season record of following (or fading) the crowd, week by week through week W.
+   Crowd five = the field's 5 most-picked teams; Fade five = their opponents;
+   Leaders' five = the most-picked teams among the Top entries group ranked entering that week. */
+function leadersFive(w) {
+  if (w < 2) return null;
+  const st = computeStandings(w - 1); if (!st.list.length) return null;
+  const N = Math.min(Math.max(1, S.topN || 10), st.list.length), cut = st.list[N - 1].total;
+  const group = S.topTies !== false ? st.list.filter((r, i) => i < N || r.total === cut) : st.list.slice(0, N);
+  const byId = Object.fromEntries((Store.get(P.picks(w))?.entries || []).map(e => [e.id, e.picks]));
+  const count = {}; for (const r of group) for (const a of byId[r.id] || []) count[a] = (count[a] || 0) + 1;
+  return Object.keys(count).length ? { five: topFive(count), size: group.length } : null;
+}
+function crowdRecord(W) {
+  if (!seasonReady(["card", "picks", "scores", "standings"], W)) return `<h2 class="sec">Following the crowd</h2><p class="note">Loading the season…</p>`;
+  const weeks = weeksList().filter(w => w <= W && Store.get(P.card(w))?.games && Store.get(P.picks(w))?.entries?.length);
+  if (!weeks.length) return "";
+  const rows = [], tot = { crowd: 0, fade: 0, lead: 0, field: 0, leadWeeks: 0 };
+  const recOf = r => `${r.w + r.lw}-${r.l + r.ll}${r.p + r.lp + r.c ? "-" + (r.p + r.lp + r.c) : ""}`;
+  for (const w of weeks) {
+    const g = weekGrades(w), picks = Store.get(P.picks(w)).entries;
+    const count = {}; picks.forEach(e => e.picks.forEach(a => count[a] = (count[a] || 0) + 1));
+    const five = topFive(count);
+    const fadeAbs = five.map(a => { const gm = g.card.find(x => x.fav.abbr === a || x.dog.abbr === a); return gm ? (gm.fav.abbr === a ? gm.dog.abbr : gm.fav.abbr) : null; }).filter(Boolean);
+    const crowd = scoreEntry(five, g.card, g.scores, g.ov), fade = scoreEntry(fadeAbs, g.card, g.scores, g.ov);
+    const L = leadersFive(w), lead = L ? scoreEntry(L.five, g.card, g.scores, g.ov) : null;
+    const field = picks.reduce((s, e) => s + scoreEntry(e.picks, g.card, g.scores, g.ov).proj, 0) / picks.length;
+    const live = [crowd, fade, lead].some(r => r && (r.lw + r.ll + r.lp + r.pending));
+    tot.crowd += crowd.proj; tot.fade += fade.proj; tot.field += field; if (lead) { tot.lead += lead.proj; tot.leadWeeks++; }
+    rows.push({ w, crowd, fade, lead, field, live });
+  }
+  const cellOf = r => r ? `<td class="num"><b>${fmtPts(r.proj)}</b> <small class="note">${recOf(r)}</small></td>` : `<td class="num note">—</td>`;
+  return `<h2 class="sec">Following the crowd, weeks ${weeks[0]}–${weeks[weeks.length - 1]}</h2>
+    <p class="note">Points each five would have scored (cover 1, push ½). <b>Crowd five</b>: the field's five most-picked teams. <b>Fade five</b>: the other side of each of those games. <b>Leaders' five</b>: the five most-picked teams among the standings 1–${S.topN || 10} entering that week (the Top entries setting). Weeks still in progress count games as they stand now.</p>
+    <div class="table-wrap"><table style="min-width:560px"><thead><tr><th>Week</th><th class="num">Crowd five</th><th class="num">Fade five</th><th class="num">Leaders' five</th><th class="num">Field average</th></tr></thead><tbody>
+    ${rows.map(r => `<tr><td>${r.w}${r.live ? ' <small class="note">(live)</small>' : ""}</td>${cellOf(r.crowd)}${cellOf(r.fade)}${cellOf(r.lead)}<td class="num">${r.field.toFixed(2)}</td></tr>`).join("")}
+    <tr style="border-top:2px solid var(--rule)"><td><b>Total</b></td><td class="num"><b>${fmtPts(tot.crowd)}</b></td><td class="num"><b>${fmtPts(tot.fade)}</b></td>
+      <td class="num"><b>${tot.leadWeeks ? fmtPts(tot.lead) : "—"}</b>${tot.leadWeeks && tot.leadWeeks < rows.length ? ` <small class="note">(${tot.leadWeeks} wk)</small>` : ""}</td><td class="num"><b>${tot.field.toFixed(2)}</b></td></tr>
+    </tbody></table></div>`;
+}
+function openTeam(abbr) {
+  const w = S.week, card = Store.get(P.card(w)).games, picks = Store.get(P.picks(w))?.entries || [];
+  const scores = scoresMap(w), ov = Store.get(P.scores(w))?.overrides || {};
+  const gr = grade(abbr, card, scores, ov);
+  const who = picks.filter(e => e.picks.includes(abbr)).map(e => e.id).sort();
+  const st = !gr.res ? "not started" : gr.final ? RESULT_TEXT[gr.res].toLowerCase() : { W: "covering", L: "not covering", P: "on the number" }[gr.res];
+  const d = $("#entry");
+  d.innerHTML = `${closeBtns()}
+    <h2>${lbl(abbr)} ${fmtLine(gr.side?.line ?? 0)} vs ${gr.opp ? lbl(gr.opp.abbr) : ""}</h2>
+    <p class="sub">${who.length} entries (${Math.round(who.length / picks.length * 100)}% of the field), currently ${st}.</p>
+    <div style="max-height:50vh;overflow:auto"><p style="margin:0;line-height:1.9">${who.map(id =>
+      `<button class="chip" data-entry="${esc(id)}" style="min-width:0;margin:0 4px 4px 0;cursor:pointer">${esc(id)}</button>`).join("")}</p></div>`;
+  if (!d.open) d.showModal();
+}
+
+/* ================= season data ================= */
+// Load every week's card, picks and scores (current week stays live; others read once).
+function seasonReady(kinds, upTo = 99) {
+  const idx = index().weeks; let ready = true;
+  for (const w of weeksList().filter(w => w <= upTo)) for (const k of kinds) {
+    if (!idx[w]?.[k]) continue;
+    const path = P[k](w);
+    if (!Store.cache.has(path)) { ready = false; Store.fetchOnce(path, render); }
+  }
+  return ready;
+}
+function weekGrades(w) {
+  const card = Store.get(P.card(w))?.games; if (!card) return null;
+  return { card, scores: scoresMap(w), ov: Store.get(P.scores(w))?.overrides || {} };
+}
+
+/* ================= render: teams ATS ================= */
+function renderAts() {
+  const el = $("#ats"), W = S.week;
+  if (!seasonReady(["card", "picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading the season…</p>`; return; }
+  const weeks = weeksList().filter(w => w <= W && index().weeks[w]?.card);
+  if (!weeks.length) { el.innerHTML = `<div class="empty"><b>No game sheets uploaded yet.</b></div>`; return; }
+  const T = {};
+  const teamList = isCollege()
+    ? [...new Set(weeks.flatMap(w => (Store.get(P.card(w))?.games || []).flatMap(g => [g.fav.abbr, g.dog.abbr])))]
+    : Object.keys(NICK);
+  for (const ab of teamList) T[ab] = { ab, w: 0, l: 0, p: 0, marg: 0, n: 0, hw: 0, hl: 0, aw: 0, al: 0, fw: 0, fl: 0, dw: 0, dl: 0, picks: 0, pw: 0, pl: 0, weeks: {} };
+  const L = { favW: 0, favL: 0, homeW: 0, homeL: 0 };
+  for (const w of weeks) {
+    const g = weekGrades(w);
+    const cnt = {}; (Store.get(P.picks(w))?.entries || []).forEach(e => e.picks.forEach(a => cnt[a] = (cnt[a] || 0) + 1));
+    for (const gm of g.card) for (const side of [gm.fav, gm.dog]) {
+      const t = T[side.abbr]; if (!t) continue;
+      const gr = grade(side.abbr, g.card, g.scores, g.ov);
+      const opp = side === gm.fav ? gm.dog : gm.fav;
+      t.weeks[w] = { line: side.line, opp: opp.abbr, home: side.home, gr };
+      t.picks += cnt[side.abbr] || 0;
+      if (!gr.final || !gr.res) continue;
+      const r = gr.res;
+      if (r === "W") t.w++; else if (r === "L") t.l++; else t.p++;
+      if (gr.mine != null) { t.marg += gr.mine + side.line - gr.theirs; t.n++; }
+      if (r === "W" || r === "L") {
+        const k = r === "W" ? "w" : "l";
+        t[(side.home ? "h" : "a") + k]++;
+        if (side.line < 0) t["f" + k]++; else if (side.line > 0) t["d" + k]++;
+        if (side === gm.fav && side.line < 0) L[r === "W" ? "favW" : "favL"]++;
+        if (side.home) L[r === "W" ? "homeW" : "homeL"]++;
+        if (r === "W") t.pw += cnt[side.abbr] || 0; else t.pl += cnt[side.abbr] || 0;
+      }
+    }
+  }
+  const pct = t => t.w + t.l ? t.w / (t.w + t.l) : -1;
+  const key = { team: t => t.ab, pct: pct, marg: t => t.n ? t.marg / t.n : -99, picks: t => t.picks }[S.atsSort || "pct"];
+  const rows = Object.values(T).sort((a, b) => {
+    const A = key(a), B = key(b);
+    return (typeof A === "string" ? A.localeCompare(B) : B - A) * (S.atsDir || 1) || pct(b) - pct(a) || b.w - a.w || a.l - b.l || a.ab.localeCompare(b.ab);
+  });
+  const rec = (w, l) => w + l ? `${w}-${l}` : "—";
+  const th = (k, t, cls = "") => `<th class="${cls}" data-atssort="${k}" style="cursor:pointer" ${S.atsSort === k || (!S.atsSort && k === "pct") ? `aria-sort="descending"` : ""}>${t}</th>`;
+  const wkCell = x => {
+    if (!x) return `<td class="wk">—</td>`;
+    const r = x.gr, cls = r.res ? `st-${r.res}${r.final ? "" : " live"}` : "";
+    const sc = r.mine != null ? `${r.mine}-${r.theirs}` : r.postponed ? "PPD" : "";
+    return `<td class="wk"><span class="cnt ${cls}" style="min-width:44px">${fmtLine(x.line)}</span><small>${x.home ? "vs" : "@"} ${lbl(x.opp)}${sc ? " " + sc : ""}</small></td>`;
+  };
+  el.innerHTML = `
+    <div class="strip">
+      <div><b>${rec(L.favW, L.favL)}</b><span>favorites ATS</span></div>
+      <div><b>${rec(L.homeW, L.homeL)}</b><span>home teams ATS</span></div>
+      <div><b>${weeks.length}</b><span>week${weeks.length > 1 ? "s" : ""} on file (${weeks.map(w => "W" + w).join(", ")})</span></div>
+    </div>
+    <p class="note">Against the ${BOOK()} contest line, final games only. Green = covered, red = didn't, amber = push. Dashed = in progress. "Field" is how the contest entries did when they picked that team.</p>
+    <div class="table-wrap"><table style="min-width:${720 + weeks.length * 70}px"><thead><tr>
+      ${th("team", "Team")}<th>ATS</th>${th("pct", "Cover %", "num")}${th("marg", "Avg vs line", "num")}
+      <th>Home</th><th>Away</th><th>As fav</th><th>As dog</th>
+      ${weeks.map(w => `<th>W${w}</th>`).join("")}${th("picks", "Field picks", "num")}<th>Field W-L</th></tr></thead><tbody>
+      ${rows.map(t => `<tr><td class="name"><b>${lbl(t.ab)}</b> <small class="note">${nickOf(t.ab)}</small></td>
+        <td class="rec">${t.w}-${t.l}${t.p ? "-" + t.p : ""}</td>
+        <td class="num">${pct(t) < 0 ? "—" : Math.round(pct(t) * 100) + "%"}</td>
+        <td class="num">${t.n ? (t.marg / t.n > 0 ? "+" : "") + (t.marg / t.n).toFixed(1) : "—"}</td>
+        <td class="rec">${rec(t.hw, t.hl)}</td><td class="rec">${rec(t.aw, t.al)}</td><td class="rec">${rec(t.fw, t.fl)}</td><td class="rec">${rec(t.dw, t.dl)}</td>
+        ${weeks.map(w => wkCell(t.weeks[w])).join("")}
+        <td class="num">${t.picks}</td><td class="rec">${t.pw + t.pl ? `${t.pw}-${t.pl}` : "—"}</td></tr>`).join("")}
+    </tbody></table></div>
+    <p class="note" style="margin-top:10px">Avg vs line = points by which the team beat (+) or missed (−) the spread, averaged over its final games. A bye week shows as —.</p>`;
+}
+
+/* ================= render: top entries ================= */
+// Leaders are ranked by standings ENTERING the selected week (through the week before),
+// so the breakdown shows what the leaders picked, not who happened to win this week.
+function topGroup(W) {
+  const basis = S.topBasis || "entering";
+  const rankWeek = basis === "entering" ? W - 1 : W;
+  if (rankWeek < 1) return { none: true, rankWeek };
+  const st = computeStandings(rankWeek);
+  if (!st.list.length) return { none: true, rankWeek };
+  const N = Math.min(Math.max(1, S.topN || 10), st.list.length);
+  const cut = st.list[N - 1].total;
+  const tied = st.list.slice(N).filter(r => r.total === cut).length;
+  const group = S.topTies !== false ? st.list.filter((r, i) => i < N || r.total === cut) : st.list.slice(0, N);
+  return { st, rankWeek, N, cut, tied, group, basis };
+}
+/* ---- other NFL contests on the Top entries tab ----
+   Each contest gets its own manifest + cache. Standings are computed by swapping it in
+   synchronously (computeStandings/topGroup only read Store and S.league), then restoring. */
+const TOP_FAMILY = ["nfl", "gold", "circa-millio"];
+const SHORT = { nfl: "SuperContest", gold: "Gold", "circa-millio": "Circa Million" };
+const XCTX = {};
+function topExtras() {
+  if (!nflFamilyLeague(S.league)) return [];
+  const saved = local.get(`cb-topx-${S.league}`, []);
+  return TOP_FAMILY.filter(l => l !== S.league && saved.includes(l));
+}
+function xCtx(lg) {
+  let c = XCTX[lg];
+  if (c && c.season === Store.season) return c;
+  c = XCTX[lg] = { lg, season: Store.season, manifest: null, cache: new Map(), pending: new Set() };
+  getJSON(`${Store.base(lg)}manifest.json`).catch(() => ({ weeks: {} })).then(m => {
+    c.manifest = m; c.cache.set(P.index, Store.indexDoc(m, lg)); if (S.tab === "top") render();
+  });
+  return c;
+}
+function inCtx(c, fn) {
+  const sv = [S.league, Store.cache, Store.manifest];
+  S.league = c.lg; Store.cache = c.cache; Store.manifest = c.manifest;
+  try { return fn(); } finally { [S.league, Store.cache, Store.manifest] = sv; }
+}
+function xLoad(c, paths) {
+  for (const p of paths) {
+    if (c.cache.has(p) || c.pending.has(p)) continue;
+    c.pending.add(p);
+    Store.load(p, c.lg, c.manifest).then(v => v, () => null).then(v => {
+      c.pending.delete(p); c.cache.set(p, v); if (S.tab === "top") render();
+    });
+  }
+}
+// Re-pull unfinished scores for the other contests shown on Top entries.
+function xRefreshScores() {
+  if (S.tab !== "top") return;
+  for (const lg of topExtras()) {
+    const c = XCTX[lg]; if (!c?.manifest) continue;
+    for (const [p, v] of c.cache) if (p.startsWith("scores/") && v?.source !== "final")
+      Store.load(p, lg, c.manifest).then(nv => { if (nv) { c.cache.set(p, nv); if (S.tab === "top") render(); } }, () => {});
+  }
+}
+// Entry popup for someone in another contest shown on Top entries (Gold, Circa Million…):
+// load that contest's whole season into its own cache, then build the same popup inside it.
+async function openXEntry(id, lg) {
+  const c = xCtx(lg), W = S.week, d = $("#entry"), tag = SHORT[lg] || LEAGUE_NAME[lg];
+  d.innerHTML = `${closeBtns()}<h2>${esc(id)} <small class="note" style="font-size:14px">${esc(tag)}</small></h2><p class="sub">Loading their season…</p>`;
+  d.dataset.for = `${lg}|${id}`;
+  if (!d.open) d.showModal();
+  const t0 = Date.now();
+  for (;;) {
+    if (d.dataset.for !== `${lg}|${id}` || !d.open) return;               // closed or replaced
+    if (c.manifest) {
+      const need = inCtx(c, () => {
+        const set = new Set(neededPaths(W).set);
+        for (const w of weeksList().filter(w => w <= W)) for (const k of ["card", "picks", "scores"]) if (index().weeks[w]?.[k]) set.add(P[k](w));
+        return [...set];
+      }).filter(p => !c.cache.has(p));
+      if (!need.length) break;
+      xLoad(c, need);
+    }
+    if (Date.now() - t0 > 20000) { d.querySelector(".sub").textContent = "Couldn't load this contest's data. Try again in a moment."; return; }
+    await new Promise(r => setTimeout(r, 250));
+  }
+  const html = inCtx(c, () => { const st = computeStandings(W), h = entryHtml(id, st, tag); return h && h + seasonHtml(id, W); });
+  if (d.dataset.for !== `${lg}|${id}`) return;
+  d.innerHTML = html || `${closeBtns()}<h2>${esc(id)}</h2><p class="sub">Not found in ${esc(tag)} for week ${W}.</p>`;
+}
+// One contest's leaders for week W: { lg, T, picks, g } or { lg, loading } / { lg, none }.
+function topSource(lg, W) {
+  if (lg === S.league) return { lg, T: topGroup(W), picks: Store.get(P.picks(W))?.entries || null, g: weekGrades(W) };
+  const c = xCtx(lg);
+  if (!c.manifest) return { lg, loading: true };
+  return inCtx(c, () => {
+    const basis = S.topBasis || "entering", rankWeek = basis === "entering" ? W - 1 : W;
+    if (rankWeek < 1) return { lg, none: true };
+    const need = [...neededPaths(rankWeek).set, P.card(W), P.picks(W), P.scores(W)].filter(p => !c.cache.has(p));
+    if (need.length) { xLoad(c, need); return { lg, loading: true }; }
+    const T = topGroup(W);
+    if (T.none) return { lg, none: true };
+    return { lg, T, picks: Store.get(P.picks(W))?.entries || null, g: weekGrades(W) };
+  });
+}
+
+function renderTop() {
+  const el = $("#top"), W = S.week;
+  if (!seasonReady(["card", "picks", "scores", "standings"], W)) { el.innerHTML = `<p class="note">Loading the season…</p>`; return; }
+  const T = topGroup(W);
+  const others = nflFamilyLeague(S.league) ? TOP_FAMILY.filter(l => l !== S.league) : [];
+  const extras = topExtras();
+  const controls = `
+    <div class="topctl">
+      <label for="topN">Standings 1 to</label>
+      <input id="topN" type="number" inputmode="numeric" min="1" value="${S.topN || 10}">
+      ${[5, 10, 25, 50].map(k => `<button class="pill" data-topn="${k}" aria-pressed="${(S.topN || 10) === k}">Top ${k}</button>`).join("")}
+    </div>
+    ${others.length ? `<div class="topctl">
+      <span style="font-weight:600">Also include leaders from</span>
+      ${others.map(l => `<label style="font-weight:400"><input type="checkbox" data-topx="${l}" ${extras.includes(l) ? "checked" : ""}> ${SHORT[l]}</label>`).join("")}
+    </div>` : ""}
+    <div class="topctl">
+      <label style="font-weight:400"><input type="checkbox" id="topTies" ${S.topTies !== false ? "checked" : ""}> Include everyone tied at the cutoff</label>
+      <label style="font-weight:400">Rank by
+        <select id="topBasis" style="font-size:15px;padding:4px 8px">
+          <option value="entering" ${T.basis !== "live" ? "selected" : ""}>standings entering week ${W}</option>
+          <option value="live" ${T.basis === "live" ? "selected" : ""}>live standings including week ${W}</option>
+        </select></label>
+    </div>`;
+  if (T.none) {
+    el.innerHTML = controls + `<div class="empty"><b>No standings before week ${W}.</b> Everyone starts week 1 at zero, so there are no leaders yet. Pick week 2 or later, or rank by live standings.</div>`;
+    return;
+  }
+  const main = topSource(S.league, W);
+  if (!main.picks || !main.g) { el.innerHTML = controls + `<div class="empty"><b>Week ${W} picks aren't uploaded yet.</b> Once the selections PDF is in, this shows what the leaders took.</div>`; return; }
+  const xs = extras.map(l => topSource(l, W));
+  const srcs = [main, ...xs.filter(x => x.T && x.picks && x.g)];
+  const multi = srcs.length > 1;
+  const count = {}, by = {}, who = {}, fieldCnt = {};
+  let n = 0, fieldN = 0, members = 0;
+  for (const s of srcs) {
+    s.byId = Object.fromEntries(s.picks.map(e => [e.id, e.picks]));
+    const withPicks = s.T.group.filter(r => s.byId[r.id]);
+    s.n = withPicks.length; n += s.n; members += s.T.group.length;
+    for (const r of withPicks) for (const a of s.byId[r.id]) {
+      count[a] = (count[a] || 0) + 1; ((by[a] ||= {})[s.lg] = (by[a][s.lg] || 0) + 1); (who[a] ||= []).push({ id: r.id, lg: s.lg });
+    }
+    fieldN += s.picks.length; s.picks.forEach(e => e.picks.forEach(a => fieldCnt[a] = (fieldCnt[a] || 0) + 1));
+  }
+  S.topWho = who;
+  const rows = Object.entries(count).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const maxC = rows.length ? rows[0][1] : 1;
+  const status = gr => gr.postponed ? "Postponed" : !gr.res ? "Not started" : gr.final ? RESULT_TEXT[gr.res] : { W: "Covering", L: "Not covering", P: "On the number" }[gr.res];
+  // Line and result come from the open contest's card; fall back to whichever contest has the game.
+  const gradeAny = a => { for (const s of srcs) { const gr = grade(a, s.g.card, s.g.scores, s.g.ov); if (gr.game) return gr; } return { ab: a, res: null }; };
+  const rangeOf = t => t.group.length > t.N ? `1–${t.N}, plus ${t.group.length - t.N} tied at ${fmtPts(t.cut)} points` : `1–${t.N}`;
+  const basisTxt = T.basis === "live" ? `live standings through week ${W}` : `${T.st.official ? "official" : "live"} standings after week ${T.rankWeek}`;
+  const srcLine = s => `<b>${SHORT[s.lg] || LEAGUE_NAME[s.lg]}:</b> ${s.T.group.length} entries (standings ${rangeOf(s.T)})${s.n < s.T.group.length ? `, ${s.T.group.length - s.n} with no week ${W} picks` : ""}`;
+  const pending = xs.filter(x => !(x.T && x.picks && x.g)).map(x =>
+    `<b>${SHORT[x.lg]}:</b> ${x.loading ? "loading…" : x.none ? `no standings to rank by for week ${W}` : `week ${W} picks aren't uploaded yet`}`);
+  const books = new Set(srcs.map(s => s.lg === "circa-millio" ? "Circa" : "Westgate"));
+  const intro = multi || pending.length
+    ? `<p class="note"><b>${members} leaders</b> across ${srcs.length} contest${srcs.length > 1 ? "s" : ""}, each ranked by its own ${basisTxt.replace(/^(official|live) /, "")}.<br>
+        ${[...srcs.map(srcLine), ...pending].join("<br>")}</p>
+       ${books.size > 1 ? `<p class="note">Line and result use the ${BOOK()} line. Circa's and Westgate's lines can differ, so a pick can cover in one contest and not the other; each leader's own picks below are graded on their own contest's line.</p>` : ""}`
+    : `<p class="note"><b>${T.group.length} entries</b> (standings ${rangeOf(T)}), ranked by ${basisTxt}.
+      ${!T.group.length || S.topTies !== false || !T.tied ? "" : `${T.tied} more ${T.tied === 1 ? "entry is" : "entries are"} tied at ${fmtPts(T.cut)} points and left out.`}
+      ${main.n < T.group.length ? `${T.group.length - main.n} of them submitted no week ${W} picks.` : ""}</p>`;
+  const perCols = multi ? srcs.map(s => `<th class="num">${SHORT[s.lg]}</th>`).join("") : "";
+  el.innerHTML = controls + intro + `
+    <h2 class="sec">Week ${W}: teams picked by the leaders</h2>
+    <div class="table-wrap"><table style="min-width:${multi ? 640 + srcs.length * 80 : 640}px"><thead><tr><th>Team</th><th>Line</th><th>Opp</th>
+      <th style="width:${multi ? 26 : 34}%">Leaders who picked it</th>${perCols}<th class="num">% of leaders</th><th class="num">% of field</th><th>Result</th></tr></thead><tbody>
+    ${rows.map(([a, k]) => { const gr = gradeAny(a); return `<tr>
+      <td class="name"><button data-topteam="${esc(a)}">${lbl(a)} ${nickOf(a)}</button></td>
+      <td class="rec">${fmtLine(gr.side?.line ?? 0)}</td><td class="rec">${gr.side?.home ? "vs" : "@"} ${gr.opp ? lbl(gr.opp.abbr) : ""}</td>
+      <td><div style="display:flex;align-items:center;gap:8px"><b style="font:700 18px var(--cond);min-width:22px">${k}</b>
+        <div style="flex:1;height:10px;border-radius:5px;background:var(--panel-2)"><div style="height:100%;width:${k / maxC * 100}%;border-radius:5px;background:var(--ink-2)"></div></div></div></td>
+      ${multi ? srcs.map(s => `<td class="num">${by[a][s.lg] || "—"}</td>`).join("") : ""}
+      <td class="num">${Math.round(k / n * 100)}%</td><td class="num">${Math.round((fieldCnt[a] || 0) / fieldN * 100)}%</td>
+      <td><span class="chip ${gr.res ? "st-" + gr.res + (gr.final ? "" : " live") : ""}">${status(gr)}</span></td></tr>`; }).join("")}
+    </tbody></table></div>
+    <p class="note" style="margin-top:8px">Select a team to see which leaders took it.${multi ? " % of field is across all the contests shown." : ""}</p>
+    <h2 class="sec">The leaders' week ${W} picks</h2>
+    <div class="table-wrap"><table style="min-width:620px"><thead><tr>${multi ? "<th>Contest</th>" : ""}<th>Place</th><th>Entry</th><th class="num">Points</th><th>Week ${W} picks</th></tr></thead><tbody>
+    ${srcs.flatMap((s, si) => s.T.group.map(r => ({ s, si, r })))
+      // With several contests, interleave them by points (then each contest's own place) instead of listing one contest after another.
+      .sort((x, y) => multi ? y.r.total - x.r.total || x.r.place - y.r.place || x.si - y.si : 0)
+      .map(({ s, r }) => `<tr>${multi ? `<td class="note">${SHORT[s.lg]}</td>` : ""}<td class="place">${r.place}${r.tie ? "T" : ""}</td>
+      <td class="name"><button data-entry="${esc(r.id)}" data-lg="${s.lg}">${esc(r.id)}</button></td><td class="num">${fmtPts(r.total)}</td>
+      <td>${s.byId[r.id] ? `<div class="picks">${s.byId[r.id].map(a => chip(grade(a, s.g.card, s.g.scores, s.g.ov), true)).join("")}</div>` : `<span class="note">No picks</span>`}</td></tr>`).join("")}
+    </tbody></table></div>`;
+}
+function openTopTeam(a) {
+  const list = (S.topWho?.[a] || []).slice();
+  const lgs = TOP_FAMILY.concat(LEAGUES).filter((l, i, arr) => arr.indexOf(l) === i && list.some(x => x.lg === l));
+  lgs.sort((x, y) => (y === S.league) - (x === S.league));
+  const chipOf = x => `<button class="chip" data-entry="${esc(x.id)}" data-lg="${x.lg}" style="min-width:0;margin:0 4px 4px 0;cursor:pointer">${esc(x.id)}</button>`;
+  const d = $("#entry");
+  d.innerHTML = `${closeBtns()}<h2>${lbl(a)} ${nickOf(a)}</h2>
+    <p class="sub">${list.length} of the leaders picked ${lbl(a)} in week ${S.week}.</p>
+    ${lgs.map(l => { const ids = list.filter(x => x.lg === l).sort((p, q) => p.id.localeCompare(q.id));
+      return `${lgs.length > 1 ? `<h3 style="margin:10px 0 4px;font:700 15px var(--cond)">${SHORT[l] || LEAGUE_NAME[l]} (${ids.length})</h3>` : ""}
+        <p style="margin:0;line-height:1.9">${ids.map(chipOf).join("")}</p>`; }).join("")}`;
+  if (!d.open) d.showModal();
+}
+
+/* ================= render: upload data ================= */
+let STATUS = null;
+getJSON(DATA + "status.json").then(x => { STATUS = x; if (S.tab === "data") render(); }).catch(() => {});
+function renderData() {
+  const el = $("#data"), m = Store.manifest.weeks || {}, ws = Object.keys(m).map(Number).sort((a, b) => a - b);
+  const sc = Store.get(P.scores(S.week));
+  const pairing = isCollege() && sc ? `<p class="note">Week ${S.week}: ${Object.keys(sc.games || {}).length} of ${(Store.get(P.card(S.week))?.games || []).length} games found on ESPN${sc.unpaired ? ` (${sc.unpaired} not found; results for those come from the official standings once posted)` : ""}.</p>` : "";
+  const issues = (STATUS?.lines || []).filter(l => l.startsWith("!"));
+  const notes = (STATUS?.lines || []).filter(l => !l.startsWith("!"));
+  const box = (title, lines, warn) => !lines.length ? "" : `<h2 class="sec" style="margin:${warn ? "0" : "18px"} 0 6px">${title}</h2>
+    <div class="table-wrap" style="padding:10px 14px;font:12px/1.6 ui-monospace,Menlo,monospace;white-space:pre-wrap;${warn ? "border-left:3px solid var(--miss)" : "color:var(--ink-2)"}">${lines.map(esc).join("\n")}</div>`;
+  const status = STATUS ? `<div class="have"><h2>Last updater run</h2><p class="note">${new Date(STATUS.updated).toLocaleString()}</p>
+    ${issues.length ? box("Needs a look", issues, true) : `<p class="note">No problems reported.</p>`}
+    ${box("Notes", notes, false)}</div>` : "";
+  // Survivor pools have no standings sheet; their files are selections and a teams-used sheet (Circa posts no game sheet).
+  const cols = isSurvivor()
+    ? [...(S.league === "survivor" ? [["card", "Game sheet"]] : []), ["picks", "Selections"], ["used", "Teams used"], ["overrides", "Overrides"]]
+    : [["card", "Game sheet"], ["picks", "Selections"], ["standings", "Official standings"], ["results", "Saved scores"], ["overrides", "Overrides"]];
+  const yes = (v, t) => v ? `<span class="up">${t || "Yes"}</span>` : `<span class="note">—</span>`;
+  el.innerHTML = `
+    <div class="how" style="margin-top:0"><h2>${LEAGUE_NAME[S.league]}: where the data comes from</h2>
+      ${isSurvivor() ? `<p>${SURV_NAME[S.league]}: one team per week to win straight up (no spread). A loss or a tie eliminates the entry, each team can be used once, and an entry without a pick is eliminated. Scores come live from ESPN.${S.league === "circa-survivor" ? " Circa's field is large, so the Entries tab shows 200 at a time — search or Show all to see more." : ""}</p>` : ""}
+      ${S.league === "gold" ? `<p>Gold uses the same weekly game sheet and lines as the main SuperContest, with its own entries, picks and standings.</p>` : ""}
+      ${isMillio() ? `<p>Circa Million is a season-long ATS contest at circasports.com: 5 picks per week against Circa's own point spreads (cover 1, push ½, loss 0). Circa doesn't post a game sheet, so each week's card is the real NFL matchups with Circa's line taken from the picks sheet. Every tab works the same as the Westgate SuperContest. Scores come live from ESPN.</p>` : ""}
+      ${isCollege() ? `<p>College picks are 7 per entry against the contest line, weeks 1–14. Westgate's short team names on the selections sheet are matched to the game sheet, and each week's picks are checked against Westgate's own team-count table. Once official standings are posted, the covers they imply are saved and used for any game the live score feed couldn't match.</p>` : ""}
+      <p>The updater (a scheduled GitHub Action) checks the Westgate SuperContest pages every 15 minutes and saves each week's game sheet, selections and standings. Scores come live from ESPN while you have this page open: every 30 seconds during games, every 5 minutes otherwise.</p>
+      <p>Forfeits or grading corrections: add <code>docs/data/${Store.season}/week-N/overrides.json</code> with, for example, <code>{"results": {"NYJ": "W", "GB": "L"}}</code> (W, L, P or C). Overrides beat the score feed.</p></div>
+    <div class="have"><h2>Weeks on file, ${Store.season}</h2>
+      ${ws.length ? `<div class="table-wrap"><table style="min-width:0"><thead><tr><th>Week</th>${cols.map(([, t]) => `<th>${t}</th>`).join("")}</tr></thead><tbody>
+        ${ws.map(w => `<tr><td>${w}</td>${cols.map(([k]) => `<td>${yes(m[w][k])}</td>`).join("")}</tr>`).join("")}
+      </tbody></table></div>${isSurvivor() ? `<p class="note">Survivor pools don't publish standings. Who's alive is worked out from the selections and ESPN scores; the teams-used sheet is the book's own record of which teams remaining entries have used.</p>` : ""}` : `<p class="note">Nothing yet. Run the updater once (Actions tab, "Update contest data", Run workflow).</p>`}${pairing}</div>${status}`;
+}
+/* ================= shell ================= */
+function renderStatus() {
+  const d = Store.get(P.scores(S.week));
+  const live = Object.values(d?.games || {}).some(g => g.state === "in");
+  const t = d?.updated ? new Date(d.updated).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) : "";
+  const src = { espn: `Live from ESPN, updated ${t}`, final: "All games final", snapshot: `ESPN unreachable, showing saved scores (${t})`, none: "No scores yet" }[d?.source] || "Loading…";
+  $("#status").innerHTML = `<span class="pulse ${live ? "on" : ""}"></span>${live ? "Games in progress. " : ""}${src}`;
+}
+let raf = 0;
+function render() {
+  cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(() => {
+    const ALL = ["games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends", "data"];
+    const shown = isSurvivor() ? ["svweek", "sventries", "svcompare", "svtrends", "data"]
+      : ["games", "standings", "teams", "ats", "top", "data"];
+    document.querySelectorAll(".tabs button").forEach(b => b.hidden = !shown.includes(b.dataset.tab));
+    if (!shown.includes(S.tab)) S.tab = shown[0];
+    for (const t of ALL) $("#" + t).hidden = S.tab !== t;
+    document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === S.tab));
+    const focus = document.activeElement?.id === "q" ? $("#q").selectionStart : null;
+    if (S.tab === "svweek") renderSvWeek(); else if (S.tab === "sventries") renderSvEntries();
+    else if (S.tab === "svcompare") renderSvCompare(); else if (S.tab === "svtrends") renderSvTrends();
+    else if (S.tab === "games") renderGames(); else if (S.tab === "standings") renderStandings();
+    else if (S.tab === "teams") renderTeams(); else if (S.tab === "ats") renderAts();
+    else if (S.tab === "top") renderTop(); else renderData();
+    if (focus !== null && $("#q")) { $("#q").focus(); $("#q").setSelectionRange(focus, focus); }
+    renderStatus();
+  });
+}
+function onIndex() {
+  const ws = weeksList();
+  const withCard = ws.filter(w => index().weeks[w]?.card);
+  if (S.week == null || !ws.includes(S.week)) S.week = withCard.at(-1) ?? ws.at(-1) ?? null;
+  $("#week").innerHTML = ws.length ? ws.map(w => `<option value="${w}" ${w === S.week ? "selected" : ""}>Week ${w}</option>`).join("") : `<option>No data</option>`;
+  renderWeekbar(ws);
+  if (S.week != null) {
+    const { set } = neededPaths(S.week);
+    Store.unwatchExcept(set);
+    for (const p of set) Store.watch(p, p === P.index ? () => { onIndex(); } : render);
+  }
+  if (!ws.length && S.tab !== "data") S.tab = "data";
+  render();
+}
+function markLeague() {
+  const nflFamily = S.league === "nfl" || S.league === "gold" || S.league === "circa-millio";
+  const survFamily = isSurvivor();
+  document.querySelectorAll("[data-league]").forEach(b => b.setAttribute("aria-pressed",
+    b.dataset.league === "nfl-group" ? nflFamily : b.dataset.league === "survivor-group" ? survFamily : b.dataset.league === S.league));
+  document.getElementById("nflsub").hidden = !nflFamily;
+  document.getElementById("survsub").hidden = !survFamily;
+  document.getElementById("foot").textContent = isSurvivor()
+    ? `Picks and teams used: ${SURV_NAME[S.league]} PDFs. Scores: ESPN. Straight-up winners only; a loss, a tie or a missed pick eliminates. Unofficial.`
+    : isMillio() ? "Picks, lines and official standings: Circa Million PDFs. Scores: ESPN. Graded against Circa's line: cover 1, push ½, loss 0. Live standings are unofficial until Circa posts them."
+    : "Lines, picks and official standings: Westgate SuperContest PDFs. Scores: ESPN. Graded against the static Westgate line: cover 1, push ½, loss 0; rule 22 postponements ½. Live standings are unofficial until Westgate posts them.";
+  { const T = { nfl: ["Westgate · NFL · against the spread", "SuperContest"], gold: ["Westgate · NFL · against the spread", "SuperContest Gold"],
+      "circa-millio": ["Circa Sports · NFL · against the spread", "Circa Million"], ncaaf: ["Westgate · College · against the spread", "SuperContest College"],
+      survivor: ["Westgate · Survivor", "SuperContest Survivor"], "circa-survivor": ["Circa Sports · Survivor", "Circa Survivor"],
+      "circa-grandissimo": ["Circa Sports · Survivor", "Circa Grandissimo"] }[S.league] || ["", "Contest Board"];
+    for (const s of ["", "2"]) { document.getElementById("ceyebrow" + s).textContent = T[0]; document.getElementById("ctitle" + s).textContent = T[1]; } }
+  document.title = `Contest Board: ${{ nfl: "NFL", gold: "NFL Gold", ncaaf: "NCAAF", survivor: "Survivor", "circa-survivor": "Circa Survivor", "circa-grandissimo": "Circa Grandissimo", "circa-millio": "Circa Million" }[S.league]}`;
+}
+async function switchLeague(lg) {
+  S.svShowAll = false;
+  if (lg === "nfl-group") {                       // the NFL button returns to whichever NFL contest was last open
+    if (nflFamilyLeague(S.league)) return;
+    lg = ["nfl", "gold", "circa-millio"].includes(local.get("cb-nflsub", "nfl")) ? local.get("cb-nflsub", "nfl") : "nfl";
+  }
+  if (lg === "survivor-group") {                  // same idea for the Survivor family
+    if (isSurvivor()) return;
+    lg = ["survivor", "circa-survivor", "circa-grandissimo"].includes(local.get("cb-survsub", "survivor")) ? local.get("cb-survsub", "survivor") : "survivor";
+  }
+  if (lg === S.league) return;
+  // Every contest except college runs on the NFL schedule, so keep the week when moving between them.
+  const keepWeek = S.league !== "ncaaf" && lg !== "ncaaf" ? S.week : null;
+  if (nflFamilyLeague(lg)) local.set("cb-nflsub", lg);
+  if (lg === "survivor" || lg === "circa-survivor" || lg === "circa-grandissimo") local.set("cb-survsub", lg);
+  S.league = lg; local.set("cb-league", lg); markLeague();
+  history.replaceState(null, "", lg !== "nfl" ? `#lg=${lg}` : location.pathname + location.search);
+  S.week = keepWeek; S.shown = 150; S.q = "";
+  S.svPickQ = ""; S.svSel = []; S.cmpShowOut = false;   // Compare picks belong to one contest; start fresh in the next
+  ["games", "standings", "teams", "ats", "top", "svweek", "sventries", "svcompare", "svtrends"].forEach(t => { const el = $("#" + t); if (el) el.innerHTML = `<p class="note">Loading…</p>`; });
+  await Store.reset();
+  Store.watch(P.index, onIndex);
+  setTimeout(scheduleRefresh, 1500);
+}
+// Numbered week buttons. Weeks with no data yet (future weeks) are shown but disabled.
+function renderWeekbar(ws) {
+  const bar = document.getElementById("weekbar"); if (!bar) return;
+  const season = typeof isCollege === "function" && isCollege() ? 14 : 18;
+  const total = Math.max(season, ...ws, 1), have = new Set(ws);
+  bar.innerHTML = `<span class="wb-label">Week</span>` + Array.from({ length: total }, (_, i) => i + 1).map(w =>
+    `<button data-goweek="${w}" ${have.has(w) ? "" : "disabled"} ${w === S.week ? 'aria-current="true"' : ""}>${w}</button>`).join("");
+  const cur = bar.querySelector('[aria-current="true"]');
+  if (cur) bar.scrollLeft = Math.max(0, cur.offsetLeft - bar.clientWidth / 2);
+}
+/* ================= render: survivor ================= */
+// Straight-up result for a picked team in week w, from the same NFL scores as the main contest.
+function survResult(w, t) {
+  const g = scoresMap(w)[t];
+  if (!g || g.state === "pre" || g.home_score == null || g.away_score == null) return { st: "pre", g };
+  const mine = g.home === t ? g.home_score : g.away_score, theirs = g.home === t ? g.away_score : g.home_score;
+  return { st: g.state === "post" ? "final" : "live", r: mine > theirs ? "W" : mine < theirs ? "L" : "T", mine, theirs, g };
+}
+// Walk the season: a loss, a tie or a missing pick eliminates; each team once.
+function survState(W) {
+  const weeks = weeksList().filter(w => w <= W && index().weeks[w]?.picks);
+  const st = {};
+  weeks.forEach((w, i) => {
+    const picks = Object.fromEntries((Store.get(P.picks(w))?.entries || []).map(e => [e.id, e.pick]));
+    if (i === 0) for (const id of Object.keys(picks)) st[id] = { id, alive: true, out: null, reason: null, used: [] };
+    for (const s of Object.values(st)) {
+      if (!s.alive) continue;
+      const t = picks[s.id];
+      if (!t) { s.alive = false; s.out = w; s.reason = "No pick"; continue; }
+      const res = survResult(w, t), dup = s.used.some(u => u.t === t);
+      s.used.push({ w, t, res });
+      if (dup) { s.alive = false; s.out = w; s.reason = `${t} already used`; }
+      else if (res.st === "final" && res.r !== "W") { s.alive = false; s.out = w; s.reason = `${t} ${res.r === "T" ? "tied" : "lost"}`; }
+    }
+  });
+  return { st, weeks };
+}
+function survChip(u, withWeek) {
+  const r = u.res, cls = r.st === "pre" ? "" : r.r === "W" ? "st-W" : "st-L";
+  const t = r.st === "pre" ? "not started" : `${r.st === "final" ? (r.r === "W" ? "won" : r.r === "T" ? "tied" : "lost") : r.r === "W" ? "winning" : r.r === "T" ? "tied" : "losing"} ${r.mine}–${r.theirs}`;
+  return `<span class="chip ${cls}${r.st === "live" ? " live" : ""}" title="Week ${u.w}: ${u.t} ${t}">${withWeek ? `W${u.w} ` : ""}${u.t}</span>`;
+}
+function renderSvWeek() {
+  const el = $("#svweek"), W = S.week;
+  if (!seasonReady(["picks", "scores", "card"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const { st } = survState(W), all = Object.values(st);
+  if (!all.length) { el.innerHTML = `<div class="empty"><b>No Survivor picks yet.</b></div>`; return; }
+  const entering = all.filter(s => s.out === null || s.out >= W);
+  const outNow = all.filter(s => s.out === W).length, aliveNow = all.filter(s => s.alive).length;
+  const cnt = {};
+  for (const s of entering) { const u = s.used.find(x => x.w === W); if (u) cnt[u.t] = (cnt[u.t] || 0) + 1; }
+  const opp = {};
+  for (const g of Store.get(P.card(W))?.games || []) {
+    const n = g.neutral;
+    opp[g.away.abbr] = { o: g.home.abbr, where: n ? "vs" : "@", time: g.time_pt };
+    opp[g.home.abbr] = { o: g.away.abbr, where: "vs", time: g.time_pt };
+  }
+  const rows = Object.entries(cnt).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const status = (t) => {
+    const r = survResult(W, t);
+    if (r.st === "pre") return `<span class="chip">${esc(kickoffLabel(r.g, { time_pt: opp[t]?.time }) || "Not started")}</span>`;
+    const word = r.st === "final" ? (r.r === "W" ? "Won" : r.r === "T" ? "Tied: out" : "Lost: out") : (r.r === "W" ? "Winning" : r.r === "T" ? "Tied" : "Losing");
+    return `<span class="chip ${r.r === "W" ? "st-W" : "st-L"}${r.st === "live" ? " live" : ""}">${word} ${r.mine}–${r.theirs}</span>${r.st === "live" ? ` <small class="note">${esc(r.g.detail || "")}</small>` : ""}`;
+  };
+  el.innerHTML = `
+    <div class="strip">
+      <div><b>${all.length}</b><span>entries started week 1</span></div>
+      <div><b>${entering.length}</b><span>alive going into week ${W}</span></div>
+      <div><b>${aliveNow}</b><span>still alive now</span></div>
+      <div><b>${outNow}</b><span>eliminated in week ${W}</span></div>
+    </div>
+    <h2 class="sec" style="margin-top:0">Week ${W} picks</h2>
+    <div class="table-wrap"><table style="min-width:640px"><thead><tr><th>Team</th><th>Game</th><th class="num">Entries</th><th class="num">% of alive</th><th>Result</th></tr></thead><tbody>
+      ${rows.map(([t, n]) => `<tr><td class="name">${teamBadge(t)} <b style="margin-left:6px">${esc(t)}</b> <small class="note">${esc(NICK[t] || "")}</small></td>
+        <td class="rec">${opp[t] ? `${opp[t].where} ${esc(opp[t].o)}` : ""}</td><td class="num">${n}</td>
+        <td class="num">${Math.round(n / entering.length * 100)}%</td><td>${status(t)}</td></tr>`).join("")}
+    </tbody></table></div>
+    <p class="note" style="margin-top:8px">Straight-up winners, no spread. A loss or a tie eliminates the entry.</p>`;
+}
+function renderSvEntries() {
+  const el = $("#sventries"), W = S.week;
+  if (!seasonReady(["picks", "scores"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const { st } = survState(W);
+  const q = S.q.trim().toUpperCase();
+  const full = Object.values(st)
+    .filter(s => (!S.svAlive || s.alive) && (!q || s.id.includes(q)))
+    .sort((a, b) => (b.alive - a.alive) || ((b.out || 99) - (a.out || 99)) || a.id.localeCompare(b.id));
+  const aliveN = Object.values(st).filter(s => s.alive).length;
+  const cap = S.svShowAll ? full.length : 200;
+  const list = full.slice(0, cap);
+  el.innerHTML = `
+    <div class="tools"><input type="search" id="q" placeholder="Find an entry" value="${esc(S.q)}" aria-label="Find an entry">
+      <label><input type="checkbox" id="svAlive" ${S.svAlive ? "checked" : ""}> Alive only (${aliveN})</label></div>
+    ${full.length > list.length ? `<p class="note">Showing ${list.length} of ${full.length}. <button class="pill" id="svShowAll">Show all</button> or search to narrow.</p>` : `<p class="note">${full.length} ${full.length === 1 ? "entry" : "entries"}.</p>`}
+    <div class="table-wrap"><table style="min-width:760px"><thead><tr><th>Entry</th><th>Status</th><th>Week ${W} pick</th><th>Teams used</th><th class="num">Teams left</th></tr></thead><tbody>
+      ${list.map(s => {
+        const cur = s.used.find(u => u.w === W);
+        const stat = s.alive ? `<span class="up">Alive</span>` : `<span class="down">Out week ${s.out}</span> <small class="note">${esc(s.reason || "")}</small>`;
+        return `<tr><td class="name"><button data-sventry="${esc(s.id)}">${esc(s.id)}</button></td><td>${stat}</td><td>${cur ? survChip(cur) : `<span class="note">—</span>`}</td>
+          <td><div class="picks">${s.used.map(u => survChip(u, true)).join("")}</div></td><td class="num">${32 - s.used.length}</td></tr>`;
+      }).join("")}
+    </tbody></table></div>`;
+}
+
+function renderSvCompare() {
+  const el = $("#svcompare"), W = S.week;
+  if (!seasonReady(["picks", "scores", "card"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const { st } = survState(W), all = Object.keys(st).sort();
+  if (!all.length) { el.innerHTML = `<div class="empty"><b>No Survivor entries yet.</b></div>`; return; }
+  const aliveIds = all.filter(id => st[id].alive), outCount = all.length - aliveIds.length;
+  if (!S.svSel) S.svSel = [];                          // nothing selected until the user picks
+  S.svSel = S.svSel.filter(id => all.includes(id));
+  const pool = S.cmpShowOut ? all : aliveIds;
+  const q = S.svPickQ.trim().toUpperCase();
+  const listed = pool.filter(id => !q || id.includes(q));
+  const weeks = weeksList().filter(w => w <= W && index().weeks[w]?.picks);
+  const statusShort = s => s.alive ? `<span class="st up">Alive</span>` : `<span class="st down">Out W${s.out}</span>`;
+  const statusLine = s => s.alive ? `<span class="up">Alive</span>` : `<span class="down">Out week ${s.out}</span> <span class="note">— ${esc(s.reason || "")}</span>`;
+  const cellFor = (s, w) => { const u = s.used.find(x => x.w === w); return u ? survChip(u) : `<span class="note">${w > (s.out ?? 99) ? "—" : "No pick"}</span>`; };
+  const picker = `<div class="cmppicker">
+      <input type="search" id="cmpQ" placeholder="Find a contestant" value="${esc(S.svPickQ)}" aria-label="Find a contestant">
+      <div class="cmpcount">${S.svSel.length} selected</div>
+      <div class="cmplist">${listed.map(id => `<label class="cmprow"><input type="checkbox" data-cmpid="${esc(id)}" ${S.svSel.includes(id) ? "checked" : ""}>
+        <span class="nm">${esc(id)}</span>${statusShort(st[id])}</label>`).join("") || `<p class="note">No matches.</p>`}</div>
+      ${outCount ? `<label class="cmprow" style="font-size:12px;color:var(--ink-2);border-top:1px solid var(--rule);margin-top:6px;padding-top:8px">
+        <input type="checkbox" id="cmpShowOut" ${S.cmpShowOut ? "checked" : ""}> Show eliminated (${outCount})</label>` : ""}
+    </div>`;
+  const table = !S.svSel.length ? `<div class="empty"><b>Pick contestants from the list to compare their picks.</b></div>` : `
+    <div class="table-wrap"><table style="min-width:${180 + weeks.length * 70}px;width:auto;max-width:100%"><thead><tr><th>Entry</th>
+      ${weeks.map(w => `<th class="num">W${w}</th>`).join("")}
+    </tr></thead><tbody>
+      ${S.svSel.map(id => `<tr><th class="cmphead" scope="row">${esc(id)}<button class="x" data-cmpremove="${esc(id)}" title="Remove ${esc(id)}" aria-label="Remove ${esc(id)}">✕</button><small>${statusLine(st[id])}</small></th>
+        ${weeks.map(w => `<td>${cellFor(st[id], w)}</td>`).join("")}</tr>`).join("")}
+    </tbody></table></div>`;
+  // Keep the name list where it was scrolled (re-render would jump it to the top), unless the search or list changed.
+  const listKey = `${S.league}|${q}|${S.cmpShowOut}|${W}`, oldList = el.querySelector(".cmplist");
+  const keepTop = oldList && S.cmpListKey === listKey ? oldList.scrollTop : 0;
+  S.cmpListKey = listKey;
+  el.innerHTML = `<div class="cmpwrap">${picker}<div>${table}</div></div>`;
+  if (keepTop) el.querySelector(".cmplist").scrollTop = keepTop;
+}
+function renderSvTrends() {
+  const el = $("#svtrends"), W = S.week;
+  if (!seasonReady(["picks", "scores", "card"], W)) { el.innerHTML = `<p class="note">Loading…</p>`; return; }
+  const { st, weeks } = survState(W), all = Object.values(st);
+  if (!all.length) { el.innerHTML = `<div class="empty"><b>No Survivor entries yet.</b></div>`; return; }
+  const start = all.length;
+  const rows = weeks.map(w => ({ w, alive: all.filter(s => s.out === null || s.out > w).length,
+    out: all.filter(s => s.out === w).length }));
+  const last = rows.at(-1)?.alive ?? start;
+  el.innerHTML = `
+    <div class="strip">
+      <div><b>${start}</b><span>entries started week 1</span></div>
+      <div><b>${last}</b><span>alive through week ${W}</span></div>
+      <div><b>${start ? Math.round(last / start * 100) : 0}%</b><span>of the field remaining</span></div>
+    </div>
+    <h2 class="sec" style="margin-top:0">Survival curve</h2>
+    <p class="note">Entries still alive after each week. Red numbers are eliminations that week.</p>
+    <div class="survcurve">${rows.map(r => `<div class="col"><button class="bar" style="height:${Math.max(r.alive / start * 100, 2)}%" data-svweekdetail="${r.w}" title="Week ${r.w}: see the picks">
+        <span class="n">${r.alive}</span></button><div class="wk">W${r.w}</div>${r.out ? `<div class="elim">-${r.out}</div>` : `<div class="elim">&nbsp;</div>`}</div>`).join("")}
+    </div>
+    <p class="note" style="margin-top:14px">Click a bar to see that week's picks: who took what, and which teams got entries eliminated.</p>`;
+}
+function openSurvivorWeekDetail(w) {
+  const { st } = survState(S.week);
+  const entering = Object.values(st).filter(s => s.out === null || s.out >= w);
+  const byTeam = {};   // team -> {ids: [...], res}
+  for (const s of entering) {
+    const u = s.used.find(x => x.w === w);
+    if (!u) continue;
+    (byTeam[u.t] ||= { ids: [], res: u.res }).ids.push(s.id);
+  }
+  const opp = {};
+  for (const g of Store.get(P.card(w))?.games || []) {
+    const n = g.neutral;
+    opp[g.away.abbr] = { o: g.home.abbr, where: n ? "vs" : "@" };
+    opp[g.home.abbr] = { o: g.away.abbr, where: "vs" };
+  }
+  const rows = Object.entries(byTeam).sort((a, b) => b[1].ids.length - a[1].ids.length);
+  const won = rows.filter(([, v]) => v.res.st === "final" && v.res.r === "W");
+  const lost = rows.filter(([, v]) => v.res.st !== "final" || v.res.r !== "W");
+  const line = ([t, v]) => {
+    const r = v.res, cls = r.st === "pre" ? "" : r.r === "W" ? "st-W" : r.r === "T" ? "st-T" : "st-L";
+    const word = r.st === "pre" ? "Not started" : `${r.st === "final" ? (r.r === "W" ? "Won" : r.r === "T" ? "Tied" : "Lost") : (r.r === "W" ? "Winning" : r.r === "T" ? "Tied" : "Losing")} ${r.mine}–${r.theirs}`;
+    return `<li><span class="chip ${cls}${r.st === "live" ? " live" : ""}">${esc(t)}</span>
+      <span>${opp[t] ? `${opp[t].where} ${esc(opp[t].o)}` : ""} <small class="note">(${v.ids.length} ${v.ids.length === 1 ? "entry" : "entries"})</small></span>
+      <span class="d">${word}</span></li>`;
+  };
+  const d = $("#entry");
+  d.innerHTML = `${closeBtns()}<h2>Week ${w} picks</h2>
+    <p class="sub">${entering.length} entries had a pick to make this week.</p>
+    ${won.length ? `<h2 class="sec">Kept entries alive</h2><ul>${won.map(line).join("")}</ul>` : ""}
+    ${lost.length ? `<h2 class="sec">Cost entries (loss, tie, or still to finish)</h2><ul>${lost.map(line).join("")}</ul>` : ""}`;
+  if (!d.open) d.showModal();
+}
+function openSurvivorEntry(id) {
+  const W = S.week, { st } = survState(W), s = st[id];
+  if (!s) return;
+  const used = new Map(s.used.map(u => [u.t, u]));
+  const teams = Object.keys(NICK).sort();
+  const cell = t => {
+    const u = used.get(t);
+    if (!u) return `<div class="tg">${teamBadge(t)}<span class="ab">${t}</span></div>`;
+    const cls = u.res.st === "pre" ? "" : u.res.r === "W" ? "st-W" : u.res.r === "T" ? "st-T" : "st-L";
+    return `<div class="tg used ${cls}">${teamBadge(t)}<span class="ab">${t}</span><span class="wk">Wk${u.w}</span></div>`;
+  };
+  const status = s.alive ? `<span class="up">Alive</span>` : `<span class="down">Eliminated week ${s.out}</span> — ${esc(s.reason || "")}`;
+  const d = $("#entry");
+  d.innerHTML = `${closeBtns()}<h2>${esc(id)}</h2>
+    <p class="sub">${status}. ${s.used.length} of 32 teams used, ${32 - s.used.length} still available, through week ${W}.</p>
+    <h2 class="sec" style="margin-top:14px">Teams</h2>
+    <div class="teamgrid">${teams.map(cell).join("")}</div>`;
+  if (!d.open) d.showModal();
+}
+
+/* ================= render: scoreboard ================= */
+// Team-color badges with the abbreviation (colors only; no team artwork).
+const TEAM_COLORS = { ARI:"#97233F", ATL:"#A71930", BAL:"#241773", BUF:"#00338D", CAR:"#0085CA", CHI:"#0B162A", CIN:"#FB4F14",
+  CLE:"#311D00", DAL:"#041E42", DEN:"#FB4F14", DET:"#0076B6", GB:"#203731", HOU:"#03202F", IND:"#002C5F", JAX:"#006778",
+  KC:"#E31837", LV:"#000000", LAC:"#0080C6", LAR:"#003594", MIA:"#008E97", MIN:"#4F2683", NE:"#002244", NO:"#101820",
+  NYG:"#0B2265", NYJ:"#125740", PHI:"#004C54", PIT:"#101820", SF:"#AA0000", SEA:"#002244", TB:"#D50A0A", TEN:"#0C2340", WSH:"#5A1414" };
+const tLabel = ab => typeof lbl === "function" ? lbl(ab) : ab;
+const tNick = ab => typeof nickOf === "function" ? nickOf(ab) : (NICK[ab] || "");
+const teamBadge = ab => `<span class="tbadge" style="background:${TEAM_COLORS[ab] || "var(--idle)"}" aria-hidden="true">${esc(tLabel(ab))}</span>`;
+// Each team's ATS record from every final game through week W.
+function atsThrough(W) {
+  const rec = {};
+  for (const w of weeksList().filter(w => w <= W && index().weeks[w]?.card)) {
+    const g = weekGrades(w); if (!g) continue;
+    for (const gm of g.card) for (const side of [gm.fav, gm.dog]) {
+      const r = rec[side.abbr] ||= { w: 0, l: 0, p: 0 };
+      const gr = grade(side.abbr, g.card, g.scores, g.ov);
+      if (gr.final && gr.res) gr.res === "W" ? r.w++ : gr.res === "L" ? r.l++ : r.p++;
+    }
+  }
+  return rec;
+}
+function bind() {
+  const sheet = on => document.body.classList.toggle("sheet", on);
+  document.getElementById("menubtn").addEventListener("click", () => sheet(true));
+  document.getElementById("sheetclose").addEventListener("click", () => sheet(false));
+  document.getElementById("scrim").addEventListener("click", () => sheet(false));
+  document.getElementById("rail").addEventListener("click", e => { if (e.target.closest("[data-league]")) sheet(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") sheet(false); });
+  document.getElementById("weekbar").addEventListener("click", e => {
+    const b = e.target.closest("[data-goweek]"); if (!b || b.disabled) return;
+    const sel = $("#week"); sel.value = b.dataset.goweek; sel.dispatchEvent(new Event("change"));
+  });
+  document.querySelectorAll(".league").forEach(g => g.addEventListener("click", e => { const b = e.target.closest("[data-league]"); if (b) switchLeague(b.dataset.league); }));
+  $("#week").addEventListener("change", e => { S.week = +e.target.value; S.shown = 150; onIndex(); setTimeout(scheduleRefresh, 1500); });
+  document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) { S.tab = b.dataset.tab; render(); } });
+  const main = $("#main");
+  main.addEventListener("click", e => {
+    const t = e.target, c = s => t.closest(s);
+    if (c("[data-gsort]")) { S.gameSort = c("[data-gsort]").dataset.gsort; render(); }
+    else if (c("[data-svweekdetail]")) openSurvivorWeekDetail(+c("[data-svweekdetail]").dataset.svweekdetail);
+    else if (c("#svShowAll")) { S.svShowAll = true; render(); }
+    else if (c("[data-cmpremove]")) { const id = c("[data-cmpremove]").dataset.cmpremove; S.svSel = (S.svSel || []).filter(x => x !== id); render(); }
+    else if (c("[data-star]")) { const id = c("[data-star]").dataset.star; S.starred.has(id) ? S.starred.delete(id) : S.starred.add(id); local.set("cb-starred", [...S.starred]); render(); }
+    else if (c("[data-entry]")) openEntry(c("[data-entry]").dataset.entry, c("[data-entry]").dataset.lg || S.league);
+    else if (c("[data-sventry]")) openSurvivorEntry(c("[data-sventry]").dataset.sventry);
+    else if (c("[data-team]")) openTeam(c("[data-team]").dataset.team);
+    else if (c("[data-atssort]")) { const k = c("[data-atssort]").dataset.atssort; S.atsDir = (S.atsSort || "pct") === k ? -(S.atsDir || 1) : (k === "team" ? -1 : 1); S.atsSort = k; render(); }
+    else if (c("[data-topn]")) { S.topN = +c("[data-topn]").dataset.topn; local.set("cb-topn", S.topN); render(); }
+    else if (c("[data-topteam]")) openTopTeam(c("[data-topteam]").dataset.topteam);
+    else if (c("th[data-sort]")) {
+      const k = c("th[data-sort]").dataset.sort;
+      if (S.sortKey === k) S.sortDir = -S.sortDir; else { S.sortKey = k; S.sortDir = k === "name" ? 1 : -1; }
+      render();
+    }
+    else if (t.id === "more") { S.shown = Infinity; render(); }
+  });
+  main.addEventListener("input", e => {
+    if (e.target.id === "cmpQ") {
+      S.svPickQ = e.target.value; clearTimeout(S.cmpT);
+      S.cmpT = setTimeout(() => { const pos = e.target.selectionStart; render();
+        requestAnimationFrame(() => { const i = document.getElementById("cmpQ"); if (i) { i.focus(); i.setSelectionRange(pos, pos); } }); }, 150);
+      return;
+    }
+    if (e.target.id === "topN") {
+      const v = parseInt(e.target.value, 10);
+      if (v > 0) { S.topN = v; local.set("cb-topn", v); clearTimeout(S.tnT); S.tnT = setTimeout(() => { render(); requestAnimationFrame(() => { const i = $("#topN"); if (i) { i.focus(); const l = i.value.length; try { i.setSelectionRange(l, l); } catch {} } }); }, 350); }
+      return;
+    }
+    if (e.target.id === "q") { S.q = e.target.value; S.shown = 150; clearTimeout(S.qT); S.qT = setTimeout(render, 150); } });
+  main.addEventListener("change", e => {
+    const t = e.target;
+    if (t.id === "cmpShowOut") { S.cmpShowOut = t.checked; render(); return; }
+    if (t.dataset.cmpid) {
+      const id = t.dataset.cmpid; S.svSel = S.svSel || [];
+      if (t.checked) { if (!S.svSel.includes(id)) S.svSel.push(id); } else { S.svSel = S.svSel.filter(x => x !== id); }
+      render(); return;
+    }
+    if (t.id === "onlyStar") { S.onlyStarred = t.checked; render(); }
+    else if (t.id === "svAlive") { S.svAlive = t.checked; render(); }
+    else if (t.id === "topTies") { S.topTies = t.checked; render(); }
+    else if (t.id === "topBasis") { S.topBasis = t.value; render(); }
+    else if (t.dataset.topx) {
+      const k = `cb-topx-${S.league}`, cur = local.get(k, []).filter(l => l !== t.dataset.topx);
+      local.set(k, t.checked ? [...cur, t.dataset.topx] : cur); render();
+    }
+  });
+  $("#entry").addEventListener("click", e => {
+    const en = e.target.closest("[data-entry]");
+    const d = $("#entry");
+    if (en) { BACK.push({ html: d.innerHTML, top: d.scrollTop, for: d.dataset.for || "" }); d.scrollTop = 0; openEntry(en.dataset.entry, en.dataset.lg || S.league); return; }
+    if (e.target.closest("[data-back]") && BACK.length) {
+      const prev = BACK.pop(); d.dataset.for = prev.for; d.innerHTML = prev.html; d.scrollTop = prev.top; return;
+    }
+    if (e.target.matches("[data-close]") || e.target === d) d.close();
+  });
+  $("#entry").addEventListener("close", () => { BACK.length = 0; });
+}
+
+bind();
+renderStatus();
+markLeague();
+Store.init().then(() => { Store.watch(P.index, onIndex); setTimeout(scheduleRefresh, 3000); });
+})();
+</script>
+</body>
+</html>
