@@ -822,6 +822,9 @@ function gameCard({ g, sg, cf, cd }, n, scores, card, ov, rec) {
 }
 /* ================= render: standings ================= */
 let lastSt = null;
+// Popup history: opening an entry from a list inside the popup saves the list so Back can return to it.
+const BACK = [];
+const closeBtns = () => `<button class="btn close" data-close>Close</button>${BACK.length ? `<button class="btn close" data-back style="margin-right:8px">← Back</button>` : ""}`;
 // Season ATS win % = wins / (wins + losses); pushes and C's left out.
 function winPct(r) { const d = r.rec.w + r.rec.l; return d ? r.rec.w / d : null; }
 function wkRecord(wk) {
@@ -875,10 +878,10 @@ function openEntry(id, lg = S.league) {
   if (lg !== S.league) { openXEntry(id, lg); return; }
   // Always recompute: lastSt is only refreshed by the Standings tab, so it can be from another week or contest.
   lastSt = computeStandings(S.week);
-  const html = entryHtml(id, lastSt) || `<button class="btn close" data-close>Close</button><h2>${esc(id)}</h2><p class="sub">Not found in week ${S.week} standings yet.</p>`;
+  const html = entryHtml(id, lastSt) || `${closeBtns()}<h2>${esc(id)}</h2><p class="sub">Not found in week ${S.week} standings yet.</p>`;
   const d = $("#entry"); d.dataset.for = "";
   d.innerHTML = html + `<div class="season" data-for="${esc(id)}"><p class="sub" style="margin-top:16px">Loading earlier weeks…</p></div>`;
-  d.showModal();
+  if (!d.open) d.showModal();
   fillSeason(id);
 }
 // Entry popup body (header, this week's picks) from standings st, for whichever contest is active in Store.
@@ -891,7 +894,7 @@ function entryHtml(id, st, tag = "") {
       `${gr.final ? { W: "Covered", L: "Did not cover", P: "Push" }[gr.res] : { W: "Covering", L: "Not covering", P: "On the number" }[gr.res]}, ${gr.mine}–${gr.theirs}${gr.final ? " final" : " " + esc(gr.sg.detail || "")}`;
     return `<li>${chip(gr)}<span>${nickOf(gr.ab) || lbl(gr.ab)} ${fmtLine(gr.side?.line ?? 0)} vs ${gr.opp ? lbl(gr.opp.abbr) : ""}</span><span class="d">${s}</span></li>`;
   };
-  return `<button class="btn close" data-close>Close</button><h2>${esc(r.id)}${tag ? ` <small class="note" style="font-size:14px">${esc(tag)}</small>` : ""}</h2>
+  return `${closeBtns()}<h2>${esc(r.id)}${tag ? ` <small class="note" style="font-size:14px">${esc(tag)}</small>` : ""}</h2>
     <p class="sub">Place ${r.place}${r.tie ? "T" : ""} with ${fmtPts(r.total)} points, record ${r.rec.w}-${r.rec.l}-${r.rec.t}-${r.rec.c}.
     ${r.basePlace != null && !st.official ? `Official after week ${st.baseWeek}: ${r.basePlace} (${r.baseRec}).` : ""}</p>
     ${wk ? `<ul>${wk.grades.map(line).join("")}</ul><p class="sub" style="margin-top:12px">Week ${S.week}: ${wk.w}-${wk.l}-${wk.p}-${wk.c} final${wk.lw + wk.ll + wk.lp ? `, ${wk.lw}-${wk.ll}-${wk.lp} in progress` : ""}${wk.pending ? `, ${wk.pending} not started` : ""}.</p>`
@@ -1026,12 +1029,12 @@ function openTeam(abbr) {
   const who = picks.filter(e => e.picks.includes(abbr)).map(e => e.id).sort();
   const st = !gr.res ? "not started" : gr.final ? RESULT_TEXT[gr.res].toLowerCase() : { W: "covering", L: "not covering", P: "on the number" }[gr.res];
   const d = $("#entry");
-  d.innerHTML = `<button class="btn close" data-close>Close</button>
+  d.innerHTML = `${closeBtns()}
     <h2>${lbl(abbr)} ${fmtLine(gr.side?.line ?? 0)} vs ${gr.opp ? lbl(gr.opp.abbr) : ""}</h2>
     <p class="sub">${who.length} entries (${Math.round(who.length / picks.length * 100)}% of the field), currently ${st}.</p>
     <div style="max-height:50vh;overflow:auto"><p style="margin:0;line-height:1.9">${who.map(id =>
       `<button class="chip" data-entry="${esc(id)}" style="min-width:0;margin:0 4px 4px 0;cursor:pointer">${esc(id)}</button>`).join("")}</p></div>`;
-  d.showModal();
+  if (!d.open) d.showModal();
 }
 
 /* ================= season data ================= */
@@ -1183,7 +1186,7 @@ function xRefreshScores() {
 // load that contest's whole season into its own cache, then build the same popup inside it.
 async function openXEntry(id, lg) {
   const c = xCtx(lg), W = S.week, d = $("#entry"), tag = SHORT[lg] || LEAGUE_NAME[lg];
-  d.innerHTML = `<button class="btn close" data-close>Close</button><h2>${esc(id)} <small class="note" style="font-size:14px">${esc(tag)}</small></h2><p class="sub">Loading their season…</p>`;
+  d.innerHTML = `${closeBtns()}<h2>${esc(id)} <small class="note" style="font-size:14px">${esc(tag)}</small></h2><p class="sub">Loading their season…</p>`;
   d.dataset.for = `${lg}|${id}`;
   if (!d.open) d.showModal();
   const t0 = Date.now();
@@ -1203,7 +1206,7 @@ async function openXEntry(id, lg) {
   }
   const html = inCtx(c, () => { const st = computeStandings(W), h = entryHtml(id, st, tag); return h && h + seasonHtml(id, W); });
   if (d.dataset.for !== `${lg}|${id}`) return;
-  d.innerHTML = html || `<button class="btn close" data-close>Close</button><h2>${esc(id)}</h2><p class="sub">Not found in ${esc(tag)} for week ${W}.</p>`;
+  d.innerHTML = html || `${closeBtns()}<h2>${esc(id)}</h2><p class="sub">Not found in ${esc(tag)} for week ${W}.</p>`;
 }
 // One contest's leaders for week W: { lg, T, picks, g } or { lg, loading } / { lg, none }.
 function topSource(lg, W) {
@@ -1315,12 +1318,12 @@ function openTopTeam(a) {
   lgs.sort((x, y) => (y === S.league) - (x === S.league));
   const chipOf = x => `<button class="chip" data-entry="${esc(x.id)}" data-lg="${x.lg}" style="min-width:0;margin:0 4px 4px 0;cursor:pointer">${esc(x.id)}</button>`;
   const d = $("#entry");
-  d.innerHTML = `<button class="btn close" data-close>Close</button><h2>${lbl(a)} ${nickOf(a)}</h2>
+  d.innerHTML = `${closeBtns()}<h2>${lbl(a)} ${nickOf(a)}</h2>
     <p class="sub">${list.length} of the leaders picked ${lbl(a)} in week ${S.week}.</p>
     ${lgs.map(l => { const ids = list.filter(x => x.lg === l).sort((p, q) => p.id.localeCompare(q.id));
       return `${lgs.length > 1 ? `<h3 style="margin:10px 0 4px;font:700 15px var(--cond)">${SHORT[l] || LEAGUE_NAME[l]} (${ids.length})</h3>` : ""}
         <p style="margin:0;line-height:1.9">${ids.map(chipOf).join("")}</p>`; }).join("")}`;
-  d.showModal();
+  if (!d.open) d.showModal();
 }
 
 /* ================= render: upload data ================= */
@@ -1624,11 +1627,11 @@ function openSurvivorWeekDetail(w) {
       <span class="d">${word}</span></li>`;
   };
   const d = $("#entry");
-  d.innerHTML = `<button class="btn close" data-close>Close</button><h2>Week ${w} picks</h2>
+  d.innerHTML = `${closeBtns()}<h2>Week ${w} picks</h2>
     <p class="sub">${entering.length} entries had a pick to make this week.</p>
     ${won.length ? `<h2 class="sec">Kept entries alive</h2><ul>${won.map(line).join("")}</ul>` : ""}
     ${lost.length ? `<h2 class="sec">Cost entries (loss, tie, or still to finish)</h2><ul>${lost.map(line).join("")}</ul>` : ""}`;
-  d.showModal();
+  if (!d.open) d.showModal();
 }
 function openSurvivorEntry(id) {
   const W = S.week, { st } = survState(W), s = st[id];
@@ -1643,11 +1646,11 @@ function openSurvivorEntry(id) {
   };
   const status = s.alive ? `<span class="up">Alive</span>` : `<span class="down">Eliminated week ${s.out}</span> — ${esc(s.reason || "")}`;
   const d = $("#entry");
-  d.innerHTML = `<button class="btn close" data-close>Close</button><h2>${esc(id)}</h2>
+  d.innerHTML = `${closeBtns()}<h2>${esc(id)}</h2>
     <p class="sub">${status}. ${s.used.length} of 32 teams used, ${32 - s.used.length} still available, through week ${W}.</p>
     <h2 class="sec" style="margin-top:14px">Teams</h2>
     <div class="teamgrid">${teams.map(cell).join("")}</div>`;
-  d.showModal();
+  if (!d.open) d.showModal();
 }
 
 /* ================= render: scoreboard ================= */
@@ -1733,9 +1736,14 @@ function bind() {
   });
   $("#entry").addEventListener("click", e => {
     const en = e.target.closest("[data-entry]");
-    if (en) { $("#entry").close(); openEntry(en.dataset.entry, en.dataset.lg || S.league); return; }
-    if (e.target.matches("[data-close]") || e.target === $("#entry")) $("#entry").close();
+    const d = $("#entry");
+    if (en) { BACK.push({ html: d.innerHTML, top: d.scrollTop, for: d.dataset.for || "" }); d.scrollTop = 0; openEntry(en.dataset.entry, en.dataset.lg || S.league); return; }
+    if (e.target.closest("[data-back]") && BACK.length) {
+      const prev = BACK.pop(); d.dataset.for = prev.for; d.innerHTML = prev.html; d.scrollTop = prev.top; return;
+    }
+    if (e.target.matches("[data-close]") || e.target === d) d.close();
   });
+  $("#entry").addEventListener("close", () => { BACK.length = 0; });
 }
 
 bind();
