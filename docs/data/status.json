@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-29T18:26:05+00:00",
+ "updated": "2026-09-29T18:48:04+00:00",
  "lines": [
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
   "college card: weeks listed [1, 2, 3, 4]",
@@ -11,7 +11,6 @@
   "survivor card: weeks listed [1, 2, 3]",
   "survivor picks: weeks listed [1, 2, 3]",
   "survivor used: weeks listed [1, 2, 3]",
-  "survivor used-teams through week 3: 35 entries alive",
   "circa: found 6 current-season PDFs (grandissimo picks wk3, grandissimo used wk4, millio picks wk3, millio standings wk3, survivor picks wk3, survivor used wk4)"
  ]
 }
