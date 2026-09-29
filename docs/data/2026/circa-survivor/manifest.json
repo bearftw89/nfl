@@ -14,6 +14,10 @@
   "3": {
    "picks": true,
    "used": true
+  },
+  "4": {
+   "picks": false,
+   "used": true
   }
  }
 }
