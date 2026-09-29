@@ -1,6 +1,7 @@
 {
- "updated": "2026-09-29T16:01:27+00:00",
+ "updated": "2026-09-29T16:25:24+00:00",
  "lines": [
+  "wrote docs/data/2026/week-3/standings.json (596 rows)",
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
   "college card: weeks listed [1, 2, 3, 4]",
   "college picks: weeks listed [1, 2, 3, 4]",
