@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-01T17:01:24+00:00",
+ "updated": "2026-10-01T17:21:43+00:00",
  "lines": [
   "college card: weeks listed [1, 2, 3, 4, 5]",
   "college picks: weeks listed [1, 2, 3, 4]",
@@ -10,6 +10,8 @@
   "survivor card: weeks listed [1, 2, 3, 4]",
   "survivor picks: weeks listed [1, 2, 3]",
   "survivor used: weeks listed [1, 2, 3]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk3, grandissimo used wk4, millio picks wk3, millio standings wk3, survivor picks wk3, survivor used wk4)"
+  "circa: found 6 current-season PDFs (grandissimo picks wk3, grandissimo used wk4, millio card wk4, millio standings wk3, survivor picks wk3, survivor used wk4)",
+  "! circa millio card week 4: game box with an unreadable row: {'num': 3, 'name': 'COLTS', 'line': -3.5, 'err': None, 'time': None, 'abbr': 'IND'}",
+  "! circa millio card week 4: 15 games read cleanly; keeping old data, not a run failure"
  ]
 }
