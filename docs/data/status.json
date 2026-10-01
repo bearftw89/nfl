@@ -1,17 +1,14 @@
 {
- "updated": "2026-10-01T02:15:42+00:00",
+ "updated": "2026-10-01T02:33:52+00:00",
  "lines": [
-  "wrote docs/data/2026/week-4/card.json (16 rows)",
   "ESPN refused this server (403 from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard); live scores come from the browser instead",
   "college card: weeks listed [1, 2, 3, 4, 5]",
-  "college card week 5: 56 games",
   "college picks: weeks listed [1, 2, 3, 4]",
   "college standings: weeks listed [1, 2, 3, 4]",
   "gold card: weeks listed [1, 2, 3, 4]",
   "gold picks: weeks listed [1, 2, 3]",
   "gold standings: weeks listed [1, 2, 3]",
   "survivor card: weeks listed [1, 2, 3, 4]",
-  "survivor card week 4: 16",
   "survivor picks: weeks listed [1, 2, 3]",
   "survivor used: weeks listed [1, 2, 3]",
   "circa: found 6 current-season PDFs (grandissimo picks wk3, grandissimo used wk4, millio picks wk3, millio standings wk3, survivor picks wk3, survivor used wk4)"
