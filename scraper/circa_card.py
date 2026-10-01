@@ -108,6 +108,7 @@ def _rows(pdf_bytes):
                 rows = []
                 for t, bt in ((top, mid), (mid, b["top"])):
                     label = re.sub(r"['‘’`]", "", _ocr(img.crop((x0 * s, t * s, (x1 - VALUE_W) * s, bt * s))).upper())
+                    label = re.sub(r"[^A-Z0-9]+$", "", label)    # OCR sometimes reads a trailing S as ':' or '.' (COMMANDERS -> COMMANDER:)
                     m = _LABEL.search(label)
                     if not m:
                         rows.append(None)
