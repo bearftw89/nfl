@@ -19,7 +19,8 @@
     "home": false,
     "line": 2.5,
     "abbr": "WESTERN KENTUCKY"
-   }
+   },
+   "espn_id": "401871049"
   },
   {
    "id": 2,
@@ -37,7 +38,8 @@
     "home": false,
     "line": 0.5,
     "abbr": "NORTH TEXAS"
-   }
+   },
+   "espn_id": "401862786"
   },
   {
    "id": 3,
@@ -55,7 +57,8 @@
     "home": false,
     "line": 3.5,
     "abbr": "PITTSBURGH"
-   }
+   },
+   "espn_id": "401858245"
   },
   {
    "id": 4,
@@ -73,7 +76,8 @@
     "home": true,
     "line": 7.5,
     "abbr": "DELAWARE"
-   }
+   },
+   "espn_id": "401871050"
   },
   {
    "id": 5,
@@ -91,7 +95,8 @@
     "home": true,
     "line": 2.5,
     "abbr": "NORTHWESTERN"
-   }
+   },
+   "espn_id": "401858476"
   },
   {
    "id": 6,
@@ -109,7 +114,8 @@
     "home": true,
     "line": 6.5,
     "abbr": "UCONN"
-   }
+   },
+   "espn_id": "401858252"
   },
   {
    "id": 7,
@@ -127,7 +133,8 @@
     "home": true,
     "line": 19.5,
     "abbr": "BALL STATE"
-   }
+   },
+   "espn_id": "401866431"
   },
   {
    "id": 8,
@@ -145,7 +152,8 @@
     "home": false,
     "line": 6.5,
     "abbr": "TEMPLE"
-   }
+   },
+   "espn_id": "401862792"
   },
   {
    "id": 9,
@@ -163,7 +171,8 @@
     "home": false,
     "line": 13.5,
     "abbr": "BOWLING GREEN"
-   }
+   },
+   "espn_id": "401866477"
   },
   {
    "id": 10,
@@ -181,7 +190,8 @@
     "home": true,
     "line": 2.5,
     "abbr": "FLORIDA STATE"
-   }
+   },
+   "espn_id": "401858253"
   },
   {
    "id": 11,
@@ -199,7 +209,8 @@
     "home": false,
     "line": 24.5,
     "abbr": "VANDERBILT"
-   }
+   },
+   "espn_id": "401856705"
   },
   {
    "id": 12,
@@ -217,7 +228,8 @@
     "home": true,
     "line": 3.5,
     "abbr": "KENT STATE"
-   }
+   },
+   "espn_id": "401866434"
   },
   {
    "id": 13,
@@ -235,7 +247,8 @@
     "home": false,
     "line": 2.5,
     "abbr": "KENTUCKY"
-   }
+   },
+   "espn_id": "401856709"
   },
   {
    "id": 14,
@@ -253,7 +266,8 @@
     "home": false,
     "line": 6.5,
     "abbr": "EASTERN MICHIGAN"
-   }
+   },
+   "espn_id": "401866433"
   },
   {
    "id": 15,
@@ -271,7 +285,8 @@
     "home": true,
     "line": 16.5,
     "abbr": "CLEMSON"
-   }
+   },
+   "espn_id": "401858249"
   },
   {
    "id": 16,
@@ -289,7 +304,8 @@
     "home": false,
     "line": 13.5,
     "abbr": "STANFORD"
-   }
+   },
+   "espn_id": "401858251"
   },
   {
    "id": 17,
@@ -307,7 +323,8 @@
     "home": true,
     "line": 3.5,
     "abbr": "NC STATE"
-   }
+   },
+   "espn_id": "401858248"
   },
   {
    "id": 18,
@@ -325,7 +342,8 @@
     "home": true,
     "line": 20.5,
     "abbr": "CHARLOTTE"
-   }
+   },
+   "espn_id": "401862787"
   },
   {
    "id": 19,
@@ -343,7 +361,8 @@
     "home": true,
     "line": 13.5,
     "abbr": "BUFFALO"
-   }
+   },
+   "espn_id": "401866432"
   },
   {
    "id": 20,
@@ -361,7 +380,8 @@
     "home": false,
     "line": 14.5,
     "abbr": "MARYLAND"
-   }
+   },
+   "espn_id": "401858475"
   },
   {
    "id": 21,
@@ -379,7 +399,8 @@
     "home": false,
     "line": 2.5,
     "abbr": "OLD DOMINION"
-   }
+   },
+   "espn_id": "401869956"
   },
   {
    "id": 22,
@@ -397,7 +418,8 @@
     "home": true,
     "line": 2.5,
     "abbr": "COASTAL CAROLINA"
-   }
+   },
+   "espn_id": "401869942"
   },
   {
    "id": 23,
@@ -415,7 +437,8 @@
     "home": false,
     "line": 18.5,
     "abbr": "MARSHALL"
-   }
+   },
+   "espn_id": "401869962"
   },
   {
    "id": 24,
@@ -433,7 +456,8 @@
     "home": true,
     "line": 21.5,
     "abbr": "NORTH CAROLINA"
-   }
+   },
+   "espn_id": "401858250"
   },
   {
    "id": 25,
@@ -451,7 +475,8 @@
     "home": false,
     "line": 7.5,
     "abbr": "AUBURN"
-   }
+   },
+   "espn_id": "401856710"
   },
   {
    "id": 26,
@@ -469,7 +494,8 @@
     "home": false,
     "line": 3.5,
     "abbr": "NAVY"
-   }
+   },
+   "espn_id": "401862791"
   },
   {
    "id": 27,
@@ -487,7 +513,8 @@
     "home": false,
     "line": 12.5,
     "abbr": "CENTRAL FLORIDA"
-   }
+   },
+   "espn_id": "401856819"
   },
   {
    "id": 28,
@@ -505,7 +532,8 @@
     "home": true,
     "line": 5.5,
     "abbr": "MINNESOTA"
-   }
+   },
+   "espn_id": "401858474"
   },
   {
    "id": 29,
@@ -523,7 +551,8 @@
     "home": false,
     "line": 18.5,
     "abbr": "MIDDLE TENNESSEE"
-   }
+   },
+   "espn_id": "401856807"
   },
   {
    "id": 30,
@@ -541,7 +570,8 @@
     "home": true,
     "line": 11.5,
     "abbr": "RICE"
-   }
+   },
+   "espn_id": "401862788"
   },
   {
    "id": 31,
@@ -559,7 +589,8 @@
     "home": false,
     "line": 6.5,
     "abbr": "AKRON"
-   }
+   },
+   "espn_id": "401866430"
   },
   {
    "id": 32,
@@ -577,7 +608,8 @@
     "home": false,
     "line": 10.5,
     "abbr": "MICHIGAN STATE"
-   }
+   },
+   "espn_id": "401858479"
   },
   {
    "id": 33,
@@ -595,7 +627,8 @@
     "home": false,
     "line": 9.5,
     "abbr": "PURDUE"
-   }
+   },
+   "espn_id": "401858472"
   },
   {
    "id": 34,
@@ -613,7 +646,8 @@
     "home": false,
     "line": 13.5,
     "abbr": "UL MONROE"
-   }
+   },
+   "espn_id": "401871089"
   },
   {
    "id": 35,
@@ -631,7 +665,8 @@
     "home": false,
     "line": 20.5,
     "abbr": "BOSTON COLLEGE"
-   }
+   },
+   "espn_id": "401858246"
   },
   {
    "id": 36,
@@ -649,7 +684,8 @@
     "home": true,
     "line": 12.5,
     "abbr": "COLORADO"
-   }
+   },
+   "espn_id": "401856821"
   },
   {
    "id": 37,
@@ -667,7 +703,8 @@
     "home": false,
     "line": 22.5,
     "abbr": "UTEP"
-   }
+   },
+   "espn_id": "401864514"
   },
   {
    "id": 38,
@@ -685,7 +722,8 @@
     "home": false,
     "line": 4.5,
     "abbr": "BAYLOR"
-   }
+   },
+   "espn_id": "401856817"
   },
   {
    "id": 39,
@@ -703,7 +741,8 @@
     "home": false,
     "line": 7.5,
     "abbr": "CINCINNATI"
-   }
+   },
+   "espn_id": "401856820"
   },
   {
    "id": 40,
@@ -721,7 +760,8 @@
     "home": false,
     "line": 9.5,
     "abbr": "WASHINGTON"
-   }
+   },
+   "espn_id": "401858478"
   },
   {
    "id": 41,
@@ -739,7 +779,8 @@
     "home": false,
     "line": 14.5,
     "abbr": "ARKANSAS"
-   }
+   },
+   "espn_id": "401856711"
   },
   {
    "id": 42,
@@ -757,7 +798,8 @@
     "home": true,
     "line": 14.5,
     "abbr": "IOWA"
-   }
+   },
+   "espn_id": "401858473"
   },
   {
    "id": 43,
@@ -775,7 +817,8 @@
     "home": true,
     "line": 6.5,
     "abbr": "TCU"
-   }
+   },
+   "espn_id": "401856818"
   },
   {
    "id": 44,
@@ -793,7 +836,8 @@
     "home": true,
     "line": 5.5,
     "abbr": "MISSISSIPPI STATE"
-   }
+   },
+   "espn_id": "401856707"
   },
   {
    "id": 45,
@@ -811,7 +855,8 @@
     "home": true,
     "line": 2.5,
     "abbr": "LOUISIANA TECH"
-   }
+   },
+   "espn_id": "401869842"
   },
   {
    "id": 46,
@@ -829,7 +874,8 @@
     "home": false,
     "line": 6.5,
     "abbr": "ARKANSAS STATE"
-   }
+   },
+   "espn_id": "401869932"
   },
   {
    "id": 47,
@@ -847,7 +893,8 @@
     "home": true,
     "line": 5.5,
     "abbr": "MISSOURI"
-   }
+   },
+   "espn_id": "401856708"
   },
   {
    "id": 48,
@@ -865,7 +912,8 @@
     "home": false,
     "line": 3.5,
     "abbr": "WEST VIRGINIA"
-   }
+   },
+   "espn_id": "401856822"
   },
   {
    "id": 49,
@@ -883,7 +931,8 @@
     "home": false,
     "line": 18.5,
     "abbr": "WYOMING"
-   }
+   },
+   "espn_id": "401864515"
   },
   {
    "id": 50,
@@ -901,7 +950,8 @@
     "home": false,
     "line": 2.5,
     "abbr": "CALIFORNIA"
-   }
+   },
+   "espn_id": "401858247"
   },
   {
    "id": 51,
@@ -919,7 +969,8 @@
     "home": true,
     "line": 6.5,
     "abbr": "COLORADO STATE"
-   }
+   },
+   "espn_id": "401860899"
   },
   {
    "id": 52,
@@ -937,7 +988,8 @@
     "home": false,
     "line": 20.5,
     "abbr": "UTAH STATE"
-   }
+   },
+   "espn_id": "401860898"
   },
   {
    "id": 53,
@@ -955,7 +1007,8 @@
     "home": true,
     "line": 24.5,
     "abbr": "RUTGERS"
-   }
+   },
+   "espn_id": "401858477"
   },
   {
    "id": 54,
@@ -973,7 +1026,8 @@
     "home": false,
     "line": 1.5,
     "abbr": "FRESNO STATE"
-   }
+   },
+   "espn_id": "401860921"
   },
   {
    "id": 55,
@@ -991,7 +1045,8 @@
     "home": true,
     "line": 4.5,
     "abbr": "SAN DIEGO STATE"
-   }
+   },
+   "espn_id": "401860900"
   },
   {
    "id": 56,
@@ -1009,7 +1064,8 @@
     "home": false,
     "line": 2.5,
     "abbr": "SAN JOSE STATE"
-   }
+   },
+   "espn_id": "401864513"
   }
  ]
 }

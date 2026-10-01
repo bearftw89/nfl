@@ -2,164 +2,180 @@
  "week": 2,
  "games": [
   {
+   "espn_id": "401872932",
+   "kickoff": "2026-09-18T00:15Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "BUF",
-   "away": "DET",
    "home_score": 41,
-   "away_score": 31,
-   "state": "post",
-   "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-18T00:15:00Z"
+   "away": "DET",
+   "away_score": 31
   },
   {
-   "home": "NYJ",
-   "away": "GB",
-   "home_score": 17,
-   "away_score": 20,
+   "espn_id": "401872933",
+   "kickoff": "2026-09-20T17:00Z",
    "state": "post",
-   "status": "STATUS_FINAL",
    "detail": "Final",
-   "kickoff": "2026-09-20T17:00:00Z"
-  },
-  {
-   "home": "CHI",
-   "away": "MIN",
-   "home_score": 3,
-   "away_score": 9,
-   "state": "post",
    "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T17:00:00Z"
-  },
-  {
-   "home": "NE",
-   "away": "PIT",
-   "home_score": 20,
-   "away_score": 3,
-   "state": "post",
-   "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T17:00:00Z"
-  },
-  {
    "home": "ATL",
-   "away": "CAR",
    "home_score": 3,
-   "away_score": 34,
-   "state": "post",
-   "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T17:00:00Z"
+   "away": "CAR",
+   "away_score": 34
   },
   {
-   "home": "TB",
-   "away": "CLE",
-   "home_score": 19,
-   "away_score": 23,
+   "espn_id": "401872937",
+   "kickoff": "2026-09-20T17:00Z",
    "state": "post",
-   "status": "STATUS_FINAL",
    "detail": "Final",
-   "kickoff": "2026-09-20T17:00:00Z"
+   "status": "STATUS_FINAL",
+   "home": "CHI",
+   "home_score": 3,
+   "away": "MIN",
+   "away_score": 9
   },
   {
-   "home": "HOU",
-   "away": "CIN",
-   "home_score": 6,
-   "away_score": 20,
+   "espn_id": "401872939",
+   "kickoff": "2026-09-20T17:00Z",
    "state": "post",
-   "status": "STATUS_FINAL",
    "detail": "Final",
-   "kickoff": "2026-09-20T17:00:00Z"
-  },
-  {
-   "home": "BAL",
-   "away": "NO",
-   "home_score": 17,
-   "away_score": 24,
-   "state": "post",
    "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T17:00:00Z"
-  },
-  {
    "home": "TEN",
+   "home_score": 20,
    "away": "PHI",
+   "away_score": 24
+  },
+  {
+   "espn_id": "401872946",
+   "kickoff": "2026-09-20T17:00Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "NE",
    "home_score": 20,
-   "away_score": 24,
-   "state": "post",
-   "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T17:00:00Z"
+   "away": "PIT",
+   "away_score": 3
   },
   {
-   "home": "LAC",
-   "away": "LV",
-   "home_score": 14,
-   "away_score": 26,
+   "espn_id": "401872936",
+   "kickoff": "2026-09-20T17:00Z",
    "state": "post",
+   "detail": "Final/OT",
    "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T20:05:00Z"
+   "home": "NYJ",
+   "home_score": 17,
+   "away": "GB",
+   "away_score": 20
   },
   {
+   "espn_id": "401872935",
+   "kickoff": "2026-09-20T17:00Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "TB",
+   "home_score": 19,
+   "away": "CLE",
+   "away_score": 23
+  },
+  {
+   "espn_id": "401872938",
+   "kickoff": "2026-09-20T17:00Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "BAL",
+   "home_score": 17,
+   "away": "NO",
+   "away_score": 24
+  },
+  {
+   "espn_id": "401872934",
+   "kickoff": "2026-09-20T17:00Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "HOU",
+   "home_score": 6,
+   "away": "CIN",
+   "away_score": 20
+  },
+  {
+   "espn_id": "401872940",
+   "kickoff": "2026-09-20T20:05Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "DEN",
-   "away": "JAX",
    "home_score": 20,
-   "away_score": 13,
-   "state": "post",
-   "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T20:05:00Z"
+   "away": "JAX",
+   "away_score": 13
   },
   {
+   "espn_id": "401872941",
+   "kickoff": "2026-09-20T20:05Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "LAC",
+   "home_score": 14,
+   "away": "LV",
+   "away_score": 26
+  },
+  {
+   "espn_id": "401872944",
+   "kickoff": "2026-09-20T20:25Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "DAL",
-   "away": "WSH",
    "home_score": 37,
-   "away_score": 20,
-   "state": "post",
-   "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T20:25:00Z"
+   "away": "WSH",
+   "away_score": 20
   },
   {
+   "espn_id": "401872943",
+   "kickoff": "2026-09-20T20:25Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "ARI",
-   "away": "SEA",
    "home_score": 7,
-   "away_score": 31,
-   "state": "post",
-   "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T20:25:00Z"
+   "away": "SEA",
+   "away_score": 31
   },
   {
+   "espn_id": "401872942",
+   "kickoff": "2026-09-20T20:25Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "SF",
-   "away": "MIA",
    "home_score": 35,
-   "away_score": 13,
-   "state": "post",
-   "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-20T20:25:00Z"
+   "away": "MIA",
+   "away_score": 13
   },
   {
+   "espn_id": "401872945",
+   "kickoff": "2026-09-21T00:20Z",
+   "state": "post",
+   "detail": "Final/OT",
+   "status": "STATUS_FINAL",
    "home": "KC",
-   "away": "IND",
    "home_score": 33,
-   "away_score": 30,
-   "state": "post",
-   "status": "STATUS_FINAL",
-   "detail": "Final",
-   "kickoff": "2026-09-21T00:20:00Z"
+   "away": "IND",
+   "away_score": 30
   },
   {
+   "espn_id": "401872947",
+   "kickoff": "2026-09-22T00:15Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "LAR",
+   "home_score": 28,
    "away": "NYG",
-   "home_score": null,
-   "away_score": null,
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "Mon 7:15 PM CT",
-   "kickoff": "2026-09-22T00:15:00Z"
+   "away_score": 6
   }
  ]
 }

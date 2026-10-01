@@ -7,35 +7,35 @@
    "card": true,
    "picks": true,
    "standings": true,
-   "results": false,
+   "results": true,
    "overrides": true
   },
   "2": {
    "card": true,
    "picks": true,
    "standings": true,
-   "results": false,
+   "results": true,
    "overrides": true
   },
   "3": {
    "card": true,
    "picks": true,
    "standings": true,
-   "results": false,
+   "results": true,
    "overrides": true
   },
   "4": {
    "card": true,
    "picks": true,
    "standings": true,
-   "results": false,
+   "results": true,
    "overrides": true
   },
   "5": {
    "card": true,
    "picks": false,
    "standings": false,
-   "results": false,
+   "results": true,
    "overrides": false
   }
  }
