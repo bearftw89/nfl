@@ -4,9 +4,9 @@
   {
    "espn_id": "401871049",
    "kickoff": "2026-10-02T00:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "2:00 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "NEW MEXICO STATE",
    "home_score": 34,
    "away": "WESTERN KENTUCKY",
@@ -17,11 +17,11 @@
    "kickoff": "2026-10-02T01:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "12:23 - 3rd",
+   "detail": "6:13 - 3rd",
    "home": "TULSA",
    "home_score": 17,
    "away": "NORTH TEXAS",
-   "away_score": 17
+   "away_score": 31
   },
   {
    "espn_id": "401858245",
