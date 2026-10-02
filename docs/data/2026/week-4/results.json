@@ -4,9 +4,9 @@
   {
    "espn_id": "401872964",
    "kickoff": "2026-10-02T00:15Z",
-   "state": "pre",
-   "detail": "10/1 - 8:15 PM EDT",
-   "status": "STATUS_SCHEDULED",
+   "state": "in",
+   "detail": "13:44 - 1st",
+   "status": "STATUS_IN_PROGRESS",
    "home": "CLE",
    "home_score": 0,
    "away": "PIT",
