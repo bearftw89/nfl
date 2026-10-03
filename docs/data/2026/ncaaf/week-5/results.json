@@ -48,9 +48,9 @@
   {
    "espn_id": "401858476",
    "kickoff": "2026-10-03T00:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "1:32 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "NORTHWESTERN",
    "home_score": 34,
    "away": "PENN STATE",
