@@ -27,32 +27,32 @@
    "espn_id": "401858245",
    "kickoff": "2026-10-02T23:00Z",
    "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "7:47 - 3rd",
    "home": "VIRGINIA TECH",
    "home_score": 24,
    "away": "PITTSBURGH",
-   "away_score": 21
+   "away_score": 28
   },
   {
    "espn_id": "401871050",
    "kickoff": "2026-10-02T23:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "6:20 - 3rd",
+   "detail": "End of 3rd",
    "home": "DELAWARE",
    "home_score": 0,
    "away": "LIBERTY",
-   "away_score": 20
+   "away_score": 23
   },
   {
    "espn_id": "401858476",
    "kickoff": "2026-10-03T00:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "10:40 - 2nd",
+   "detail": "2:56 - 2nd",
    "home": "NORTHWESTERN",
-   "home_score": 10,
+   "home_score": 17,
    "away": "PENN STATE",
    "away_score": 7
   },
