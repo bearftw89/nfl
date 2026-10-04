@@ -20,7 +20,7 @@
   },
   "4": {
    "card": true,
-   "picks": false,
+   "picks": true,
    "used": false
   }
  }
