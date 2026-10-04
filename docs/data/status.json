@@ -1,19 +1,19 @@
 {
- "updated": "2026-10-04T01:00:13+00:00",
+ "updated": "2026-10-04T02:29:45+00:00",
  "lines": [
-  "wrote docs/data/2026/week-4/picks.json (591 rows)",
   "college card: weeks listed [1, 2, 3, 4, 5]",
   "college picks: weeks listed [1, 2, 3, 4, 5]",
   "college standings: weeks listed [1, 2, 3, 4]",
-  "college results week 5: 37/56 final",
+  "college results week 5: 42/56 final",
   "gold card: weeks listed [1, 2, 3, 4]",
   "gold picks: weeks listed [1, 2, 3, 4]",
-  "gold picks week 4: 66",
   "gold standings: weeks listed [1, 2, 3]",
   "survivor card: weeks listed [1, 2, 3, 4]",
   "survivor picks: weeks listed [1, 2, 3, 4]",
-  "survivor picks week 4: 41",
   "survivor used: weeks listed [1, 2, 3]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk3, grandissimo used wk4, millio card wk4, millio standings wk3, survivor picks wk3, survivor used wk4)"
+  "circa: found 6 current-season PDFs (grandissimo picks wk4, grandissimo used wk4, millio card wk4, millio picks wk4, survivor picks wk4, survivor used wk4)",
+  "circa grandissimo picks week 4: 24 entries",
+  "circa millio picks week 4: 5756 entries",
+  "circa survivor picks week 4: 6290 entries"
  ]
 }
