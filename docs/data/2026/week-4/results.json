@@ -2,6 +2,17 @@
  "week": 4,
  "games": [
   {
+   "espn_id": "401872978",
+   "kickoff": "2026-10-05T00:20Z",
+   "state": "in",
+   "detail": "3:50 - 1st",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "CAR",
+   "home_score": 0,
+   "away": "DET",
+   "away_score": 3
+  },
+  {
    "espn_id": "401872965",
    "kickoff": "2026-10-04T13:30Z",
    "state": "post",
@@ -143,17 +154,6 @@
    "home_score": 30,
    "away": "LAC",
    "away_score": 23
-  },
-  {
-   "espn_id": "401872978",
-   "kickoff": "2026-10-05T00:20Z",
-   "state": "in",
-   "detail": "15:00 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "CAR",
-   "home_score": 0,
-   "away": "DET",
-   "away_score": 0
   },
   {
    "espn_id": "401872964",
