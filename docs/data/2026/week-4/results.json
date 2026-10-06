@@ -5,12 +5,12 @@
    "espn_id": "401872979",
    "kickoff": "2026-10-06T00:15Z",
    "state": "in",
-   "detail": "7:52 - 2nd",
-   "status": "STATUS_IN_PROGRESS",
+   "detail": "Halftime",
+   "status": "STATUS_HALFTIME",
    "home": "NO",
    "home_score": 7,
    "away": "ATL",
-   "away_score": 21
+   "away_score": 24
   },
   {
    "espn_id": "401872964",
