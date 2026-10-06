@@ -18,6 +18,10 @@
   "4": {
    "picks": true,
    "used": true
+  },
+  "5": {
+   "picks": false,
+   "used": true
   }
  }
 }
