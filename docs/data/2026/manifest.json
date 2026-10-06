@@ -25,7 +25,7 @@
   "4": {
    "card": true,
    "picks": true,
-   "standings": false,
+   "standings": true,
    "results": true,
    "overrides": false
   }
