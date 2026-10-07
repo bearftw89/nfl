@@ -74,7 +74,15 @@ def is_current_season(fname):
     return not m or m.group(1).upper() == CURRENT_SEASON_TAG or m.group(1) == str(S.SEASON)
 
 
+# Circa also posts "Last Place Standings" PDFs (ranked by LOSSES, pts = losses). They match the
+# MILLION.*STANDING signature but are a different contest, so they must never be ingested as the
+# regular standings (this flipped the Circa Million table to worst-first).
+NOT_REGULAR = re.compile(r"LAST[\s_-]*PLACE", re.I)
+
+
 def classify(fname):
+    if NOT_REGULAR.search(fname):
+        return None
     for rx, tag in SIGN:
         if rx.search(fname):
             return tag
