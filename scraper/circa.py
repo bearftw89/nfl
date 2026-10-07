@@ -149,8 +149,9 @@ def parse_survivor_availability(pdf):
 
 # ---------------- Circa Million standings ----------------
 # "1T  3Whiffsand6-2  5  5-0-0-0  5.00"  (place, entry(may have spaces), #picks, W-L-T-P, points)
+# quarter-winner PDFs add a trailing prize column on the top rows: "1  WILD TERPS-1  20  17-2-1-0  17.50  $150,000.00"
 # place can carry a thousands comma once the field passes 1,000 entries: "1,931T", "5,787T"
-_MSTAND = re.compile(r"^(?P<place>[\d,]+T?)\s+(?P<id>.+?)\s+(?P<np>\d+)\s+(?P<w>\d+)-(?P<l>\d+)-(?P<t>\d+)-(?P<p>\d+)\s+(?P<pts>\d+(?:\.\d+)?)$")
+_MSTAND = re.compile(r"^(?P<place>[\d,]+T?)\s+(?P<id>.+?)\s+(?P<np>\d+)\s+(?P<w>\d+)-(?P<l>\d+)-(?P<t>\d+)-(?P<p>\d+)\s+(?P<pts>\d+(?:\.\d+)?)(?:\s+\$[\d,]+(?:\.\d+)?)?$")
 
 
 def parse_million_standings(text):
