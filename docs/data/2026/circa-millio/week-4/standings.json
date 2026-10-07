@@ -1,8 +1,89 @@
 {
  "week": 4,
  "source": "https://www.circasports.com/wp-content/uploads/2026/10/Circa-Sports-Million-VIII-Full-Season-Standings-1st-Quarter-Winners-After-Week-4.pdf",
- "count": 5780,
+ "count": 5789,
  "rows": [
+  {
+   "place": "1",
+   "id": "WILD TERPS-1",
+   "w": 17,
+   "l": 2,
+   "t": 1,
+   "c": 0,
+   "pts": 17.5
+  },
+  {
+   "place": "2T",
+   "id": "RPB4FUN-1",
+   "w": 16,
+   "l": 3,
+   "t": 1,
+   "c": 0,
+   "pts": 16.5
+  },
+  {
+   "place": "2T",
+   "id": "TERRY-OS-2",
+   "w": 16,
+   "l": 3,
+   "t": 1,
+   "c": 0,
+   "pts": 16.5
+  },
+  {
+   "place": "4T",
+   "id": "DIG DEEP-3",
+   "w": 16,
+   "l": 4,
+   "t": 0,
+   "c": 0,
+   "pts": 16.0
+  },
+  {
+   "place": "4T",
+   "id": "FEZZIK-2",
+   "w": 16,
+   "l": 4,
+   "t": 0,
+   "c": 0,
+   "pts": 16.0
+  },
+  {
+   "place": "4T",
+   "id": "LUCKY LUCIANA-6",
+   "w": 16,
+   "l": 4,
+   "t": 0,
+   "c": 0,
+   "pts": 16.0
+  },
+  {
+   "place": "4T",
+   "id": "TAMTAM-9",
+   "w": 16,
+   "l": 4,
+   "t": 0,
+   "c": 0,
+   "pts": 16.0
+  },
+  {
+   "place": "4T",
+   "id": "THE MULE-1",
+   "w": 16,
+   "l": 4,
+   "t": 0,
+   "c": 0,
+   "pts": 16.0
+  },
+  {
+   "place": "4T",
+   "id": "UKETRAIN-1",
+   "w": 16,
+   "l": 4,
+   "t": 0,
+   "c": 0,
+   "pts": 16.0
+  },
   {
    "place": "10T",
    "id": "BEEBTHEFROG-2",
