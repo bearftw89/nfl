@@ -1,0 +1,248 @@
+{
+ "week": 5,
+ "source": "https://www.westgateresorts.com/supercontest/download/2026%20SUPERCONTEST%20GAME%20SHEET%20WEEK%205.pdf?contest=/2026/SuperContest/Card",
+ "count": 15,
+ "fetched": "2026-10-07T19:33:37+00:00",
+ "games": [
+  {
+   "id": 1,
+   "time_pt": "5:15 PM",
+   "fav": {
+    "num": 1,
+    "abbr": "DAL",
+    "home": true,
+    "line": -8.5
+   },
+   "dog": {
+    "num": 2,
+    "abbr": "TB",
+    "home": false,
+    "line": 8.5
+   }
+  },
+  {
+   "id": 2,
+   "time_pt": "6:30 AM",
+   "fav": {
+    "num": 3,
+    "abbr": "JAX",
+    "home": false,
+    "line": -7.5
+   },
+   "dog": {
+    "num": 4,
+    "abbr": "PHI",
+    "home": false,
+    "line": 7.5
+   }
+  },
+  {
+   "id": 3,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 5,
+    "abbr": "PIT",
+    "home": true,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 6,
+    "abbr": "IND",
+    "home": false,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 4,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 7,
+    "abbr": "MIN",
+    "home": false,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 8,
+    "abbr": "NO",
+    "home": true,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 5,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 9,
+    "abbr": "NYJ",
+    "home": true,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 10,
+    "abbr": "CLE",
+    "home": false,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 6,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 11,
+    "abbr": "CIN",
+    "home": false,
+    "line": -7.0
+   },
+   "dog": {
+    "num": 12,
+    "abbr": "MIA",
+    "home": true,
+    "line": 7.0
+   }
+  },
+  {
+   "id": 7,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 13,
+    "abbr": "NE",
+    "home": true,
+    "line": -3.5
+   },
+   "dog": {
+    "num": 14,
+    "abbr": "LV",
+    "home": false,
+    "line": 3.5
+   }
+  },
+  {
+   "id": 8,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 15,
+    "abbr": "WSH",
+    "home": true,
+    "line": -3.5
+   },
+   "dog": {
+    "num": 16,
+    "abbr": "NYG",
+    "home": false,
+    "line": 3.5
+   }
+  },
+  {
+   "id": 9,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 17,
+    "abbr": "HOU",
+    "home": false,
+    "line": -7.5
+   },
+   "dog": {
+    "num": 18,
+    "abbr": "TEN",
+    "home": true,
+    "line": 7.5
+   }
+  },
+  {
+   "id": 10,
+   "time_pt": "1:05 PM",
+   "fav": {
+    "num": 19,
+    "abbr": "DEN",
+    "home": false,
+    "line": -3.5
+   },
+   "dog": {
+    "num": 20,
+    "abbr": "LAC",
+    "home": true,
+    "line": 3.5
+   }
+  },
+  {
+   "id": 11,
+   "time_pt": "1:25 PM",
+   "fav": {
+    "num": 21,
+    "abbr": "SEA",
+    "home": true,
+    "line": -3.0
+   },
+   "dog": {
+    "num": 22,
+    "abbr": "SF",
+    "home": false,
+    "line": 3.0
+   }
+  },
+  {
+   "id": 12,
+   "time_pt": "1:25 PM",
+   "fav": {
+    "num": 23,
+    "abbr": "DET",
+    "home": false,
+    "line": -5.5
+   },
+   "dog": {
+    "num": 24,
+    "abbr": "ARI",
+    "home": true,
+    "line": 5.5
+   }
+  },
+  {
+   "id": 13,
+   "time_pt": "10:00 AM",
+   "fav": {
+    "num": 25,
+    "abbr": "CHI",
+    "home": false,
+    "line": -3.0
+   },
+   "dog": {
+    "num": 26,
+    "abbr": "GB",
+    "home": true,
+    "line": 3.0
+   }
+  },
+  {
+   "id": 14,
+   "time_pt": "5:20 PM",
+   "fav": {
+    "num": 27,
+    "abbr": "ATL",
+    "home": true,
+    "line": -3.5
+   },
+   "dog": {
+    "num": 28,
+    "abbr": "BAL",
+    "home": false,
+    "line": 3.5
+   }
+  },
+  {
+   "id": 15,
+   "time_pt": "5:15 PM",
+   "fav": {
+    "num": 29,
+    "abbr": "LAR",
+    "home": true,
+    "line": -3.0
+   },
+   "dog": {
+    "num": 30,
+    "abbr": "BUF",
+    "home": false,
+    "line": 3.0
+   }
+  }
+ ]
+}
