@@ -4,9 +4,9 @@
   {
    "espn_id": "401872980",
    "kickoff": "2026-10-09T00:15Z",
-   "state": "in",
-   "detail": "5:26 - 4th",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "DAL",
    "home_score": 16,
    "away": "TB",
