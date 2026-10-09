@@ -5,7 +5,7 @@ there's no text layer to read. The parse combines the two things that ARE reliab
 
   * layout and the spread's shape, from the vector data: the horizontal rules frame each
     game; a minus sign is a small filled rect; a plus is a square outline; the ½ glyph is
-    a wider full-height outline (digits are <= 8pt wide, ½ is ~9pt) with a small 1 and 2;
+    a wider full-height outline (digits are <= ~.6 of the glyph height wide, ½ is ~.68) with a small 1 and 2;
   * team names and the whole-number digits, from OCR (tesseract) of a 400-dpi render.
     The OCR'd digit string must have exactly as many digits as there are digit outlines,
     and every narrow outline must read as "1", or the row is rejected.
@@ -26,10 +26,10 @@ RES = 400          # render dpi for OCR
 VALUE_W = 62       # width (pt) of the spread cell at the right edge of each column
 
 
-def _ocr(img, wl=None):
+def _ocr(img, wl=None, psm=7):
     with tempfile.NamedTemporaryFile(suffix=".png") as f:
         img.save(f.name)
-        cmd = ["tesseract", f.name, "-", "--psm", "7"]
+        cmd = ["tesseract", f.name, "-", "--psm", str(psm)]
         if wl:
             cmd += ["-c", f"tessedit_char_whitelist={wl}"]
         return subprocess.run(cmd, capture_output=True, text=True, check=True).stdout.strip()
@@ -61,7 +61,9 @@ def _spread(pg, img, s, cx0, x1, t, b):
     if not H:
         return None, "empty spread cell"
     plus = [g for g in gl if g["bottom"] - g["top"] < .75 * H and abs((g["x1"] - g["x0"]) - (g["bottom"] - g["top"])) < 1.5]
-    wide = [g for g in gl if g not in plus and g["x1"] - g["x0"] > 8.4 and g["bottom"] - g["top"] > .85 * H]
+    # Circa rescales the sheet week to week (digits were <= 8pt, 8.9pt in Week 5), so the cutoffs are fractions of
+    # the glyph height: digits are <= ~.60 H wide, the ½ outline ~.68 H, a "1" ~.32 H and a "2" ~.53 H.
+    wide = [g for g in gl if g not in plus and g["x1"] - g["x0"] > .64 * H and g["bottom"] - g["top"] > .85 * H]
     half = [g for g in gl if g not in plus and any(g["x0"] >= w["x0"] - 1 and g["x1"] <= w["x1"] + 1 for w in wide)]
     digits = [g for g in gl if g not in plus and g not in half and g["bottom"] - g["top"] > .85 * H]
     if not minus and not plus and not half:          # no sign: pick'em
@@ -70,8 +72,12 @@ def _spread(pg, img, s, cx0, x1, t, b):
     whole = 0
     if digits:
         box = (min(g["x0"] for g in digits) - 1.5, t, max(g["x1"] for g in digits) + 1.5, b)
-        txt = re.sub(r"\D", "", _ocr(img.crop(tuple(v * s for v in box)), "0123456789"))
-        ones = [i for i, g in enumerate(digits) if g["x1"] - g["x0"] < 5.5]
+        crop = img.crop(tuple(v * s for v in box))
+        for psm in (7, 8, 10):           # psm 7 sometimes returns nothing for a lone digit (Week 5 "-4"); retry only if the count is off
+            txt = re.sub(r"\D", "", _ocr(crop, "0123456789", psm))
+            if len(txt) == len(digits):
+                break
+        ones = [i for i, g in enumerate(digits) if g["x1"] - g["x0"] < .4 * H]
         if len(txt) != len(digits) or any(txt[i] != "1" for i in ones):
             return None, f"digits read {txt!r} but {len(digits)} digit outlines"
         whole = int(txt)
@@ -99,10 +105,12 @@ def _rows(pdf_bytes):
             x0, x1 = min(r["x0"] for r in rs), max(r["x1"] for r in rs)
             for a, b in zip(rs, rs[1:]):
                 gap, top, neutral = b["top"] - a["top"], a["bottom"], False
-                if 60 < gap < 75:        # a header strip ("at RIO DE JANIERO, BRAZIL") sits above the game
+                # Circa rescales the sheet week to week (game box was ~44pt, 50.6pt in Week 5), so these ranges
+                # touch instead of leaving gaps: spacers are ~half a game box and fall below 38.
+                if 60 <= gap < 95:       # a header strip ("at RIO DE JANIERO, BRAZIL") sits above the game
                     top = b["top"] - gap * 2 / 3
                     neutral = _ocr(img.crop((x0 * s, a["bottom"] * s, x1 * s, top * s))).lower().startswith("at ")
-                elif not 38 < gap < 50:
+                elif not 38 <= gap < 60:
                     continue
                 mid = (top + b["top"]) / 2
                 rows = []
@@ -126,6 +134,7 @@ def _rows(pdf_bytes):
 def _assign(names, teams):
     """OCR'd names -> abbreviations, best matches first, each team used once."""
     keys = list(teams)
+    names = ["49ERS" if re.fullmatch(r"[A4][A-Z0-9]ERS", n) else n for n in names]     # AOERS / AYERS / 4SERS
     cand = sorted(((difflib.SequenceMatcher(None, n, k).ratio(), i, teams[k]) for i, n in enumerate(names) for k in keys), reverse=True)
     out, used = [None] * len(names), set()
     for r, i, ab in cand:
