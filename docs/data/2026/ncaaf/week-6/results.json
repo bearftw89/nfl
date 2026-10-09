@@ -5,10 +5,10 @@
    "espn_id": "401870766",
    "kickoff": "2026-10-08T23:00Z",
    "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "8:04 - 3rd",
    "home": "LIBERTY",
-   "home_score": 14,
+   "home_score": 21,
    "away": "SAM HOUSTON STATE",
    "away_score": 3
   },
@@ -16,34 +16,34 @@
    "espn_id": "401871052",
    "kickoff": "2026-10-08T23:00Z",
    "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "7:23 - 3rd",
    "home": "WESTERN KENTUCKY",
    "home_score": 21,
    "away": "MISSOURI STATE",
-   "away_score": 6
+   "away_score": 12
   },
   {
    "espn_id": "401869933",
    "kickoff": "2026-10-08T23:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "11:32 - 2nd",
+   "detail": "1:29 - 2nd",
    "home": "ARKANSAS STATE",
-   "home_score": 14,
+   "home_score": 21,
    "away": "SOUTH ALABAMA",
-   "away_score": 14
+   "away_score": 34
   },
   {
    "espn_id": "401862794",
    "kickoff": "2026-10-08T23:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:53 - 2nd",
+   "detail": "0:35 - 2nd",
    "home": "UTSA",
    "home_score": 10,
    "away": "SOUTH FLORIDA",
-   "away_score": 14
+   "away_score": 17
   },
   {
    "espn_id": "401858254",
