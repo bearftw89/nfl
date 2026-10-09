@@ -27,23 +27,23 @@
    "espn_id": "401869933",
    "kickoff": "2026-10-08T23:30Z",
    "state": "in",
-   "status": "STATUS_END_PERIOD",
-   "detail": "End of 3rd",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "9:20 - 4th",
    "home": "ARKANSAS STATE",
-   "home_score": 35,
+   "home_score": 42,
    "away": "SOUTH ALABAMA",
-   "away_score": 49
+   "away_score": 56
   },
   {
    "espn_id": "401862794",
    "kickoff": "2026-10-08T23:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "11:00 - 4th",
+   "detail": "1:56 - 4th",
    "home": "UTSA",
-   "home_score": 20,
+   "home_score": 23,
    "away": "SOUTH FLORIDA",
-   "away_score": 17
+   "away_score": 23
   },
   {
    "espn_id": "401858254",
