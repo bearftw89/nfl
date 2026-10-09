@@ -4,11 +4,11 @@
   {
    "espn_id": "401872980",
    "kickoff": "2026-10-09T00:15Z",
-   "state": "pre",
-   "detail": "10/8 - 8:15 PM EDT",
-   "status": "STATUS_SCHEDULED",
+   "state": "in",
+   "detail": "7:22 - 1st",
+   "status": "STATUS_IN_PROGRESS",
    "home": "DAL",
-   "home_score": 0,
+   "home_score": 7,
    "away": "TB",
    "away_score": 0
   },
