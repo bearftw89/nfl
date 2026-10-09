@@ -22,11 +22,6 @@
    "card": true,
    "picks": true,
    "standings": true
-  },
-  "5": {
-   "card": true,
-   "picks": false,
-   "standings": false
   }
  }
 }
