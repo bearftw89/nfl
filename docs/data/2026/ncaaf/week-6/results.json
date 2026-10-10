@@ -49,45 +49,45 @@
    "espn_id": "401858254",
    "kickoff": "2026-10-09T23:00Z",
    "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "8:06 - 3rd",
    "home": "LOUISVILLE",
-   "home_score": 14,
+   "home_score": 27,
    "away": "FLORIDA STATE",
    "away_score": 14
   },
   {
    "espn_id": "401858487",
    "kickoff": "2026-10-10T01:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/9 - 9:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "11:53 - 1st",
    "home": "WASHINGTON",
    "home_score": 0,
    "away": "IOWA",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401864519",
    "kickoff": "2026-10-10T01:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/9 - 9:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "10:36 - 1st",
    "home": "SAN JOSE STATE",
    "home_score": 0,
    "away": "WYOMING",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401860922",
    "kickoff": "2026-10-10T01:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/9 - 9:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "13:27 - 1st",
    "home": "UTAH STATE",
    "home_score": 0,
    "away": "WASHINGTON STATE",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401856826",
