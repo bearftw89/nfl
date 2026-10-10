@@ -105,9 +105,9 @@
    "kickoff": "2026-10-10T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "15:00 - 1st",
+   "detail": "7:02 - 1st",
    "home": "NEBRASKA",
-   "home_score": 0,
+   "home_score": 3,
    "away": "INDIANA",
    "away_score": 0
   },
@@ -127,11 +127,11 @@
    "kickoff": "2026-10-10T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:00 - 1st",
+   "detail": "2:54 - 1st",
    "home": "BOWLING GREEN",
    "home_score": 0,
    "away": "SACRAMENTO STATE",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401858480",
@@ -160,9 +160,9 @@
    "kickoff": "2026-10-10T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "12:53 - 1st",
+   "detail": "1:42 - 1st",
    "home": "ARMY",
-   "home_score": 0,
+   "home_score": 7,
    "away": "TULANE",
    "away_score": 0
   },
@@ -182,9 +182,9 @@
    "kickoff": "2026-10-10T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "12:19 - 1st",
+   "detail": "5:27 - 1st",
    "home": "PITTSBURGH",
-   "home_score": 0,
+   "home_score": 7,
    "away": "NORTH CAROLINA",
    "away_score": 0
   },
@@ -237,11 +237,11 @@
    "kickoff": "2026-10-10T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "10:12 - 1st",
+   "detail": "5:03 - 1st",
    "home": "WEST VIRGINIA",
    "home_score": 3,
    "away": "ARIZONA",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401866435",
@@ -259,11 +259,11 @@
    "kickoff": "2026-10-10T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "15:00 - 1st",
+   "detail": "7:15 - 1st",
    "home": "NC STATE",
-   "home_score": 0,
+   "home_score": 7,
    "away": "WAKE FOREST",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401858258",
@@ -369,11 +369,11 @@
    "kickoff": "2026-10-10T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "10:08 - 1st",
+   "detail": "2:37 - 1st",
    "home": "OKLAHOMA STATE",
-   "home_score": 0,
+   "home_score": 7,
    "away": "CENTRAL FLORIDA",
-   "away_score": 7
+   "away_score": 13
   },
   {
    "espn_id": "401869965",
@@ -402,7 +402,7 @@
    "kickoff": "2026-10-10T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "13:03 - 1st",
+   "detail": "6:23 - 1st",
    "home": "MISSOURI",
    "home_score": 0,
    "away": "TEXAS A&M",
