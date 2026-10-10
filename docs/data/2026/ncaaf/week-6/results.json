@@ -92,9 +92,9 @@
   {
    "espn_id": "401856826",
    "kickoff": "2026-10-10T02:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "0:28 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "BYU",
    "home_score": 24,
    "away": "IOWA STATE",
