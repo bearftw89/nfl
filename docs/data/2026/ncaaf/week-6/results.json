@@ -446,7 +446,7 @@
    "kickoff": "2026-10-11T02:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "10:23 - 4th",
+   "detail": "1:59 - 4th",
    "home": "ARIZONA STATE",
    "home_score": 24,
    "away": "HAWAII",
@@ -598,13 +598,13 @@
   {
    "espn_id": "401860901",
    "kickoff": "2026-10-11T02:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "9:14 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "FRESNO STATE",
-   "home_score": 28,
+   "home_score": 31,
    "away": "BOISE STATE",
-   "away_score": 35
+   "away_score": 38
   }
  ],
  "unmatched": []
