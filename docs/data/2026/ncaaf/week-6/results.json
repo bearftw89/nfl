@@ -444,11 +444,11 @@
   {
    "espn_id": "401856808",
    "kickoff": "2026-10-11T02:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "1:59 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "ARIZONA STATE",
-   "home_score": 24,
+   "home_score": 30,
    "away": "HAWAII",
    "away_score": 12
   },
