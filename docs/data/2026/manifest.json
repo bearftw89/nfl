@@ -31,7 +31,7 @@
   },
   "5": {
    "card": true,
-   "picks": false,
+   "picks": true,
    "standings": false,
    "results": true,
    "overrides": false
