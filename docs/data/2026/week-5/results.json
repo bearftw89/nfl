@@ -2,26 +2,15 @@
  "week": 5,
  "games": [
   {
-   "espn_id": "401872991",
+   "espn_id": "401872992",
    "kickoff": "2026-10-11T20:25Z",
    "state": "post",
    "detail": "Final",
    "status": "STATUS_FINAL",
-   "home": "ARI",
-   "home_score": 21,
-   "away": "DET",
-   "away_score": 45
-  },
-  {
-   "espn_id": "401872992",
-   "kickoff": "2026-10-11T20:25Z",
-   "state": "in",
-   "detail": "2:00 - 4th",
-   "status": "STATUS_IN_PROGRESS",
    "home": "SEA",
    "home_score": 29,
    "away": "SF",
-   "away_score": 29
+   "away_score": 32
   },
   {
    "espn_id": "401872981",
@@ -132,6 +121,17 @@
    "home_score": 17,
    "away": "DEN",
    "away_score": 23
+  },
+  {
+   "espn_id": "401872991",
+   "kickoff": "2026-10-11T20:25Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "ARI",
+   "home_score": 21,
+   "away": "DET",
+   "away_score": 45
   },
   {
    "espn_id": "401872993",
