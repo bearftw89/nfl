@@ -445,8 +445,8 @@
    "espn_id": "401856808",
    "kickoff": "2026-10-11T02:30Z",
    "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "End of 2nd",
    "home": "ARIZONA STATE",
    "home_score": 17,
    "away": "HAWAII",
@@ -600,11 +600,11 @@
    "kickoff": "2026-10-11T02:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "5:06 - 2nd",
+   "detail": "0:02 - 2nd",
    "home": "FRESNO STATE",
-   "home_score": 13,
+   "home_score": 20,
    "away": "BOISE STATE",
-   "away_score": 22
+   "away_score": 25
   }
  ],
  "unmatched": []
