@@ -446,9 +446,9 @@
    "kickoff": "2026-10-11T02:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "7:01 - 3rd",
+   "detail": "15:00 - 4th",
    "home": "ARIZONA STATE",
-   "home_score": 17,
+   "home_score": 24,
    "away": "HAWAII",
    "away_score": 6
   },
@@ -600,11 +600,11 @@
    "kickoff": "2026-10-11T02:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "4:02 - 3rd",
+   "detail": "14:43 - 4th",
    "home": "FRESNO STATE",
    "home_score": 20,
    "away": "BOISE STATE",
-   "away_score": 28
+   "away_score": 35
   }
  ],
  "unmatched": []
