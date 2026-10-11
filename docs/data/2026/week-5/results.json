@@ -2,6 +2,94 @@
  "week": 5,
  "games": [
   {
+   "espn_id": "401872990",
+   "kickoff": "2026-10-11T17:00Z",
+   "state": "in",
+   "detail": "14:56 - 2nd",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "GB",
+   "home_score": 13,
+   "away": "CHI",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401872984",
+   "kickoff": "2026-10-11T17:00Z",
+   "state": "in",
+   "detail": "2:22 - 1st",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "TEN",
+   "home_score": 3,
+   "away": "HOU",
+   "away_score": 3
+  },
+  {
+   "espn_id": "401872982",
+   "kickoff": "2026-10-11T17:00Z",
+   "state": "in",
+   "detail": "4:51 - 1st",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "MIA",
+   "home_score": 7,
+   "away": "CIN",
+   "away_score": 7
+  },
+  {
+   "espn_id": "401872986",
+   "kickoff": "2026-10-11T17:00Z",
+   "state": "in",
+   "detail": "1:30 - 1st",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "NE",
+   "home_score": 14,
+   "away": "LV",
+   "away_score": 7
+  },
+  {
+   "espn_id": "401872987",
+   "kickoff": "2026-10-11T17:00Z",
+   "state": "in",
+   "detail": "0:41 - 1st",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "NO",
+   "home_score": 0,
+   "away": "MIN",
+   "away_score": 3
+  },
+  {
+   "espn_id": "401872983",
+   "kickoff": "2026-10-11T17:00Z",
+   "state": "in",
+   "detail": "3:22 - 1st",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "NYJ",
+   "home_score": 7,
+   "away": "CLE",
+   "away_score": 3
+  },
+  {
+   "espn_id": "401872985",
+   "kickoff": "2026-10-11T17:00Z",
+   "state": "in",
+   "detail": "2:48 - 1st",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "PIT",
+   "home_score": 7,
+   "away": "IND",
+   "away_score": 6
+  },
+  {
+   "espn_id": "401872988",
+   "kickoff": "2026-10-11T17:00Z",
+   "state": "in",
+   "detail": "3:34 - 1st",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "WSH",
+   "home_score": 6,
+   "away": "NYG",
+   "away_score": 0
+  },
+  {
    "espn_id": "401872981",
    "kickoff": "2026-10-11T13:30Z",
    "state": "post",
@@ -11,94 +99,6 @@
    "home_score": 19,
    "away": "PHI",
    "away_score": 17
-  },
-  {
-   "espn_id": "401872984",
-   "kickoff": "2026-10-11T17:00Z",
-   "state": "in",
-   "detail": "9:17 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "TEN",
-   "home_score": 3,
-   "away": "HOU",
-   "away_score": 0
-  },
-  {
-   "espn_id": "401872983",
-   "kickoff": "2026-10-11T17:00Z",
-   "state": "in",
-   "detail": "9:17 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "NYJ",
-   "home_score": 7,
-   "away": "CLE",
-   "away_score": 0
-  },
-  {
-   "espn_id": "401872985",
-   "kickoff": "2026-10-11T17:00Z",
-   "state": "in",
-   "detail": "8:57 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "PIT",
-   "home_score": 0,
-   "away": "IND",
-   "away_score": 3
-  },
-  {
-   "espn_id": "401872988",
-   "kickoff": "2026-10-11T17:00Z",
-   "state": "in",
-   "detail": "9:47 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "WSH",
-   "home_score": 6,
-   "away": "NYG",
-   "away_score": 0
-  },
-  {
-   "espn_id": "401872990",
-   "kickoff": "2026-10-11T17:00Z",
-   "state": "in",
-   "detail": "5:57 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "GB",
-   "home_score": 0,
-   "away": "CHI",
-   "away_score": 0
-  },
-  {
-   "espn_id": "401872982",
-   "kickoff": "2026-10-11T17:00Z",
-   "state": "in",
-   "detail": "11:08 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "MIA",
-   "home_score": 0,
-   "away": "CIN",
-   "away_score": 7
-  },
-  {
-   "espn_id": "401872986",
-   "kickoff": "2026-10-11T17:00Z",
-   "state": "in",
-   "detail": "11:23 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "NE",
-   "home_score": 7,
-   "away": "LV",
-   "away_score": 0
-  },
-  {
-   "espn_id": "401872987",
-   "kickoff": "2026-10-11T17:00Z",
-   "state": "in",
-   "detail": "9:04 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "NO",
-   "home_score": 0,
-   "away": "MIN",
-   "away_score": 3
   },
   {
    "espn_id": "401872989",
