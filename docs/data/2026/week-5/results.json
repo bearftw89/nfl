@@ -5,32 +5,32 @@
    "espn_id": "401872989",
    "kickoff": "2026-10-11T20:05Z",
    "state": "in",
-   "detail": "12:59 - 4th",
+   "detail": "5:02 - 4th",
    "status": "STATUS_IN_PROGRESS",
    "home": "LAC",
    "home_score": 17,
    "away": "DEN",
-   "away_score": 10
+   "away_score": 17
   },
   {
    "espn_id": "401872991",
    "kickoff": "2026-10-11T20:25Z",
    "state": "in",
-   "detail": "4:57 - 3rd",
+   "detail": "12:55 - 4th",
    "status": "STATUS_IN_PROGRESS",
    "home": "ARI",
-   "home_score": 7,
+   "home_score": 14,
    "away": "DET",
-   "away_score": 31
+   "away_score": 38
   },
   {
    "espn_id": "401872992",
    "kickoff": "2026-10-11T20:25Z",
    "state": "in",
-   "detail": "8:56 - 3rd",
+   "detail": "2:24 - 3rd",
    "status": "STATUS_IN_PROGRESS",
    "home": "SEA",
-   "home_score": 16,
+   "home_score": 26,
    "away": "SF",
    "away_score": 21
   },
