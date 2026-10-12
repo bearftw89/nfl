@@ -2,15 +2,26 @@
  "week": 5,
  "games": [
   {
-   "espn_id": "401872993",
-   "kickoff": "2026-10-12T00:20Z",
+   "espn_id": "401872994",
+   "kickoff": "2026-10-13T00:15Z",
+   "state": "pre",
+   "detail": "10/12 - 8:15 PM EDT",
+   "status": "STATUS_SCHEDULED",
+   "home": "LAR",
+   "home_score": 0,
+   "away": "BUF",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401872980",
+   "kickoff": "2026-10-09T00:15Z",
    "state": "post",
-   "detail": "Final/OT",
+   "detail": "Final",
    "status": "STATUS_FINAL",
-   "home": "ATL",
-   "home_score": 23,
-   "away": "BAL",
-   "away_score": 30
+   "home": "DAL",
+   "home_score": 16,
+   "away": "TB",
+   "away_score": 24
   },
   {
    "espn_id": "401872981",
@@ -145,26 +156,15 @@
    "away_score": 32
   },
   {
-   "espn_id": "401872980",
-   "kickoff": "2026-10-09T00:15Z",
+   "espn_id": "401872993",
+   "kickoff": "2026-10-12T00:20Z",
    "state": "post",
-   "detail": "Final",
+   "detail": "Final/OT",
    "status": "STATUS_FINAL",
-   "home": "DAL",
-   "home_score": 16,
-   "away": "TB",
-   "away_score": 24
-  },
-  {
-   "espn_id": "401872994",
-   "kickoff": "2026-10-13T00:15Z",
-   "state": "pre",
-   "detail": "10/12 - 8:15 PM EDT",
-   "status": "STATUS_SCHEDULED",
-   "home": "LAR",
-   "home_score": 0,
-   "away": "BUF",
-   "away_score": 0
+   "home": "ATL",
+   "home_score": 23,
+   "away": "BAL",
+   "away_score": 30
   }
  ]
 }
