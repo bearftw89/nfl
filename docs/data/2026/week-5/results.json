@@ -4,13 +4,13 @@
   {
    "espn_id": "401872993",
    "kickoff": "2026-10-12T00:20Z",
-   "state": "in",
-   "detail": "0:19 - 4th",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final/OT",
+   "status": "STATUS_FINAL",
    "home": "ATL",
    "home_score": 23,
    "away": "BAL",
-   "away_score": 23
+   "away_score": 30
   },
   {
    "espn_id": "401872981",
