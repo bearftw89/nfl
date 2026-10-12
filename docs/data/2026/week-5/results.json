@@ -2,6 +2,17 @@
  "week": 5,
  "games": [
   {
+   "espn_id": "401872993",
+   "kickoff": "2026-10-12T00:20Z",
+   "state": "in",
+   "detail": "4:47 - 1st",
+   "status": "STATUS_IN_PROGRESS",
+   "home": "ATL",
+   "home_score": 7,
+   "away": "BAL",
+   "away_score": 3
+  },
+  {
    "espn_id": "401872981",
    "kickoff": "2026-10-11T13:30Z",
    "state": "post",
@@ -132,17 +143,6 @@
    "home_score": 29,
    "away": "SF",
    "away_score": 32
-  },
-  {
-   "espn_id": "401872993",
-   "kickoff": "2026-10-12T00:20Z",
-   "state": "pre",
-   "detail": "10/11 - 8:20 PM EDT",
-   "status": "STATUS_SCHEDULED",
-   "home": "ATL",
-   "home_score": 0,
-   "away": "BAL",
-   "away_score": 0
   },
   {
    "espn_id": "401872980",
