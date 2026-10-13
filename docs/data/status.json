@@ -1,13 +1,13 @@
 {
- "updated": "2026-10-13T16:03:48+00:00",
+ "updated": "2026-10-13T16:36:58+00:00",
  "lines": [
+  "wrote docs/data/2026/week-5/standings.json (596 rows)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6]",
   "gold card: weeks listed [1, 2, 3, 4, 5]",
   "gold picks: weeks listed [1, 2, 3, 4, 5]",
   "gold standings: weeks listed [1, 2, 3, 4, 5]",
-  "gold standings week 5: 66",
   "survivor card: weeks listed [1, 2, 3, 4, 5]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5]",
   "survivor used: weeks listed [1, 2, 3, 4]",
