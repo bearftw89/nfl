@@ -1,9 +1,13 @@
 {
- "updated": "2026-10-14T21:11:49+00:00",
+ "updated": "2026-10-14T21:44:54+00:00",
  "lines": [
-  "college card: weeks listed [1, 2, 3, 4, 5, 6]",
+  "wrote docs/data/2026/week-6/card.json (13 rows)",
+  "wrote results week 6 (0/14 final)",
+  "college card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
+  "college card week 7: 55 games",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6]",
+  "college results week 7: 0/55 final",
   "gold card: weeks listed [1, 2, 3, 4, 5]",
   "gold picks: weeks listed [1, 2, 3, 4, 5]",
   "gold standings: weeks listed [1, 2, 3, 4, 5]",
