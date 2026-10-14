@@ -1,6 +1,6 @@
 {
  "week": 6,
- "source": "https://www.westgateresorts.com/supercontest/download/2026%20%20SURVIVOR%20GAME%20SHEET%20WEEK%206.pdf?contest=/2026/Survivor/Card",
+ "source": "https://www.westgateresorts.com/supercontest/download/2026%20%20SURVIVOR%20GAME%20SHEET%20WK%206.pdf?contest=/2026/Survivor/Card",
  "count": 14,
  "games": [
   {
@@ -8,11 +8,11 @@
    "time_pt": "5:15 PM",
    "away": {
     "num": 1,
-    "abbr": "NE"
+    "abbr": "SEA"
    },
    "home": {
     "num": 2,
-    "abbr": "CHI"
+    "abbr": "DEN"
    },
    "neutral": false,
    "site": null
@@ -22,11 +22,11 @@
    "time_pt": "6:30 AM",
    "away": {
     "num": 3,
-    "abbr": "PIT"
+    "abbr": "HOU"
    },
    "home": {
     "num": 4,
-    "abbr": "NO"
+    "abbr": "JAX"
    },
    "neutral": false,
    "site": null
@@ -36,11 +36,11 @@
    "time_pt": "10:00 AM",
    "away": {
     "num": 5,
-    "abbr": "TB"
+    "abbr": "NYJ"
    },
    "home": {
     "num": 6,
-    "abbr": "CAR"
+    "abbr": "NE"
    },
    "neutral": false,
    "site": null
@@ -50,11 +50,11 @@
    "time_pt": "10:00 AM",
    "away": {
     "num": 7,
-    "abbr": "MIA"
+    "abbr": "PIT"
    },
    "home": {
     "num": 8,
-    "abbr": "NYJ"
+    "abbr": "TB"
    },
    "neutral": false,
    "site": null
@@ -64,11 +64,11 @@
    "time_pt": "10:00 AM",
    "away": {
     "num": 9,
-    "abbr": "CLE"
+    "abbr": "BAL"
    },
    "home": {
     "num": 10,
-    "abbr": "TEN"
+    "abbr": "CLE"
    },
    "neutral": false,
    "site": null
@@ -78,11 +78,11 @@
    "time_pt": "10:00 AM",
    "away": {
     "num": 11,
-    "abbr": "NYG"
+    "abbr": "CHI"
    },
    "home": {
     "num": 12,
-    "abbr": "HOU"
+    "abbr": "ATL"
    },
    "neutral": false,
    "site": null
@@ -92,11 +92,11 @@
    "time_pt": "10:00 AM",
    "away": {
     "num": 13,
-    "abbr": "SF"
+    "abbr": "TEN"
    },
    "home": {
     "num": 14,
-    "abbr": "ATL"
+    "abbr": "IND"
    },
    "neutral": false,
    "site": null
@@ -106,11 +106,11 @@
    "time_pt": "10:00 AM",
    "away": {
     "num": 15,
-    "abbr": "IND"
+    "abbr": "CAR"
    },
    "home": {
     "num": 16,
-    "abbr": "MIN"
+    "abbr": "PHI"
    },
    "neutral": false,
    "site": null
@@ -120,11 +120,11 @@
    "time_pt": "10:00 AM",
    "away": {
     "num": 17,
-    "abbr": "CIN"
+    "abbr": "NO"
    },
    "home": {
     "num": 18,
-    "abbr": "BAL"
+    "abbr": "NYG"
    },
    "neutral": false,
    "site": null
@@ -134,11 +134,11 @@
    "time_pt": "1:05 PM",
    "away": {
     "num": 19,
-    "abbr": "DEN"
+    "abbr": "ARI"
    },
    "home": {
     "num": 20,
-    "abbr": "ARI"
+    "abbr": "LAR"
    },
    "neutral": false,
    "site": null
@@ -148,11 +148,11 @@
    "time_pt": "1:25 PM",
    "away": {
     "num": 21,
-    "abbr": "GB"
+    "abbr": "BUF"
    },
    "home": {
     "num": 22,
-    "abbr": "DET"
+    "abbr": "LV"
    },
    "neutral": false,
    "site": null
@@ -162,11 +162,11 @@
    "time_pt": "1:25 PM",
    "away": {
     "num": 23,
-    "abbr": "LAR"
+    "abbr": "LAC"
    },
    "home": {
     "num": 24,
-    "abbr": "LV"
+    "abbr": "KC"
    },
    "neutral": false,
    "site": null
@@ -176,11 +176,11 @@
    "time_pt": "5:20 PM",
    "away": {
     "num": 25,
-    "abbr": "KC"
+    "abbr": "DAL"
    },
    "home": {
     "num": 26,
-    "abbr": "SEA"
+    "abbr": "GB"
    },
    "neutral": false,
    "site": null
@@ -190,11 +190,11 @@
    "time_pt": "5:15 PM",
    "away": {
     "num": 27,
-    "abbr": "DAL"
+    "abbr": "WSH"
    },
    "home": {
     "num": 28,
-    "abbr": "PHI"
+    "abbr": "SF"
    },
    "neutral": false,
    "site": null
