@@ -27,6 +27,11 @@
    "card": true,
    "picks": true,
    "used": true
+  },
+  "6": {
+   "card": true,
+   "picks": false,
+   "used": false
   }
  }
 }
