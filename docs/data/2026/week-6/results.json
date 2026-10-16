@@ -4,13 +4,13 @@
   {
    "espn_id": "401872995",
    "kickoff": "2026-10-16T00:15Z",
-   "state": "in",
-   "detail": "1:25 - 4th",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final/OT",
+   "status": "STATUS_FINAL",
    "home": "DEN",
-   "home_score": 14,
+   "home_score": 17,
    "away": "SEA",
-   "away_score": 11
+   "away_score": 14
   },
   {
    "espn_id": "401872996",
