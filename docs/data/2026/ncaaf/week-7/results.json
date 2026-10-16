@@ -4,22 +4,22 @@
   {
    "espn_id": "401869950",
    "kickoff": "2026-10-15T23:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "10:38 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "OLD DOMINION",
-   "home_score": 13,
+   "home_score": 15,
    "away": "GEORGIA SOUTHERN",
-   "away_score": 25
+   "away_score": 23
   },
   {
    "espn_id": "401862800",
    "kickoff": "2026-10-15T23:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "4:43 - 4th",
+   "detail": "OT",
    "home": "UAB",
-   "home_score": 9,
+   "home_score": 17,
    "away": "EAST CAROLINA",
    "away_score": 17
   },
@@ -28,9 +28,9 @@
    "kickoff": "2026-10-16T00:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "7:24 - 3rd",
+   "detail": "7:12 - 4th",
    "home": "TEXAS STATE",
-   "home_score": 52,
+   "home_score": 66,
    "away": "COLORADO STATE",
    "away_score": 27
   },
