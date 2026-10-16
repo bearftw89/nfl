@@ -6,31 +6,31 @@
    "kickoff": "2026-10-15T23:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "2:57 - 1st",
+   "detail": "8:20 - 2nd",
    "home": "OLD DOMINION",
    "home_score": 7,
    "away": "GEORGIA SOUTHERN",
-   "away_score": 6
+   "away_score": 10
   },
   {
    "espn_id": "401862800",
    "kickoff": "2026-10-15T23:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "4:56 - 1st",
+   "detail": "9:19 - 2nd",
    "home": "UAB",
    "home_score": 0,
    "away": "EAST CAROLINA",
-   "away_score": 7
+   "away_score": 14
   },
   {
    "espn_id": "401860923",
    "kickoff": "2026-10-16T00:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/15 - 8:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "2:30 - 1st",
    "home": "TEXAS STATE",
-   "home_score": 0,
+   "home_score": 21,
    "away": "COLORADO STATE",
    "away_score": 0
   },
