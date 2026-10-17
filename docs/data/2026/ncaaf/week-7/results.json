@@ -72,11 +72,11 @@
    "kickoff": "2026-10-17T17:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:59 - 4th",
+   "detail": "1:52 - 4th",
    "home": "TEMPLE",
    "home_score": 28,
    "away": "CHARLOTTE",
-   "away_score": 28
+   "away_score": 35
   },
   {
    "espn_id": "401858265",
@@ -114,9 +114,9 @@
   {
    "espn_id": "401858489",
    "kickoff": "2026-10-17T16:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "1:33 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "MARYLAND",
    "home_score": 30,
    "away": "RUTGERS",
@@ -127,9 +127,9 @@
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:41 - 1st",
+   "detail": "12:33 - 2nd",
    "home": "VIRGINIA TECH",
-   "home_score": 7,
+   "home_score": 14,
    "away": "GEORGIA TECH",
    "away_score": 0
   },
@@ -149,11 +149,11 @@
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "7:43 - 1st",
+   "detail": "12:54 - 2nd",
    "home": "EASTERN MICHIGAN",
    "home_score": 0,
    "away": "TOLEDO",
-   "away_score": 7
+   "away_score": 17
   },
   {
    "espn_id": "401862802",
@@ -182,9 +182,9 @@
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "5:18 - 1st",
+   "detail": "12:34 - 2nd",
    "home": "MIAMI-OH",
-   "home_score": 0,
+   "home_score": 7,
    "away": "AKRON",
    "away_score": 7
   },
@@ -193,18 +193,18 @@
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "11:54 - 1st",
+   "detail": "14:49 - 2nd",
    "home": "MICHIGAN",
    "home_score": 0,
    "away": "PENN STATE",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401866443",
    "kickoff": "2026-10-17T17:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "11:27 - 4th",
+   "detail": "2:00 - 4th",
    "home": "CENTRAL MICHIGAN",
    "home_score": 7,
    "away": "WESTERN MICHIGAN",
@@ -237,11 +237,11 @@
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:59 - 1st",
+   "detail": "End of 1st",
    "home": "DUKE",
    "home_score": 0,
    "away": "NORTH CAROLINA",
-   "away_score": 3
+   "away_score": 10
   },
   {
    "espn_id": "401862806",
@@ -269,12 +269,12 @@
    "espn_id": "401866442",
    "kickoff": "2026-10-17T17:00Z",
    "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "6:30 - 4th",
+   "status": "STATUS_END_PERIOD",
+   "detail": "End of 4th",
    "home": "BUFFALO",
-   "home_score": 15,
+   "home_score": 18,
    "away": "MASSACHUSETTS",
-   "away_score": 15
+   "away_score": 18
   },
   {
    "espn_id": "401862804",
@@ -358,9 +358,9 @@
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "12:33 - 1st",
+   "detail": "4:09 - 1st",
    "home": "TEXAS TECH",
-   "home_score": 0,
+   "home_score": 14,
    "away": "ARIZONA STATE",
    "away_score": 0
   },
@@ -435,9 +435,9 @@
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "12:11 - 1st",
+   "detail": "5:21 - 1st",
    "home": "TENNESSEE",
-   "home_score": 0,
+   "home_score": 6,
    "away": "ALABAMA",
    "away_score": 0
   },
@@ -445,12 +445,12 @@
    "espn_id": "401856719",
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "10:03 - 1st",
+   "status": "STATUS_END_PERIOD",
+   "detail": "End of 1st",
    "home": "GEORGIA",
-   "home_score": 7,
+   "home_score": 14,
    "away": "AUBURN",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401856722",
@@ -478,10 +478,10 @@
    "espn_id": "401856721",
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "8:16 - 1st",
+   "status": "STATUS_END_PERIOD",
+   "detail": "End of 1st",
    "home": "OLE MISS",
-   "home_score": 0,
+   "home_score": 7,
    "away": "MISSOURI",
    "away_score": 3
   },
@@ -534,9 +534,9 @@
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:20 - 1st",
+   "detail": "15:00 - 2nd",
    "home": "WYOMING",
-   "home_score": 3,
+   "home_score": 10,
    "away": "NORTHERN ILLINOIS",
    "away_score": 0
   },
@@ -556,11 +556,11 @@
    "kickoff": "2026-10-17T19:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "4:40 - 1st",
+   "detail": "10:25 - 2nd",
    "home": "AIR FORCE",
-   "home_score": 0,
+   "home_score": 10,
    "away": "UNLV",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401860903",
