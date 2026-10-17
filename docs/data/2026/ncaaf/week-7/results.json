@@ -72,7 +72,7 @@
    "kickoff": "2026-10-17T17:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "1:20 - 2nd",
+   "detail": "12:11 - 3rd",
    "home": "TEMPLE",
    "home_score": 14,
    "away": "CHARLOTTE",
@@ -93,34 +93,34 @@
    "espn_id": "401858488",
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "14:53 - 3rd",
+   "status": "STATUS_END_PERIOD",
+   "detail": "End of 3rd",
    "home": "INDIANA",
    "home_score": 7,
    "away": "OHIO STATE",
-   "away_score": 10
+   "away_score": 13
   },
   {
    "espn_id": "401858491",
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "4:24 - 3rd",
+   "detail": "7:19 - 4th",
    "home": "MICHIGAN STATE",
-   "home_score": 14,
+   "home_score": 21,
    "away": "NORTHWESTERN",
-   "away_score": 13
+   "away_score": 21
   },
   {
    "espn_id": "401858489",
    "kickoff": "2026-10-17T16:30Z",
    "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "4:00 - 3rd",
    "home": "MARYLAND",
    "home_score": 23,
    "away": "RUTGERS",
-   "away_score": 13
+   "away_score": 23
   },
   {
    "espn_id": "401858264",
@@ -138,9 +138,9 @@
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "End of 3rd",
+   "detail": "0:12 - 4th",
    "home": "BOWLING GREEN",
-   "home_score": 10,
+   "home_score": 24,
    "away": "BALL STATE",
    "away_score": 17
   },
@@ -160,11 +160,11 @@
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "7:12 - 3rd",
+   "detail": "9:45 - 4th",
    "home": "ARMY",
-   "home_score": 42,
+   "home_score": 49,
    "away": "FLORIDA ATLANTIC",
-   "away_score": 14
+   "away_score": 24
   },
   {
    "espn_id": "401858263",
@@ -203,23 +203,23 @@
    "espn_id": "401866443",
    "kickoff": "2026-10-17T17:30Z",
    "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "9:17 - 2nd",
+   "status": "STATUS_HALFTIME",
+   "detail": "Halftime",
    "home": "CENTRAL MICHIGAN",
    "home_score": 0,
    "away": "WESTERN MICHIGAN",
-   "away_score": 7
+   "away_score": 14
   },
   {
    "espn_id": "401858267",
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "8:06 - 3rd",
+   "detail": "11:08 - 4th",
    "home": "BOSTON COLLEGE",
-   "home_score": 21,
+   "home_score": 27,
    "away": "PITTSBURGH",
-   "away_score": 15
+   "away_score": 18
   },
   {
    "espn_id": "401856831",
@@ -259,9 +259,9 @@
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "11:56 - 3rd",
+   "detail": "14:15 - 4th",
    "home": "JAMES MADISON",
-   "home_score": 35,
+   "home_score": 42,
    "away": "GEORGIA STATE",
    "away_score": 16
   },
@@ -270,11 +270,11 @@
    "kickoff": "2026-10-17T17:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "1:44 - 2nd",
+   "detail": "15:00 - 3rd",
    "home": "BUFFALO",
    "home_score": 8,
    "away": "MASSACHUSETTS",
-   "away_score": 7
+   "away_score": 15
   },
   {
    "espn_id": "401862804",
@@ -303,11 +303,11 @@
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:45 - 3rd",
+   "detail": "11:23 - 4th",
    "home": "WEST VIRGINIA",
-   "home_score": 21,
+   "home_score": 28,
    "away": "CINCINNATI",
-   "away_score": 21
+   "away_score": 35
   },
   {
    "espn_id": "401869934",
@@ -347,11 +347,11 @@
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "6:50 - 3rd",
+   "detail": "8:00 - 4th",
    "home": "TEXAS",
    "home_score": 17,
    "away": "FLORIDA",
-   "away_score": 17
+   "away_score": 20
   },
   {
    "espn_id": "401856828",
@@ -490,9 +490,9 @@
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:03 - 3rd",
+   "detail": "9:29 - 4th",
    "home": "KANSAS STATE",
-   "home_score": 18,
+   "home_score": 25,
    "away": "KANSAS",
    "away_score": 24
   },
@@ -512,20 +512,20 @@
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "3:00 - 3rd",
+   "detail": "8:21 - 4th",
    "home": "SMU",
-   "home_score": 13,
+   "home_score": 23,
    "away": "VIRGINIA",
-   "away_score": 10
+   "away_score": 13
   },
   {
    "espn_id": "401856720",
    "kickoff": "2026-10-17T16:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "6:45 - 3rd",
+   "detail": "10:25 - 4th",
    "home": "LSU",
-   "home_score": 24,
+   "home_score": 31,
    "away": "MISSISSIPPI STATE",
    "away_score": 0
   },
