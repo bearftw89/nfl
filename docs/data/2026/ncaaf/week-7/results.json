@@ -39,33 +39,33 @@
    "kickoff": "2026-10-16T23:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:28 - 4th",
+   "detail": "1:34 - 4th",
    "home": "TULANE",
-   "home_score": 23,
+   "home_score": 29,
    "away": "MEMPHIS",
-   "away_score": 10
+   "away_score": 17
   },
   {
    "espn_id": "401858493",
    "kickoff": "2026-10-17T00:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "4:48 - 3rd",
+   "detail": "11:18 - 4th",
    "home": "PURDUE",
-   "home_score": 17,
+   "home_score": 26,
    "away": "WASHINGTON",
-   "away_score": 24
+   "away_score": 31
   },
   {
    "espn_id": "401869844",
    "kickoff": "2026-10-17T00:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "3:11 - 3rd",
+   "detail": "6:41 - 4th",
    "home": "COASTAL CAROLINA",
    "home_score": 24,
    "away": "APPALACHIAN STATE",
-   "away_score": 21
+   "away_score": 34
   },
   {
    "espn_id": "401862803",
