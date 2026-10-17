@@ -48,9 +48,9 @@
   {
    "espn_id": "401858493",
    "kickoff": "2026-10-17T00:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "2:52 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "PURDUE",
    "home_score": 26,
    "away": "WASHINGTON",
