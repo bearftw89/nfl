@@ -48,9 +48,9 @@
   "7": {
    "card": true,
    "picks": true,
-   "standings": false,
+   "standings": true,
    "results": true,
-   "overrides": false
+   "overrides": true
   }
  }
 }
