@@ -2,17 +2,6 @@
  "week": 6,
  "games": [
   {
-   "espn_id": "401872995",
-   "kickoff": "2026-10-16T00:15Z",
-   "state": "post",
-   "detail": "Final/OT",
-   "status": "STATUS_FINAL",
-   "home": "DEN",
-   "home_score": 17,
-   "away": "SEA",
-   "away_score": 14
-  },
-  {
    "espn_id": "401872996",
    "kickoff": "2026-10-18T13:30Z",
    "state": "pre",
@@ -143,6 +132,17 @@
    "home_score": 0,
    "away": "DAL",
    "away_score": 0
+  },
+  {
+   "espn_id": "401872995",
+   "kickoff": "2026-10-16T00:15Z",
+   "state": "post",
+   "detail": "Final/OT",
+   "status": "STATUS_FINAL",
+   "home": "DEN",
+   "home_score": 17,
+   "away": "SEA",
+   "away_score": 14
   },
   {
    "espn_id": "401873008",
