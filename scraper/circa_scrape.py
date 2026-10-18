@@ -78,10 +78,19 @@ def is_current_season(fname):
 # MILLION.*STANDING signature but are a different contest, so they must never be ingested as the
 # regular standings (this flipped the Circa Million table to worst-first).
 NOT_REGULAR = re.compile(r"LAST[\s_-]*PLACE", re.I)
+# From week 5 Circa also posts quarter-only standings ("2nd-Quarter-Standings-After-Week-5"): records for
+# just that quarter's weeks (5-0 after the quarter's first week), not the season totals. They match
+# the MILLION.*STANDING signature too, and whichever PDF was read last won, so week 5 showed the
+# quarter record instead of the full-season W-L. The full-season PDFs always say "Full Season"
+# (including the 1st-quarter ones, "Full-Season-1st-Quarter-Standings"), so quarter-only is skipped.
+QUARTER_ONLY = re.compile(r"QUARTER", re.I)
+FULL_SEASON = re.compile(r"FULL[\s_-]*SEASON", re.I)
 
 
 def classify(fname):
     if NOT_REGULAR.search(fname):
+        return None
+    if QUARTER_ONLY.search(fname) and not FULL_SEASON.search(fname):
         return None
     for rx, tag in SIGN:
         if rx.search(fname):
