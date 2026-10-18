@@ -2,43 +2,32 @@
  "week": 6,
  "games": [
   {
-   "espn_id": "401872996",
-   "kickoff": "2026-10-18T13:30Z",
-   "state": "post",
-   "detail": "Final",
-   "status": "STATUS_FINAL",
-   "home": "JAX",
-   "home_score": 31,
-   "away": "HOU",
-   "away_score": 34
-  },
-  {
    "espn_id": "401872999",
    "kickoff": "2026-10-18T17:00Z",
    "state": "in",
-   "detail": "12:57 - 1st",
+   "detail": "14:01 - 2nd",
    "status": "STATUS_IN_PROGRESS",
    "home": "ATL",
    "home_score": 0,
    "away": "CHI",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401872997",
    "kickoff": "2026-10-18T17:00Z",
    "state": "in",
-   "detail": "12:59 - 1st",
+   "detail": "0:26 - 1st",
    "status": "STATUS_IN_PROGRESS",
    "home": "CLE",
    "home_score": 0,
    "away": "BAL",
-   "away_score": 0
+   "away_score": 10
   },
   {
    "espn_id": "401873003",
    "kickoff": "2026-10-18T17:00Z",
    "state": "in",
-   "detail": "14:08 - 1st",
+   "detail": "15:00 - 2nd",
    "status": "STATUS_IN_PROGRESS",
    "home": "IND",
    "home_score": 0,
@@ -49,21 +38,21 @@
    "espn_id": "401873001",
    "kickoff": "2026-10-18T17:00Z",
    "state": "in",
-   "detail": "12:24 - 1st",
+   "detail": "1:54 - 1st",
    "status": "STATUS_IN_PROGRESS",
    "home": "NE",
-   "home_score": 0,
+   "home_score": 7,
    "away": "NYJ",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401873000",
    "kickoff": "2026-10-18T17:00Z",
    "state": "in",
-   "detail": "14:09 - 1st",
+   "detail": "15:00 - 2nd",
    "status": "STATUS_IN_PROGRESS",
    "home": "NYG",
-   "home_score": 0,
+   "home_score": 7,
    "away": "NO",
    "away_score": 0
   },
@@ -71,23 +60,34 @@
    "espn_id": "401872998",
    "kickoff": "2026-10-18T17:00Z",
    "state": "in",
-   "detail": "13:28 - 1st",
+   "detail": "3:53 - 1st",
    "status": "STATUS_IN_PROGRESS",
    "home": "PHI",
    "home_score": 0,
    "away": "CAR",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401873002",
    "kickoff": "2026-10-18T17:00Z",
    "state": "in",
-   "detail": "12:48 - 1st",
+   "detail": "1:07 - 1st",
    "status": "STATUS_IN_PROGRESS",
    "home": "TB",
-   "home_score": 0,
+   "home_score": 3,
    "away": "PIT",
    "away_score": 0
+  },
+  {
+   "espn_id": "401872996",
+   "kickoff": "2026-10-18T13:30Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "JAX",
+   "home_score": 31,
+   "away": "HOU",
+   "away_score": 34
   },
   {
    "espn_id": "401873004",
