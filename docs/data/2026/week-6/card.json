@@ -1,7 +1,7 @@
 {
  "week": 6,
  "source": "https://www.westgateresorts.com/supercontest/download/2026%20SUPERCONTEST%20GAME%20SHEET%20WEEK%206.pdf?contest=/2026/SuperContest/Card",
- "count": 13,
+ "count": 14,
  "fetched": "2026-10-14T21:43:16+00:00",
  "games": [
   {
@@ -22,6 +22,22 @@
   },
   {
    "id": 2,
+   "time_pt": "6:30 AM",
+   "fav": {
+    "num": 3,
+    "abbr": "JAX",
+    "home": false,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 4,
+    "abbr": "HOU",
+    "home": false,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 3,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 5,
@@ -37,7 +53,7 @@
    }
   },
   {
-   "id": 3,
+   "id": 4,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 7,
@@ -53,7 +69,7 @@
    }
   },
   {
-   "id": 4,
+   "id": 5,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 9,
@@ -69,7 +85,7 @@
    }
   },
   {
-   "id": 5,
+   "id": 6,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 11,
@@ -85,7 +101,7 @@
    }
   },
   {
-   "id": 6,
+   "id": 7,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 13,
@@ -101,7 +117,7 @@
    }
   },
   {
-   "id": 7,
+   "id": 8,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 15,
@@ -117,7 +133,7 @@
    }
   },
   {
-   "id": 8,
+   "id": 9,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 17,
@@ -133,7 +149,7 @@
    }
   },
   {
-   "id": 9,
+   "id": 10,
    "time_pt": "1:05 PM",
    "fav": {
     "num": 19,
@@ -149,7 +165,7 @@
    }
   },
   {
-   "id": 10,
+   "id": 11,
    "time_pt": "1:25 PM",
    "fav": {
     "num": 21,
@@ -165,7 +181,7 @@
    }
   },
   {
-   "id": 11,
+   "id": 12,
    "time_pt": "1:25 PM",
    "fav": {
     "num": 23,
@@ -181,7 +197,7 @@
    }
   },
   {
-   "id": 12,
+   "id": 13,
    "time_pt": "5:20 PM",
    "fav": {
     "num": 25,
@@ -197,7 +213,7 @@
    }
   },
   {
-   "id": 13,
+   "id": 14,
    "time_pt": "5:15 PM",
    "fav": {
     "num": 27,

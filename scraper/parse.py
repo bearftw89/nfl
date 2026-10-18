@@ -13,9 +13,11 @@ from .lines import LINE, to_float, card_matches
 #      "1 BILLS* 5:15 PM 2 LIONS PK"
 # Anchored to the start of a line, and spaces only (never newlines): otherwise the
 # "2026" ending a date header glues onto the next game row and that game is lost.
-# Anything between the first team and the time (e.g. "@ Melbourne, Australia") is skipped.
+# Anything between the first team and the time (e.g. "@ Melbourne, Australia") is skipped,
+# including when the site note sits on its own line between the team and the time
+# (e.g. "3 JAGUARS\n@ London, England\n6:30 AM 4 TEXANS +2.5").
 _CARD_RE = re.compile(
-    r"^[ \t]*(?P<n1>\d{1,3})[ \t]+(?P<t1>[A-Z0-9][A-Z0-9 .']*?)(?P<h1>\*?)[ \t]+(?:@[^\n]*?[ \t]+)?"
+    r"^[ \t]*(?P<n1>\d{1,3})[ \t]+(?P<t1>[A-Z0-9][A-Z0-9 .']*?)(?P<h1>\*?)(?:[ \t]+(?:@[^\n]*?[ \t]+)?|[ \t]*\n[ \t]*@[^\n]*\n[ \t]*)"
     r"(?P<time>\d{1,2}:\d{2}[ \t]*[AP]M)[ \t]+"
     r"(?P<n2>\d{1,3})[ \t]+(?P<t2>[A-Z0-9][A-Z0-9 .']*?)(?P<h2>\*?)[ \t]+"
     rf"(?P<line>{LINE})(?![\w.])",

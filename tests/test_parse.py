@@ -39,3 +39,15 @@ def test_card_header_glued_line():
     text = "PRO FOOTBALL - MONDAY, SEPTEMBER 21, 2026\n31 RAMS* 5:15 PM 32 GIANTS +7\n"
     g = parse_card(text)
     assert len(g) == 1 and g[0]["fav"]["abbr"] == "LAR" and g[0]["dog"]["line"] == 7
+
+
+def test_card_site_note_on_own_line():
+    # Week 6 2026: the London game's "@ London, England" note sits on its own line
+    # between the first team and the time, which used to drop the whole game.
+    txt = ("1 SEAHAWKS 5:15 PM 2 BRONCOS* +2.5\n"
+           "3 JAGUARS\n@ London, England\n6:30 AM 4 TEXANS +2.5\n"
+           "5 PATRIOTS* 10:00 AM 6 JETS +7\n")
+    g = parse_card(txt)
+    assert len(g) == 3
+    assert g[1]["fav"]["abbr"] == "JAX" and g[1]["dog"]["abbr"] == "HOU"
+    assert g[1]["fav"]["line"] == -2.5 and g[1]["time_pt"] == "6:30 AM"
