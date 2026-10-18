@@ -1,7 +1,6 @@
 {
- "updated": "2026-10-18T01:04:33+00:00",
+ "updated": "2026-10-18T01:17:25+00:00",
  "lines": [
-  "wrote docs/data/2026/week-6/picks.json (591 rows)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6]",
@@ -11,7 +10,6 @@
   "gold standings: weeks listed [1, 2, 3, 4, 5]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6]",
-  "survivor picks week 6: 16",
   "survivor used: weeks listed [1, 2, 3, 4, 5]",
   "circa: found 6 current-season PDFs (grandissimo picks wk5, grandissimo used wk6, millio card wk6, millio standings wk5, survivor picks wk5, survivor used wk6)"
  ]
