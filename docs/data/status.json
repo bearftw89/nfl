@@ -1,17 +1,17 @@
 {
- "updated": "2026-10-18T00:39:55+00:00",
+ "updated": "2026-10-18T01:04:33+00:00",
  "lines": [
+  "wrote docs/data/2026/week-6/picks.json (591 rows)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6]",
   "college results week 7: 34/55 final",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6]",
-  "gold picks week 6: 66",
   "gold standings: weeks listed [1, 2, 3, 4, 5]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6]",
-  "! survivor picks week 6: 404 from https://www.westgateresorts.com/supercontest/download/2026%20SURVIVOR%20SELECTIONS%20WEEK%206.pdf",
+  "survivor picks week 6: 16",
   "survivor used: weeks listed [1, 2, 3, 4, 5]",
   "circa: found 6 current-season PDFs (grandissimo picks wk5, grandissimo used wk6, millio card wk6, millio standings wk5, survivor picks wk5, survivor used wk6)"
  ]
