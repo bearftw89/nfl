@@ -1,19 +1,16 @@
 {
- "updated": "2026-10-18T02:00:07+00:00",
+ "updated": "2026-10-18T02:28:48+00:00",
  "lines": [
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6]",
-  "college results week 7: 35/55 final",
+  "college results week 7: 39/55 final",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6]",
   "gold standings: weeks listed [1, 2, 3, 4, 5]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor used: weeks listed [1, 2, 3, 4, 5]",
-  "circa: found 7 current-season PDFs (grandissimo picks wk6, grandissimo used wk6, millio card wk6, millio picks wk6, millio standings wk5, survivor picks wk6, survivor used wk6)",
-  "circa grandissimo picks week 6: 14 entries",
-  "circa millio picks week 6: 5744 entries",
-  "circa survivor picks week 6: 2909 entries"
+  "circa: found 7 current-season PDFs (grandissimo picks wk6, grandissimo used wk6, millio card wk6, millio picks wk6, millio standings wk5, survivor picks wk6, survivor used wk6)"
  ]
 }
