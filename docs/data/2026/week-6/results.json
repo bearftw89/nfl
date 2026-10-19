@@ -2,17 +2,6 @@
  "week": 6,
  "games": [
   {
-   "espn_id": "401873005",
-   "kickoff": "2026-10-18T20:25Z",
-   "state": "post",
-   "detail": "Final",
-   "status": "STATUS_FINAL",
-   "home": "LV",
-   "home_score": 30,
-   "away": "BUF",
-   "away_score": 33
-  },
-  {
    "espn_id": "401872996",
    "kickoff": "2026-10-18T13:30Z",
    "state": "post",
@@ -121,6 +110,17 @@
    "home_score": 22,
    "away": "LAC",
    "away_score": 6
+  },
+  {
+   "espn_id": "401873005",
+   "kickoff": "2026-10-18T20:25Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "LV",
+   "home_score": 30,
+   "away": "BUF",
+   "away_score": 33
   },
   {
    "espn_id": "401873007",
