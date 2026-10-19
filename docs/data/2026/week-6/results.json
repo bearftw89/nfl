@@ -4,13 +4,13 @@
   {
    "espn_id": "401873007",
    "kickoff": "2026-10-19T00:20Z",
-   "state": "in",
-   "detail": "8:08 - 4th",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "GB",
    "home_score": 23,
    "away": "DAL",
-   "away_score": 7
+   "away_score": 13
   },
   {
    "espn_id": "401872996",
