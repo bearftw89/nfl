@@ -36,3 +36,18 @@ class Discover(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAnonymousAvailability(unittest.TestCase):
+    def test_resolve_anonymous(self):
+        from scraper.circa import resolve_anonymous
+        prev_used = {"A-1": ["NE", "KC"], "B-1": ["NE", "KC"], "C-1": ["DAL"]}
+        picks = [{"id": "A-1", "pick": "SF"}, {"id": "B-1", "pick": "BUF"}, {"id": "C-1", "pick": "SF"}]
+        got = resolve_anonymous([["BUF", "KC", "NE"], ["SF", "DAL"]], prev_used, picks)
+        self.assertEqual(got, {"B-1": ["BUF", "KC", "NE"], "C-1": ["SF", "DAL"]})
+        # no entry matches -> refuse to guess
+        self.assertIsNone(resolve_anonymous([["ZZZ"]], prev_used, picks))
+        # two entries with identical sets, one row -> ambiguous -> refuse
+        prev2 = {"A-1": ["NE"], "B-1": ["NE"]}
+        picks2 = [{"id": "A-1", "pick": "SF"}, {"id": "B-1", "pick": "SF"}]
+        self.assertIsNone(resolve_anonymous([["NE", "SF"]], prev2, picks2))

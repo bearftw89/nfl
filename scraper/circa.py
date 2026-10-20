@@ -114,9 +114,13 @@ def parse_survivor_selections(text):
     return entries, dict(table)
 
 
-def parse_survivor_availability(pdf):
-    """Circa's availability grid -> {entry id: [teams used]} by reading X marks against column x-positions."""
-    fix = {"WAS": "WSH", "LA": "LAR"}
+def parse_survivor_availability(pdf, anon=None):
+    """Circa's availability grid -> {entry id: [teams used]} by reading X marks against column x-positions.
+
+    Rows whose ENTRY NAME cell is blank (Circa left the names off the week 7 Grandissimo sheet) can't be
+    keyed by name; their used-team lists are appended to `anon` when a list is passed, so the caller can
+    work out whose they are (see resolve_anonymous)."""
+    fix = {"WAS": "WSH", "LA": "LAR", "AZ": "ARI"}
     out = {}
     for page in pdf.pages:
         words = page.extract_words(use_text_flow=False)
@@ -136,14 +140,32 @@ def parse_survivor_availability(pdf):
             rows.setdefault(round(w["top"]), []).append(w)
         for _, ws in sorted(rows.items()):
             name = " ".join(w["text"] for w in sorted(ws, key=lambda w: w["x0"]) if w["x0"] < name_right).strip()
-            if not name:
-                continue
             used = []
             for w in ws:
                 if w["x0"] >= name_right and w["text"].upper() == "X":
                     c = (w["x0"] + w["x1"]) / 2
                     used.append(min(cols, key=lambda col: abs(col[1] - c))[0])
+            if not name:
+                if used and anon is not None:
+                    anon.append(used)
+                continue
             out[name.upper()] = used
+    return out
+
+
+def resolve_anonymous(rows, prev_used, prev_picks):
+    """Name the blank-name rows of an availability sheet. A surviving entry's used teams are exactly
+    last week's used teams plus the pick it just won with, so each row is matched to the entry whose
+    expected set equals it. Returns {entry id: [teams]} or None unless every row matches exactly one
+    still-unclaimed entry (an ambiguous or missing match is never guessed)."""
+    cand = {e["id"]: set(prev_used[e["id"]]) | {e["pick"]}
+            for e in prev_picks if e["id"] in prev_used}
+    out = {}
+    for used in rows:
+        hits = [k for k, v in cand.items() if v == set(used) and k not in out]
+        if len(hits) != 1:
+            return None
+        out[hits[0]] = used
     return out
 
 

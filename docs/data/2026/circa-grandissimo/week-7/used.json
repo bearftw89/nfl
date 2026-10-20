@@ -1,0 +1,55 @@
+{
+ "week": 7,
+ "source": "/mnt/user-data/uploads/Circa-Grandissimo-2026-Week-7-Team-Availability.pdf",
+ "count": 6,
+ "entries": {
+  "BLUE BIRD-1": [
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "DEGENCHAT-2": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "NE",
+   "SF"
+  ],
+  "GLOVE TO GLORY-1": [
+   "BAL",
+   "CIN",
+   "KC",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "JCMMUP-1": [
+   "BAL",
+   "CIN",
+   "DET",
+   "JAX",
+   "PHI",
+   "SF"
+  ],
+  "JIMMYSHIVEOVERLY-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "TWEENTHEHEDGES-1": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ]
+ }
+}

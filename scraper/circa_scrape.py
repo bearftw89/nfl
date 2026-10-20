@@ -268,7 +268,17 @@ def save_survivor_used(week, src, contest="survivor"):
         if not sane_week(week, current_nfl_week()):
             S.log(f"  circa {contest} availability week {week}: skipped (beyond the current week; still a placeholder, not a problem)")
             return True
-        used = C.parse_survivor_availability(pdf)
+        anon = []
+        used = C.parse_survivor_availability(pdf, anon)
+    if not used and anon:
+        # blank ENTRY NAME column (Circa's week 7 Grandissimo sheet): rebuild the names from last
+        # week's availability + picks; refuse to guess if any row doesn't match exactly one entry
+        prev = OUT[contest] / f"week-{week - 1}"
+        pu, pp = load(prev / "used.json"), load(prev / "picks.json")
+        if pu and pp:
+            used = C.resolve_anonymous(anon, pu["entries"], pp["entries"]) or {}
+            if used:
+                S.log(f"  circa {contest} availability week {week}: entry names were blank in the PDF; matched {len(used)} rows to entries by last week's used teams + picks")
     if len(used) < MIN_ROWS[contest]:
         S.log(f"! circa {contest} availability week {week}: only {len(used)} rows; keeping old data, not a run failure")
         return True
