@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20T15:28:52+00:00",
+ "updated": "2026-10-20T16:07:37+00:00",
  "lines": [
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
@@ -11,8 +11,6 @@
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor used: weeks listed [1, 2, 3, 4, 5]",
   "circa: found 6 current-season PDFs (grandissimo picks wk6, grandissimo used wk7, millio picks wk6, millio standings wk6, survivor picks wk6, survivor used wk7)",
-  "! circa grandissimo availability week 7: only 0 rows; keeping old data, not a run failure",
-  "circa millio standings week 6: 5789 rows",
-  "circa survivor availability through week 7: 1277 entries"
+  "! circa grandissimo availability week 7: only 0 rows; keeping old data, not a run failure"
  ]
 }
