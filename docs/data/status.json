@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20T18:00:38+00:00",
+ "updated": "2026-10-20T18:35:28+00:00",
  "lines": [
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
@@ -10,7 +10,6 @@
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6]",
-  "survivor used-teams through week 6: 8 entries alive",
   "circa: found 6 current-season PDFs (grandissimo picks wk6, grandissimo used wk7, millio picks wk6, millio standings wk6, survivor picks wk6, survivor used wk7)",
   "circa grandissimo availability week 7: entry names were blank in the PDF; matched 6 rows to entries by last week's used teams + picks"
  ]
