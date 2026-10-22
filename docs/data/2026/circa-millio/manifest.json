@@ -32,6 +32,11 @@
    "card": true,
    "picks": true,
    "standings": true
+  },
+  "7": {
+   "card": true,
+   "picks": false,
+   "standings": false
   }
  }
 }

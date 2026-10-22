@@ -1,17 +1,20 @@
 {
- "updated": "2026-10-22T15:35:06+00:00",
+ "updated": "2026-10-22T19:32:42+00:00",
  "lines": [
-  "! card week 7: couldn't read 1 row(s), those games are missing: ['5 PANTHERS* 10:00 AM 6 BUCCANERS +3']",
+  "wrote docs/data/2026/week-7/card.json (14 rows)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
+  "gold card week 7: 14",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6]",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk6, grandissimo used wk7, millio picks wk6, millio standings wk6, survivor picks wk6, survivor used wk7)",
-  "circa grandissimo availability week 7: entry names were blank in the PDF; matched 6 rows to entries by last week's used teams + picks"
+  "circa millio card week 7: found at its usual URL",
+  "circa: found 7 current-season PDFs (grandissimo picks wk6, grandissimo used wk7, millio card wk7, millio picks wk6, millio standings wk6, survivor picks wk6, survivor used wk7)",
+  "circa grandissimo availability week 7: entry names were blank in the PDF; matched 6 rows to entries by last week's used teams + picks",
+  "circa millio card week 7: 14 games"
  ]
 }

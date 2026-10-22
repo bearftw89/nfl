@@ -1,7 +1,7 @@
 {
  "week": 7,
  "source": "https://www.westgateresorts.com/supercontest/download/2026%20GOLD%20GAME%20SHEET%20WEEK%207.pdf?contest=/2026/Gold/Card",
- "count": 13,
+ "count": 14,
  "games": [
   {
    "id": 1,
@@ -39,6 +39,22 @@
    "id": 3,
    "time_pt": "10:00 AM",
    "fav": {
+    "num": 5,
+    "abbr": "CAR",
+    "home": true,
+    "line": -3.0
+   },
+   "dog": {
+    "num": 6,
+    "abbr": "TB",
+    "home": false,
+    "line": 3.0
+   }
+  },
+  {
+   "id": 4,
+   "time_pt": "10:00 AM",
+   "fav": {
     "num": 7,
     "abbr": "NYJ",
     "home": true,
@@ -52,7 +68,7 @@
    }
   },
   {
-   "id": 4,
+   "id": 5,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 9,
@@ -68,7 +84,7 @@
    }
   },
   {
-   "id": 5,
+   "id": 6,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 11,
@@ -84,7 +100,7 @@
    }
   },
   {
-   "id": 6,
+   "id": 7,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 13,
@@ -100,7 +116,7 @@
    }
   },
   {
-   "id": 7,
+   "id": 8,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 15,
@@ -116,7 +132,7 @@
    }
   },
   {
-   "id": 8,
+   "id": 9,
    "time_pt": "10:00 AM",
    "fav": {
     "num": 17,
@@ -132,7 +148,7 @@
    }
   },
   {
-   "id": 9,
+   "id": 10,
    "time_pt": "1:05 PM",
    "fav": {
     "num": 19,
@@ -148,7 +164,7 @@
    }
   },
   {
-   "id": 10,
+   "id": 11,
    "time_pt": "1:25 PM",
    "fav": {
     "num": 21,
@@ -164,7 +180,7 @@
    }
   },
   {
-   "id": 11,
+   "id": 12,
    "time_pt": "1:25 PM",
    "fav": {
     "num": 23,
@@ -180,7 +196,7 @@
    }
   },
   {
-   "id": 12,
+   "id": 13,
    "time_pt": "5:20 PM",
    "fav": {
     "num": 25,
@@ -196,7 +212,7 @@
    }
   },
   {
-   "id": 13,
+   "id": 14,
    "time_pt": "5:15 PM",
    "fav": {
     "num": 27,
