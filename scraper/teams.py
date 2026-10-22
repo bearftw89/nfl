@@ -12,7 +12,7 @@ TEAMS = {
     "COWBOYS": "DAL", "GIANTS": "NYG", "EAGLES": "PHI", "COMMANDERS": "WSH",
     "BEARS": "CHI", "LIONS": "DET", "PACKERS": "GB", "VIKINGS": "MIN",
     "FALCONS": "ATL", "PANTHERS": "CAR", "SAINTS": "NO",
-    "BUCCANEERS": "TB", "BUCS": "TB",
+    "BUCCANEERS": "TB", "BUCS": "TB", "BUCCANERS": "TB",  # misspelling on the week 7 2026 card
     "CARDINALS": "ARI", "RAMS": "LAR", "49ERS": "SF", "NINERS": "SF", "SEAHAWKS": "SEA",
 }
 

@@ -51,3 +51,10 @@ def test_card_site_note_on_own_line():
     assert len(g) == 3
     assert g[1]["fav"]["abbr"] == "JAX" and g[1]["dog"]["abbr"] == "HOU"
     assert g[1]["fav"]["line"] == -2.5 and g[1]["time_pt"] == "6:30 AM"
+
+
+def test_card_misspelled_buccaneers():
+    # Week 7 2026: Westgate printed "BUCCANERS"; the row used to be dropped as unreadable.
+    g = parse_card("5 PANTHERS* 10:00 AM 6 BUCCANERS +3\n")
+    assert len(g) == 1
+    assert g[0]["fav"]["abbr"] == "CAR" and g[0]["dog"]["abbr"] == "TB" and g[0]["dog"]["line"] == 3
