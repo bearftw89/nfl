@@ -4,13 +4,13 @@
   {
    "espn_id": "401873010",
    "kickoff": "2026-10-23T00:15Z",
-   "state": "in",
-   "detail": "7:49 - 2nd",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "CHI",
-   "home_score": 10,
+   "home_score": 30,
    "away": "NE",
-   "away_score": 7
+   "away_score": 24
   },
   {
    "espn_id": "401873011",

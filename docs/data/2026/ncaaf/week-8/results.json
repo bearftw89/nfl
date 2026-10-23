@@ -4,35 +4,35 @@
   {
    "espn_id": "401871056",
    "kickoff": "2026-10-22T23:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "6:22 - 3rd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "KENNESAW STATE",
-   "home_score": 3,
+   "home_score": 6,
    "away": "LIBERTY",
-   "away_score": 17
+   "away_score": 34
   },
   {
    "espn_id": "401869845",
    "kickoff": "2026-10-22T23:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "9:23 - 3rd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final/OT",
    "home": "APPALACHIAN STATE",
-   "home_score": 13,
+   "home_score": 34,
    "away": "JAMES MADISON",
-   "away_score": 14
+   "away_score": 31
   },
   {
    "espn_id": "401862807",
    "kickoff": "2026-10-22T23:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "0:39 - 2nd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final/OT",
    "home": "MEMPHIS",
-   "home_score": 3,
+   "home_score": 41,
    "away": "EAST CAROLINA",
-   "away_score": 13
+   "away_score": 34
   },
   {
    "espn_id": "401861965",
