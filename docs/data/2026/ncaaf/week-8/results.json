@@ -92,35 +92,35 @@
   {
    "espn_id": "401856841",
    "kickoff": "2026-10-24T16:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "14:28 - 3rd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "TCU",
-   "home_score": 10,
+   "home_score": 20,
    "away": "WEST VIRGINIA",
-   "away_score": 10
+   "away_score": 24
   },
   {
    "espn_id": "401858273",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_END_PERIOD",
+   "detail": "End of 1st",
    "home": "GEORGIA TECH",
-   "home_score": 0,
+   "home_score": 10,
    "away": "BOSTON COLLEGE",
    "away_score": 0
   },
   {
    "espn_id": "401862809",
    "kickoff": "2026-10-24T16:00Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "FLORIDA ATLANTIC",
-   "home_score": 23,
+   "home_score": 51,
    "away": "RICE",
-   "away_score": 21
+   "away_score": 49
   },
   {
    "espn_id": "401858275",
@@ -136,86 +136,86 @@
   {
    "espn_id": "401866447",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "13:26 - 2nd",
    "home": "BALL STATE",
    "home_score": 0,
    "away": "SACRAMENTO STATE",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401858496",
    "kickoff": "2026-10-24T16:00Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final/OT",
    "home": "MICHIGAN",
-   "home_score": 0,
+   "home_score": 6,
    "away": "INDIANA",
-   "away_score": 6
+   "away_score": 13
   },
   {
    "espn_id": "401866450",
    "kickoff": "2026-10-24T16:00Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "TOLEDO",
-   "home_score": 31,
+   "home_score": 45,
    "away": "WESTERN MICHIGAN",
-   "away_score": 14
+   "away_score": 38
   },
   {
    "espn_id": "401858274",
    "kickoff": "2026-10-24T16:00Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "MIAMI-FL",
-   "home_score": 31,
+   "home_score": 52,
    "away": "PITTSBURGH",
-   "away_score": 7
+   "away_score": 23
   },
   {
    "espn_id": "401856840",
    "kickoff": "2026-10-24T16:00Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "CINCINNATI",
-   "home_score": 24,
+   "home_score": 37,
    "away": "TEXAS TECH",
-   "away_score": 6
+   "away_score": 24
   },
   {
    "espn_id": "401866476",
    "kickoff": "2026-10-24T17:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "12:19 - 2nd",
+   "detail": "1:09 - 4th",
    "home": "CENTRAL MICHIGAN",
-   "home_score": 3,
+   "home_score": 27,
    "away": "MIAMI-OH",
-   "away_score": 7
+   "away_score": 28
   },
   {
    "espn_id": "401866446",
    "kickoff": "2026-10-24T17:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "10:46 - 2nd",
+   "detail": "1:54 - 4th",
    "home": "KENT STATE",
-   "home_score": 0,
+   "home_score": 35,
    "away": "AKRON",
-   "away_score": 7
+   "away_score": 17
   },
   {
    "espn_id": "401866449",
    "kickoff": "2026-10-24T20:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 4:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "12:16 - 1st",
    "home": "OHIO",
    "home_score": 0,
    "away": "EASTERN MICHIGAN",
@@ -224,55 +224,55 @@
   {
    "espn_id": "401856835",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "13:38 - 2nd",
    "home": "CENTRAL FLORIDA",
-   "home_score": 0,
+   "home_score": 7,
    "away": "BYU",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401866448",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "9:03 - 2nd",
    "home": "BUFFALO",
-   "home_score": 0,
+   "home_score": 7,
    "away": "BOWLING GREEN",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401856731",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "14:00 - 2nd",
    "home": "SOUTH CAROLINA",
-   "home_score": 0,
+   "home_score": 14,
    "away": "TENNESSEE",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401858498",
    "kickoff": "2026-10-24T16:00Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "NORTHWESTERN",
-   "home_score": 28,
+   "home_score": 42,
    "away": "RUTGERS",
-   "away_score": 6
+   "away_score": 14
   },
   {
    "espn_id": "401871094",
    "kickoff": "2026-10-24T20:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 4:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "4:16 - 1st",
    "home": "TROY",
-   "home_score": 0,
+   "home_score": 7,
    "away": "UL MONROE",
    "away_score": 0
   },
@@ -303,11 +303,11 @@
    "kickoff": "2026-10-24T17:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "8:50 - 2nd",
+   "detail": "0:23 - 4th",
    "home": "KANSAS",
-   "home_score": 7,
+   "home_score": 25,
    "away": "BAYLOR",
-   "away_score": 7
+   "away_score": 24
   },
   {
    "espn_id": "401858276",
@@ -334,13 +334,13 @@
   {
    "espn_id": "401864526",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "13:46 - 2nd",
    "home": "NORTHERN ILLINOIS",
-   "home_score": 0,
+   "home_score": 13,
    "away": "HAWAII",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401869967",
@@ -356,35 +356,35 @@
   {
    "espn_id": "401856728",
    "kickoff": "2026-10-24T16:00Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "AUBURN",
-   "home_score": 10,
+   "home_score": 17,
    "away": "LSU",
-   "away_score": 31
+   "away_score": 38
   },
   {
    "espn_id": "401858497",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "13:28 - 2nd",
    "home": "MINNESOTA",
-   "home_score": 0,
+   "home_score": 3,
    "away": "IOWA",
    "away_score": 0
   },
   {
    "espn_id": "401858495",
    "kickoff": "2026-10-24T19:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "0:46 - 2nd",
    "home": "ILLINOIS",
-   "home_score": 0,
+   "home_score": 7,
    "away": "OREGON",
-   "away_score": 0
+   "away_score": 10
   },
   {
    "espn_id": "401856836",
@@ -422,24 +422,24 @@
   {
    "espn_id": "401858499",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_END_PERIOD",
+   "detail": "End of 1st",
    "home": "UCLA",
    "home_score": 0,
    "away": "MICHIGAN STATE",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401856839",
    "kickoff": "2026-10-24T19:45Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:45 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "4:22 - 1st",
    "home": "ARIZONA STATE",
-   "home_score": 0,
+   "home_score": 7,
    "away": "KANSAS STATE",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401856838",
@@ -466,35 +466,35 @@
   {
    "espn_id": "401856730",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "10:37 - 2nd",
    "home": "MISSISSIPPI STATE",
    "home_score": 0,
    "away": "OKLAHOMA",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401862810",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "11:22 - 2nd",
    "home": "NAVY",
-   "home_score": 0,
+   "home_score": 10,
    "away": "NORTH TEXAS",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401858270",
    "kickoff": "2026-10-24T16:00Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "SMU",
-   "home_score": 17,
+   "home_score": 59,
    "away": "CALIFORNIA",
-   "away_score": 17
+   "away_score": 20
   },
   {
    "espn_id": "401871093",
@@ -510,13 +510,13 @@
   {
    "espn_id": "401856727",
    "kickoff": "2026-10-24T19:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/24 - 3:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "1:28 - 1st",
    "home": "ALABAMA",
-   "home_score": 0,
+   "home_score": 7,
    "away": "TEXAS A&M",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401856729",
