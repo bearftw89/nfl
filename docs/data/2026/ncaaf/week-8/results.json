@@ -400,11 +400,11 @@
   {
    "espn_id": "401856837",
    "kickoff": "2026-10-25T02:15Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "5:19 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "UTAH",
-   "home_score": 14,
+   "home_score": 21,
    "away": "HOUSTON",
    "away_score": 13
   },
@@ -565,9 +565,9 @@
   {
    "espn_id": "401864527",
    "kickoff": "2026-10-25T02:20Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "2:41 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "NEW MEXICO",
    "home_score": 21,
    "away": "NORTH DAKOTA STATE",
