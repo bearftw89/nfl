@@ -1,10 +1,12 @@
 {
- "updated": "2026-10-25T10:01:57+00:00",
+ "updated": "2026-10-25T14:25:13+00:00",
  "lines": [
+  "wrote results week 7 (1/14 final)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
-  "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7]",
-  "college results week 8: 52/52 final",
+  "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
+  "college standings week 8: 778 rows",
+  "college week 8: covers confirmed from official standings (52 games)",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6]",
