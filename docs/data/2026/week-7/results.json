@@ -2,92 +2,92 @@
  "week": 7,
  "games": [
   {
-   "espn_id": "401873011",
-   "kickoff": "2026-10-25T13:30Z",
-   "state": "in",
-   "detail": "10:17 - 2nd",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "NO",
-   "home_score": 3,
-   "away": "PIT",
-   "away_score": 3
-  },
-  {
    "espn_id": "401873017",
    "kickoff": "2026-10-25T17:00Z",
-   "state": "pre",
-   "detail": "10/25 - 1:00 PM EDT",
-   "status": "STATUS_SCHEDULED",
+   "state": "in",
+   "detail": "12:04 - 2nd",
+   "status": "STATUS_IN_PROGRESS",
    "home": "ATL",
-   "home_score": 0,
+   "home_score": 3,
    "away": "SF",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401873013",
    "kickoff": "2026-10-25T17:00Z",
-   "state": "pre",
-   "detail": "10/25 - 1:00 PM EDT",
-   "status": "STATUS_SCHEDULED",
+   "state": "in",
+   "detail": "1:22 - 1st",
+   "status": "STATUS_IN_PROGRESS",
    "home": "TEN",
-   "home_score": 0,
+   "home_score": 14,
    "away": "CLE",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401873014",
    "kickoff": "2026-10-25T17:00Z",
-   "state": "pre",
-   "detail": "10/25 - 1:00 PM EDT",
-   "status": "STATUS_SCHEDULED",
+   "state": "in",
+   "detail": "12:56 - 2nd",
+   "status": "STATUS_IN_PROGRESS",
    "home": "MIN",
-   "home_score": 0,
+   "home_score": 3,
    "away": "IND",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401873015",
    "kickoff": "2026-10-25T17:00Z",
-   "state": "pre",
-   "detail": "10/25 - 1:00 PM EDT",
-   "status": "STATUS_SCHEDULED",
+   "state": "in",
+   "detail": "11:40 - 2nd",
+   "status": "STATUS_IN_PROGRESS",
    "home": "NYJ",
-   "home_score": 0,
+   "home_score": 7,
    "away": "MIA",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401873018",
    "kickoff": "2026-10-25T17:00Z",
-   "state": "pre",
-   "detail": "10/25 - 1:00 PM EDT",
-   "status": "STATUS_SCHEDULED",
+   "state": "in",
+   "detail": "11:05 - 2nd",
+   "status": "STATUS_IN_PROGRESS",
    "home": "CAR",
    "home_score": 0,
    "away": "TB",
-   "away_score": 0
+   "away_score": 17
   },
   {
    "espn_id": "401873012",
    "kickoff": "2026-10-25T17:00Z",
-   "state": "pre",
-   "detail": "10/25 - 1:00 PM EDT",
-   "status": "STATUS_SCHEDULED",
+   "state": "in",
+   "detail": "11:09 - 2nd",
+   "status": "STATUS_IN_PROGRESS",
    "home": "BAL",
-   "home_score": 0,
+   "home_score": 7,
    "away": "CIN",
    "away_score": 0
   },
   {
    "espn_id": "401873016",
    "kickoff": "2026-10-25T17:00Z",
-   "state": "pre",
-   "detail": "10/25 - 1:00 PM EDT",
-   "status": "STATUS_SCHEDULED",
+   "state": "in",
+   "detail": "15:00 - 2nd",
+   "status": "STATUS_IN_PROGRESS",
    "home": "HOU",
-   "home_score": 0,
+   "home_score": 3,
    "away": "NYG",
-   "away_score": 0
+   "away_score": 7
+  },
+  {
+   "espn_id": "401873011",
+   "kickoff": "2026-10-25T13:30Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "NO",
+   "home_score": 10,
+   "away": "PIT",
+   "away_score": 16
   },
   {
    "espn_id": "401873019",
