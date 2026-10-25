@@ -2,17 +2,6 @@
  "week": 7,
  "games": [
   {
-   "espn_id": "401873010",
-   "kickoff": "2026-10-23T00:15Z",
-   "state": "post",
-   "detail": "Final",
-   "status": "STATUS_FINAL",
-   "home": "CHI",
-   "home_score": 30,
-   "away": "NE",
-   "away_score": 24
-  },
-  {
    "espn_id": "401873011",
    "kickoff": "2026-10-25T13:30Z",
    "state": "pre",
@@ -143,6 +132,17 @@
    "home_score": 0,
    "away": "KC",
    "away_score": 0
+  },
+  {
+   "espn_id": "401873010",
+   "kickoff": "2026-10-23T00:15Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "CHI",
+   "home_score": 30,
+   "away": "NE",
+   "away_score": 24
   },
   {
    "espn_id": "401873009",

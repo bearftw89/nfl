@@ -1,18 +1,23 @@
 {
- "updated": "2026-10-25T00:33:49+00:00",
+ "updated": "2026-10-25T05:22:19+00:00",
  "lines": [
+  "wrote docs/data/2026/week-7/picks.json (595 rows)",
+  "wrote results week 7 (1/14 final)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7]",
-  "college results week 8: 38/52 final",
+  "college results week 8: 50/52 final",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
-  "gold picks week 7: 66",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
-  "survivor picks: weeks listed [1, 2, 3, 4, 5, 6]",
+  "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
+  "survivor picks week 7: 8",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk6, grandissimo used wk7, millio card wk7, millio standings wk6, survivor picks wk6, survivor used wk7)",
-  "circa grandissimo availability week 7: entry names were blank in the PDF; matched 6 rows to entries by last week's used teams + picks"
+  "circa: found 6 current-season PDFs (grandissimo picks wk7, grandissimo used wk7, millio card wk7, millio picks wk7, survivor picks wk7, survivor used wk7)",
+  "circa grandissimo picks week 7: 6 entries",
+  "circa grandissimo availability week 7: entry names were blank in the PDF; matched 6 rows to entries by last week's used teams + picks",
+  "circa millio picks week 7: 5720 entries",
+  "circa survivor picks week 7: 1275 entries"
  ]
 }
