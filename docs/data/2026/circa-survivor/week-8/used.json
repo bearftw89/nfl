@@ -1,0 +1,5947 @@
+{
+ "week": 8,
+ "source": "https://www.circasports.com/wp-content/uploads/2026/10/Circa-Survivor-2026-Week-8-Team-Availability.pdf",
+ "count": 660,
+ "entries": {
+  "@TABLE1VEGAS-3": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "&ROLLING-3": [
+   "BUF",
+   "CLE",
+   "JAX",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "&ROLLING-4": [
+   "BAL",
+   "BUF",
+   "JAX",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "$$$CHANGESEVERTHING-5": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "$PARLAYS+PANICATTACK-4": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "1 CAPTAIN-8": [
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "10TRICKPONY-6": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "1TIMENO2TIMES-1": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "22CLAUDE-9": [
+   "BAL",
+   "BUF",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "2XFACTOR2-1": [
+   "CIN",
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "3GUYSFROMCHICAGO-1": [
+   "BAL",
+   "CIN",
+   "HOU",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "4-HORSEMEN-4": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "401KILLINGSWORTH-1": [
+   "DEN",
+   "HOU",
+   "IND",
+   "JAX",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "427COBRA1966-4": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "49ERS-2": [
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "5:00 PM DINNER-10": [
+   "BUF",
+   "CIN",
+   "GB",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "5:00 PM DINNER-7": [
+   "BAL",
+   "DAL",
+   "HOU",
+   "KC",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "5:00 PM DINNER-8": [
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "559 SHARP$-3": [
+   "BAL",
+   "HOU",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "605BUFF-2": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "737 KEVIN-1": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "AAOA-2": [
+   "BAL",
+   "DAL",
+   "DET",
+   "HOU",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "ABRRS FULL CLIP-1": [
+   "BAL",
+   "CIN",
+   "DEN",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "ACE PURPLE-3": [
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "AHBLBB-2": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "AHBLBB-7": [
+   "BAL",
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "ALBQ505-3": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "ALL HAIR TEAM-1": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "ALL IN THE FAMILY-1": [
+   "CLE",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "ANGRY BIRD 88-5": [
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "ANONYMOUS-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "ANY GIVEN SUNDAY 24-2": [
+   "BAL",
+   "DAL",
+   "DET",
+   "HOU",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "AP PACKERS-2": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "AP2-1": [
+   "BAL",
+   "BUF",
+   "DAL",
+   "JAX",
+   "KC",
+   "PHI",
+   "SF"
+  ],
+  "APXST LOGISTICS-7": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "ARIJOSHOW-10": [
+   "CHI",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "ARIJOSHOW-3": [
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "ARTIEBLANCO-4": [
+   "BAL",
+   "DEN",
+   "DET",
+   "HOU",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "ASHCASH-7": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "ASTRA ACE-1": [
+   "CAR",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "ATIMUF222-6": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "ATROPOS-1": [
+   "BAL",
+   "BUF",
+   "JAX",
+   "KC",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "ATROPOS2-9": [
+   "BUF",
+   "DET",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "SEA"
+  ],
+  "ATTACHMENT THEORY-2": [
+   "DEN",
+   "DET",
+   "HOU",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "AUTOFADE-5": [
+   "BAL",
+   "DAL",
+   "HOU",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "BACKDOORBENSON-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "BACKDOORBENSON-6": [
+   "CAR",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "BACKDOORBENSON-9": [
+   "CAR",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "BAKEDCLAMS-7": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "SF"
+  ],
+  "BALLER DREAM-4": [
+   "IND",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "BATMAN AND ROD-4": [
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "BC513-6": [
+   "BAL",
+   "CAR",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "BEAN-4": [
+   "BUF",
+   "DEN",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BEAR SQUARED-4": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BERKEY11-1": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "BEST BETS ANALYTICS-8": [
+   "CAR",
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "BETHANY BISON-4": [
+   "BAL",
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "BETTINGTHEFARMAGAIN-1": [
+   "BAL",
+   "CAR",
+   "CLE",
+   "JAX",
+   "LV",
+   "NE",
+   "SF"
+  ],
+  "BHINS11-10": [
+   "CIN",
+   "IND",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "BIG IRON-1": [
+   "CAR",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "BIG MIKE ASSOCIATES-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BIGBIRD-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BIGJOE$-3": [
+   "CIN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SEA"
+  ],
+  "BIGNIZLITTLEP-5": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "BILL T-8": [
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BIRDIE BARRAGE-2": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "BIZMAN-10": [
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "BJACK-3": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "BLUEFRONT-6": [
+   "BUF",
+   "CHI",
+   "DEN",
+   "DET",
+   "KC",
+   "SEA",
+   "SF"
+  ],
+  "BLUEFRONT-9": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "BMANGI-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BOISE LIONS-2": [
+   "HOU",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "BOLIEVERS-5": [
+   "CHI",
+   "DEN",
+   "DET",
+   "HOU",
+   "KC",
+   "NE",
+   "SEA"
+  ],
+  "BONECRUSHERS-1": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BOOMBOOMCIA023-4": [
+   "DAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BOOMGOESTHEDOODLE-1": [
+   "BAL",
+   "BUF",
+   "DAL",
+   "DET",
+   "KC",
+   "PHI",
+   "SF"
+  ],
+  "BOOMGOESTHEDOODLE-2": [
+   "BAL",
+   "BUF",
+   "DAL",
+   "DET",
+   "KC",
+   "PHI",
+   "SF"
+  ],
+  "BOOMGOESTHEDOODLE-3": [
+   "BAL",
+   "BUF",
+   "DAL",
+   "DET",
+   "KC",
+   "PHI",
+   "SF"
+  ],
+  "BOOMGOESTHEDOODLE-4": [
+   "BAL",
+   "BUF",
+   "DAL",
+   "DET",
+   "KC",
+   "PHI",
+   "SF"
+  ],
+  "BOOMGOESTHEDOODLE-5": [
+   "BAL",
+   "BUF",
+   "DET",
+   "KC",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "BOOMGOESTHEDOODLE-6": [
+   "BAL",
+   "BUF",
+   "DET",
+   "KC",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "BOOMGOESTHEDOODLE-7": [
+   "BAL",
+   "BUF",
+   "DET",
+   "KC",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "BRADLEY-10": [
+   "BAL",
+   "DEN",
+   "DET",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "BROKE AFTER 9-2": [
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BROWNA-9": [
+   "BAL",
+   "CHI",
+   "HOU",
+   "KC",
+   "NO",
+   "SEA",
+   "SF"
+  ],
+  "BSQUARED NB-2": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "BUBBLE263-10": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BUBBLE263-9": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BUCKY SYNDICATE-1": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "BUGEATERS-4": [
+   "BAL",
+   "CAR",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "BULLDOG-9": [
+   "DAL",
+   "DEN",
+   "DET",
+   "HOU",
+   "LV",
+   "MIN",
+   "SF"
+  ],
+  "BULLPEN BETS-2": [
+   "CAR",
+   "HOU",
+   "IND",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT"
+  ],
+  "BUSTOUT-2": [
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "BUSTOUT-7": [
+   "DEN",
+   "JAX",
+   "KC",
+   "NE",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "BVICAT2027-2": [
+   "BAL",
+   "CIN",
+   "DET",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BWHIT-4": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "BYCO-2": [
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "C3 PICKS-8": [
+   "CIN",
+   "DAL",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CABSAV-2": [
+   "BAL",
+   "CIN",
+   "DET",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "CALFKILLER-5": [
+   "DEN",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "CALLOW RD-1": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI"
+  ],
+  "CANIKICKIT-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "CANIKICKIT-5": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CAPPERITHM-5": [
+   "CAR",
+   "CIN",
+   "DEN",
+   "KC",
+   "LV",
+   "MIN",
+   "SF"
+  ],
+  "CAPTAIN JOHN-7": [
+   "BAL",
+   "DET",
+   "JAX",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "CARIARI KID-4": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "CAUSA J-7": [
+   "BAL",
+   "JAX",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "CHAIRTHROWER-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "CHARM CITY CAPPERS-5": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "CHOO-10": [
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "CHOO-7": [
+   "DAL",
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI"
+  ],
+  "CHOO-9": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CHOPPERS-3": [
+   "DET",
+   "HOU",
+   "IND",
+   "KC",
+   "LV",
+   "MIN",
+   "PHI"
+  ],
+  "CHOPPERS-4": [
+   "BUF",
+   "CIN",
+   "DEN",
+   "GB",
+   "KC",
+   "NE",
+   "SEA"
+  ],
+  "CHOWCHOWBEAR-3": [
+   "BAL",
+   "CHI",
+   "CIN",
+   "GB",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "CHOWCHOWBEAR-4": [
+   "BAL",
+   "CIN",
+   "DET",
+   "GB",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "CHRISPECOS-2": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "CIRCA JERK-6": [
+   "BAL",
+   "BUF",
+   "CAR",
+   "DET",
+   "JAX",
+   "MIN",
+   "SF"
+  ],
+  "CITADELSG-2": [
+   "DEN",
+   "DET",
+   "HOU",
+   "KC",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "COCESARYUME-9": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "COLT 45'S-1": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CONWAY-4": [
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "CONWAY-5": [
+   "BAL",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "COXIE26-1": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "CRAWHYDE-3": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-1": [
+   "CHI",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-10": [
+   "CHI",
+   "DEN",
+   "HOU",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-2": [
+   "CAR",
+   "CHI",
+   "DEN",
+   "HOU",
+   "KC",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-3": [
+   "CHI",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-4": [
+   "CHI",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-5": [
+   "CHI",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-6": [
+   "CHI",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-7": [
+   "CHI",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-8": [
+   "CHI",
+   "DEN",
+   "HOU",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CRUSHEMSPORTS-9": [
+   "CHI",
+   "DEN",
+   "HOU",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "CUE KENNY SMITH-6": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "CUSEBOY-2": [
+   "BAL",
+   "BUF",
+   "DET",
+   "HOU",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "CUSEBOY-7": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "CYBERBOYZ-10": [
+   "BAL",
+   "CAR",
+   "JAX",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "DADDY_FAT_SAX-3": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DAGENERAL4150-5": [
+   "BAL",
+   "CAR",
+   "CIN",
+   "DET",
+   "HOU",
+   "LAR",
+   "MIN"
+  ],
+  "DANTHEBARD-5": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "DARROW CHAR RAGNAR-6": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "DAWG POUND-2": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DAYLAMIUSA-4": [
+   "CHI",
+   "CIN",
+   "MIN",
+   "NE",
+   "NYG",
+   "PIT",
+   "SF"
+  ],
+  "DBWRGA1-1": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DDSPADE-2": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "DEEPDISHDEGENS-6": [
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "DEGENZ SQUAD-4": [
+   "BAL",
+   "CAR",
+   "DAL",
+   "HOU",
+   "KC",
+   "LV",
+   "SF"
+  ],
+  "DFWCOWBOYS-2": [
+   "BAL",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "DGENZ-10": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "DIE HEIMSCHEISSERS-4": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "DIGGS YET AGAIN-1": [
+   "DEN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DIGGS YET AGAIN-2": [
+   "DEN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DIGGS YET AGAIN-3": [
+   "DEN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DIGGS YET AGAIN-4": [
+   "DEN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DIGGS YET AGAIN-5": [
+   "DEN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DIGGS YET AGAIN-6": [
+   "DAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DILLY DILLY-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DIME PIECE-1": [
+   "BAL",
+   "DEN",
+   "DET",
+   "JAX",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "DIME PIECE-4": [
+   "CIN",
+   "DAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DIRTY DAN-3": [
+   "CHI",
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT"
+  ],
+  "DKONG19-3": [
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SEA"
+  ],
+  "DONK-10": [
+   "CIN",
+   "DEN",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DOOZY-8": [
+   "CLE",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "DOOZY-9": [
+   "CLE",
+   "HOU",
+   "IND",
+   "KC",
+   "LV",
+   "NE",
+   "SF"
+  ],
+  "DOUBLE TROUBLE-3": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "DQ DARREN-4": [
+   "DEN",
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "DR. J29-1": [
+   "BAL",
+   "DEN",
+   "DET",
+   "HOU",
+   "KC",
+   "NE",
+   "PHI"
+  ],
+  "DRAWING DEAD-1": [
+   "BAL",
+   "CAR",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "DRIFTWOODS-4": [
+   "BAL",
+   "BUF",
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI"
+  ],
+  "DUBIE DOES VEGAS-5": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "DUCKS 4 BUCKS-6": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI"
+  ],
+  "DUSTER4BIRDIE-2": [
+   "BAL",
+   "DAL",
+   "HOU",
+   "IND",
+   "NYJ",
+   "PIT",
+   "SF"
+  ],
+  "DW7777777-8": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "EAGAN-1": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "EAGLEINS-3": [
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "EAGLEINS-6": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "EAGLESEAGULL-8": [
+   "CIN",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "EAST WESTERN-7": [
+   "BUF",
+   "GB",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT"
+  ],
+  "EASTSIDE-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "EECEN-1": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "EH, Y'ALL-1": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "EZPICK-5": [
+   "BAL",
+   "CIN",
+   "DET",
+   "HOU",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FARMER NOORI-1": [
+   "BAL",
+   "BUF",
+   "HOU",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "FAT FRANKIE-7": [
+   "CIN",
+   "DEN",
+   "DET",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "FATCATS-5": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SEA"
+  ],
+  "FESHARRR-2": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FIGHT 4 YOUR RIGHT-6": [
+   "CIN",
+   "DAL",
+   "DET",
+   "IND",
+   "KC",
+   "PIT",
+   "SF"
+  ],
+  "FIGJAM-1": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "PHI"
+  ],
+  "FILKGB-6": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "FINDTHEARCHIVE.COM-2": [
+   "CIN",
+   "DEN",
+   "KC",
+   "MIN",
+   "NE",
+   "NYG",
+   "PHI"
+  ],
+  "FINDTHEARCHIVE.COM-3": [
+   "CIN",
+   "DEN",
+   "KC",
+   "MIN",
+   "NE",
+   "NYG",
+   "PHI"
+  ],
+  "FINDTHEARCHIVE.COM-4": [
+   "CIN",
+   "DEN",
+   "KC",
+   "MIN",
+   "NE",
+   "NYG",
+   "PHI"
+  ],
+  "FINDTHEARCHIVE.COM-5": [
+   "CIN",
+   "DEN",
+   "KC",
+   "MIN",
+   "NE",
+   "NYG",
+   "PHI"
+  ],
+  "FIRE4EFFECT-1": [
+   "CAR",
+   "HOU",
+   "IND",
+   "JAX",
+   "MIN",
+   "NE",
+   "SEA"
+  ],
+  "FLAG ON THE PLAY-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FLBENGALSWEST-5": [
+   "BAL",
+   "DEN",
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "SF"
+  ],
+  "FLBENGALSWEST-9": [
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "FLETCHDOG-1": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FLETCHER FALCONS-4": [
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "FLOOD PARTY-3": [
+   "BAL",
+   "JAX",
+   "KC",
+   "LV",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "FLOOD PARTY-4": [
+   "BAL",
+   "JAX",
+   "KC",
+   "LV",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "FM2-3": [
+   "BUF",
+   "CIN",
+   "DET",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "FM2-6": [
+   "BAL",
+   "BUF",
+   "JAX",
+   "MIN",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "FOOGE-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FOOTBALLJUNKIEPINSK-1": [
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "FORT MONTANA MAFIA-5": [
+   "BAL",
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FORT MONTANA MAFIA-6": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FORT MONTANA MAFIA-9": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FOUR HORSEMEN-4": [
+   "CAR",
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "FOUR THIN INCHES-10": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "FRANK B-7": [
+   "BUF",
+   "DET",
+   "JAX",
+   "MIN",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "FRANK410-9": [
+   "CIN",
+   "GB",
+   "KC",
+   "LV",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "FRANK420-7": [
+   "BAL",
+   "CAR",
+   "CHI",
+   "CLE",
+   "JAX",
+   "KC",
+   "SF"
+  ],
+  "FRANKIE & JOEY'S DAD-6": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "FRANKIE 2 DOT 1-10": [
+   "BAL",
+   "CLE",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FRANKIE 2 DOT 1-2": [
+   "DEN",
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FRANKRICARD-2": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "NYJ",
+   "SF"
+  ],
+  "FRANKROCK-10": [
+   "BUF",
+   "CIN",
+   "DAL",
+   "DET",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "FRED VEGAS-4": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FRIENDO-1": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FRITZY-5": [
+   "CIN",
+   "DAL",
+   "GB",
+   "JAX",
+   "KC",
+   "MIN",
+   "NO"
+  ],
+  "FROST-7": [
+   "DEN",
+   "DET",
+   "GB",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE"
+  ],
+  "FROZEN1-2": [
+   "BAL",
+   "CIN",
+   "DET",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FU-1": [
+   "DEN",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "FU-3": [
+   "BUF",
+   "DEN",
+   "DET",
+   "JAX",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "FU-5": [
+   "BUF",
+   "CHI",
+   "JAX",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "FU-7": [
+   "BAL",
+   "BUF",
+   "JAX",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "FURRY GOOSE-4": [
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "FUSSY BRITCHES-8": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "G-LIFE-2": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "GALAXICSHARK-8": [
+   "BAL",
+   "HOU",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "GAMBLERS ANONYMOUS-10": [
+   "DEN",
+   "DET",
+   "HOU",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "GAMBLING GROCER-3": [
+   "BAL",
+   "JAX",
+   "KC",
+   "LAR",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "GAMBLING PROBLEMS-1": [
+   "ATL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "GAME CHANGERS-3": [
+   "BAL",
+   "CIN",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "GARGOYLE-1": [
+   "BAL",
+   "CIN",
+   "DAL",
+   "KC",
+   "LV",
+   "MIN",
+   "NE"
+  ],
+  "GARYA-6": [
+   "DET",
+   "IND",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "GKON36-2": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "GLASS JAW-3": [
+   "BUF",
+   "DEN",
+   "HOU",
+   "JAX",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "GLASS JAW-4": [
+   "BAL",
+   "CIN",
+   "DET",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "GLASS JAW-5": [
+   "BAL",
+   "DAL",
+   "JAX",
+   "KC",
+   "LAR",
+   "PHI",
+   "SF"
+  ],
+  "GLORIA GAYNOR SONG-5": [
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "GMAN-8": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "GO BIRDS !-1": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "GOKFNEH-5": [
+   "BAL",
+   "BUF",
+   "HOU",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "GOLD-PANNING-GAMBLER-9": [
+   "BAL",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "GOLEAFSGOEH-5": [
+   "CIN",
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "GOLEM-9": [
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "GONZO'S DILLEMA-1": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "GONZO'S DILLEMA-2": [
+   "BAL",
+   "CAR",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "GOOD GUESS-2": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "GOOD GUESS-9": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "GOOD GUESSER-3": [
+   "CHI",
+   "CIN",
+   "JAX",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "GOOD TROUBLE-1": [
+   "BAL",
+   "CLE",
+   "DET",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "GOOSE GOODS-1": [
+   "BAL",
+   "BUF",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "GORILLA LAWYER 91-3": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "GREATESTDANCER20-3": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "GREATTHINGS-5": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "GREEK GORILLA-6": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "GREEN EYES-2": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT"
+  ],
+  "GUTCHECK-3": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "H-TOWN-TEXANS-1": [
+   "BUF",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "HAMMA HEADZ-4": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "HAMMA HEADZ-6": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NYG",
+   "PHI",
+   "SF"
+  ],
+  "HAPPY-6": [
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "HARBOR BOYS-1": [
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "HARDCORE BALLAS-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "HAWAII50-9": [
+   "BAL",
+   "DET",
+   "JAX",
+   "LV",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "HAWAIIAN JOE-1": [
+   "CLE",
+   "DET",
+   "HOU",
+   "LV",
+   "MIN",
+   "NE",
+   "PHI"
+  ],
+  "HERBES TREEHOUSE-3": [
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "HOCKEYGRL36-8": [
+   "DAL",
+   "DET",
+   "IND",
+   "JAX",
+   "KC",
+   "NYJ",
+   "SF"
+  ],
+  "HONOLULU 888-6": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT"
+  ],
+  "HOOT JR-4": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "HOT QUARTERBACKS-6": [
+   "IND",
+   "JAX",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "HOT QUARTERBACKS-7": [
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "HOTCOFFEE-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "HOUSEMONEY.COM-10": [
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "HUDGE PUDGE-6": [
+   "BAL",
+   "CAR",
+   "DAL",
+   "JAX",
+   "KC",
+   "PIT",
+   "SF"
+  ],
+  "HUE'S UR DADDY-8": [
+   "BAL",
+   "CAR",
+   "DAL",
+   "HOU",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "HUMBLERS-2": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "HUNTER BIDEN-1": [
+   "BAL",
+   "CAR",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "HUNTER BIDEN-3": [
+   "CAR",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "HUNTER BIDEN-6": [
+   "BAL",
+   "DAL",
+   "JAX",
+   "KC",
+   "NYG",
+   "PIT",
+   "SF"
+  ],
+  "HUNTSVILLE INC-10": [
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "HUSKERAMMA-1": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "HUSTLER-1": [
+   "BAL",
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "ICEBOX-7": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "IFYOU'REHOTSTAYHOT-3": [
+   "BAL",
+   "CAR",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "IGORTHIAGO67-5": [
+   "BAL",
+   "BUF",
+   "CIN",
+   "DET",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "IGORTHIAGO67-8": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "ILOVETOMBRADY-1": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "ILOVETOMBRADY-6": [
+   "BAL",
+   "CAR",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "IN GAME RADAR-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "IVE GOT 5 ON IT-1": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "JABS-5": [
+   "CIN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "JAMIE 2X-1": [
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "JAYHAWKS-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "JCMMUP-7": [
+   "BUF",
+   "CAR",
+   "JAX",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "JED-4": [
+   "BAL",
+   "CAR",
+   "DAL",
+   "HOU",
+   "KC",
+   "PIT",
+   "SF"
+  ],
+  "JED-6": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "JEFFBOYERLOL-6": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "JERSEY BOYS-6": [
+   "CIN",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "JETBLACKBOLT-6": [
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "JJR LLC-3": [
+   "BUF",
+   "DET",
+   "HOU",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "JT-5": [
+   "BAL",
+   "BUF",
+   "DAL",
+   "DET",
+   "JAX",
+   "KC",
+   "SF"
+  ],
+  "JUDGE PETROVSKY-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "JUICE-1": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "JUSTFIVE-1": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "JUSTICE FOR ALL-7": [
+   "BAL",
+   "DAL",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "KC DEGENS-2": [
+   "CHI",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "KDLV-6": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "KEVINY1215-1": [
+   "BAL",
+   "BUF",
+   "DAL",
+   "DET",
+   "KC",
+   "PIT",
+   "SF"
+  ],
+  "KGB-9": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "PHI",
+   "SF"
+  ],
+  "KGCREW-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "KING CHARLES-8": [
+   "DEN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "KING KUNTA-6": [
+   "DET",
+   "JAX",
+   "LAR",
+   "NE",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "KINGRICHARDV-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "KIPPERDOG-7": [
+   "CAR",
+   "CLE",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "KNUCLEHENDS-2": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "KOURI8-5": [
+   "BAL",
+   "DET",
+   "HOU",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "KRUTCHES-10": [
+   "BAL",
+   "DET",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "KRUTCHES-4": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "KSUNNYY-1": [
+   "DEN",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LAKEWOOD LEGENDS-3": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "LAWROTH-1": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "LC & DA BOIZ-1": [
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LEFTOVER TURDUCKEN-2": [
+   "BAL",
+   "CIN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "LEGGO MY YEGGO-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LEI-5": [
+   "BAL",
+   "CHI",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "LIFEOFRILEY-1": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LIL DEB-1": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LINER 22-1": [
+   "BAL",
+   "CHI",
+   "DET",
+   "MIN",
+   "NE",
+   "NYJ",
+   "SF"
+  ],
+  "LOCAL AM-7": [
+   "DET",
+   "HOU",
+   "LAR",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LOCKEM UP RICHIE-2": [
+   "CAR",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "LOHRNADO-1": [
+   "CIN",
+   "LV",
+   "MIN",
+   "NE",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "LOLALEGACYPICKS-2": [
+   "DET",
+   "GB",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA"
+  ],
+  "LOLO9-2": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LONDON CANT LOSE 13-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LUBE AND MOVE-8": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LUCKYONE-10": [
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "LUCKYONE-2": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "LUCKYONE-3": [
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "LUCKYONE-6": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "LUCKYONE-7": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "LULA-6": [
+   "BAL",
+   "DET",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "LYNDARNIO-10": [
+   "BAL",
+   "CAR",
+   "CIN",
+   "DAL",
+   "DET",
+   "KC",
+   "MIN"
+  ],
+  "LYS2026Z-4": [
+   "BAL",
+   "BUF",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI"
+  ],
+  "M.D.K-9": [
+   "CAR",
+   "CLE",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "PIT"
+  ],
+  "MAD JAX-2": [
+   "HOU",
+   "IND",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MADMAX-4": [
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SEA"
+  ],
+  "MAGIC 8 BALL SAYS-2": [
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "MAMA SHARK-6": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "MAMA SHARK2-2": [
+   "GB",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MARKYMARK-5": [
+   "CIN",
+   "DAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MARY BETH-7": [
+   "BAL",
+   "HOU",
+   "NE",
+   "NYJ",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "MATHEMATICALLY ALIVE-6": [
+   "CAR",
+   "DAL",
+   "HOU",
+   "JAX",
+   "LAR",
+   "SEA",
+   "SF"
+  ],
+  "MATHEMATICALLY ALIVE-7": [
+   "CAR",
+   "DAL",
+   "HOU",
+   "JAX",
+   "LAR",
+   "SEA",
+   "SF"
+  ],
+  "MATHEMATICALLY ALIVE-8": [
+   "CAR",
+   "HOU",
+   "JAX",
+   "LAR",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "MATHEMATICALLY ALIVE-9": [
+   "HOU",
+   "JAX",
+   "LAR",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "MAYFLOWERMAVRICKS II-2": [
+   "BAL",
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MAYHEM SPORTS-2": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MB+BROS,INC.-6": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MC-3": [
+   "BAL",
+   "CHI",
+   "DET",
+   "HOU",
+   "LAR",
+   "NE",
+   "SF"
+  ],
+  "MCLOVIN69-10": [
+   "CAR",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "MCLOVIN69-9": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MEADOWOO-10": [
+   "DEN",
+   "DET",
+   "JAX",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "MEADOWOO-2": [
+   "DEN",
+   "DET",
+   "JAX",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "MEATBALL BROTHERS-10": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "KC",
+   "LV",
+   "NE",
+   "SF"
+  ],
+  "MEDIEVAL MOTORS-1": [
+   "BUF",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "MIGHTYFINE-2": [
+   "CIN",
+   "DET",
+   "KC",
+   "MIN",
+   "NYJ",
+   "PIT",
+   "SF"
+  ],
+  "MILES DRIVEN-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MILLY WANT WINGY-8": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "PHI"
+  ],
+  "MISERABLE-2": [
+   "BUF",
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "MISERABLE-5": [
+   "CHI",
+   "DEN",
+   "JAX",
+   "KC",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "MISERABLE-6": [
+   "BUF",
+   "CHI",
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MMA GURU-2": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "MONEY TRAIN-5": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "MONKEY D. LUFFY-1": [
+   "DEN",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MONKEY D. LUFFY-5": [
+   "CLE",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MOON STERLING MAFIA-8": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "MP PLAYER-1": [
+   "BUF",
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "MR. TEENY'S DEGENS-1": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "MR.FISH-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MRBOOPS-2": [
+   "BAL",
+   "CHI",
+   "HOU",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "MRGYGU-1": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "MRM-6": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MSCAL-10": [
+   "HOU",
+   "IND",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "MT. LEBO-10": [
+   "BAL",
+   "DAL",
+   "DET",
+   "HOU",
+   "NE",
+   "PHI",
+   "PIT"
+  ],
+  "MUFFIN BEAR-7": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "MUFFIN BEAR-8": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "MULETOWN MAFIA-7": [
+   "BAL",
+   "CAR",
+   "CIN",
+   "KC",
+   "LV",
+   "MIN",
+   "SF"
+  ],
+  "MY DOG IS MY BOOKIE-1": [
+   "BUF",
+   "CHI",
+   "DEN",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "MY HANI-3": [
+   "BAL",
+   "CIN",
+   "DEN",
+   "DET",
+   "LV",
+   "NE",
+   "SF"
+  ],
+  "NADA CHANCE-1": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "NADA CHANCE-10": [
+   "BAL",
+   "CLE",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "NATURAL SELECTION-10": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "NATURAL9-6": [
+   "DAL",
+   "DET",
+   "IND",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "ND-2": [
+   "BAL",
+   "BUF",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "NEED A MIRACLE-2": [
+   "BAL",
+   "CIN",
+   "DET",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "NEXT MAN UP-2": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "NFAY-1": [
+   "CAR",
+   "DEN",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "NFAY-7": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "NO PUNT INTENDED-3": [
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "NOISYBRAT-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "NORDHAVEN-3": [
+   "DAL",
+   "IND",
+   "JAX",
+   "LAR",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "NORDHAVEN-9": [
+   "BUF",
+   "CIN",
+   "DAL",
+   "DET",
+   "IND",
+   "LAR",
+   "NE"
+  ],
+  "NOSEKNOWS-6": [
+   "BAL",
+   "DEN",
+   "DET",
+   "HOU",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "NOVI-LAW-3": [
+   "BAL",
+   "CAR",
+   "CLE",
+   "JAX",
+   "KC",
+   "LV",
+   "SF"
+  ],
+  "NUDGE-2": [
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "NUDGE-3": [
+   "BAL",
+   "BUF",
+   "CIN",
+   "DEN",
+   "KC",
+   "SEA",
+   "SF"
+  ],
+  "OBA FEMINIST-9": [
+   "BAL",
+   "CAR",
+   "DAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "OLLIES PICKS-2": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "OMEGA-8": [
+   "BAL",
+   "CIN",
+   "DEN",
+   "HOU",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "ONE NUT NATION-1": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "ONE NUT NATION-4": [
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "ONE TIME-9": [
+   "CIN",
+   "DAL",
+   "DET",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "ONEPICKFROMDISASTER-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "OSH VEGAS ACES-5": [
+   "BAL",
+   "CIN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "OZEMPICK-1": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "OZEMPICK-2": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "OZEMPICK-3": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "OZEMPICK-4": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "PARKERS FUND-3": [
+   "CLE",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "PARLAY K-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PARTY MARTY-6": [
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "PARTYPARROT-7": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "PATHBREW-4": [
+   "DAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PATRICK STAR-2": [
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "PATSBROS-1": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PATSBROS-2": [
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "PAY TO THE ORDER OF-10": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "PAY TO THE ORDER OF-6": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PAY TO THE ORDER OF-8": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "PELICAN CLYDE-1": [
+   "BAL",
+   "DAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "SF"
+  ],
+  "PENELOPE 2-9": [
+   "BAL",
+   "CIN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "PHIL PIZZ-2": [
+   "BUF",
+   "CHI",
+   "DET",
+   "HOU",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PHYTHIAN6-5": [
+   "DEN",
+   "DET",
+   "HOU",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "PICKAWINNER22-1": [
+   "BAL",
+   "CAR",
+   "DET",
+   "HOU",
+   "LV",
+   "MIN",
+   "SF"
+  ],
+  "PIG$KINPROPHET-4": [
+   "DEN",
+   "DET",
+   "GB",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "PINHIGH-3": [
+   "DEN",
+   "GB",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "PINNACLE LLP-3": [
+   "BAL",
+   "BUF",
+   "DEN",
+   "HOU",
+   "JAX",
+   "NE",
+   "PHI"
+  ],
+  "PISTONS87-7": [
+   "BUF",
+   "DEN",
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PITTBULL-2": [
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "PIZZA-6": [
+   "CAR",
+   "CIN",
+   "DET",
+   "IND",
+   "KC",
+   "PIT",
+   "SF"
+  ],
+  "PIZZA-8": [
+   "GB",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "PLATYPUS-9": [
+   "CAR",
+   "CIN",
+   "DEN",
+   "KC",
+   "MIN",
+   "NYJ",
+   "SF"
+  ],
+  "PLAY IT DOWN 1-2": [
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "PLAY4GT3-5": [
+   "BAL",
+   "CAR",
+   "CIN",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "PLOTTING SUCCESS-4": [
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SEA"
+  ],
+  "POOR LIFE CHOICES-2": [
+   "HOU",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "POWER HOUR-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PRITCH-2": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PROBET-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PROBET-3": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "PROMPT INJECTION-4": [
+   "DAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PROMPT INJECTION-5": [
+   "DAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "PTL-4": [
+   "BAL",
+   "CIN",
+   "DEN",
+   "KC",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "PUCKDADDY-3": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "PUMBAPACK9-1": [
+   "CAR",
+   "DEN",
+   "DET",
+   "JAX",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "PUMBAPACK9-3": [
+   "CHI",
+   "DET",
+   "GB",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "PUMBAPACK9-4": [
+   "CLE",
+   "HOU",
+   "IND",
+   "KC",
+   "NE",
+   "PHI",
+   "PIT"
+  ],
+  "PUNTING AROUND-6": [
+   "BUF",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "PURPLE HAZE SOUTH-3": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "RABIDMONKEYPIRATES-3": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "RAIDERS 66-3": [
+   "BAL",
+   "BUF",
+   "CIN",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "RAMBLIN AND GAMBLIN-10": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "RAMBLIN AND GAMBLIN-5": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "RDIC-4": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "RDR81-3": [
+   "CAR",
+   "HOU",
+   "IND",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "REDDOG-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "REGARDS FROM CANADA-4": [
+   "BAL",
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "REGARDS FROM CANADA-5": [
+   "BAL",
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "REGARDS FROM CANADA-6": [
+   "BAL",
+   "DEN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "REGARDS FROM CANADA-7": [
+   "BAL",
+   "DAL",
+   "DEN",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "RETIRED 2026-1": [
+   "HOU",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "RHF BELUGAS-3": [
+   "DET",
+   "HOU",
+   "IND",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "RINCJR-2": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NYG",
+   "SF"
+  ],
+  "RIPS DON'T LIE-4": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT"
+  ],
+  "RIPS DON'T LIE-5": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "RIPS DON'T LIE-6": [
+   "BAL",
+   "GB",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "RIVADERCI-7": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "RIVER RATS-1": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "RMID12-1": [
+   "BAL",
+   "BUF",
+   "CAR",
+   "DEN",
+   "HOU",
+   "JAX",
+   "PHI"
+  ],
+  "RMID12-4": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT"
+  ],
+  "ROBC1120-7": [
+   "BAL",
+   "DEN",
+   "DET",
+   "HOU",
+   "LV",
+   "NE",
+   "SF"
+  ],
+  "ROCCO'S CANDY-9": [
+   "BAL",
+   "DEN",
+   "DET",
+   "JAX",
+   "KC",
+   "PHI",
+   "SF"
+  ],
+  "ROCKHOPPER-5": [
+   "BAL",
+   "BUF",
+   "DET",
+   "JAX",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "ROGERWRESTLERS-10": [
+   "HOU",
+   "IND",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "ROGERWRESTLERS-2": [
+   "BAL",
+   "BUF",
+   "DAL",
+   "HOU",
+   "LV",
+   "NE",
+   "SF"
+  ],
+  "ROGERWRESTLERS-6": [
+   "BAL",
+   "CAR",
+   "DAL",
+   "HOU",
+   "KC",
+   "LV",
+   "SF"
+  ],
+  "ROSALESJM-9": [
+   "DEN",
+   "IND",
+   "JAX",
+   "KC",
+   "NYJ",
+   "PHI",
+   "SF"
+  ],
+  "ROUGHRIDER-10": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "RTOWNSPORTSSYNDICATE-2": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "RUM RUNNERS-5": [
+   "BAL",
+   "CIN",
+   "DET",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "RUM RUNNERS-6": [
+   "BAL",
+   "CIN",
+   "DET",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "RUN IT UP-6": [
+   "BAL",
+   "DAL",
+   "HOU",
+   "KC",
+   "LV",
+   "NE",
+   "SF"
+  ],
+  "RYAN HOJO-3": [
+   "CAR",
+   "GB",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "RYAN HOJO-7": [
+   "CAR",
+   "DAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE"
+  ],
+  "RYAN HOJO-8": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "RYANMAX-3": [
+   "CAR",
+   "GB",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "SAGE-5": [
+   "BAL",
+   "CIN",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "SAGINAW 4-1": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "SANDBAGGER-5": [
+   "BUF",
+   "CAR",
+   "KC",
+   "LAR",
+   "LV",
+   "NE",
+   "SF"
+  ],
+  "SANDCASTLE-3": [
+   "BAL",
+   "CIN",
+   "DEN",
+   "DET",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "SATRIALE'S-3": [
+   "BAL",
+   "CAR",
+   "CHI",
+   "DET",
+   "JAX",
+   "LV",
+   "SF"
+  ],
+  "SAVAGES-1": [
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SAVEPLUTO9-8": [
+   "CIN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT"
+  ],
+  "SAVEPLUTO9-9": [
+   "CIN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT"
+  ],
+  "SEAHAWKS 79-3": [
+   "BAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SEYMOBUTTS-4": [
+   "CHI",
+   "JAX",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SHARKATTACK-1": [
+   "CIN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT"
+  ],
+  "SHARKATTACK-10": [
+   "CIN",
+   "DAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI"
+  ],
+  "SHARKATTACK-6": [
+   "CIN",
+   "DEN",
+   "DET",
+   "IND",
+   "JAX",
+   "KC",
+   "PHI"
+  ],
+  "SHARKATTACK-7": [
+   "CIN",
+   "DEN",
+   "DET",
+   "IND",
+   "JAX",
+   "PHI",
+   "SF"
+  ],
+  "SHARKATTACK-8": [
+   "DET",
+   "IND",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT"
+  ],
+  "SHARPCIRCLE-2": [
+   "CHI",
+   "CIN",
+   "JAX",
+   "KC",
+   "LAR",
+   "NE",
+   "SEA"
+  ],
+  "SHARRELYMONEY#8-8": [
+   "CAR",
+   "DAL",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "SHEFFY-8": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "SHELLZSKILLZ-7": [
+   "BAL",
+   "CIN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SHELLZSKILLZ-8": [
+   "BAL",
+   "CIN",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SHEPARD1019-2": [
+   "CIN",
+   "DAL",
+   "DET",
+   "GB",
+   "JAX",
+   "KC",
+   "SF"
+  ],
+  "SHOES-9": [
+   "JAX",
+   "KC",
+   "LV",
+   "NE",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "SIGS INSIDE-2": [
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "SKORCHED-10": [
+   "DEN",
+   "DET",
+   "HOU",
+   "IND",
+   "LV",
+   "NE",
+   "SF"
+  ],
+  "SKORCHED-9": [
+   "HOU",
+   "IND",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SLIPCOUNTERBARRY-1": [
+   "CAR",
+   "CHI",
+   "CIN",
+   "DET",
+   "JAX",
+   "MIN",
+   "PHI"
+  ],
+  "SMALL FRY-2": [
+   "BAL",
+   "DET",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "SMALL FRY-5": [
+   "CAR",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "SMALL FRY-6": [
+   "CAR",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "SMALL FRY-9": [
+   "CAR",
+   "DEN",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "SMS34-7": [
+   "CIN",
+   "DEN",
+   "DET",
+   "HOU",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "SNAKE-10": [
+   "BUF",
+   "DEN",
+   "HOU",
+   "LV",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "SNAKE-4": [
+   "BUF",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "SNAKE-6": [
+   "BUF",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "SNAKE-8": [
+   "BUF",
+   "HOU",
+   "LAR",
+   "MIN",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "SNAKE-9": [
+   "DEN",
+   "HOU",
+   "KC",
+   "LAR",
+   "PIT",
+   "SEA",
+   "SF"
+  ],
+  "SOBERMARK-3": [
+   "CAR",
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "SOPHIE'S CHOICE-7": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SOTA STARS 2-7": [
+   "BAL",
+   "DAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT"
+  ],
+  "SOTA STARS 3-9": [
+   "BUF",
+   "CHI",
+   "DEN",
+   "GB",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SOTA STARS-6": [
+   "BAL",
+   "CLE",
+   "DAL",
+   "HOU",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "SOTA STARS-9": [
+   "BAL",
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SPICY RIGATONI-8": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "NE"
+  ],
+  "SPOOKY EXPRESS-9": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "SPOOKY-6": [
+   "BAL",
+   "BUF",
+   "CAR",
+   "HOU",
+   "JAX",
+   "MIN",
+   "SF"
+  ],
+  "SPORTS EXECUTIONER-1": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SQUIRREL CAPITAL INC-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "SQUIRREL CAPITAL INC-7": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "SQUIRREL CAPITAL INC-8": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "STACYWILLIAMS-3": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "STATE MOREY 2027-1": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "STAY IN ALIVE-5": [
+   "BAL",
+   "CIN",
+   "DET",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "STEELHEART-3": [
+   "BAL",
+   "CAR",
+   "CIN",
+   "LV",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "STEP IN TIME-1": [
+   "ATL",
+   "BAL",
+   "GB",
+   "KC",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "STOCKTONGRADUATEBAR-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "STRATTON OAKMONT-1": [
+   "BAL",
+   "DET",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "SUMMITSWIMS-10": [
+   "BAL",
+   "BUF",
+   "JAX",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "SUN RUN 921-5": [
+   "CAR",
+   "HOU",
+   "IND",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "SUNGOD2026-8": [
+   "DEN",
+   "DET",
+   "HOU",
+   "KC",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "SUNY-10": [
+   "DET",
+   "IND",
+   "JAX",
+   "KC",
+   "LAR",
+   "PHI",
+   "SF"
+  ],
+  "SUNY-3": [
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "SUPER GATOR SEP-7": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "SURVIVOR BANDIT-3": [
+   "BAL",
+   "CIN",
+   "CLE",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "SVIK'S PICKS-8": [
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "T-REX-3": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TA2-1": [
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TABLE4ONE-1": [
+   "HOU",
+   "KC",
+   "LAR",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TALLY SURVIVORS-9": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TAMPABAY1-2": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TAMU 11-2": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TAPOUT59-1": [
+   "BUF",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "TEAM DELCO-2": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TEAM MORGAN-4": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI"
+  ],
+  "TERRY-OS-2": [
+   "CLE",
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "THE BALLR-10": [
+   "JAX",
+   "KC",
+   "LV",
+   "MIN",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "THE CLAIRVOYANT-3": [
+   "BAL",
+   "CIN",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "THE COMMONWEALTH-3": [
+   "BAL",
+   "DET",
+   "HOU",
+   "LV",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "THE DROP-2": [
+   "DAL",
+   "JAX",
+   "KC",
+   "LAR",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "THE FOUR HORSEMEN-4": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "THE HOWLING MAN-2": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "NE"
+  ],
+  "THE LAST GREAT HOPE-2": [
+   "CAR",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "THE MONEY IS MINE-1": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "THE MONEY IS MINE-2": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "THE MONEY IS MINE-3": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "THE MONEY IS MINE-4": [
+   "CLE",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "THE MONEY IS MINE-6": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "THE MONEY IS MINE-7": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "THE MONEY IS MINE-8": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "THE MONEY IS MINE-9": [
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "THE MUFFIN MAN-4": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "THE RABBITS FOOT-3": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI"
+  ],
+  "THE RABBITS FOOT-7": [
+   "BAL",
+   "BUF",
+   "CIN",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "THE WATER BOYS-1": [
+   "CAR",
+   "DEN",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "THEMILHOUSEALWYSWINS-8": [
+   "BAL",
+   "BUF",
+   "JAX",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "THISISREALLYTHEYEAR-2": [
+   "BAL",
+   "DET",
+   "HOU",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "THREE STOOGES-1": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "THREELIONS F.C.-2": [
+   "CAR",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SEA",
+   "SF"
+  ],
+  "TILTN-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TJMFJL-10": [
+   "BAL",
+   "CAR",
+   "DEN",
+   "DET",
+   "LV",
+   "PIT",
+   "SF"
+  ],
+  "TLLISKING-1": [
+   "BUF",
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "TOILETPAPER84-9": [
+   "BAL",
+   "BUF",
+   "CIN",
+   "DET",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "TOMKAT-6": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TOMMYRVISION-2": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "PHI"
+  ],
+  "TONEDFLASH-1": [
+   "BAL",
+   "CAR",
+   "HOU",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "TOO BROKE JOHNS-1": [
+   "BAL",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "PHI"
+  ],
+  "TOOMUCHICE-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TOP PICKS ANALYTICS-6": [
+   "CAR",
+   "DET",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "PIT"
+  ],
+  "TRIXIE-5": [
+   "BUF",
+   "GB",
+   "JAX",
+   "LAR",
+   "LV",
+   "NE",
+   "SEA"
+  ],
+  "TRUST TIMING-3": [
+   "BAL",
+   "DEN",
+   "DET",
+   "KC",
+   "NYJ",
+   "PHI",
+   "SEA"
+  ],
+  "TSUNAMI79-2": [
+   "CLE",
+   "IND",
+   "JAX",
+   "KC",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "TURN 'EM-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "TURTLE HIPPY-6": [
+   "BAL",
+   "CIN",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "TVM55-10": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI"
+  ],
+  "TWEENTHEHEDGES-8": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "UKIE DOZER-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "UKIE DOZER-7": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "UNDISPUTED23-7": [
+   "BAL",
+   "CAR",
+   "CLE",
+   "DEN",
+   "HOU",
+   "JAX",
+   "SF"
+  ],
+  "USCDOGG-5": [
+   "BAL",
+   "DEN",
+   "DET",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "VALET GANG-7": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "VANYJO-9": [
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "VEGAS SPAWN RANCH-4": [
+   "BAL",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "PHI",
+   "PIT"
+  ],
+  "VEGAS VIKES-1": [
+   "BAL",
+   "BUF",
+   "CAR",
+   "DET",
+   "HOU",
+   "MIN",
+   "PIT"
+  ],
+  "VEGASSHARP-2": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "VENTURA BOYZ-1": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "VGSBPS-4": [
+   "CAR",
+   "CLE",
+   "HOU",
+   "KC",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "VIVALAS FLORIDAMAN-1": [
+   "CIN",
+   "DEN",
+   "DET",
+   "IND",
+   "LAR",
+   "PIT",
+   "SF"
+  ],
+  "VJQUICK-5": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "W AND W-2": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "NE",
+   "SF"
+  ],
+  "WAHLBERG BUCKEYES-10": [
+   "BAL",
+   "DET",
+   "HOU",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WARHOL-2": [
+   "BUF",
+   "GB",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "SF"
+  ],
+  "WARHOL-3": [
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI",
+   "SEA",
+   "SF"
+  ],
+  "WBTU-6": [
+   "BAL",
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WEEEIII-6": [
+   "BAL",
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WFL-7": [
+   "BAL",
+   "CAR",
+   "DEN",
+   "HOU",
+   "KC",
+   "LV",
+   "SF"
+  ],
+  "WHEELS-6": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WHEREDREAMSCOMETODIE-2": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WHITE HORSE-8": [
+   "BUF",
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "PHI",
+   "SEA"
+  ],
+  "WIN1FORSTELLA-2": [
+   "DET",
+   "HOU",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "WINALL49ERS-1": [
+   "CIN",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "WINDERS WARRIORS-2": [
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WINKS1-1": [
+   "CHI",
+   "CIN",
+   "CLE",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WINNINGWAGERSMD-4": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WOLF CREEK-4": [
+   "DEN",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WON MORE JACKET-1": [
+   "BAL",
+   "CIN",
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "WOODMAN-2": [
+   "BAL",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "WORMS-2": [
+   "BUF",
+   "CLE",
+   "HOU",
+   "JAX",
+   "MIN",
+   "PHI",
+   "SF"
+  ],
+  "WVU CREW-5": [
+   "BAL",
+   "DET",
+   "JAX",
+   "MIN",
+   "NE",
+   "NYJ",
+   "SF"
+  ],
+  "YATTA-2": [
+   "CLE",
+   "DET",
+   "JAX",
+   "KC",
+   "MIN",
+   "PIT",
+   "SF"
+  ],
+  "YATTA-6": [
+   "BAL",
+   "CIN",
+   "DAL",
+   "KC",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "YAYHOWFUN-1": [
+   "BAL",
+   "DEN",
+   "DET",
+   "KC",
+   "NE",
+   "PHI",
+   "SF"
+  ],
+  "YAYHOWFUN-2": [
+   "CAR",
+   "DET",
+   "HOU",
+   "MIN",
+   "PHI",
+   "PIT",
+   "SF"
+  ],
+  "YEARLY DONATION-3": [
+   "BAL",
+   "HOU",
+   "IND",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT"
+  ],
+  "YEESH-1": [
+   "BUF",
+   "CAR",
+   "CLE",
+   "DET",
+   "JAX",
+   "MIN",
+   "PHI"
+  ],
+  "YEESH-2": [
+   "DEN",
+   "DET",
+   "HOU",
+   "IND",
+   "JAX",
+   "NE",
+   "SF"
+  ],
+  "YO, CUMMISH-2": [
+   "BAL",
+   "HOU",
+   "KC",
+   "LV",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "YOUNG DANIEL-1": [
+   "IND",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "PIT",
+   "SF"
+  ],
+  "ZUPP-1": [
+   "BAL",
+   "HOU",
+   "JAX",
+   "KC",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "ZUPP-2": [
+   "CAR",
+   "CHI",
+   "DEN",
+   "JAX",
+   "KC",
+   "PIT",
+   "SF"
+  ]
+ }
+}

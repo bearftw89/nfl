@@ -30,6 +30,10 @@
   "7": {
    "picks": true,
    "used": true
+  },
+  "8": {
+   "picks": false,
+   "used": true
   }
  }
 }
