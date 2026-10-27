@@ -2,17 +2,6 @@
  "week": 7,
  "games": [
   {
-   "espn_id": "401873009",
-   "kickoff": "2026-10-27T00:15Z",
-   "state": "in",
-   "detail": "3:27 - 3rd",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "PHI",
-   "home_score": 21,
-   "away": "DAL",
-   "away_score": 20
-  },
-  {
    "espn_id": "401873010",
    "kickoff": "2026-10-23T00:15Z",
    "state": "post",
@@ -154,6 +143,17 @@
    "home_score": 20,
    "away": "KC",
    "away_score": 3
+  },
+  {
+   "espn_id": "401873009",
+   "kickoff": "2026-10-27T00:15Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "PHI",
+   "home_score": 21,
+   "away": "DAL",
+   "away_score": 38
   }
  ]
 }
