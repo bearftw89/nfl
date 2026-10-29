@@ -1,0 +1,245 @@
+{
+ "week": 8,
+ "source": "https://www.circasports.com/wp-content/uploads/2026/10/Circa-Sports-Million-VIII-Contest-Point-Spreads-Week-8.pdf",
+ "count": 14,
+ "games": [
+  {
+   "id": 1,
+   "time_pt": "5:15 PM",
+   "neutral": false,
+   "fav": {
+    "num": 1,
+    "abbr": "GB",
+    "home": true,
+    "line": -3.5
+   },
+   "dog": {
+    "num": 2,
+    "abbr": "CAR",
+    "home": false,
+    "line": 3.5
+   }
+  },
+  {
+   "id": 2,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 3,
+    "abbr": "DET",
+    "home": true,
+    "line": -3.5
+   },
+   "dog": {
+    "num": 4,
+    "abbr": "MIN",
+    "home": false,
+    "line": 3.5
+   }
+  },
+  {
+   "id": 3,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 5,
+    "abbr": "NYJ",
+    "home": true,
+    "line": -1.5
+   },
+   "dog": {
+    "num": 6,
+    "abbr": "LV",
+    "home": false,
+    "line": 1.5
+   }
+  },
+  {
+   "id": 4,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 7,
+    "abbr": "DAL",
+    "home": true,
+    "line": -7
+   },
+   "dog": {
+    "num": 8,
+    "abbr": "ARI",
+    "home": false,
+    "line": 7.0
+   }
+  },
+  {
+   "id": 5,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 9,
+    "abbr": "TB",
+    "home": true,
+    "line": -2.5
+   },
+   "dog": {
+    "num": 10,
+    "abbr": "ATL",
+    "home": false,
+    "line": 2.5
+   }
+  },
+  {
+   "id": 6,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 11,
+    "abbr": "BUF",
+    "home": true,
+    "line": -3
+   },
+   "dog": {
+    "num": 12,
+    "abbr": "BAL",
+    "home": false,
+    "line": 3.0
+   }
+  },
+  {
+   "id": 7,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 13,
+    "abbr": "JAX",
+    "home": true,
+    "line": -10
+   },
+   "dog": {
+    "num": 14,
+    "abbr": "IND",
+    "home": false,
+    "line": 10.0
+   }
+  },
+  {
+   "id": 8,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 15,
+    "abbr": "CIN",
+    "home": true,
+    "line": -12.5
+   },
+   "dog": {
+    "num": 16,
+    "abbr": "TEN",
+    "home": false,
+    "line": 12.5
+   }
+  },
+  {
+   "id": 9,
+   "time_pt": "10:00 AM",
+   "neutral": false,
+   "fav": {
+    "num": 17,
+    "abbr": "PIT",
+    "home": true,
+    "line": -3
+   },
+   "dog": {
+    "num": 18,
+    "abbr": "CLE",
+    "home": false,
+    "line": 3.0
+   }
+  },
+  {
+   "id": 10,
+   "time_pt": "1:05 PM",
+   "neutral": false,
+   "fav": {
+    "num": 19,
+    "abbr": "LAR",
+    "home": true,
+    "line": -6.5
+   },
+   "dog": {
+    "num": 20,
+    "abbr": "LAC",
+    "home": false,
+    "line": 6.5
+   }
+  },
+  {
+   "id": 11,
+   "time_pt": "1:25 PM",
+   "neutral": false,
+   "fav": {
+    "num": 21,
+    "abbr": "KC",
+    "home": false,
+    "line": -1.5
+   },
+   "dog": {
+    "num": 22,
+    "abbr": "DEN",
+    "home": true,
+    "line": 1.5
+   }
+  },
+  {
+   "id": 12,
+   "time_pt": "1:25 PM",
+   "neutral": false,
+   "fav": {
+    "num": 23,
+    "abbr": "NE",
+    "home": false,
+    "line": -7
+   },
+   "dog": {
+    "num": 24,
+    "abbr": "MIA",
+    "home": true,
+    "line": 7.0
+   }
+  },
+  {
+   "id": 13,
+   "time_pt": "5:20 PM",
+   "neutral": false,
+   "fav": {
+    "num": 25,
+    "abbr": "WSH",
+    "home": true,
+    "line": -6
+   },
+   "dog": {
+    "num": 26,
+    "abbr": "PHI",
+    "home": false,
+    "line": 6.0
+   }
+  },
+  {
+   "id": 14,
+   "time_pt": "5:15 PM",
+   "neutral": false,
+   "fav": {
+    "num": 27,
+    "abbr": "SEA",
+    "home": true,
+    "line": -3
+   },
+   "dog": {
+    "num": 28,
+    "abbr": "CHI",
+    "home": false,
+    "line": 3.0
+   }
+  }
+ ]
+}
