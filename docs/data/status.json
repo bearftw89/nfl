@@ -1,14 +1,18 @@
 {
- "updated": "2026-10-28T20:51:40+00:00",
+ "updated": "2026-10-29T00:40:09+00:00",
  "lines": [
-  "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
+  "wrote docs/data/2026/week-8/card.json (14 rows)",
+  "wrote results week 8 (0/14 final)",
+  "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
+  "college card week 9: 52 games",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
-  "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7]",
+  "college results week 9: 0/52 final",
+  "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
+  "gold card week 8: 14",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
-  "survivor card week 8: 14",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7]",
   "circa: found 6 current-season PDFs (grandissimo picks wk7, grandissimo used wk8, millio picks wk7, millio standings wk7, survivor picks wk7, survivor used wk8)"

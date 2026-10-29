@@ -1,0 +1,159 @@
+{
+ "week": 8,
+ "games": [
+  {
+   "espn_id": "401873023",
+   "kickoff": "2026-10-30T00:15Z",
+   "state": "pre",
+   "detail": "10/29 - 8:15 PM EDT",
+   "status": "STATUS_SCHEDULED",
+   "home": "GB",
+   "home_score": 0,
+   "away": "CAR",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873026",
+   "kickoff": "2026-11-01T18:00Z",
+   "state": "pre",
+   "detail": "11/1 - 1:00 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "BUF",
+   "home_score": 0,
+   "away": "BAL",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873031",
+   "kickoff": "2026-11-01T18:00Z",
+   "state": "pre",
+   "detail": "11/1 - 1:00 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "CIN",
+   "home_score": 0,
+   "away": "TEN",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873024",
+   "kickoff": "2026-11-01T18:00Z",
+   "state": "pre",
+   "detail": "11/1 - 1:00 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "DAL",
+   "home_score": 0,
+   "away": "ARI",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873030",
+   "kickoff": "2026-11-01T18:00Z",
+   "state": "pre",
+   "detail": "11/1 - 1:00 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "DET",
+   "home_score": 0,
+   "away": "MIN",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873029",
+   "kickoff": "2026-11-01T18:00Z",
+   "state": "pre",
+   "detail": "11/1 - 1:00 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "NYJ",
+   "home_score": 0,
+   "away": "LV",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873027",
+   "kickoff": "2026-11-01T18:00Z",
+   "state": "pre",
+   "detail": "11/1 - 1:00 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "PIT",
+   "home_score": 0,
+   "away": "CLE",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873025",
+   "kickoff": "2026-11-01T18:00Z",
+   "state": "pre",
+   "detail": "11/1 - 1:00 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "TB",
+   "home_score": 0,
+   "away": "ATL",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873028",
+   "kickoff": "2026-11-01T18:00Z",
+   "state": "pre",
+   "detail": "11/1 - 1:00 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "JAX",
+   "home_score": 0,
+   "away": "IND",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873032",
+   "kickoff": "2026-11-01T21:05Z",
+   "state": "pre",
+   "detail": "11/1 - 4:05 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "LAR",
+   "home_score": 0,
+   "away": "LAC",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873033",
+   "kickoff": "2026-11-01T21:25Z",
+   "state": "pre",
+   "detail": "11/1 - 4:25 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "DEN",
+   "home_score": 0,
+   "away": "KC",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873034",
+   "kickoff": "2026-11-01T21:25Z",
+   "state": "pre",
+   "detail": "11/1 - 4:25 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "MIA",
+   "home_score": 0,
+   "away": "NE",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873035",
+   "kickoff": "2026-11-02T01:20Z",
+   "state": "pre",
+   "detail": "11/1 - 8:20 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "WSH",
+   "home_score": 0,
+   "away": "PHI",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873036",
+   "kickoff": "2026-11-03T01:15Z",
+   "state": "pre",
+   "detail": "11/2 - 8:15 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "SEA",
+   "home_score": 0,
+   "away": "CHI",
+   "away_score": 0
+  }
+ ]
+}
