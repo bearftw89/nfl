@@ -4,13 +4,13 @@
   {
    "espn_id": "401873023",
    "kickoff": "2026-10-30T00:15Z",
-   "state": "in",
-   "detail": "10:40 - 4th",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "GB",
    "home_score": 27,
    "away": "CAR",
-   "away_score": 13
+   "away_score": 19
   },
   {
    "espn_id": "401873026",
