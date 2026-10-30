@@ -4,24 +4,24 @@
   {
    "espn_id": "401869963",
    "kickoff": "2026-10-29T23:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/29 - 7:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "5:16 - 4th",
    "home": "JAMES MADISON",
-   "home_score": 0,
+   "home_score": 21,
    "away": "TROY",
-   "away_score": 0
+   "away_score": 21
   },
   {
    "espn_id": "401862812",
    "kickoff": "2026-10-29T23:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/29 - 7:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "13:01 - 4th",
    "home": "NORTH TEXAS",
-   "home_score": 0,
+   "home_score": 41,
    "away": "FLORIDA ATLANTIC",
-   "away_score": 0
+   "away_score": 31
   },
   {
    "espn_id": "401862813",
