@@ -70,24 +70,24 @@
   {
    "espn_id": "401871096",
    "kickoff": "2026-10-31T17:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 1:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "6:50 - 1st",
    "home": "OLD DOMINION",
    "home_score": 0,
    "away": "MARSHALL",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401858277",
    "kickoff": "2026-10-31T16:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "0:03 - 2nd",
    "home": "NC STATE",
-   "home_score": 0,
+   "home_score": 10,
    "away": "CALIFORNIA",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401856848",
@@ -147,24 +147,24 @@
   {
    "espn_id": "401858503",
    "kickoff": "2026-10-31T16:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_HALFTIME",
+   "detail": "Halftime",
    "home": "MARYLAND",
-   "home_score": 0,
+   "home_score": 7,
    "away": "ILLINOIS",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401858507",
    "kickoff": "2026-10-31T16:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:30 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "7:50 - 2nd",
    "home": "RUTGERS",
-   "home_score": 0,
+   "home_score": 10,
    "away": "MICHIGAN",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401869846",
@@ -191,46 +191,46 @@
   {
    "espn_id": "401862816",
    "kickoff": "2026-10-31T16:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "0:37 - 2nd",
    "home": "SOUTH FLORIDA",
-   "home_score": 0,
+   "home_score": 17,
    "away": "UAB",
-   "away_score": 0
+   "away_score": 10
   },
   {
    "espn_id": "401858278",
    "kickoff": "2026-10-31T16:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "0:10 - 2nd",
    "home": "SYRACUSE",
-   "home_score": 0,
+   "home_score": 20,
    "away": "SMU",
-   "away_score": 0
+   "away_score": 10
   },
   {
    "espn_id": "401866452",
    "kickoff": "2026-10-31T16:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_HALFTIME",
+   "detail": "Halftime",
    "home": "WESTERN MICHIGAN",
-   "home_score": 0,
+   "home_score": 14,
    "away": "BOWLING GREEN",
-   "away_score": 0
+   "away_score": 10
   },
   {
    "espn_id": "401858279",
    "kickoff": "2026-10-31T16:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "1:56 - 2nd",
    "home": "DUKE",
-   "home_score": 0,
+   "home_score": 27,
    "away": "BOSTON COLLEGE",
-   "away_score": 0
+   "away_score": 2
   },
   {
    "espn_id": "401858284",
@@ -279,13 +279,13 @@
   {
    "espn_id": "401859185",
    "kickoff": "2026-10-31T16:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_HALFTIME",
+   "detail": "Halftime",
    "home": "NAVY",
-   "home_score": 0,
+   "home_score": 13,
    "away": "NOTRE DAME",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401856736",
@@ -345,13 +345,13 @@
   {
    "espn_id": "401856842",
    "kickoff": "2026-10-31T16:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "0:23 - 2nd",
    "home": "TEXAS TECH",
-   "home_score": 0,
+   "home_score": 7,
    "away": "ARIZONA",
-   "away_score": 0
+   "away_score": 17
   },
   {
    "espn_id": "401856847",
@@ -455,11 +455,11 @@
   {
    "espn_id": "401856735",
    "kickoff": "2026-10-31T16:45Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:45 PM EDT",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "10:18 - 2nd",
    "home": "OLE MISS",
-   "home_score": 0,
+   "home_score": 7,
    "away": "AUBURN",
    "away_score": 0
   },
@@ -510,11 +510,11 @@
   {
    "espn_id": "401858502",
    "kickoff": "2026-10-31T16:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/31 - 12:00 PM EDT",
+   "state": "in",
+   "status": "STATUS_HALFTIME",
+   "detail": "Halftime",
    "home": "IOWA",
-   "home_score": 0,
+   "home_score": 20,
    "away": "WISCONSIN",
    "away_score": 0
   },
