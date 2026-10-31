@@ -26,35 +26,35 @@
   {
    "espn_id": "401862813",
    "kickoff": "2026-10-30T23:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "0:48 - 2nd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final/OT",
    "home": "CHARLOTTE",
-   "home_score": 24,
+   "home_score": 31,
    "away": "TULANE",
-   "away_score": 14
+   "away_score": 38
   },
   {
    "espn_id": "401856844",
    "kickoff": "2026-10-30T23:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "7:48 - 2nd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "CENTRAL FLORIDA",
-   "home_score": 0,
+   "home_score": 9,
    "away": "BAYLOR",
-   "away_score": 14
+   "away_score": 41
   },
   {
    "espn_id": "401866451",
    "kickoff": "2026-10-31T02:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "10/30 - 10:30 PM EDT",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "SACRAMENTO STATE",
-   "home_score": 0,
+   "home_score": 31,
    "away": "KENT STATE",
-   "away_score": 0
+   "away_score": 10
   },
   {
    "espn_id": "401862814",
