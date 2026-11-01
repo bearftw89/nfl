@@ -434,12 +434,12 @@
    "espn_id": "401860924",
    "kickoff": "2026-11-01T03:00Z",
    "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "6:41 - 1st",
+   "status": "STATUS_HALFTIME",
+   "detail": "Halftime",
    "home": "FRESNO STATE",
-   "home_score": 0,
+   "home_score": 21,
    "away": "OREGON STATE",
-   "away_score": 0
+   "away_score": 9
   },
   {
    "espn_id": "401858509",
@@ -477,9 +477,9 @@
   {
    "espn_id": "401858504",
    "kickoff": "2026-11-01T00:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "0:31 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "NEBRASKA",
    "home_score": 10,
    "away": "WASHINGTON",
@@ -556,22 +556,22 @@
    "kickoff": "2026-11-01T02:00Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "2:00 - 2nd",
+   "detail": "1:21 - 3rd",
    "home": "BOISE STATE",
-   "home_score": 21,
+   "home_score": 28,
    "away": "TEXAS STATE",
-   "away_score": 3
+   "away_score": 25
   },
   {
    "espn_id": "401864530",
    "kickoff": "2026-11-01T02:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "6:57 - 2nd",
+   "detail": "7:14 - 3rd",
    "home": "UNLV",
-   "home_score": 17,
+   "home_score": 31,
    "away": "NORTHERN ILLINOIS",
-   "away_score": 17
+   "away_score": 24
   }
  ],
  "unmatched": []
