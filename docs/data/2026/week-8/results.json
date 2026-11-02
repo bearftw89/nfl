@@ -4,9 +4,9 @@
   {
    "espn_id": "401873026",
    "kickoff": "2026-11-01T18:00Z",
-   "state": "in",
-   "detail": "2:00 - 4th",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "BUF",
    "home_score": 36,
    "away": "BAL",
@@ -15,35 +15,24 @@
   {
    "espn_id": "401873031",
    "kickoff": "2026-11-01T18:00Z",
-   "state": "in",
-   "detail": "0:44 - 4th",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final/OT",
+   "status": "STATUS_FINAL",
    "home": "CIN",
-   "home_score": 36,
+   "home_score": 43,
    "away": "TEN",
    "away_score": 36
   },
   {
    "espn_id": "401873024",
    "kickoff": "2026-11-01T18:00Z",
-   "state": "in",
-   "detail": "0:06 - 4th",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final/OT",
+   "status": "STATUS_FINAL",
    "home": "DAL",
    "home_score": 30,
    "away": "ARI",
-   "away_score": 30
-  },
-  {
-   "espn_id": "401873032",
-   "kickoff": "2026-11-01T21:05Z",
-   "state": "in",
-   "detail": "10:01 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "LAR",
-   "home_score": 0,
-   "away": "LAC",
-   "away_score": 0
+   "away_score": 33
   },
   {
    "espn_id": "401873030",
@@ -101,26 +90,37 @@
    "away_score": 7
   },
   {
+   "espn_id": "401873032",
+   "kickoff": "2026-11-01T21:05Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "LAR",
+   "home_score": 24,
+   "away": "LAC",
+   "away_score": 9
+  },
+  {
    "espn_id": "401873033",
    "kickoff": "2026-11-01T21:25Z",
-   "state": "pre",
-   "detail": "11/1 - 4:25 PM EST",
-   "status": "STATUS_SCHEDULED",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "DEN",
-   "home_score": 0,
+   "home_score": 28,
    "away": "KC",
-   "away_score": 0
+   "away_score": 24
   },
   {
    "espn_id": "401873034",
    "kickoff": "2026-11-01T21:25Z",
-   "state": "pre",
-   "detail": "11/1 - 4:25 PM EST",
-   "status": "STATUS_SCHEDULED",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "MIA",
-   "home_score": 0,
+   "home_score": 19,
    "away": "NE",
-   "away_score": 0
+   "away_score": 24
   },
   {
    "espn_id": "401873035",
