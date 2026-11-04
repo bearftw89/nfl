@@ -1,21 +1,15 @@
 {
- "updated": "2026-11-03T20:49:55+00:00",
+ "updated": "2026-11-04T01:05:37+00:00",
  "lines": [
-  "wrote docs/data/2026/week-8/standings.json (596 rows)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
-  "gold standings week 8: 66",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
-  "survivor used-teams through week 8: 3 entries alive",
-  "circa: found 6 current-season PDFs (grandissimo picks wk8, grandissimo used wk9, millio picks wk8, millio standings wk8, survivor picks wk8, survivor used wk9)",
-  "circa grandissimo availability through week 9: 3 entries",
-  "circa millio standings week 8: 5789 rows",
-  "circa survivor availability through week 9: 610 entries"
+  "circa: found 6 current-season PDFs (grandissimo picks wk8, grandissimo used wk9, millio picks wk8, millio standings wk8, survivor picks wk8, survivor used wk9)"
  ]
 }
