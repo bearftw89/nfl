@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T15:44:27+00:00",
+ "updated": "2026-11-04T21:35:03+00:00",
  "lines": [
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
@@ -7,7 +7,8 @@
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
-  "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
+  "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
+  "survivor card week 9: 15",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "circa: found 6 current-season PDFs (grandissimo picks wk8, grandissimo used wk9, millio picks wk8, millio standings wk8, survivor picks wk8, survivor used wk9)"
