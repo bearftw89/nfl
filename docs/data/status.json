@@ -1,16 +1,17 @@
 {
- "updated": "2026-11-05T22:47:35+00:00",
+ "updated": "2026-11-06T03:15:35+00:00",
  "lines": [
+  "wrote results week 9 (0/15 final)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
+  "college results week 10: 0/57 final",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk8, grandissimo used wk9, millio card wk9, millio standings wk8, survivor picks wk8, survivor used wk9)",
-  "circa millio card week 9: 15 games"
+  "circa: found 6 current-season PDFs (grandissimo picks wk8, grandissimo used wk9, millio card wk9, millio standings wk8, survivor picks wk8, survivor used wk9)"
  ]
 }
