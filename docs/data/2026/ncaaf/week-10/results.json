@@ -4,24 +4,24 @@
   {
    "espn_id": "401862817",
    "kickoff": "2026-11-06T00:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "11:04 - 3rd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "FLORIDA ATLANTIC",
-   "home_score": 43,
+   "home_score": 60,
    "away": "UTSA",
    "away_score": 29
   },
   {
    "espn_id": "401869964",
    "kickoff": "2026-11-06T01:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "13:35 - 3rd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "SOUTHERN MISS",
-   "home_score": 14,
+   "home_score": 23,
    "away": "JAMES MADISON",
-   "away_score": 23
+   "away_score": 54
   },
   {
    "espn_id": "401858288",
