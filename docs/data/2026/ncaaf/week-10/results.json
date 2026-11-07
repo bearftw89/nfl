@@ -26,46 +26,46 @@
   {
    "espn_id": "401858288",
    "kickoff": "2026-11-07T00:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/6 - 7:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "End of 3rd",
    "home": "SMU",
-   "home_score": 0,
+   "home_score": 37,
    "away": "VIRGINIA TECH",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401862818",
    "kickoff": "2026-11-07T00:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/6 - 7:30 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "9:54 - 3rd",
    "home": "EAST CAROLINA",
-   "home_score": 0,
+   "home_score": 10,
    "away": "SOUTH FLORIDA",
-   "away_score": 0
+   "away_score": 10
   },
   {
    "espn_id": "401858510",
    "kickoff": "2026-11-07T01:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/6 - 8:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "0:21 - 2nd",
    "home": "ILLINOIS",
-   "home_score": 0,
+   "home_score": 7,
    "away": "NEBRASKA",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401864533",
    "kickoff": "2026-11-07T02:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/6 - 9:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "0:59 - 1st",
    "home": "NEVADA",
    "home_score": 0,
    "away": "NEW MEXICO",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401856855",
