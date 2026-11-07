@@ -26,57 +26,57 @@
   {
    "espn_id": "401858288",
    "kickoff": "2026-11-07T00:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "End of 3rd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "SMU",
-   "home_score": 37,
+   "home_score": 51,
    "away": "VIRGINIA TECH",
-   "away_score": 14
+   "away_score": 28
   },
   {
    "espn_id": "401862818",
    "kickoff": "2026-11-07T00:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "9:54 - 3rd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "EAST CAROLINA",
-   "home_score": 10,
+   "home_score": 20,
    "away": "SOUTH FLORIDA",
-   "away_score": 10
+   "away_score": 17
   },
   {
    "espn_id": "401858510",
    "kickoff": "2026-11-07T01:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "0:21 - 2nd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "ILLINOIS",
-   "home_score": 7,
+   "home_score": 24,
    "away": "NEBRASKA",
-   "away_score": 7
+   "away_score": 13
   },
   {
    "espn_id": "401864533",
    "kickoff": "2026-11-07T02:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "0:59 - 1st",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "NEVADA",
-   "home_score": 0,
+   "home_score": 3,
    "away": "NEW MEXICO",
-   "away_score": 14
+   "away_score": 31
   },
   {
    "espn_id": "401856855",
    "kickoff": "2026-11-07T03:15Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/6 - 10:15 PM EST",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "ARIZONA",
-   "home_score": 0,
+   "home_score": 29,
    "away": "TCU",
-   "away_score": 0
+   "away_score": 28
   },
   {
    "espn_id": "401856850",
