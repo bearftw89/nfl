@@ -1,16 +1,22 @@
 {
- "updated": "2026-11-07T23:32:21+00:00",
+ "updated": "2026-11-08T02:45:08+00:00",
  "lines": [
+  "wrote docs/data/2026/week-9/picks.json (592 rows)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
-  "college results week 10: 23/57 final",
+  "college results week 10: 42/57 final",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
-  "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
+  "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
+  "gold picks week 9: 65",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
-  "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
+  "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
+  "survivor picks week 9: 3",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk8, grandissimo used wk9, millio card wk9, millio standings wk8, survivor picks wk8, survivor used wk9)"
+  "circa: found 6 current-season PDFs (grandissimo picks wk9, grandissimo used wk9, millio card wk9, millio picks wk9, survivor picks wk9, survivor used wk9)",
+  "circa grandissimo picks week 9: 3 entries",
+  "circa millio picks week 9: 5717 entries",
+  "circa survivor picks week 9: 610 entries"
  ]
 }
