@@ -4,24 +4,24 @@
   {
    "espn_id": "401862824",
    "kickoff": "2026-11-13T01:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/12 - 8:00 PM EST",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "SOUTH FLORIDA",
-   "home_score": 0,
+   "home_score": 41,
    "away": "MEMPHIS",
-   "away_score": 0
+   "away_score": 52
   },
   {
    "espn_id": "401869969",
    "kickoff": "2026-11-13T02:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/12 - 9:00 PM EST",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "UL MONROE",
-   "home_score": 0,
+   "home_score": 21,
    "away": "LOUISIANA",
-   "away_score": 0
+   "away_score": 42
   },
   {
    "espn_id": "401858293",
