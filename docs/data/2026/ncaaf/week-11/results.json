@@ -59,13 +59,13 @@
   {
    "espn_id": "401856859",
    "kickoff": "2026-11-14T17:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "1:59 - 4th",
    "home": "IOWA STATE",
-   "home_score": 0,
+   "home_score": 34,
    "away": "CINCINNATI",
-   "away_score": 0
+   "away_score": 13
   },
   {
    "espn_id": "401856886",
@@ -81,13 +81,13 @@
   {
    "espn_id": "401861967",
    "kickoff": "2026-11-14T17:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "8:21 - 4th",
    "home": "UCONN",
-   "home_score": 0,
+   "home_score": 33,
    "away": "JAMES MADISON",
-   "away_score": 0
+   "away_score": 16
   },
   {
    "espn_id": "401856861",
@@ -103,35 +103,35 @@
   {
    "espn_id": "401858522",
    "kickoff": "2026-11-14T17:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "7:25 - 4th",
    "home": "OHIO STATE",
-   "home_score": 0,
+   "home_score": 21,
    "away": "NORTHWESTERN",
-   "away_score": 0
+   "away_score": 13
   },
   {
    "espn_id": "401858520",
    "kickoff": "2026-11-14T17:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "7:37 - 4th",
    "home": "MARYLAND",
-   "home_score": 0,
+   "home_score": 14,
    "away": "WISCONSIN",
-   "away_score": 0
+   "away_score": 21
   },
   {
    "espn_id": "401862829",
    "kickoff": "2026-11-14T18:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 1:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "11:35 - 3rd",
    "home": "TEMPLE",
-   "home_score": 0,
+   "home_score": 10,
    "away": "UAB",
-   "away_score": 0
+   "away_score": 13
   },
   {
    "espn_id": "401858524",
@@ -147,24 +147,24 @@
   {
    "espn_id": "401856889",
    "kickoff": "2026-11-14T17:45Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:45 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "5:46 - 3rd",
    "home": "VANDERBILT",
-   "home_score": 0,
+   "home_score": 6,
    "away": "ALABAMA",
-   "away_score": 0
+   "away_score": 21
   },
   {
    "espn_id": "401858296",
    "kickoff": "2026-11-14T17:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "8:06 - 4th",
    "home": "MIAMI-FL",
-   "home_score": 0,
+   "home_score": 29,
    "away": "DUKE",
-   "away_score": 0
+   "away_score": 17
   },
   {
    "espn_id": "401869952",
@@ -191,13 +191,13 @@
   {
    "espn_id": "401862825",
    "kickoff": "2026-11-14T18:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 1:00 PM EST",
+   "state": "in",
+   "status": "STATUS_HALFTIME",
+   "detail": "Halftime",
    "home": "CHARLOTTE",
-   "home_score": 0,
+   "home_score": 16,
    "away": "EAST CAROLINA",
-   "away_score": 0
+   "away_score": 7
   },
   {
    "espn_id": "401858298",
@@ -224,35 +224,35 @@
   {
    "espn_id": "401858297",
    "kickoff": "2026-11-14T17:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:30 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "3:52 - 3rd",
    "home": "CLEMSON",
-   "home_score": 0,
+   "home_score": 3,
    "away": "GEORGIA TECH",
-   "away_score": 0
+   "away_score": 20
   },
   {
    "espn_id": "401858301",
    "kickoff": "2026-11-14T17:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "12:14 - 4th",
    "home": "SMU",
-   "home_score": 0,
+   "home_score": 7,
    "away": "WAKE FOREST",
-   "away_score": 0
+   "away_score": 49
   },
   {
    "espn_id": "401858300",
    "kickoff": "2026-11-14T17:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "4:19 - 4th",
    "home": "NC STATE",
-   "home_score": 0,
+   "home_score": 31,
    "away": "SYRACUSE",
-   "away_score": 0
+   "away_score": 26
   },
   {
    "espn_id": "401858519",
@@ -279,24 +279,24 @@
   {
    "espn_id": "401858525",
    "kickoff": "2026-11-14T17:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 12:30 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "13:01 - 4th",
    "home": "RUTGERS",
    "home_score": 0,
    "away": "NEBRASKA",
-   "away_score": 0
+   "away_score": 28
   },
   {
    "espn_id": "401869937",
    "kickoff": "2026-11-14T18:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 1:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "10:17 - 3rd",
    "home": "COASTAL CAROLINA",
-   "home_score": 0,
+   "home_score": 14,
    "away": "ARKANSAS STATE",
-   "away_score": 0
+   "away_score": 14
   },
   {
    "espn_id": "401862827",
@@ -356,13 +356,13 @@
   {
    "espn_id": "401870769",
    "kickoff": "2026-11-14T19:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 2:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "9:04 - 2nd",
    "home": "SAM HOUSTON STATE",
-   "home_score": 0,
+   "home_score": 7,
    "away": "KENNESAW STATE",
-   "away_score": 0
+   "away_score": 17
   },
   {
    "espn_id": "401856858",
@@ -455,11 +455,11 @@
   {
    "espn_id": "401856862",
    "kickoff": "2026-11-14T19:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/14 - 2:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "9:25 - 2nd",
    "home": "TCU",
-   "home_score": 0,
+   "home_score": 10,
    "away": "KANSAS STATE",
    "away_score": 0
   },
