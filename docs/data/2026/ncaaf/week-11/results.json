@@ -301,11 +301,11 @@
   {
    "espn_id": "401862827",
    "kickoff": "2026-11-15T02:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "4:48 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "UTSA",
-   "home_score": 21,
+   "home_score": 35,
    "away": "NORTH TEXAS",
    "away_score": 16
   },
@@ -334,24 +334,24 @@
   {
    "espn_id": "401864540",
    "kickoff": "2026-11-15T03:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "10:09 - 3rd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "UTEP",
-   "home_score": 6,
+   "home_score": 15,
    "away": "WYOMING",
-   "away_score": 24
+   "away_score": 27
   },
   {
    "espn_id": "401856864",
    "kickoff": "2026-11-15T03:30Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "ARIZONA",
-   "home_score": 14,
+   "home_score": 39,
    "away": "UTAH",
-   "away_score": 17
+   "away_score": 40
   },
   {
    "espn_id": "401870769",
@@ -488,13 +488,13 @@
   {
    "espn_id": "401856863",
    "kickoff": "2026-11-15T02:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "6:11 - 3rd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "OKLAHOMA STATE",
-   "home_score": 20,
+   "home_score": 27,
    "away": "TEXAS TECH",
-   "away_score": 35
+   "away_score": 52
   },
   {
    "espn_id": "401858518",
@@ -631,35 +631,35 @@
   {
    "espn_id": "401860915",
    "kickoff": "2026-11-15T02:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "12:16 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "SAN DIEGO STATE",
-   "home_score": 20,
+   "home_score": 30,
    "away": "UTAH STATE",
-   "away_score": 7
+   "away_score": 13
   },
   {
    "espn_id": "401860917",
    "kickoff": "2026-11-15T03:45Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "0:02 - 2nd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "WASHINGTON STATE",
-   "home_score": 35,
+   "home_score": 73,
    "away": "COLORADO STATE",
    "away_score": 7
   },
   {
    "espn_id": "401864537",
    "kickoff": "2026-11-15T04:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "5:14 - 2nd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "HAWAII",
-   "home_score": 0,
+   "home_score": 13,
    "away": "NORTH DAKOTA STATE",
-   "away_score": 7
+   "away_score": 21
   }
  ],
  "unmatched": [
