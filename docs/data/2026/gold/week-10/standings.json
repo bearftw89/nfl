@@ -1,0 +1,601 @@
+{
+ "week": 10,
+ "source": "https://www.westgateresorts.com/supercontest/download/2026%20Gold%20Standings%20Week%2010.pdf?contest=/2026/Gold/Standings",
+ "count": 66,
+ "rows": [
+  {
+   "place": "1",
+   "id": "THREAD CLOD FOOL-1",
+   "w": 33,
+   "l": 17,
+   "t": 0,
+   "c": 0,
+   "pts": 33.0
+  },
+  {
+   "place": "2",
+   "id": "BIG LIB-1",
+   "w": 32,
+   "l": 17,
+   "t": 1,
+   "c": 0,
+   "pts": 32.5
+  },
+  {
+   "place": "3T",
+   "id": "JUST WIN BABY-1",
+   "w": 30,
+   "l": 19,
+   "t": 1,
+   "c": 0,
+   "pts": 30.5
+  },
+  {
+   "place": "3T",
+   "id": "RJ551155-2",
+   "w": 30,
+   "l": 19,
+   "t": 1,
+   "c": 0,
+   "pts": 30.5
+  },
+  {
+   "place": "5T",
+   "id": "RJ551155-1",
+   "w": 30,
+   "l": 20,
+   "t": 0,
+   "c": 0,
+   "pts": 30.0
+  },
+  {
+   "place": "5T",
+   "id": "JJ & JF-1",
+   "w": 30,
+   "l": 20,
+   "t": 0,
+   "c": 0,
+   "pts": 30.0
+  },
+  {
+   "place": "7T",
+   "id": "DARK PASSENGER-1",
+   "w": 29,
+   "l": 20,
+   "t": 1,
+   "c": 0,
+   "pts": 29.5
+  },
+  {
+   "place": "7T",
+   "id": "INTEGRITY ALERT-1",
+   "w": 29,
+   "l": 20,
+   "t": 1,
+   "c": 0,
+   "pts": 29.5
+  },
+  {
+   "place": "7T",
+   "id": "JERRYDABEST-1",
+   "w": 29,
+   "l": 20,
+   "t": 1,
+   "c": 0,
+   "pts": 29.5
+  },
+  {
+   "place": "10T",
+   "id": "WAREHOUSE LIVE-1",
+   "w": 29,
+   "l": 21,
+   "t": 0,
+   "c": 0,
+   "pts": 29.0
+  },
+  {
+   "place": "10T",
+   "id": "IT AINT BREEZY-1",
+   "w": 29,
+   "l": 21,
+   "t": 0,
+   "c": 0,
+   "pts": 29.0
+  },
+  {
+   "place": "12T",
+   "id": "AMARILLO BY MORNING-1",
+   "w": 28,
+   "l": 22,
+   "t": 0,
+   "c": 0,
+   "pts": 28.0
+  },
+  {
+   "place": "12T",
+   "id": "CI-1",
+   "w": 28,
+   "l": 22,
+   "t": 0,
+   "c": 0,
+   "pts": 28.0
+  },
+  {
+   "place": "14T",
+   "id": "MR. KNOW IT ALL-1",
+   "w": 27,
+   "l": 22,
+   "t": 1,
+   "c": 0,
+   "pts": 27.5
+  },
+  {
+   "place": "14T",
+   "id": "TRIPLV-1",
+   "w": 27,
+   "l": 22,
+   "t": 1,
+   "c": 0,
+   "pts": 27.5
+  },
+  {
+   "place": "14T",
+   "id": "TRIPLV-3",
+   "w": 27,
+   "l": 22,
+   "t": 1,
+   "c": 0,
+   "pts": 27.5
+  },
+  {
+   "place": "14T",
+   "id": "LITTLE BUGGY T-1",
+   "w": 27,
+   "l": 22,
+   "t": 1,
+   "c": 0,
+   "pts": 27.5
+  },
+  {
+   "place": "14T",
+   "id": "TRIPLV-2",
+   "w": 27,
+   "l": 22,
+   "t": 1,
+   "c": 0,
+   "pts": 27.5
+  },
+  {
+   "place": "14T",
+   "id": "PERSIAN PRINCESS-1",
+   "w": 27,
+   "l": 22,
+   "t": 1,
+   "c": 0,
+   "pts": 27.5
+  },
+  {
+   "place": "20T",
+   "id": "BUFFOLOO-1",
+   "w": 27,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 27.0
+  },
+  {
+   "place": "20T",
+   "id": "ELMO5-1",
+   "w": 27,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 27.0
+  },
+  {
+   "place": "20T",
+   "id": "BRETTFAVRE444-1",
+   "w": 27,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 27.0
+  },
+  {
+   "place": "20T",
+   "id": "JD3-1",
+   "w": 27,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 27.0
+  },
+  {
+   "place": "20T",
+   "id": "DAWGS-1",
+   "w": 27,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 27.0
+  },
+  {
+   "place": "20T",
+   "id": "JOHN-1",
+   "w": 27,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 27.0
+  },
+  {
+   "place": "20T",
+   "id": "IGTHISISWALKERAT-1",
+   "w": 27,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 27.0
+  },
+  {
+   "place": "20T",
+   "id": "LOANCHEF-1",
+   "w": 27,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 27.0
+  },
+  {
+   "place": "20T",
+   "id": "DARTBOARD CAPPER-1",
+   "w": 27,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 27.0
+  },
+  {
+   "place": "29",
+   "id": "KDLV-1",
+   "w": 26,
+   "l": 23,
+   "t": 1,
+   "c": 0,
+   "pts": 26.5
+  },
+  {
+   "place": "30T",
+   "id": "LOVE MY BAXTER-1",
+   "w": 26,
+   "l": 24,
+   "t": 0,
+   "c": 0,
+   "pts": 26.0
+  },
+  {
+   "place": "30T",
+   "id": "MRBOBBYF-1",
+   "w": 26,
+   "l": 24,
+   "t": 0,
+   "c": 0,
+   "pts": 26.0
+  },
+  {
+   "place": "30T",
+   "id": "RUSSATA-1",
+   "w": 26,
+   "l": 24,
+   "t": 0,
+   "c": 0,
+   "pts": 26.0
+  },
+  {
+   "place": "30T",
+   "id": "THE PROGNOSTICATOR-1",
+   "w": 26,
+   "l": 24,
+   "t": 0,
+   "c": 0,
+   "pts": 26.0
+  },
+  {
+   "place": "34",
+   "id": "FIELDPOSITION-1",
+   "w": 25,
+   "l": 24,
+   "t": 1,
+   "c": 0,
+   "pts": 25.5
+  },
+  {
+   "place": "35T",
+   "id": "MAYBE TOMORROW-1",
+   "w": 25,
+   "l": 25,
+   "t": 0,
+   "c": 0,
+   "pts": 25.0
+  },
+  {
+   "place": "35T",
+   "id": "POTATO KMISH-1",
+   "w": 25,
+   "l": 25,
+   "t": 0,
+   "c": 0,
+   "pts": 25.0
+  },
+  {
+   "place": "35T",
+   "id": "TIRED BLOOD-1",
+   "w": 25,
+   "l": 25,
+   "t": 0,
+   "c": 0,
+   "pts": 25.0
+  },
+  {
+   "place": "35T",
+   "id": "NOBODY CARES-1",
+   "w": 25,
+   "l": 25,
+   "t": 0,
+   "c": 0,
+   "pts": 25.0
+  },
+  {
+   "place": "39T",
+   "id": "SUNNY DEGENS-1",
+   "w": 24,
+   "l": 25,
+   "t": 1,
+   "c": 0,
+   "pts": 24.5
+  },
+  {
+   "place": "39T",
+   "id": "ANGEL OF VENGEANCE-1",
+   "w": 24,
+   "l": 25,
+   "t": 1,
+   "c": 0,
+   "pts": 24.5
+  },
+  {
+   "place": "41T",
+   "id": "BALLPROTECTION-1",
+   "w": 24,
+   "l": 26,
+   "t": 0,
+   "c": 0,
+   "pts": 24.0
+  },
+  {
+   "place": "41T",
+   "id": "PRITCH-1",
+   "w": 24,
+   "l": 26,
+   "t": 0,
+   "c": 0,
+   "pts": 24.0
+  },
+  {
+   "place": "41T",
+   "id": "TREESANG-1",
+   "w": 23,
+   "l": 25,
+   "t": 2,
+   "c": 0,
+   "pts": 24.0
+  },
+  {
+   "place": "41T",
+   "id": "PRITCH-2",
+   "w": 24,
+   "l": 26,
+   "t": 0,
+   "c": 0,
+   "pts": 24.0
+  },
+  {
+   "place": "41T",
+   "id": "DURBIFY-1",
+   "w": 24,
+   "l": 26,
+   "t": 0,
+   "c": 0,
+   "pts": 24.0
+  },
+  {
+   "place": "41T",
+   "id": "LABATT BLUE-1",
+   "w": 24,
+   "l": 26,
+   "t": 0,
+   "c": 0,
+   "pts": 24.0
+  },
+  {
+   "place": "41T",
+   "id": "PHO KING B.S.-1",
+   "w": 24,
+   "l": 26,
+   "t": 0,
+   "c": 0,
+   "pts": 24.0
+  },
+  {
+   "place": "48T",
+   "id": "MUCKED NUTS-1",
+   "w": 23,
+   "l": 27,
+   "t": 0,
+   "c": 0,
+   "pts": 23.0
+  },
+  {
+   "place": "48T",
+   "id": "STAG CAPITAL-1",
+   "w": 23,
+   "l": 27,
+   "t": 0,
+   "c": 0,
+   "pts": 23.0
+  },
+  {
+   "place": "48T",
+   "id": "VEGAS RINGERS-1",
+   "w": 23,
+   "l": 27,
+   "t": 0,
+   "c": 0,
+   "pts": 23.0
+  },
+  {
+   "place": "51T",
+   "id": "FFFBTG-1",
+   "w": 22,
+   "l": 27,
+   "t": 1,
+   "c": 0,
+   "pts": 22.5
+  },
+  {
+   "place": "51T",
+   "id": "SEATTLESTEAMFITTER-1",
+   "w": 22,
+   "l": 27,
+   "t": 1,
+   "c": 0,
+   "pts": 22.5
+  },
+  {
+   "place": "51T",
+   "id": "SPREAD EAGLE-1",
+   "w": 22,
+   "l": 27,
+   "t": 1,
+   "c": 0,
+   "pts": 22.5
+  },
+  {
+   "place": "54T",
+   "id": "J MONEY-1",
+   "w": 22,
+   "l": 28,
+   "t": 0,
+   "c": 0,
+   "pts": 22.0
+  },
+  {
+   "place": "54T",
+   "id": "ALMA-1",
+   "w": 22,
+   "l": 28,
+   "t": 0,
+   "c": 0,
+   "pts": 22.0
+  },
+  {
+   "place": "54T",
+   "id": "FRANK B-1",
+   "w": 22,
+   "l": 28,
+   "t": 0,
+   "c": 0,
+   "pts": 22.0
+  },
+  {
+   "place": "54T",
+   "id": "STERNZCUSE-1",
+   "w": 22,
+   "l": 28,
+   "t": 0,
+   "c": 0,
+   "pts": 22.0
+  },
+  {
+   "place": "54T",
+   "id": "SONNY BOY-1",
+   "w": 22,
+   "l": 23,
+   "t": 0,
+   "c": 0,
+   "pts": 22.0
+  },
+  {
+   "place": "54T",
+   "id": "AND THEN-1",
+   "w": 22,
+   "l": 28,
+   "t": 0,
+   "c": 0,
+   "pts": 22.0
+  },
+  {
+   "place": "54T",
+   "id": "ACKATTACK-1",
+   "w": 22,
+   "l": 28,
+   "t": 0,
+   "c": 0,
+   "pts": 22.0
+  },
+  {
+   "place": "61T",
+   "id": "DEAD PRESIDENTS-1",
+   "w": 21,
+   "l": 29,
+   "t": 0,
+   "c": 0,
+   "pts": 21.0
+  },
+  {
+   "place": "61T",
+   "id": "TUESDAY GROUP REJECT-1",
+   "w": 21,
+   "l": 29,
+   "t": 0,
+   "c": 0,
+   "pts": 21.0
+  },
+  {
+   "place": "61T",
+   "id": "SCRANTON SKIP-1",
+   "w": 20,
+   "l": 28,
+   "t": 2,
+   "c": 0,
+   "pts": 21.0
+  },
+  {
+   "place": "61T",
+   "id": "QUEENSRIDGE WISE GUY-1",
+   "w": 21,
+   "l": 29,
+   "t": 0,
+   "c": 0,
+   "pts": 21.0
+  },
+  {
+   "place": "65",
+   "id": "BIFF SLAYER-1",
+   "w": 20,
+   "l": 30,
+   "t": 0,
+   "c": 0,
+   "pts": 20.0
+  },
+  {
+   "place": "66",
+   "id": "MCPICKS261307-1",
+   "w": 19,
+   "l": 31,
+   "t": 0,
+   "c": 0,
+   "pts": 19.0
+  }
+ ]
+}

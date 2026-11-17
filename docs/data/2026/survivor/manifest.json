@@ -51,7 +51,7 @@
   "10": {
    "card": true,
    "picks": true,
-   "used": false
+   "used": true
   }
  }
 }

@@ -1,17 +1,22 @@
 {
- "updated": "2026-11-17T12:22:21+00:00",
+ "updated": "2026-11-17T21:15:16+00:00",
  "lines": [
-  "wrote results week 10 (14/14 final)",
+  "wrote docs/data/2026/week-10/standings.json (596 rows)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "college week 11: no ESPN game found for 1: ['OLE MISS v OKLAHOMA']",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
-  "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
+  "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+  "gold standings week 10: 66",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
-  "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk10, grandissimo used wk10, millio card wk10, millio picks wk10, survivor picks wk10, survivor used wk10)"
+  "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+  "survivor used-teams through week 10: 3 entries alive",
+  "circa: found 6 current-season PDFs (grandissimo picks wk10, grandissimo used wk11, millio picks wk10, millio standings wk10, survivor picks wk10, survivor used wk11)",
+  "circa grandissimo availability through week 11: 3 entries",
+  "circa millio standings week 10: 5789 rows",
+  "circa survivor availability through week 11: 568 entries"
  ]
 }
