@@ -72,6 +72,13 @@
    "standings": true,
    "results": false,
    "overrides": false
+  },
+  "11": {
+   "card": true,
+   "picks": false,
+   "standings": false,
+   "results": false,
+   "overrides": false
   }
  }
 }
