@@ -4,13 +4,13 @@
   {
    "espn_id": "401862830",
    "kickoff": "2026-11-20T00:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "9:42 - 1st",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "TEMPLE",
-   "home_score": 7,
+   "home_score": 27,
    "away": "RICE",
-   "away_score": 0
+   "away_score": 31
   },
   {
    "espn_id": "401856869",
