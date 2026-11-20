@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20T17:02:13+00:00",
+ "updated": "2026-11-20T23:03:01+00:00",
  "lines": [
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
@@ -11,6 +11,7 @@
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk10, grandissimo used wk11, millio card wk11, millio standings wk10, survivor picks wk10, survivor used wk11)"
+  "circa: found 6 current-season PDFs (grandissimo picks wk10, grandissimo used wk11, millio card wk11, millio standings wk10, survivor picks wk10, survivor used wk11)",
+  "circa millio card week 11: 13 games"
  ]
 }

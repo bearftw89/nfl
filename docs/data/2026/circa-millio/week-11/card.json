@@ -1,6 +1,6 @@
 {
  "week": 11,
- "source": "https://www.circasports.com/wp-content/uploads/2026/11/Circa-Sports-Million-VIII-Contest-Point-Spreads-Week-11.pdf",
+ "source": "https://www.circasports.com/wp-content/uploads/2026/11/Circa-Sports-Million-VIII-Contest-Point-Spreads-Week_11.pdf",
  "count": 13,
  "games": [
   {
@@ -178,15 +178,15 @@
    "time_pt": "10:00 AM",
    "neutral": false,
    "fav": {
-    "num": 22,
-    "abbr": "PHI",
-    "home": true,
-    "line": -4.5
-   },
-   "dog": {
     "num": 21,
     "abbr": "PIT",
     "home": false,
+    "line": -4.5
+   },
+   "dog": {
+    "num": 22,
+    "abbr": "PHI",
+    "home": true,
     "line": 4.5
    }
   },
