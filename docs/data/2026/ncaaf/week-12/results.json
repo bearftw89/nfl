@@ -15,68 +15,68 @@
   {
    "espn_id": "401856869",
    "kickoff": "2026-11-20T23:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/20 - 6:00 PM EST",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "CENTRAL FLORIDA",
-   "home_score": 0,
+   "home_score": 48,
    "away": "IOWA STATE",
-   "away_score": 0
+   "away_score": 17
   },
   {
    "espn_id": "401858303",
    "kickoff": "2026-11-21T00:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/20 - 7:30 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "1:45 - 4th",
    "home": "DUKE",
-   "home_score": 0,
+   "home_score": 10,
    "away": "CLEMSON",
-   "away_score": 0
+   "away_score": 17
   },
   {
    "espn_id": "401866468",
    "kickoff": "2026-11-21T00:30Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/20 - 7:30 PM EST",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "TOLEDO",
-   "home_score": 0,
+   "home_score": 19,
    "away": "BOWLING GREEN",
    "away_score": 0
   },
   {
    "espn_id": "401858529",
    "kickoff": "2026-11-21T01:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/20 - 8:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "13:34 - 4th",
    "home": "MICHIGAN STATE",
-   "home_score": 0,
+   "home_score": 7,
    "away": "OREGON",
-   "away_score": 0
+   "away_score": 38
   },
   {
    "espn_id": "401864545",
    "kickoff": "2026-11-21T01:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/20 - 8:00 PM EST",
+   "state": "in",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "4:46 - 4th",
    "home": "AIR FORCE",
-   "home_score": 0,
+   "home_score": 52,
    "away": "UTEP",
-   "away_score": 0
+   "away_score": 3
   },
   {
    "espn_id": "401864542",
    "kickoff": "2026-11-21T02:00Z",
-   "state": "pre",
-   "status": "STATUS_SCHEDULED",
-   "detail": "11/20 - 9:00 PM EST",
+   "state": "in",
+   "status": "STATUS_HALFTIME",
+   "detail": "Halftime",
    "home": "WYOMING",
-   "home_score": 0,
+   "home_score": 7,
    "away": "NEW MEXICO",
-   "away_score": 0
+   "away_score": 17
   },
   {
    "espn_id": "401862836",
