@@ -37,7 +37,9 @@ OUT = ROOT / "docs" / "data" / str(SEASON)
 RAW = ROOT / "raw" / str(SEASON)          # extracted PDF text, for debugging parsers
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (personal contest tracker)"}
-WEEK_RE = re.compile(r"(?:WEEK|WK)[\s_]*#?[\s_]*(\d{1,2})", re.I)
+# Westgate's file names vary: "...WEEK 9", "...WK 10", and week 11's "2026 SUPERCONTEST GAME SHEET 11"
+# (no WEEK/WK at all). "GAME SHEET" needs the number right after it so the year can't be mistaken for the week.
+WEEK_RE = re.compile(r"(?:WEEK|WK|GAME[\s_]*SHEET)[\s_]*#?[\s_]*(\d{1,2})(?!\d)", re.I)
 
 # Minimum sizes before we trust a parse enough to overwrite existing data
 MIN = {"card": 8, "picks": 50, "standings": 50}
