@@ -1,24 +1,17 @@
 {
- "updated": "2026-11-22T05:31:39+00:00",
+ "updated": "2026-11-22T05:58:41+00:00",
  "lines": [
-  "wrote docs/data/2026/week-11/picks.json (592 rows)",
-  "wrote results week 11 (1/13 final)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "college week 11: no ESPN game found for 1: ['OLE MISS v OKLAHOMA']",
-  "college results week 12: 56/61 final",
+  "college results week 12: 57/61 final",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
-  "gold picks week 11: 65",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
-  "survivor picks week 11: 3",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
-  "circa: found 7 current-season PDFs (grandissimo picks wk10, grandissimo picks wk11, grandissimo used wk11, millio card wk11, millio picks wk11, survivor picks wk11, survivor used wk11)",
-  "circa grandissimo picks week 11: 3 entries",
-  "circa millio picks week 11: 5702 entries",
-  "circa survivor picks week 11: 568 entries"
+  "circa: found 7 current-season PDFs (grandissimo picks wk10, grandissimo picks wk11, grandissimo used wk11, millio card wk11, millio picks wk11, survivor picks wk11, survivor used wk11)"
  ]
 }

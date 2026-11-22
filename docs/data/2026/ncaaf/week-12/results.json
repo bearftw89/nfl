@@ -402,11 +402,11 @@
    "kickoff": "2026-11-22T03:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "12:59 - 3rd",
+   "detail": "6:03 - 3rd",
    "home": "ARIZONA STATE",
    "home_score": 24,
    "away": "OKLAHOMA STATE",
-   "away_score": 7
+   "away_score": 14
   },
   {
    "espn_id": "401871081",
@@ -424,7 +424,7 @@
    "kickoff": "2026-11-22T03:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "12:44 - 3rd",
+   "detail": "5:40 - 3rd",
    "home": "NEVADA",
    "home_score": 13,
    "away": "HAWAII",
@@ -477,13 +477,13 @@
   {
    "espn_id": "401856872",
    "kickoff": "2026-11-22T02:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "5:46 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "TCU",
    "home_score": 17,
    "away": "UTAH",
-   "away_score": 24
+   "away_score": 38
   },
   {
    "espn_id": "401858528",
@@ -655,20 +655,20 @@
    "kickoff": "2026-11-22T02:30Z",
    "state": "in",
    "status": "STATUS_IN_PROGRESS",
-   "detail": "9:00 - 4th",
+   "detail": "1:51 - 4th",
    "home": "BOISE STATE",
-   "home_score": 17,
+   "home_score": 20,
    "away": "SAN DIEGO STATE",
-   "away_score": 13
+   "away_score": 19
   },
   {
    "espn_id": "401860919",
    "kickoff": "2026-11-22T03:30Z",
    "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "status": "STATUS_IN_PROGRESS",
+   "detail": "8:33 - 3rd",
    "home": "OREGON STATE",
-   "home_score": 10,
+   "home_score": 17,
    "away": "UTAH STATE",
    "away_score": 17
   }
