@@ -2,6 +2,28 @@
  "week": 11,
  "games": [
   {
+   "espn_id": "401873078",
+   "kickoff": "2026-11-24T01:15Z",
+   "state": "pre",
+   "detail": "11/23 - 8:15 PM EST",
+   "status": "STATUS_SCHEDULED",
+   "home": "WSH",
+   "home_score": 0,
+   "away": "CIN",
+   "away_score": 0
+  },
+  {
+   "espn_id": "401873066",
+   "kickoff": "2026-11-20T01:15Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "HOU",
+   "home_score": 26,
+   "away": "IND",
+   "away_score": 3
+  },
+  {
    "espn_id": "401873070",
    "kickoff": "2026-11-22T18:00Z",
    "state": "post",
@@ -114,35 +136,13 @@
   {
    "espn_id": "401873077",
    "kickoff": "2026-11-23T01:20Z",
-   "state": "in",
-   "detail": "14:55 - 1st",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "SF",
-   "home_score": 0,
-   "away": "MIN",
-   "away_score": 0
-  },
-  {
-   "espn_id": "401873066",
-   "kickoff": "2026-11-20T01:15Z",
    "state": "post",
    "detail": "Final",
    "status": "STATUS_FINAL",
-   "home": "HOU",
-   "home_score": 26,
-   "away": "IND",
-   "away_score": 3
-  },
-  {
-   "espn_id": "401873078",
-   "kickoff": "2026-11-24T01:15Z",
-   "state": "pre",
-   "detail": "11/23 - 8:15 PM EST",
-   "status": "STATUS_SCHEDULED",
-   "home": "WSH",
-   "home_score": 0,
-   "away": "CIN",
-   "away_score": 0
+   "home": "SF",
+   "home_score": 35,
+   "away": "MIN",
+   "away_score": 10
   }
  ]
 }
