@@ -1,0 +1,46 @@
+{
+ "week": 12,
+ "source": "https://www.circasports.com/wp-content/uploads/2026/11/Circa-Grandissimo-2026-Week-12a-Team-Availability.pdf",
+ "count": 3,
+ "entries": {
+  "DEGENCHAT-2": [
+   "BAL",
+   "BUF",
+   "CIN",
+   "DET",
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SF"
+  ],
+  "JIMMYSHIVEOVERLY-1": [
+   "BAL",
+   "BUF",
+   "CIN",
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ],
+  "TWEENTHEHEDGES-1": [
+   "BUF",
+   "CIN",
+   "DEN",
+   "HOU",
+   "JAX",
+   "KC",
+   "LAR",
+   "MIN",
+   "NE",
+   "SEA",
+   "SF"
+  ]
+ }
+}

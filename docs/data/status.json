@@ -1,7 +1,6 @@
 {
- "updated": "2026-11-24T05:37:27+00:00",
+ "updated": "2026-11-24T16:29:18+00:00",
  "lines": [
-  "wrote results week 11 (13/13 final)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
@@ -12,6 +11,9 @@
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
-  "circa: found 7 current-season PDFs (grandissimo picks wk10, grandissimo picks wk11, grandissimo used wk11, millio card wk11, millio picks wk11, survivor picks wk11, survivor used wk11)"
+  "circa: found 6 current-season PDFs (grandissimo picks wk11, grandissimo used wk12, millio picks wk11, millio standings wk11, survivor picks wk11, survivor used wk12)",
+  "circa grandissimo availability through week 12: 3 entries",
+  "circa millio standings week 11: 5789 rows",
+  "circa survivor availability through week 12: 529 entries"
  ]
 }
