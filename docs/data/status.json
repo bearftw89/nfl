@@ -1,19 +1,24 @@
 {
- "updated": "2026-11-24T16:29:18+00:00",
+ "updated": "2026-11-25T01:02:19+00:00",
  "lines": [
+  "wrote docs/data/2026/week-12/card.json (16 rows)",
+  "wrote docs/data/2026/week-11/standings.json (596 rows)",
+  "wrote results week 12 (0/16 final)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college week 11: no ESPN game found for 1: ['OLE MISS v OKLAHOMA']",
-  "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
+  "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
+  "gold card week 12: 16",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
-  "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
-  "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
+  "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
+  "gold standings week 11: 66",
+  "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
+  "survivor card week 12: 16",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
-  "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk11, grandissimo used wk12, millio picks wk11, millio standings wk11, survivor picks wk11, survivor used wk12)",
-  "circa grandissimo availability through week 12: 3 entries",
-  "circa millio standings week 11: 5789 rows",
-  "circa survivor availability through week 12: 529 entries"
+  "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
+  "survivor used-teams through week 11: 3 entries alive",
+  "! circa: could not read https://www.circasports.com/blog/category/contests: 504 Server Error: Gateway Timeout for url: https://www.circasports.com/blog/category/contests",
+  "circa: found 6 current-season PDFs (grandissimo picks wk11, grandissimo used wk12, millio picks wk11, millio standings wk11, survivor picks wk11, survivor used wk12)"
  ]
 }

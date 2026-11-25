@@ -76,6 +76,13 @@
   "11": {
    "card": true,
    "picks": true,
+   "standings": true,
+   "results": false,
+   "overrides": false
+  },
+  "12": {
+   "card": true,
+   "picks": false,
    "standings": false,
    "results": false,
    "overrides": false
