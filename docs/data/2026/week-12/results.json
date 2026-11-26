@@ -2,17 +2,6 @@
  "week": 12,
  "games": [
   {
-   "espn_id": "401873079",
-   "kickoff": "2026-11-26T01:00Z",
-   "state": "in",
-   "detail": "2:00 - 2nd",
-   "status": "STATUS_IN_PROGRESS",
-   "home": "LAR",
-   "home_score": 13,
-   "away": "GB",
-   "away_score": 10
-  },
-  {
    "espn_id": "401873081",
    "kickoff": "2026-11-26T18:00Z",
    "state": "pre",
@@ -44,6 +33,17 @@
    "home_score": 0,
    "away": "KC",
    "away_score": 0
+  },
+  {
+   "espn_id": "401873079",
+   "kickoff": "2026-11-26T01:00Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "LAR",
+   "home_score": 26,
+   "away": "GB",
+   "away_score": 13
   },
   {
    "espn_id": "401873083",
