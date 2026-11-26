@@ -1,7 +1,7 @@
 {
  "week": 13,
- "source": "https://www.westgateresorts.com/supercontest/download/2026%20SUPERCONTEST%20COLLEGE%20WK%2013.pdf?contest=/2026/College/Card",
- "count": 67,
+ "source": "https://www.westgateresorts.com/supercontest/download/2026%20SUPERCONTEST%20COLLEGE%20WEEK%2013.pdf?contest=/2026/College/Card",
+ "count": 66,
  "games": [
   {
    "id": 1,
@@ -671,25 +671,6 @@
   {
    "id": 36,
    "date": "2026-11-28",
-   "time_pt": "11:00 AM",
-   "site": null,
-   "fav": {
-    "num": 71,
-    "home": false,
-    "line": -5.5,
-    "abbr": "ARMY"
-   },
-   "dog": {
-    "num": 72,
-    "home": true,
-    "line": 5.5,
-    "abbr": "RICE"
-   },
-   "espn_id": "401862841"
-  },
-  {
-   "id": 37,
-   "date": "2026-11-28",
    "time_pt": "9:00 AM",
    "site": null,
    "fav": {
@@ -707,7 +688,7 @@
    "espn_id": "401869954"
   },
   {
-   "id": 38,
+   "id": 37,
    "date": "2026-11-28",
    "time_pt": "3:15 PM",
    "site": null,
@@ -726,7 +707,7 @@
    "espn_id": "401856877"
   },
   {
-   "id": 39,
+   "id": 38,
    "date": "2026-11-28",
    "time_pt": "1:00 PM",
    "site": null,
@@ -745,7 +726,7 @@
    "espn_id": "401862843"
   },
   {
-   "id": 40,
+   "id": 39,
    "date": "2026-11-28",
    "time_pt": "11:00 AM",
    "site": null,
@@ -764,7 +745,7 @@
    "espn_id": "401856878"
   },
   {
-   "id": 41,
+   "id": 40,
    "date": "2026-11-28",
    "time_pt": "6:30 PM",
    "site": null,
@@ -783,7 +764,7 @@
    "espn_id": "401856874"
   },
   {
-   "id": 42,
+   "id": 41,
    "date": "2026-11-28",
    "time_pt": "9:45 AM",
    "site": null,
@@ -802,7 +783,7 @@
    "espn_id": "401856758"
   },
   {
-   "id": 43,
+   "id": 42,
    "date": "2026-11-28",
    "time_pt": "11:00 AM",
    "site": null,
@@ -821,7 +802,7 @@
    "espn_id": "401871063"
   },
   {
-   "id": 44,
+   "id": 43,
    "date": "2026-11-28",
    "time_pt": "11:00 AM",
    "site": null,
@@ -840,7 +821,7 @@
    "espn_id": "401856875"
   },
   {
-   "id": 45,
+   "id": 44,
    "date": "2026-11-28",
    "time_pt": "6:00 PM",
    "site": null,
@@ -859,7 +840,7 @@
    "espn_id": "401856873"
   },
   {
-   "id": 46,
+   "id": 45,
    "date": "2026-11-28",
    "time_pt": "9:00 AM",
    "site": null,
@@ -878,7 +859,7 @@
    "espn_id": "401861969"
   },
   {
-   "id": 47,
+   "id": 46,
    "date": "2026-11-28",
    "time_pt": "12:30 PM",
    "site": null,
@@ -897,7 +878,7 @@
    "espn_id": "401856876"
   },
   {
-   "id": 48,
+   "id": 47,
    "date": "2026-11-28",
    "time_pt": "11:00 AM",
    "site": null,
@@ -916,7 +897,7 @@
    "espn_id": "401871082"
   },
   {
-   "id": 49,
+   "id": 48,
    "date": "2026-11-28",
    "time_pt": "11:00 AM",
    "site": null,
@@ -935,7 +916,7 @@
    "espn_id": "401871083"
   },
   {
-   "id": 50,
+   "id": 49,
    "date": "2026-11-28",
    "time_pt": "4:30 PM",
    "site": null,
@@ -954,7 +935,7 @@
    "espn_id": "401858541"
   },
   {
-   "id": 51,
+   "id": 50,
    "date": "2026-11-28",
    "time_pt": "12:30 PM",
    "site": null,
@@ -973,7 +954,7 @@
    "espn_id": "401858316"
   },
   {
-   "id": 52,
+   "id": 51,
    "date": "2026-11-28",
    "time_pt": "12:00 PM",
    "site": null,
@@ -992,7 +973,7 @@
    "espn_id": "401869939"
   },
   {
-   "id": 53,
+   "id": 52,
    "date": "2026-11-28",
    "time_pt": "12:30 PM",
    "site": null,
@@ -1011,7 +992,7 @@
    "espn_id": "401858543"
   },
   {
-   "id": 54,
+   "id": 53,
    "date": "2026-11-28",
    "time_pt": "4:30 PM",
    "site": null,
@@ -1030,7 +1011,7 @@
    "espn_id": "401858315"
   },
   {
-   "id": 55,
+   "id": 54,
    "date": "2026-11-28",
    "time_pt": "1:15 PM",
    "site": null,
@@ -1049,7 +1030,7 @@
    "espn_id": "401856763"
   },
   {
-   "id": 56,
+   "id": 55,
    "date": "2026-11-28",
    "time_pt": "4:30 PM",
    "site": null,
@@ -1068,7 +1049,7 @@
    "espn_id": "401856757"
   },
   {
-   "id": 57,
+   "id": 56,
    "date": "2026-11-28",
    "time_pt": "10:00 AM",
    "site": null,
@@ -1087,7 +1068,7 @@
    "espn_id": "401870804"
   },
   {
-   "id": 58,
+   "id": 57,
    "date": "2026-11-28",
    "time_pt": "12:30 PM",
    "site": null,
@@ -1106,7 +1087,7 @@
    "espn_id": "401856760"
   },
   {
-   "id": 59,
+   "id": 58,
    "date": "2026-11-28",
    "time_pt": "12:30 PM",
    "site": null,
@@ -1125,7 +1106,7 @@
    "espn_id": "401871062"
   },
   {
-   "id": 60,
+   "id": 59,
    "date": "2026-11-28",
    "time_pt": "12:30 PM",
    "site": null,
@@ -1144,7 +1125,7 @@
    "espn_id": "401864550"
   },
   {
-   "id": 61,
+   "id": 60,
    "date": "2026-11-28",
    "time_pt": "4:00 PM",
    "site": null,
@@ -1163,7 +1144,7 @@
    "espn_id": "401856765"
   },
   {
-   "id": 62,
+   "id": 61,
    "date": "2026-11-28",
    "time_pt": "6:00 PM",
    "site": null,
@@ -1182,7 +1163,7 @@
    "espn_id": "401864548"
   },
   {
-   "id": 63,
+   "id": 62,
    "date": "2026-11-28",
    "time_pt": "8:00 PM",
    "site": null,
@@ -1201,7 +1182,7 @@
    "espn_id": "401864547"
   },
   {
-   "id": 64,
+   "id": 63,
    "date": "2026-11-28",
    "time_pt": "3:00 PM",
    "site": null,
@@ -1220,7 +1201,7 @@
    "espn_id": "401860926"
   },
   {
-   "id": 65,
+   "id": 64,
    "date": "2026-11-28",
    "time_pt": "3:30 PM",
    "site": null,
@@ -1239,7 +1220,7 @@
    "espn_id": "401860929"
   },
   {
-   "id": 66,
+   "id": 65,
    "date": "2026-11-28",
    "time_pt": "6:30 PM",
    "site": null,
@@ -1258,7 +1239,7 @@
    "espn_id": "401860928"
   },
   {
-   "id": 67,
+   "id": 66,
    "date": "2026-11-28",
    "time_pt": "7:00 PM",
    "site": null,

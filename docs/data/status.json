@@ -1,19 +1,21 @@
 {
- "updated": "2026-11-25T19:38:10+00:00",
+ "updated": "2026-11-26T02:30:06+00:00",
  "lines": [
+  "wrote results week 12 (0/16 final)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]",
-  "college card week 13: 67 games",
+  "college card week 13: 66 games",
   "college picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college week 11: no ESPN game found for 1: ['OLE MISS v OKLAHOMA']",
-  "college results week 13: 0/67 final",
+  "college results week 13: 0/66 final",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk11, grandissimo used wk12, millio card wk12, millio standings wk11, survivor picks wk11, survivor used wk12)",
-  "circa millio card week 12: 16 games"
+  "circa: found 6 current-season PDFs (grandissimo picks wk12, grandissimo used wk12, millio card wk12, millio standings wk11, survivor picks wk12, survivor used wk12)",
+  "circa grandissimo picks week 12: 3 entries",
+  "circa survivor picks week 12: 522 entries"
  ]
 }
