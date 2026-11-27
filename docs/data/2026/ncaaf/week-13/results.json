@@ -4,13 +4,13 @@
   {
    "espn_id": "401856879",
    "kickoff": "2026-11-27T01:00Z",
-   "state": "in",
-   "status": "STATUS_HALFTIME",
-   "detail": "Halftime",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "TEXAS TECH",
-   "home_score": 27,
+   "home_score": 48,
    "away": "TCU",
-   "away_score": 10
+   "away_score": 27
   },
   {
    "espn_id": "401866472",
@@ -47,10 +47,10 @@
   },
   {
    "espn_id": "401858536",
-   "kickoff": "2026-11-27T17:00Z",
+   "kickoff": "2026-11-27T17:08Z",
    "state": "pre",
    "status": "STATUS_SCHEDULED",
-   "detail": "11/27 - 12:00 PM EST",
+   "detail": "11/27 - 12:08 PM EST",
    "home": "IOWA",
    "home_score": 0,
    "away": "NEBRASKA",
