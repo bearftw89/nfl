@@ -2,37 +2,37 @@
  "week": 12,
  "games": [
   {
+   "espn_id": "401873082",
+   "kickoff": "2026-11-27T01:20Z",
+   "state": "in",
+   "detail": "Halftime",
+   "status": "STATUS_HALFTIME",
+   "home": "BUF",
+   "home_score": 7,
+   "away": "KC",
+   "away_score": 3
+  },
+  {
    "espn_id": "401873081",
    "kickoff": "2026-11-26T18:00Z",
-   "state": "in",
-   "detail": "5:10 - 3rd",
-   "status": "STATUS_IN_PROGRESS",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "DET",
-   "home_score": 26,
+   "home_score": 35,
    "away": "CHI",
-   "away_score": 17
+   "away_score": 39
   },
   {
    "espn_id": "401873080",
    "kickoff": "2026-11-26T21:30Z",
-   "state": "pre",
-   "detail": "11/26 - 4:30 PM EST",
-   "status": "STATUS_SCHEDULED",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "DAL",
-   "home_score": 0,
+   "home_score": 38,
    "away": "PHI",
-   "away_score": 0
-  },
-  {
-   "espn_id": "401873082",
-   "kickoff": "2026-11-27T01:20Z",
-   "state": "pre",
-   "detail": "11/26 - 8:20 PM EST",
-   "status": "STATUS_SCHEDULED",
-   "home": "BUF",
-   "home_score": 0,
-   "away": "KC",
-   "away_score": 0
+   "away_score": 39
   },
   {
    "espn_id": "401873079",
