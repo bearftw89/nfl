@@ -125,20 +125,20 @@
   {
    "espn_id": "401856756",
    "kickoff": "2026-11-28T00:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "10:31 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "TEXAS A&M",
    "home_score": 6,
    "away": "TEXAS",
-   "away_score": 13
+   "away_score": 16
   },
   {
    "espn_id": "401858544",
    "kickoff": "2026-11-28T00:30Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "7:50 - 4th",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "WISCONSIN",
    "home_score": 28,
    "away": "MINNESOTA",
@@ -147,13 +147,13 @@
   {
    "espn_id": "401856880",
    "kickoff": "2026-11-28T02:00Z",
-   "state": "in",
-   "status": "STATUS_IN_PROGRESS",
-   "detail": "2:34 - 2nd",
+   "state": "post",
+   "status": "STATUS_FINAL",
+   "detail": "Final",
    "home": "UTAH",
-   "home_score": 37,
+   "home_score": 52,
    "away": "WEST VIRGINIA",
-   "away_score": 0
+   "away_score": 28
   },
   {
    "espn_id": "401862839",

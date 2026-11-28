@@ -2,17 +2,6 @@
  "week": 12,
  "games": [
   {
-   "espn_id": "401873083",
-   "kickoff": "2026-11-27T20:00Z",
-   "state": "post",
-   "detail": "Final",
-   "status": "STATUS_FINAL",
-   "home": "PIT",
-   "home_score": 27,
-   "away": "DEN",
-   "away_score": 5
-  },
-  {
    "espn_id": "401873079",
    "kickoff": "2026-11-26T01:00Z",
    "state": "post",
@@ -55,6 +44,17 @@
    "home_score": 13,
    "away": "KC",
    "away_score": 10
+  },
+  {
+   "espn_id": "401873083",
+   "kickoff": "2026-11-27T20:00Z",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
+   "home": "PIT",
+   "home_score": 27,
+   "away": "DEN",
+   "away_score": 5
   },
   {
    "espn_id": "401873087",

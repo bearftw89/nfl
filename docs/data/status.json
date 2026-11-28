@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T03:33:44+00:00",
+ "updated": "2026-11-28T12:26:07+00:00",
  "lines": [
   "wrote results week 12 (5/16 final)",
   "college card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]",
@@ -7,14 +7,14 @@
   "! college picks week 13: 0 entries / 0 picks vs 15 in Westgate's count table; keeping old data",
   "college standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "college week 11: no ESPN game found for 1: ['OLE MISS v OKLAHOMA']",
-  "college results week 13: 11/66 final",
+  "college results week 13: 14/66 final",
   "gold card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "gold picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "gold standings: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "survivor card: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
   "survivor picks: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
   "survivor used: weeks listed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
-  "circa: found 6 current-season PDFs (grandissimo picks wk12, grandissimo used wk12, millio card wk12, millio standings wk11, survivor picks wk12, survivor used wk12)",
+  "circa: found 5 current-season PDFs (grandissimo picks wk12, millio card wk12, millio standings wk11, survivor picks wk12, survivor used wk12)",
   "! circa survivor availability week 12: only 88 rows; keeping old data, not a run failure"
  ]
 }
