@@ -4,11 +4,11 @@
   {
    "espn_id": "401873083",
    "kickoff": "2026-11-27T20:00Z",
-   "state": "in",
-   "detail": "Halftime",
-   "status": "STATUS_HALFTIME",
+   "state": "post",
+   "detail": "Final",
+   "status": "STATUS_FINAL",
    "home": "PIT",
-   "home_score": 24,
+   "home_score": 27,
    "away": "DEN",
    "away_score": 5
   },
